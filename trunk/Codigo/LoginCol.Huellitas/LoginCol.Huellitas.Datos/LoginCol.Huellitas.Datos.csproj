@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201408172100505_PrimeraVersion.Designer.cs">
       <DependentUpon>201408172100505_PrimeraVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408231855430_QuitarContacto_Contenido.cs" />
+    <Compile Include="Migrations\201408231855430_QuitarContacto_Contenido.Designer.cs">
+      <DependentUpon>201408231855430_QuitarContacto_Contenido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />
@@ -78,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201408172100505_PrimeraVersion.resx">
       <DependentUpon>201408172100505_PrimeraVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408231855430_QuitarContacto_Contenido.resx">
+      <DependentUpon>201408231855430_QuitarContacto_Contenido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

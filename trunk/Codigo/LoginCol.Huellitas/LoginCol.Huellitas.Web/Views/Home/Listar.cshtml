@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Listar</h2>
+<script>
+
+    var Contenido = Backbone.Model.extend({
+        initialize : function()
+        {
+            console.log("Se ha creado un contenido");
+        },
+        urlRoot: '/home'
+    });
+
+
+    var contenido = new Contenido({ Id: 2, Nombre: "Gabriel Castillo", Descripcion: "Ingeniero" });
+
+    
+
+</script>
