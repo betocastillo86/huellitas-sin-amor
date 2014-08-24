@@ -47,9 +47,9 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual ZonaGeografica ZonaGeografica { get; set; }
 
-        public string Direccion { get; set; }
+        //public string Direccion { get; set; }
 
-        public string Telefono { get; set; }
+        //public string Telefono { get; set; }
 
         public string Email { get; set; }
 
@@ -57,9 +57,9 @@ namespace LoginCol.Huellitas.Entidades
 
         public string Twitter { get; set; }
 
-        public decimal Latitud { get; set; }
+        //public decimal Latitud { get; set; }
 
-        public decimal Longitud { get; set; }
+        //public decimal Longitud { get; set; }
 
         #endregion
 
