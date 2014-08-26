@@ -14,14 +14,21 @@ namespace LoginCol.Huellitas.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            //routes.MapRoute(name: "Administracion",
-            //    url: "/Admin/{controller}/{action}/{id}",
-            //    defaults: new { controller = "Admin", action = "Index" });
+            routes.MapRoute(name: "AdministracionIndex",
+                url: "Admin/{action}",
+                defaults: new { controller = "Administracion", action = "Index" });
+
+            routes.MapRoute(name: "Admin",
+                url: "Admin/{controller}/{action}",
+                defaults: new { controller = "Animales", action = "Index" });
+
+            
             
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { controller = "(Home)" }
             );
         }
     }

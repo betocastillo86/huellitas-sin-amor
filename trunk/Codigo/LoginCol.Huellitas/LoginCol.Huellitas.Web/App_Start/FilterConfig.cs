@@ -8,6 +8,23 @@ namespace LoginCol.Huellitas.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+           // filters.Add(new LocalizationAttribute());
         }
     }
+
+
+    //public class LocalizationAttribute : AuthorizeAttribute
+    //{
+    //    //public override void OnActionExecuting(ActionExecutingContext filterContext)
+    //    //{
+    //    //    base.OnActionExecuting(filterContext);
+    //    //}
+
+    //    public override void OnAuthorization(AuthorizationContext filterContext)
+    //    {
+    //        base.OnAuthorization(filterContext);
+    //    }
+    //}
+
+
 }
