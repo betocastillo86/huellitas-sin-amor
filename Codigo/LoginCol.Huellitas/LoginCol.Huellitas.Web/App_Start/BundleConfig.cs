@@ -26,16 +26,51 @@ namespace LoginCol.Huellitas.Web
                         "~/Scripts/libs/jquery.unobtrusive*",
                         "~/Scripts/libs/jquery.validate*"));
 
-            
+
+
+
+            //Librerias adicionales del template charisma
+            bundles.Add(new ScriptBundle("~/bundles/jqueryTemplate").
+                Include(
+                "~/Scripts/libs/jquery.cookie.js",
+                "~/Scripts/libs/jquery.dataTables.js",
+                                "~/Scripts/libs/jquery.raty.js",
+                                "~/Scripts/libs/jquery.iphone.toggle.js",
+                                "~/Scripts/libs/jquery.autogrow-textarea.js",
+                                "~/Scripts/libs/jquery.uploadify-3.1.js",
+                                "~/Scripts/libs/jquery.history.js",
+                                "~/Scripts/libs/charisma.js",
+                                "~/Scripts/libs/jquery.noty.js",
+                                "~/Scripts/libs/responsive-tables.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                    "~/Scripts/libs/bootstrap.js",
+                    "~/Scripts/libs/bootstrap-tour.js"
+                    ));
+
+            bundles.Add(new ScriptBundle("~/bundles/calendar").Include(
+                    "~/Scripts/libs/moment/moment.js"    ,
+                    "~/Scripts/libs/fullcalendar/fullcalendar.js"
+                    
+                    ));
+
+            bundles.Add(new ScriptBundle("~/bundles/chosen").Include(
+                    "~/Scripts/libs/chosen/chosen.jquery.js"
+                    ));
+
+            bundles.Add(new ScriptBundle("~/bundles/colorbox").Include(
+                    "~/Scripts/libs/colorbox/jquery.colorbox.js"
+                    ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/libs/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",
@@ -48,6 +83,14 @@ namespace LoginCol.Huellitas.Web
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+
+            bundles.Add(new StyleBundle("~/bundles/Admin").Include("~/Content/Admin/*.css"));
+
+
+            
+
+
         }
     }
 }
