@@ -45,6 +45,7 @@
     <Compile Include="Comentario.cs" />
     <Compile Include="Contenido.cs" />
     <Compile Include="ContenidoRelacionado.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoContenido.cs" />
     <Compile Include="TipoRelacionContenido.cs" />

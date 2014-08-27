@@ -16,7 +16,8 @@ namespace LoginCol.Huellitas.Web
 
             routes.MapRoute(name: "AdministracionIndex",
                 url: "Admin/{action}",
-                defaults: new { controller = "Administracion", action = "Index" });
+                defaults: new { controller = "Administracion", action = "Index" },
+                constraints: new { action = "(Index|OpcionesMenu)" });
 
             routes.MapRoute(name: "Admin",
                 url: "Admin/{controller}/{action}",

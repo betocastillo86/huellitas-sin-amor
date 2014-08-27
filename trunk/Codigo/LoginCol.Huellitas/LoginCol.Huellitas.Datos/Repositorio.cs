@@ -25,6 +25,7 @@ namespace LoginCol.Huellitas.Datos
         public DbSet<ValorCampo> ValoresCampos { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<TipoRelacionContenido> TiposRelacionContenidos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -3,6 +3,67 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default">
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                    </a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="alert alert-info">For help with such table please check <a href="http://datatables.net/" target="_blank">http://datatables.net/</a></div>
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Id Contenido</th>
+                            <th>Nombre</th>
+                            <th>a</th>
+                            <th>a</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyListadoContenidos">
+                        
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+</div>
 
-ANIMALES INDEX
+<script type="text/template" id="templateTrContenidos">
+    <tr>
+        <td><%= ContenidoId %></td>
+        <td class="center"><%= Nombre %></td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script src="~/Scripts/models/huellitas.admin.Contenido.js"></script>
+<script src="~/Scripts/views/huellitas.admin.ContenidoListarView.js"></script>
