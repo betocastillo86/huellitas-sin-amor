@@ -26,6 +26,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             string a = "";
         }
+
+
     }
 
     public class ContenidoModel

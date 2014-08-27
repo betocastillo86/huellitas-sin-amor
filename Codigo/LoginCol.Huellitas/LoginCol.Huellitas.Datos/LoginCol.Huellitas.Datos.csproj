@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalesRepositorio.cs" />
     <Compile Include="Configuracion\CampoConfig.cs" />
     <Compile Include="Configuracion\ComentarioConfig.cs" />
     <Compile Include="Configuracion\ContenidoConfig.cs" />
@@ -56,7 +57,9 @@
     <Compile Include="Configuracion\UsuarioConfig.cs" />
     <Compile Include="Configuracion\ValorCampoConfig.cs" />
     <Compile Include="Configuracion\ZonaGeograficaConfig.cs" />
+    <Compile Include="ContenidosRepositorio.cs" />
     <Compile Include="GeneradorLlaveUnica.cs" />
+    <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.Designer.cs">
       <DependentUpon>201408172100505_PrimeraVersion.cs</DependentUpon>
@@ -77,6 +80,10 @@
     <ProjectReference Include="..\LoginCol.Huellitas.Entidades\LoginCol.Huellitas.Entidades.csproj">
       <Project>{71034d3d-6778-4c4d-8be5-6c38efb119c0}</Project>
       <Name>LoginCol.Huellitas.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoginCol.Huellitas.Utilidades\LoginCol.Huellitas.Utilidades.csproj">
+      <Project>{0a607ed3-87d1-457d-89cd-206e273e1442}</Project>
+      <Name>LoginCol.Huellitas.Utilidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

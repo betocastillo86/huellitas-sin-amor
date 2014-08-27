@@ -5,7 +5,7 @@
 
 var OpcionMenuCollection = Backbone.Collection.extend({
 	model: OpcionMenu,
-	url: "Admin/OpcionesMenu",
+	url: "/Admin/OpcionesMenu",
 	initialize: function () {
 		console.log("Creada instancia de OpcionMenuCollection");
 	}

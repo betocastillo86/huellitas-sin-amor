@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginCol.Huellitas.Datos.Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginCol.Huellitas.Web", "LoginCol.Huellitas.Web\LoginCol.Huellitas.Web.csproj", "{0D56AAFE-03DF-43D5-B92B-4F5A6A6ED6E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginCol.Huellitas.Negocio", "LoginCol.Huellitas.Negocio\LoginCol.Huellitas.Negocio.csproj", "{98540CFD-B537-4FD4-A89D-F9C93553B045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginCol.Huellitas.Utilidades", "LoginCol.Huellitas.Utilidades\LoginCol.Huellitas.Utilidades.csproj", "{0A607ED3-87D1-457D-89CD-206E273E1442}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0D56AAFE-03DF-43D5-B92B-4F5A6A6ED6E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D56AAFE-03DF-43D5-B92B-4F5A6A6ED6E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D56AAFE-03DF-43D5-B92B-4F5A6A6ED6E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98540CFD-B537-4FD4-A89D-F9C93553B045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98540CFD-B537-4FD4-A89D-F9C93553B045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98540CFD-B537-4FD4-A89D-F9C93553B045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98540CFD-B537-4FD4-A89D-F9C93553B045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A607ED3-87D1-457D-89CD-206E273E1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A607ED3-87D1-457D-89CD-206E273E1442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A607ED3-87D1-457D-89CD-206E273E1442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A607ED3-87D1-457D-89CD-206E273E1442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
