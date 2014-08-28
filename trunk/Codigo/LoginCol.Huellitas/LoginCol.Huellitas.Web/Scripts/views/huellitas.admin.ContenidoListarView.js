@@ -25,9 +25,9 @@ var ContenidoListarView = Backbone.View.extend({
 		
 		var listaContenidos = new ContenidoCollection({ url : this.urlModelo});
 		this.lista = listaContenidos.fetch();
-
+		
 		_.each(this.lista, function (element, index, list) {
-			$("#tbodyListadoContenidos").append(_.template("#templateTrContenidos").html());
+			$("#tbodyListadoContenidos").append(_.template("#templateTrContenidos", list[element]).html());
 		})
 
 	}

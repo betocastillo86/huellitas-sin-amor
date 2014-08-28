@@ -3,6 +3,21 @@
 }
 
 <h2>Listar</h2>
+
+<div id="divContenidos"></div>
+
+<a href="~/Home/Listar/1">pagina 1</a>
+<a href="#Listar/2">pagina 2</a>
+<a href="~/Home/Listar/3">pagina 3</a>
+<a href="~/Home">pagina 3</a>
+
+
+<script id="templateContenido" type="text/template">
+    <b>Id: </b><%= Id %>
+    <b>Nombre: </b><%= Nombres %>
+    <b>Descripcion: </b><%= Descripcion %>
+</script>
+
 <script>
 
     var Contenido = Backbone.Model.extend({
@@ -13,9 +28,77 @@
         urlRoot: '/home'
     });
 
+    var ColeccionContenidos = Backbone.Collection.extend({
+        model: Contenido,
+        url: function () {
+            return '/Home/Comprar';
+        }
+    });
+
+    var listado = new ColeccionContenidos();
+
 
     var contenido = new Contenido({ Id: 2, Nombre: "Gabriel Castillo", Descripcion: "Ingeniero" });
 
     
+    var Rutas = Backbone.Router.extend({
+        routes: {
+            "home": "home",
+            "Home/Listar/:id": "Listar",
+            "Home/Listar/:id/p:page": "Listar"
+        },
+        home: function ()
+        {
+            debugger;
+            this.navigate("/Home", {trigger:true});
+        },
+        Listar: function (id)
+        {
+            debugger;
+            this.navigate("Home/Listar/" + id, {trigger: true});
+        }
+    });
+
+
+    var VistaContenidos = Backbone.View.extend({
+        el: "#divContenidos",
+
+        initialize: function () {
+            listado.on("add", this.mostrarContenidos);
+            listado.fetch();
+        },
+        mostrarContenidos: function (contenido) {
+            var vista = new VistaListar({ model: contenido });
+            $("#divContenidos").html(vista.render().$el);
+        }
+    });
+
+
+    var VistaListar = Backbone.View.extend({
+        template: _.template($("#templateContenido").html()),
+        render: function () {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
+
+    });
+
+
+    var app_router = new Rutas;
+    window.router = app_router;
+
+
+
+    Backbone.history.start({ pushState: true });
+
+
+
+    $('a[href^='/']').on('click', function (ev) {
+        debugger;
+        ev.preventDefault();
+        app_router.navigate($(this).attr('href'), {trigger:true});
+    });
+
+
 
 </script>

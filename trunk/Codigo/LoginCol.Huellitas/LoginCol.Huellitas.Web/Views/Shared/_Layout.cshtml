@@ -32,8 +32,10 @@
             </div>
         </div>
     </header>
-    @RenderBody()
-
+    @using(Html.BeginForm())
+    {
+        @RenderBody()    
+    }
     
     @RenderSection("scripts", required: false)
 </body>

@@ -10,19 +10,19 @@ namespace LoginCol.Huellitas.Web.Infraestructure
     public interface ICrudAdministracion<T>
     {
         [HttpGet]
-        List<T> Listar();
+        ActionResult Listar();
 
         [HttpGet]
-        T Obtener(int id);
+        ActionResult Obtener(int id);
         
         [HttpPost]
-        T Crear(int id, T modelo);
+        ActionResult Crear(int id, T modelo);
 
         [HttpPut]
-        T Editar(int id, T modelo);
+        ActionResult Editar(int id, T modelo);
 
         [HttpDelete]
-        T Eliminar(int id);
+        string Eliminar(int id);
 
         
     }

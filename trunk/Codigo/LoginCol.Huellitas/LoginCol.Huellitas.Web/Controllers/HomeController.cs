@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
@@ -13,29 +14,36 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View();
         }
 
-        [HttpGet]
+       // [HttpGet]
         
-        public ActionResult Listar()
+        //public ActionResult Listar()
+        //{
+        //    return View();
+        //}
+
+        //[HttpGet]
+        public ActionResult Listar(int? id)
         {
             return View();
         }
 
-        [HttpPost]
-        [ActionName("Index")]
-        public void Guardar(int id, ContenidoModel modelo)
-        {
-            string a = "";
-        }
+        //[HttpGet]
+        //public string Comprar()
+        //{
+        //    List<Contenido> lista = new List<Contenido>();
+        //    lista.Add(new Contenido() { Id = 1, Nombres = "A1", Descripcion = "D1" });
+        //    lista.Add(new Contenido() { Id = 2, Nombres = "A2", Descripcion = "D2" });
+        //    lista.Add(new Contenido() { Id = 3, Nombres = "A3", Descripcion = "D3" });
+
+        //    return new JavaScriptSerializer().Serialize(lista.ToArray()); 
+        //}
+
+
+
 
 
     }
 
-    public class ContenidoModel
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-    }
 
 
 }

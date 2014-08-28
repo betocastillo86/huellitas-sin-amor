@@ -13,9 +13,21 @@ namespace LoginCol.Huellitas.Web.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
+        public ActionResult Index(string queryValues)
         {
-            return View();
+            //Vista que va cargar dependiendo de la URL
+            string vista = "Index";
+            
+            switch (queryValues.ToLower())
+            {
+                case "animales/listar":
+                    vista = "Animales/Index.cshtml";
+                    break;
+                default:
+                    break;
+            }
+
+            return View(string.Format("~/Views/Administracion/{0}", vista));
         }
 
         [HttpGet]
