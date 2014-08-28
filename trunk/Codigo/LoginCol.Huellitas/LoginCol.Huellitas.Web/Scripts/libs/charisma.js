@@ -1,3 +1,14 @@
+//GLobal configuration
+var optionsDataTable = {
+    "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-12'i><'col-md-12 center-block'p>>",
+    "sPaginationType": "bootstrap",
+    "oLanguage": {
+        "sLengthMenu": "_MENU_ records per page"
+    }
+};
+
+
+
 $(document).ready(function () {
     //themes, change CSS with JS
     //default theme(CSS) is cerulean, change it if needed
@@ -45,7 +56,7 @@ $(document).ready(function () {
         if (themeName == 'classic') {
             $('#bs-css').attr('href', 'bower_components/bootstrap/dist/css/bootstrap.min.css');
         } else {
-            $('#bs-css').attr('href', 'css/bootstrap-' + themeName + '.min.css');
+            $('#bs-css').attr('href', '/Content/Admin/bootstrap-' + themeName + '.min.css');
         }
 
         $('#themes i').removeClass('glyphicon glyphicon-ok whitespace').addClass('whitespace');
@@ -272,13 +283,13 @@ function docReady() {
     }
 
     //datatable
-    $('.datatable').dataTable({
-        "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-12'i><'col-md-12 center-block'p>>",
-        "sPaginationType": "bootstrap",
-        "oLanguage": {
-            "sLengthMenu": "_MENU_ records per page"
-        }
-    });
+
+   
+
+    $('.datatable').dataTable(optionsDataTable);
+
+
+
     $('.btn-close').click(function (e) {
         e.preventDefault();
         $(this).parent().parent().parent().fadeOut();

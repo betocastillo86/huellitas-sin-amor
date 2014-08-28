@@ -68,6 +68,26 @@
     <Compile Include="Migrations\201408231855430_QuitarContacto_Contenido.Designer.cs">
       <DependentUpon>201408231855430_QuitarContacto_Contenido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408281800323_Add_SubtipoContenido.cs" />
+    <Compile Include="Migrations\201408281800323_Add_SubtipoContenido.Designer.cs">
+      <DependentUpon>201408281800323_Add_SubtipoContenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408281823526_Add_SubtipoContenido_ErrorZona.cs" />
+    <Compile Include="Migrations\201408281823526_Add_SubtipoContenido_ErrorZona.Designer.cs">
+      <DependentUpon>201408281823526_Add_SubtipoContenido_ErrorZona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408281826241_Add_SubtipoContenido_ErrorZona2.cs" />
+    <Compile Include="Migrations\201408281826241_Add_SubtipoContenido_ErrorZona2.Designer.cs">
+      <DependentUpon>201408281826241_Add_SubtipoContenido_ErrorZona2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408281829566_Add_SubtipoContenido_ErrorRelacionContenido.cs" />
+    <Compile Include="Migrations\201408281829566_Add_SubtipoContenido_ErrorRelacionContenido.Designer.cs">
+      <DependentUpon>201408281829566_Add_SubtipoContenido_ErrorRelacionContenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408282244144_contenido_activo.cs" />
+    <Compile Include="Migrations\201408282244144_contenido_activo.Designer.cs">
+      <DependentUpon>201408282244144_contenido_activo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />
@@ -92,6 +112,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408231855430_QuitarContacto_Contenido.resx">
       <DependentUpon>201408231855430_QuitarContacto_Contenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408281800323_Add_SubtipoContenido.resx">
+      <DependentUpon>201408281800323_Add_SubtipoContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408281823526_Add_SubtipoContenido_ErrorZona.resx">
+      <DependentUpon>201408281823526_Add_SubtipoContenido_ErrorZona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408281826241_Add_SubtipoContenido_ErrorZona2.resx">
+      <DependentUpon>201408281826241_Add_SubtipoContenido_ErrorZona2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408281829566_Add_SubtipoContenido_ErrorRelacionContenido.resx">
+      <DependentUpon>201408281829566_Add_SubtipoContenido_ErrorRelacionContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408282244144_contenido_activo.resx">
+      <DependentUpon>201408282244144_contenido_activo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

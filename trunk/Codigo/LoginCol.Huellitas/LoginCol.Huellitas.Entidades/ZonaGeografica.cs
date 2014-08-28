@@ -16,8 +16,7 @@ namespace LoginCol.Huellitas.Entidades
         
         public string CodigoExterno { get; set; }
 
-        public Nullable<int> ZonaGeograficaPadreId { get; set; }
-
         public virtual ZonaGeografica ZonaGeograficaPadre { get; set; }
+
     }
 }

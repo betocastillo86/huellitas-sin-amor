@@ -47,12 +47,12 @@ namespace LoginCol.Huellitas.Datos.Pruebas
         {
             using (var db = new Repositorio())
             {
-                db.Contenidos.Add(new Contenido() { ContenidoId = 1, Nombre = "Skid", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
-                db.Contenidos.Add(new Contenido() { ContenidoId = 2, Nombre = "Lennon", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
-                db.Contenidos.Add(new Contenido() { ContenidoId = 3, Nombre = "Perro1", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
-                db.Contenidos.Add(new Contenido() { ContenidoId = 4, Nombre = "perro2", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
-                db.Contenidos.Add(new Contenido() { ContenidoId = 5, Nombre = "perro3", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
-                db.Contenidos.Add(new Contenido() { ContenidoId = 6, Nombre = "perro4", TipoContenidoId = 2, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 1, Nombre = "Skid", TipoContenidoId = 4, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 2, Nombre = "Lennon", TipoContenidoId = 4, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 3, Nombre = "Perro1", TipoContenidoId = 4, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 4, Nombre = "perro2", TipoContenidoId = 3, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 5, Nombre = "perro3", TipoContenidoId = 3, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
+                db.Contenidos.Add(new Contenido() { ContenidoId = 6, Nombre = "perro4", TipoContenidoId = 4, Descripcion = "Perrito", FechaCreacion = DateTime.Now, ZonaGeograficaId = 2, UsuarioId = 1 });
                 db.SaveChanges();
             }
         }
@@ -61,8 +61,8 @@ namespace LoginCol.Huellitas.Datos.Pruebas
         {
             using (var db = new Repositorio())
             {
-                db.ZonasGeograficas.Add(new ZonaGeografica() { ZonaGeograficaId = 1, ZonaGeograficaPadreId = null, Nombre = "Colombia" });
-                db.ZonasGeograficas.Add(new ZonaGeografica() { ZonaGeograficaId = 2, ZonaGeograficaPadreId = 1, Nombre = "Bogotá" });
+                db.ZonasGeograficas.Add(new ZonaGeografica() { ZonaGeograficaId = 1, Nombre = "Colombia" });
+                db.ZonasGeograficas.Add(new ZonaGeografica() { ZonaGeograficaId = 2, ZonaGeograficaPadre = new ZonaGeografica() { ZonaGeograficaId = 1 }, Nombre = "Bogotá" });
                 db.SaveChanges();
             }
         }
@@ -86,6 +86,9 @@ namespace LoginCol.Huellitas.Datos.Pruebas
                 db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 1, Nombre = "Imagen"  });
                 db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 2, Nombre = "Animal" });
                 db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 3, Nombre = "Fundacion" });
+                db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 4, Nombre = "Perro", TipoContenidoPadre = new TipoContenido() { TipoContenidoId = 1 } });
+                db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 5, Nombre = "Gato", TipoContenidoPadre = new TipoContenido() { TipoContenidoId = 1 } });
+                db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 6, Nombre = "Pajaro", TipoContenidoPadre = new TipoContenido() { TipoContenidoId = 1 } });
                 db.SaveChanges();
             }
         }
