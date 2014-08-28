@@ -85,7 +85,21 @@ namespace LoginCol.Huellitas.Web
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
 
-            bundles.Add(new StyleBundle("~/bundles/Admin").Include("~/Content/Admin/*.css"));
+            bundles.Add(new StyleBundle("~/bundles/Admin").Include(
+                "~/Content/Admin/charisma-app.css",
+                "~/Content/Admin/fullcalendar.css",
+                "~/Content/Admin/fullcalendar.print.css",
+                "~/Content/Admin/chosen.css",
+                "~/Content/Admin/colorbox.css",
+                "~/Content/Admin/responsive-tables.css",
+                "~/Content/Admin/bootstrap-tour.css",
+                "~/Content/Admin/jquery.noty.css",
+                "~/Content/Admin/noty_theme_default.css",
+                "~/Content/Admin/elfinder.css",
+                "~/Content/Admin/elfinder.theme.css",
+                "~/Content/Admin/jquery.iphone.toggle.css",
+                "~/Content/Admin/uploadify.css",
+                "~/Content/Admin/animate.css"));
 
 
             

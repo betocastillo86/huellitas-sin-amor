@@ -21,5 +21,9 @@ namespace LoginCol.Huellitas.Negocio
         {
             return new ContenidosRepositorio().ObtenerPorTipo(tipoContenido);
         }
+        public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
+        {
+            return new ContenidosRepositorio().ObtenerPorTipoPadre(tipoContenido).ToList();
+        }
     }
 }

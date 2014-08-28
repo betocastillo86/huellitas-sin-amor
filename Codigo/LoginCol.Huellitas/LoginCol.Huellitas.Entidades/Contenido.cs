@@ -73,5 +73,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual Usuario Usuario { get; set; }
 
+        public bool Activo { get; set; }
+
     }
 }

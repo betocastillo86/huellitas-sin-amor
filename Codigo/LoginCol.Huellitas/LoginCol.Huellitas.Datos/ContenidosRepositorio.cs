@@ -3,6 +3,7 @@ using LoginCol.Huellitas.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 
 namespace LoginCol.Huellitas.Datos
@@ -39,11 +40,35 @@ namespace LoginCol.Huellitas.Datos
             {
                 using (var db = new Repositorio())
                 {
-                    var query = from c in db.Contenidos
-                                where c.TipoContenidoId == (int)tipoContenido
-                                select c;
+                    lista = db.Contenidos
+                        .Include(_ => _.TipoContenido)
+                        .Where(c => c.TipoContenido.TipoContenidoId == (int)tipoContenido)
+                        .ToList();
+                }
 
-                    lista = query.ToList();
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return lista;
+        }
+
+
+        public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
+        {
+            List<Contenido> lista = new List<Contenido>();
+
+            try
+            {
+             
+                using (var db = new Repositorio())
+                {
+                    lista = db.Contenidos
+                        .Include(_ => _.TipoContenido)
+                        .Where(c => c.TipoContenido.TipoContenidoPadre.TipoContenidoId == (int)tipoContenido)
+                        .ToList();
                 }
 
             }

@@ -15,9 +15,12 @@ namespace LoginCol.Huellitas.Entidades
         [MaxLength(50)]
         public string Nombre { get; set; }
 
+        public virtual TipoContenido TipoContenidoPadre { get; set; } 
+
         public virtual ICollection<Contenido> Contenidos { get; set; }
 
         public virtual ICollection<Campo> Campos { get; set; }
+
 
 
     }

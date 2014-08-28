@@ -31,6 +31,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public int TipoContenidoId { get; set; }
 
+        public string TipoContenidoNombre { get; set; }
+
         public int MeGusta { get; set; }
 
         public int Compartidos { get; set; }
@@ -54,6 +56,8 @@ namespace LoginCol.Huellitas.Web.Models
         #endregion
 
         public int UsuarioId { get; set; }
+
+        public bool Activo { get; set; }
 
     }
 }

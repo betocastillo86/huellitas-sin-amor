@@ -11,14 +11,13 @@ using System.Web.Http;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
-    public class AnimalesController : ApiController
+    public class AdminAnimalesController : ApiController
     {
 
         [HttpGet]
         public List<ContenidoModel> Get()
         {
-            return new ContenidosNegocio().ObtenerPorTipo(TipoContenidoEnum.Animal).Select(Mapper.Map<Contenido, ContenidoModel>).ToList();
-            //return new ContenidosNegocio().ObtenerPorTipo(TipoContenidoEnum.Animal);
+            return new ContenidosNegocio().ObtenerPorTipoPadre(TipoContenidoEnum.Animal).Select(Mapper.Map<Contenido, ContenidoModel>).ToList();
         }
     }
 }

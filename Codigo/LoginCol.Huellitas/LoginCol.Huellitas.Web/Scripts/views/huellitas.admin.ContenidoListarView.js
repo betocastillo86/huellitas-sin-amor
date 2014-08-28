@@ -1,4 +1,6 @@
 ﻿
+var templateListadoContenidos = _.template($("#templateTrContenidos").html());
+
 var ContenidoListarView = Backbone.View.extend({
 	el: "#appAdminContent",
 
@@ -20,15 +22,26 @@ var ContenidoListarView = Backbone.View.extend({
 	render: function(){
 		this.cargarContenidos();
 	},
-
+    //Carga los contenidos dell listado
 	cargarContenidos: function () {
-		
-		var listaContenidos = new ContenidoCollection({ url : this.urlModelo});
-		this.lista = listaContenidos.fetch();
-		
-		_.each(this.lista, function (element, index, list) {
-			$("#tbodyListadoContenidos").append(_.template("#templateTrContenidos", list[element]).html());
-		})
+	    var listaContenidos = new ContenidoCollection({ url: this.urlModelo });
+        listaContenidos.on("add", this.contenidoAgregado)
+        this.lista = listaContenidos.fetch({ success : this.contenidosAgregados});
+	},
+    //Después de consultar los contenidos los carga en el template
+	contenidosAgregados: function (model, response, options)
+    {
+	    var tablaContenidos = $("#tbodyListadoContenidos");
 
-	}
+	    _.each(model, function (element, index, list) {
+	        tablaContenidos.append(templateListadoContenidos(list.at(index).toJSON()));
+	    });
+
+	    $('#tableListadoContenidos').dataTable(optionsDataTable);
+
+    }
+});
+
+$(document).on("ready", function () {
+    var view = new ContenidoListarView({ urlModelo : "/api/AdminAnimales" });
 });

@@ -13,6 +13,8 @@ namespace LoginCol.Huellitas.Datos.Configuracion
         public TipoContenidoConfig()
         {
             ToTable("TipoContenido");
+
+            HasOptional(t => t.TipoContenidoPadre).WithMany().Map(c => c.MapKey("TipoContenidoPadreId"));
         }
     }
 }
