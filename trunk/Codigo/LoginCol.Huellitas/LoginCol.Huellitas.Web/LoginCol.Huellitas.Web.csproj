@@ -178,7 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
+    <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
@@ -481,7 +483,9 @@
     <Content Include="Scripts\libs\underscore.min.js" />
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
+    <Content Include="Scripts\huellitas.admin.router.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
+    <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -511,12 +515,14 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Listar.cshtml" />
-    <Content Include="Views\Administracion\Contenido\Index.cshtml" />
+    <Content Include="Views\Administracion\Contenido\_Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Administracion\Index.cshtml" />
     <Content Include="Scripts\models\huellitas.admin.Admin.js" />
     <Content Include="Views\Administracion\Animales\Index.cshtml" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoListarView.js" />
+    <Content Include="Views\Administracion\Animales\_Editar.cshtml" />
+    <Content Include="Views\Administracion\Contenido\_Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

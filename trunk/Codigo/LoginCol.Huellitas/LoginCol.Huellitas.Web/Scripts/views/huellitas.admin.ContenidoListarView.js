@@ -2,7 +2,7 @@
 var templateListadoContenidos = _.template($("#templateTrContenidos").html());
 
 var ContenidoListarView = Backbone.View.extend({
-	el: "#appAdminContent",
+    el: "#divVistaListarContenidos",
 
 	lista: undefined,
 
@@ -13,14 +13,17 @@ var ContenidoListarView = Backbone.View.extend({
 		if (args.urlModelo == undefined)
 			alert("definir la url del modelo");
 		else
-			this.urlModelo = args.urlModelo;
+		    this.urlModelo = args.urlModelo;
+
+		vistaActual = this;
 
 		this.render();
 		//this.cargarContenidos();
 	},
 
 	render: function(){
-		this.cargarContenidos();
+	    this.cargarContenidos();
+	    this.$el.show();
 	},
     //Carga los contenidos dell listado
 	cargarContenidos: function () {
@@ -39,7 +42,13 @@ var ContenidoListarView = Backbone.View.extend({
 
 	    $('#tableListadoContenidos').dataTable(optionsDataTable);
 
-    }
+	},
+    //Desactiva la vista despues
+	desactivar: function () {
+	    this.$el.hide();
+	    this.undelegateEvents();
+	    this.remove();
+	}
 });
 
 $(document).on("ready", function () {

@@ -17,17 +17,23 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             //Vista que va cargar dependiendo de la URL
             string vista = "Index";
-            
-            switch (queryValues.ToLower())
+
+            string[] partesUrl = queryValues.Split(new char[] { '/' });
+
+            object modelo = null;
+
+            switch (string.Format("{0}/{1}", partesUrl[0], partesUrl[1]))
             {
                 case "animales/listar":
                     vista = "Animales/Index.cshtml";
+                    modelo = new ListarContenidoModel() { PrefijoAcciones = "animales" };
                     break;
                 default:
+                    modelo = new ListarContenidoModel();
                     break;
             }
 
-            return View(string.Format("~/Views/Administracion/{0}", vista));
+            return View(string.Format("~/Views/Administracion/{0}", vista), modelo);
         }
 
         [HttpGet]

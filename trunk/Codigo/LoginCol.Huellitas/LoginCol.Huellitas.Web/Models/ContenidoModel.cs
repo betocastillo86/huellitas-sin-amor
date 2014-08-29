@@ -9,10 +9,13 @@ namespace LoginCol.Huellitas.Web.Models
     {
         public int ContenidoId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="El nombre es obligatorio")]
         [MaxLength(50)]
+        [Display(Name="Nombre", Description="Nombre del contenido")]
         public string Nombre { get; set; }
 
+        [Required(ErrorMessage="La descripción es obligatoria")]
+        [Display(Name="Descripción", Description="Descripción del contenido")]
         public string Descripcion { get; set; }
 
         public int Visitas { get; set; }
@@ -23,6 +26,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         public decimal PromedioVotos { get; set; }
 
+        [Display(Name = "Fecha de Creación", Description = "Fecha de creación del contenido")]
         public DateTime FechaCreacion { get; set; }
 
         public DateTime? FechaActualizacion { get; set; }
