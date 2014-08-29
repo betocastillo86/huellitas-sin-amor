@@ -19,5 +19,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             return new ContenidosNegocio().ObtenerPorTipoPadre(TipoContenidoEnum.Animal).Select(Mapper.Map<Contenido, ContenidoModel>).ToList();
         }
+
+
+
     }
 }
