@@ -33,6 +33,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public DateTime? FechaPublicacion { get; set; }
 
+
+        public List<TipoContenido> TiposDeContenido { get; set; }
         public int TipoContenidoId { get; set; }
 
         public string TipoContenidoNombre { get; set; }
@@ -45,6 +47,7 @@ namespace LoginCol.Huellitas.Web.Models
         public string Imagen { get; set; }
 
         #region Contacto
+        public List<ZonaGeografica> Departamentos { get; set; } 
         public int ZonaGeograficaId { get; set; }
 
         //public string Direccion { get; set; }

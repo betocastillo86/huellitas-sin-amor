@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoginCol.Huellitas.Datos
 {
-    public class AnimalesRepositorio : ContenidosRepositorio
+    public class AnimalesRepositorio : ContenidoRepositorio
     {
 
     }

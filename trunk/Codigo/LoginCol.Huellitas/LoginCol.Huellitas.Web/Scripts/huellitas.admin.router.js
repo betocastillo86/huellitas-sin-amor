@@ -1,22 +1,46 @@
-﻿var editarAnimalView;
-var vistaActual;
+﻿var AdminRouter
+
+
 
 var AdminRouter = Backbone.Router.extend({
+
+
+    //Vista actual utilizada en el sistema
+    vistaActual: undefined,
+    
+    listarAnimalView: undefined,
+
+    editarAnimalView: undefined,
+
+
     routes: {
-        "/animales/editar/:id" : "editarAnimal"
+        "admin/animales/listar":"listarAnimales",
+        "admin/animales/editar/:id": "editarAnimal",
     },
     initialize : function(options)
     {
-        debugger;
+        
+    },
+
+    //Inicio Animales
+    listarAnimales:function()
+    {
+        this.listarAnimalView = new ContenidoListarView({ urlModelo: "/api/AdminAnimales" });
+        this.vistaActual = this.listarAnimalView;
     },
     editarAnimal: function (id) {
         debugger;
-        vistaActual.desactivar();
-        editarAnimalView = new ContenidoEditarView({ id: id });
+       this.vistaActual.desactivar();
+       this.editarAnimalView = new ContenidoEditarView({ id: parseInt(id), url: "/api/adminanimales/" + id });
+       this.vistaActual = this.editarAnimalView;
     }
+    //Fin Animales
 });
 
+
+var App_Router;
+
 $(document).on("ready", function () {
-    var routerAdmin = new AdminRouter();
+    App_Router = new AdminRouter();
     Backbone.history.start({ pushState: true });
 });

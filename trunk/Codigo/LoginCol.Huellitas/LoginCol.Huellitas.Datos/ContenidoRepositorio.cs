@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LoginCol.Huellitas.Datos
 {
-    public class ContenidosRepositorio : IRepositorio<Contenido>
+    public class ContenidoRepositorio : IRepositorio<Contenido>
     {
         
 
@@ -78,6 +78,21 @@ namespace LoginCol.Huellitas.Datos
             }
 
             return lista;
+        }
+
+        List<Contenido> IRepositorio<Contenido>.Obtener(Contenido filtro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contenido Obtener(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contenido ObtenerPrimero(Contenido filtro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

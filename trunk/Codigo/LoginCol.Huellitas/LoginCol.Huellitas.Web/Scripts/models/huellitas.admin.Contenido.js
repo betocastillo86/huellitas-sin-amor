@@ -1,6 +1,11 @@
 ﻿var ContenidoModel = Backbone.Model.extend({
-    url: "/Admin/Contenido",
-    idAttribute : "ContenidoId"
+    url: "/api/contenidos",
+    idAttribute: "ContenidoId",
+    
+    initialize: function (args)
+    {
+    }
+
 });
 
 var ContenidoCollection = Backbone.Collection.extend({

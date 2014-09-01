@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContenidosNegocio.cs" />
+    <Compile Include="ContenidoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoContenidoNegocio.cs" />
+    <Compile Include="ZonaGeograficaNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoginCol.Huellitas.Datos\LoginCol.Huellitas.Datos.csproj">

@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace LoginCol.Huellitas.Negocio
 {
-    public class ContenidosNegocio
+    public class ContenidoNegocio
     {
-        public  Lazy<ContenidosRepositorio> _contenidos { get; set; }
+        public  Lazy<ContenidoRepositorio> _contenidos { get; set; }
 
-        public ContenidosNegocio()
+        public ContenidoNegocio()
         {
-            _contenidos = new Lazy<ContenidosRepositorio>(false);
+            _contenidos = new Lazy<ContenidoRepositorio>(false);
         }
 
         public List<Contenido> ObtenerPorTipo(TipoContenidoEnum tipoContenido)
         {
-            return new ContenidosRepositorio().ObtenerPorTipo(tipoContenido);
+            return new ContenidoRepositorio().ObtenerPorTipo(tipoContenido);
         }
         public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
         {
-            return new ContenidosRepositorio().ObtenerPorTipoPadre(tipoContenido).ToList();
+            return new ContenidoRepositorio().ObtenerPorTipoPadre(tipoContenido).ToList();
         }
     }
 }
