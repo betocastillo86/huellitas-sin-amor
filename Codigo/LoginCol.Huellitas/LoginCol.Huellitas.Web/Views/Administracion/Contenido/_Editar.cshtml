@@ -23,11 +23,11 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.TipoContenidoId)
-                            @Html.DropDownListFor(model => model.TipoContenidoId, new SelectList(Model.TiposDeContenido, "TipoContenidoId", "Nombre"));
+                            @Html.DropDownListFor(model => model.TipoContenidoId, new SelectList(Model.TiposDeContenido, "TipoContenidoId", "Nombre"))
                         </div>
                         <div class="form-group">
                             @Html.Label("Departamento")
-                            @Html.DropDownList("Departamento", new SelectList(Model.Departamentos, "ZonaGeograficaId", "Nombre"));
+                            @Html.DropDownList("Departamento", new SelectList(Model.Departamentos, "ZonaGeograficaId", "Nombre"))
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ZonaGeograficaId)

@@ -25,16 +25,21 @@ var AdminRouter = Backbone.Router.extend({
     //Inicio Animales
     listarAnimales:function()
     {
+        this.desactivarVistaActual();
         this.listarAnimalView = new ContenidoListarView({ urlModelo: "/api/AdminAnimales" });
         this.vistaActual = this.listarAnimalView;
     },
     editarAnimal: function (id) {
-        debugger;
-       this.vistaActual.desactivar();
+       this.desactivarVistaActual();
        this.editarAnimalView = new ContenidoEditarView({ id: parseInt(id), url: "/api/adminanimales/" + id });
        this.vistaActual = this.editarAnimalView;
-    }
+    },
     //Fin Animales
+    desactivarVistaActual: function ()
+    {
+        if (this.vistaActual != undefined)
+            this.vistaActual.desactivar();
+    }
 });
 
 
