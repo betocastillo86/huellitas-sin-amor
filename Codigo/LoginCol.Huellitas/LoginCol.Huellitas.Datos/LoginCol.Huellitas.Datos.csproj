@@ -57,7 +57,7 @@
     <Compile Include="Configuracion\UsuarioConfig.cs" />
     <Compile Include="Configuracion\ValorCampoConfig.cs" />
     <Compile Include="Configuracion\ZonaGeograficaConfig.cs" />
-    <Compile Include="ContenidosRepositorio.cs" />
+    <Compile Include="ContenidoRepositorio.cs" />
     <Compile Include="GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -91,6 +91,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />
+    <Compile Include="TipoContenidoRepositorio.cs" />
+    <Compile Include="ZonaGeograficaRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

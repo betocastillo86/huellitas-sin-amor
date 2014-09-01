@@ -15,8 +15,6 @@ var ContenidoListarView = Backbone.View.extend({
 		else
 		    this.urlModelo = args.urlModelo;
 
-		vistaActual = this;
-
 		this.render();
 		//this.cargarContenidos();
 	},
@@ -29,7 +27,8 @@ var ContenidoListarView = Backbone.View.extend({
 	cargarContenidos: function () {
 	    var listaContenidos = new ContenidoCollection({ url: this.urlModelo });
         listaContenidos.on("add", this.contenidoAgregado)
-        this.lista = listaContenidos.fetch({ success : this.contenidosAgregados});
+        listaContenidos.fetch({ success: this.contenidosAgregados });
+        this.lista = listaContenidos;
 	},
     //Después de consultar los contenidos los carga en el template
 	contenidosAgregados: function (model, response, options)
@@ -45,12 +44,10 @@ var ContenidoListarView = Backbone.View.extend({
 	},
     //Desactiva la vista despues
 	desactivar: function () {
-	    this.$el.hide();
-	    this.undelegateEvents();
-	    this.remove();
+	    //debugger;
+	   this.$el.hide();
+	   this.undelegateEvents();
+	   this.remove();
 	}
 });
 
-$(document).on("ready", function () {
-    var view = new ContenidoListarView({ urlModelo : "/api/AdminAnimales" });
-});

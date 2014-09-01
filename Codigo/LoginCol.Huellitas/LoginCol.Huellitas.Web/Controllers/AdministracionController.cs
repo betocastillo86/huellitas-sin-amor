@@ -1,6 +1,9 @@
-﻿using LoginCol.Huellitas.Web.Models.Admin;
+﻿using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Web.Models.Admin;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,8 +28,12 @@ namespace LoginCol.Huellitas.Web.Controllers
             switch (string.Format("{0}/{1}", partesUrl[0], partesUrl[1]))
             {
                 case "animales/listar":
+                case "animales/editar":
                     vista = "Animales/Index.cshtml";
-                    modelo = new ListarContenidoModel() { PrefijoAcciones = "animales" };
+                    ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales" };
+                    modeloAnimales.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
+                    modeloAnimales.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Animal);
+                    modelo = modeloAnimales;
                     break;
                 default:
                     modelo = new ListarContenidoModel();

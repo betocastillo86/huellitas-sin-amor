@@ -8,7 +8,11 @@ namespace LoginCol.Huellitas.Datos
 {
     public interface IRepositorio<T>
     {
-        T Obtener(T filtro);
+        List<T> Obtener(T filtro);
+
+        T Obtener(int id);
+
+        T ObtenerPrimero(T filtro);
 
         int Insertar(T obj);
 

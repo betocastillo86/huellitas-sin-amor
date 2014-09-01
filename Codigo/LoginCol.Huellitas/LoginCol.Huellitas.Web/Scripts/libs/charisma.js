@@ -92,20 +92,20 @@ $(document).ready(function () {
         $log = $('#log');
 
     //bind to State Change
-    History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
-        var State = History.getState(); // Note: We are using History.getState() instead of event.state
-        $.ajax({
-            url: State.url,
-            success: function (msg) {
-                $('#content').html($(msg).find('#content').html());
-                $('#loading').remove();
-                $('#content').fadeIn();
-                var newTitle = $(msg).filter('title').text();
-                $('title').text(newTitle);
-                docReady();
-            }
-        });
-    });
+    //History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
+    //    var State = History.getState(); // Note: We are using History.getState() instead of event.state
+    //    $.ajax({
+    //        url: State.url,
+    //        success: function (msg) {
+    //            $('#content').html($(msg).find('#content').html());
+    //            $('#loading').remove();
+    //            $('#content').fadeIn();
+    //            var newTitle = $(msg).filter('title').text();
+    //            $('title').text(newTitle);
+    //            docReady();
+    //        }
+    //    });
+    //});
 
     //ajaxify menus
     $('a.ajax-link').click(function (e) {
