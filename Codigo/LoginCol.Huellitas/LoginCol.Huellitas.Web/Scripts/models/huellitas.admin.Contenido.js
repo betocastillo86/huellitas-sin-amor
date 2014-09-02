@@ -4,6 +4,8 @@
     
     initialize: function (args)
     {
+        if (args.url != undefined)
+            this.url = args.url;
     }
 
 });

@@ -87,7 +87,23 @@ namespace LoginCol.Huellitas.Datos
 
         public Contenido Obtener(int id)
         {
-            throw new NotImplementedException();
+            Contenido contenido = null;
+
+            try
+            {
+                using (Repositorio db = new Repositorio())
+                {
+                    contenido = db.Contenidos
+                                    .Include(_ => _.TipoContenido)
+                                    .Where(_ => _.ContenidoId.Equals(id)).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return contenido == null ? new Contenido() : contenido;
         }
 
         public Contenido ObtenerPrimero(Contenido filtro)
