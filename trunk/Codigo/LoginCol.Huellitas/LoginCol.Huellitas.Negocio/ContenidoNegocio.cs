@@ -19,11 +19,16 @@ namespace LoginCol.Huellitas.Negocio
 
         public List<Contenido> ObtenerPorTipo(TipoContenidoEnum tipoContenido)
         {
-            return new ContenidoRepositorio().ObtenerPorTipo(tipoContenido);
+            return _contenidos.Value.ObtenerPorTipo(tipoContenido);
         }
         public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
         {
-            return new ContenidoRepositorio().ObtenerPorTipoPadre(tipoContenido).ToList();
+            return _contenidos.Value.ObtenerPorTipoPadre(tipoContenido).ToList();
+        }
+
+        public Contenido Obtener(int id)
+        {
+            return _contenidos.Value.Obtener(id);
         }
     }
 }

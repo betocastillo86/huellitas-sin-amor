@@ -21,9 +21,10 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpGet]
-        public List<ContenidoModel> Get(int id)
+        public ContenidoModel Get(int id)
         {
-            return null;
+            ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
+            return Mapper.Map<Contenido, ContenidoModel>(contenidoNegocio.Obtener(id));
         }
 
 
