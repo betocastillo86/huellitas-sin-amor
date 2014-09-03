@@ -50,6 +50,11 @@ namespace LoginCol.Huellitas.Web.Models
         public List<ZonaGeografica> Departamentos { get; set; } 
         public int ZonaGeograficaId { get; set; }
 
+        public int ZonaGeograficaZonaGeograficaPadreZonaGeograficaId { get; set; }
+
+
+        public List<ValorCampoModel> Campos { get; set; }
+
         //public string Direccion { get; set; }
 
         //public string Telefono { get; set; }

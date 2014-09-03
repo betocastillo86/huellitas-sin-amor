@@ -1,5 +1,6 @@
-﻿using LoginCol.Huellitas.Datos;
+﻿
 using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Datos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,9 @@ namespace LoginCol.Huellitas.Negocio
 
         public Contenido Obtener(int id)
         {
-            return _contenidos.Value.Obtener(id);
+            Contenido contenido = _contenidos.Value.Obtener(id);
+            //contenido.Campos = _contenidos.Value.ObtenerCampos(id);
+            return contenido;
         }
     }
 }

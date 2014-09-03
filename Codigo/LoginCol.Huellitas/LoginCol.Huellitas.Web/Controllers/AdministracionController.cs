@@ -47,7 +47,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         public JsonResult OpcionesMenu()
         {
             List<OpcionMenu> opcionesMenu = new List<OpcionMenu>();
-            opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/Admin/Animales/Listar" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/admin/animales/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/Admin/Fundaciones/Listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Usuarios", Vinculo = "/Admin/Usuarios/Listar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);

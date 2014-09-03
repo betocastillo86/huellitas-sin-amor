@@ -35,7 +35,9 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ZonaGeograficaId)
-                            <input id="IdZonaGeografica" name="IdZonaGeografica" />
+                            <div>
+                                <select id="ZonaGeograficaId" name="ZonaGeograficaId"></select>
+                            </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Email)
@@ -58,6 +60,10 @@
                             <input type="file" id="exampleInputFile">
                             <p class="help-block">Example block-level help text here.</p>
                         </div>
+                        <div id="divCamposAdicionales">
+                        </div>
+                        @Html.Partial("~/Views/Administracion/Contenido/_CampoAdicional.cshtml")
+
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox"> Check me out

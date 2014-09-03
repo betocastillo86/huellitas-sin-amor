@@ -27,6 +27,27 @@ namespace LoginCol.Huellitas.Datos.Pruebas
             CargarZonasGeograficas();
             CargarUsuarios();
             CargarContenidoIncial();
+            CargarCampos();
+        }
+
+        private void CargarCampos()
+        {
+            using (var db = new Repositorio())
+            {
+                db.Campos.Add(new Campo() { CampoId = 1, Nombre ="Color", TipoDato = TipoDatoCampo.Relacional });
+                db.CamposTiposContenidos.Add(new CampoTipoContenido() { CampoTipoContenidoId = 1, TipoContenidoId = 4, CampoId = 1 });
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 1, CampoId = 1, Texto = "Rojo" });
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 2, CampoId = 1, Texto = "Negro" });
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 3, CampoId = 1, Texto = "Blanco" });
+
+                db.Campos.Add(new Campo() { CampoId = 2, Nombre = "Tamaño", TipoDato = TipoDatoCampo.Relacional });
+                db.CamposTiposContenidos.Add(new CampoTipoContenido() { CampoTipoContenidoId = 1, TipoContenidoId = 4, CampoId = 2 });
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 4, CampoId = 1, Texto = "Grande"});
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 5, CampoId = 1, Texto = "Pequeño" });
+                db.OpcionesCampos.Add(new OpcionCampo() { OpcionId = 6, CampoId = 1, Texto = "Mediano" });
+
+                db.Campos.Add(new Campo() { CampoId = 3, Nombre = "Edad", TipoDato = TipoDatoCampo.Int });
+            }
         }
 
         private void CargarUsuarios()

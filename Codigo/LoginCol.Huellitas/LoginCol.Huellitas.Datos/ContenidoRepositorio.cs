@@ -42,6 +42,8 @@ namespace LoginCol.Huellitas.Datos
                 {
                     lista = db.Contenidos
                         .Include(_ => _.TipoContenido)
+                        .Include(_ => _.ZonaGeografica)
+                        .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
                         .Where(c => c.TipoContenido.TipoContenidoId == (int)tipoContenido)
                         .ToList();
                 }
@@ -67,6 +69,8 @@ namespace LoginCol.Huellitas.Datos
                 {
                     lista = db.Contenidos
                         .Include(_ => _.TipoContenido)
+                        .Include(_ => _.ZonaGeografica)
+                        .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
                         .Where(c => c.TipoContenido.TipoContenidoPadre.TipoContenidoId == (int)tipoContenido)
                         .ToList();
                 }
@@ -94,9 +98,14 @@ namespace LoginCol.Huellitas.Datos
                 using (Repositorio db = new Repositorio())
                 {
                     contenido = db.Contenidos
+                                    .Include(_ => _.ZonaGeografica)
                                     .Include(_ => _.TipoContenido)
+                                    .Include(_ => _.Campos.Select(c=> c.Campo))
+                                    .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
                                     .Where(_ => _.ContenidoId.Equals(id)).FirstOrDefault();
+
                 }
+
             }
             catch (Exception e)
             {
@@ -106,9 +115,30 @@ namespace LoginCol.Huellitas.Datos
             return contenido == null ? new Contenido() : contenido;
         }
 
+
         public Contenido ObtenerPrimero(Contenido filtro)
         {
             throw new NotImplementedException();
+        }
+
+        public List<ValorCampo> ObtenerCampos(int contenidoId)
+        {
+            List<ValorCampo> campos = null;
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                   campos = db.ValoresCampos
+                                .Include(_ => _.Campo)
+                                .Where(_ => _.ContenidoId.Equals(contenidoId)).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return campos == null ? new List<ValorCampo>() : campos;
         }
     }
 }

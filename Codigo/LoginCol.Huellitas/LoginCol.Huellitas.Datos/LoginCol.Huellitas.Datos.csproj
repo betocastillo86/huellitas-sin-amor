@@ -49,9 +49,11 @@
   <ItemGroup>
     <Compile Include="AnimalesRepositorio.cs" />
     <Compile Include="Configuracion\CampoConfig.cs" />
+    <Compile Include="Configuracion\CampoTipoContenidoConfig.cs" />
     <Compile Include="Configuracion\ComentarioConfig.cs" />
     <Compile Include="Configuracion\ContenidoConfig.cs" />
     <Compile Include="Configuracion\ContenidoRelacionadoConfig.cs" />
+    <Compile Include="Configuracion\OpcionCampoConfig.cs" />
     <Compile Include="Configuracion\TipoContenidoConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionContenidoConfig.cs" />
     <Compile Include="Configuracion\UsuarioConfig.cs" />
@@ -87,6 +89,18 @@
     <Compile Include="Migrations\201408282244144_contenido_activo.cs" />
     <Compile Include="Migrations\201408282244144_contenido_activo.Designer.cs">
       <DependentUpon>201408282244144_contenido_activo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409031550240_ConsultaSqlEnCampo.cs" />
+    <Compile Include="Migrations\201409031550240_ConsultaSqlEnCampo.Designer.cs">
+      <DependentUpon>201409031550240_ConsultaSqlEnCampo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409031634452_ConsultaSqlEnCampoOpciones.cs" />
+    <Compile Include="Migrations\201409031634452_ConsultaSqlEnCampoOpciones.Designer.cs">
+      <DependentUpon>201409031634452_ConsultaSqlEnCampoOpciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409031643307_ConsultaSqlEnCampoOpciones2.cs" />
+    <Compile Include="Migrations\201409031643307_ConsultaSqlEnCampoOpciones2.Designer.cs">
+      <DependentUpon>201409031643307_ConsultaSqlEnCampoOpciones2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +143,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408282244144_contenido_activo.resx">
       <DependentUpon>201408282244144_contenido_activo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409031550240_ConsultaSqlEnCampo.resx">
+      <DependentUpon>201409031550240_ConsultaSqlEnCampo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409031634452_ConsultaSqlEnCampoOpciones.resx">
+      <DependentUpon>201409031634452_ConsultaSqlEnCampoOpciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409031643307_ConsultaSqlEnCampoOpciones2.resx">
+      <DependentUpon>201409031643307_ConsultaSqlEnCampoOpciones2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
