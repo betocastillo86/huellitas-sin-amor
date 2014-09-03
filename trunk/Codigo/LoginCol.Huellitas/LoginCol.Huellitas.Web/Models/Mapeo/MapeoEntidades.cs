@@ -16,12 +16,23 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>();
 
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
-                .ForMember(db => db.Campos, model => model.Ignore())
-                .ForMember(db => db.ContenidosRelacionados, model => model.Ignore())
-                .ForMember(db => db.ContenidosRelacionadosPadre, model => model.Ignore())
-                .ForMember(db => db.TipoContenido, model => model.Ignore())
-                .ForMember(db => db.Usuario, model => model.Ignore())
-                .ForMember(db => db.ZonaGeografica, model => model.Ignore());
+               // .ForMember(db => db.Campos, model => model.Ignore())
+                .ForMember(o => o.ContenidosRelacionados, d => d.Ignore())
+                .ForMember(o => o.ContenidosRelacionadosPadre, d => d.Ignore())
+                .ForMember(o => o.TipoContenido, d => d.Ignore())
+                .ForMember(o => o.Usuario, d => d.Ignore())
+                .ForMember(o => o.ZonaGeografica, d => d.Ignore());
+
+            Mapper.CreateMap<ZonaGeografica, ZonaGeograficalModel>();
+
+            Mapper.CreateMap<ValorCampo, ValorCampoModel>();
+
+            Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
+                //.ForSourceMember( o => o.Contenidos , d => d.Ignore());
+
+            Mapper.CreateMap<CampoTipoContenido, CampoModel>();
+
+            Mapper.CreateMap<OpcionCampo, OpcionCampoModel>();
         }
 
         public class TipoContenidoTypeConverter : ITypeConverter<TipoContenido, string>

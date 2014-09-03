@@ -19,7 +19,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual ICollection<Contenido> Contenidos { get; set; }
 
-        public virtual ICollection<Campo> Campos { get; set; }
+        public virtual ICollection<CampoTipoContenido> Campos { get; set; }
 
 
 

@@ -17,17 +17,21 @@ namespace LoginCol.Huellitas.Entidades
 
         public TipoDatoCampo TipoDato { get; set; }
 
-        public int TipoContenidoId { get; set; }
+        public string ConsultaSql { get; set; }
 
-        public virtual TipoContenido TipoContenido { get; set; }
+        public virtual List<CampoTipoContenido> TiposContenidos { get; set; }
+
+        public virtual List<OpcionCampo> Opciones { get; set; }
 
         public virtual List<ValorCampo> Valores { get; set; }
     }
 
     public enum TipoDatoCampo
     { 
-        Int,
+        Int = 1,
         Bit,
-        Varchar
+        Varchar,
+        Relacional,
+        ConsultaSql
     }
 }

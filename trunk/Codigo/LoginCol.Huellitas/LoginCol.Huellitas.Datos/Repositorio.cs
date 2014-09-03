@@ -26,6 +26,9 @@ namespace LoginCol.Huellitas.Datos
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<TipoRelacionContenido> TiposRelacionContenidos { get; set; }
+        public DbSet<CampoTipoContenido> CamposTiposContenidos { get; set; }
+
+        public DbSet<OpcionCampo> OpcionesCampos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,8 +41,12 @@ namespace LoginCol.Huellitas.Datos
             modelBuilder.Configurations.Add(new ZonaGeograficaConfig());
             modelBuilder.Configurations.Add(new ComentarioConfig());
             modelBuilder.Configurations.Add(new UsuarioConfig());
+            modelBuilder.Configurations.Add(new CampoTipoContenidoConfig());
+            modelBuilder.Configurations.Add(new OpcionCampoConfig());
 
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+
+            this.Configuration.LazyLoadingEnabled = true;
 
             //Database.SetInitializer<Repositorio>(new GeneradorLlaveUnica<Repositorio>());
         }

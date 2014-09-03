@@ -52,6 +52,15 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.AspNet">
+      <HintPath>..\packages\Glimpse.AspNet.1.8.1\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,8 +182,10 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminAnimalesController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
+    <Compile Include="Controllers\GeneralesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,8 +194,13 @@
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
+    <Compile Include="Models\CampoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
+    <Compile Include="Models\OpcionCampoModel.cs" />
+    <Compile Include="Models\TipoContenidoModel.cs" />
+    <Compile Include="Models\ValorCampoModel.cs" />
+    <Compile Include="Models\ZonaGeograficalModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -484,7 +500,9 @@
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
     <Content Include="Scripts\huellitas.admin.router.js" />
+    <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
+    <Content Include="Scripts\views\huellitas.admin.AnimalEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -525,6 +543,8 @@
     <Content Include="Scripts\views\huellitas.admin.ContenidoListarView.js" />
     <Content Include="Views\Administracion\Animales\_Editar.cshtml" />
     <Content Include="Views\Administracion\Contenido\_Editar.cshtml" />
+    <Content Include="Scripts\models\huellitas.ZonaGeografica.js" />
+    <Content Include="Views\Administracion\Contenido\_CampoAdicional.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

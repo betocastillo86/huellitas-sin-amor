@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace LoginCol.Huellitas.Datos
 {
@@ -34,7 +35,25 @@ namespace LoginCol.Huellitas.Datos
 
         public TipoContenido Obtener(int id)
         {
-            throw new NotImplementedException();
+            TipoContenido obj = new TipoContenido();
+
+            try
+            {
+                using (Repositorio db = new Repositorio())
+                {
+                    obj = db.TiposContenidos
+                        .Include(_ => _.Campos.Select(c => c.Campo))
+                        .Include(_ => _.Campos.Select(c => c.Campo).Select(c => c.Opciones))
+                        .Where(_ => _.TipoContenidoId == id)
+                        .FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return obj;
         }
 
         public TipoContenido ObtenerPrimero(TipoContenido filtro)
@@ -55,6 +74,27 @@ namespace LoginCol.Huellitas.Datos
         public bool Eliminar(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Campo> ObtenerCampos(int id)
+        {
+            List<Campo> lista = null;
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                   lista = db.Campos
+                       .Include(_ => _.TiposContenidos.Where(t => t.TipoContenidoId == id))
+                       .Include(_ => _.Opciones)
+                       .ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return lista == null ? new List<Campo>() : lista;
         }
     }
 }

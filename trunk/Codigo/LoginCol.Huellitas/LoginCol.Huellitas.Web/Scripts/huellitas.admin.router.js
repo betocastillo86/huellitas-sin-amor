@@ -15,13 +15,12 @@ var AdminRouter = Backbone.Router.extend({
 
     routes: {
         "admin/animales/listar":"listarAnimales",
-        "admin/animales/editar/:id": "editarAnimal",
+        "admin/animales/editar/:id": "editarAnimal"
     },
     initialize : function(options)
     {
         
     },
-
     //Inicio Animales
     listarAnimales:function()
     {

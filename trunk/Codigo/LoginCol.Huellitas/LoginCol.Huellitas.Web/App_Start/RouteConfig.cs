@@ -13,6 +13,12 @@ namespace LoginCol.Huellitas.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "ConsultasGeneralesAjax",
+                url: "ajax{controller}/{action}/{id}",
+                defaults: new { controller = "Generales", id = UrlParameter.Optional },
+                constraints: new { controller = "Generales" }
+            );
 
             routes.MapRoute(name: "AdministracionIndex",
                 url: "Admin/{action}",
