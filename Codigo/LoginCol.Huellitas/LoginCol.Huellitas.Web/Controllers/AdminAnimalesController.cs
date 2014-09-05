@@ -17,14 +17,16 @@ namespace LoginCol.Huellitas.Web.Controllers
         [HttpGet]
         public List<ContenidoModel> Get()
         {
-            return new ContenidoNegocio().ObtenerPorTipoPadre(TipoContenidoEnum.Animal).Select(Mapper.Map<Contenido, ContenidoModel>).ToList();
+            List<Contenido> lista = new ContenidoNegocio().ObtenerPorTipoPadre(TipoContenidoEnum.Animal);
+            return lista.Select(Mapper.Map<Contenido, ContenidoModel>).ToList();
         }
 
         [HttpGet]
         public ContenidoModel Get(int id)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return Mapper.Map<Contenido, ContenidoModel>(contenidoNegocio.Obtener(id));
+            ContenidoModel modelo = Mapper.Map<Contenido, ContenidoModel>(contenidoNegocio.Obtener(id));
+            return modelo;
         }
 
 

@@ -189,7 +189,12 @@
 
               
                 <div id="appAdminContent">
-                    @RenderBody()
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form1", name = "form1" }))
+                    { 
+                        @RenderBody()
+                    }
+
+                    
                 </div>
 
 
@@ -239,14 +244,13 @@
     @Scripts.Render("~/bundles/colorbox")
     @Scripts.Render("~/bundles/jqueryTemplate")
     
-
+    
     <script src="~/Scripts/huellitas.admin.router.js"></script>
+    <script src="~/Scripts/huellitas.admin.app.js"></script>
+    <script src="~/Scripts/views/huellitas.ImagenContenidoView.js"></script>
     <script src="~/Scripts/models/huellitas.admin.Admin.js"></script>
     <script src="~/Scripts/views/huellitas.admin.AdminView.js"></script>
     <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
-    
-
-    
 
     @*<!-- select or dropdown enhancer -->
     <script src="bower_components/chosen/chosen.jquery.min.js"></script>

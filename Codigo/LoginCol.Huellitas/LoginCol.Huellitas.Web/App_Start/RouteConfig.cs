@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginCol.Huellitas.Web.Infraestructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,8 +35,11 @@ namespace LoginCol.Huellitas.Web
                 url: "Admin/{controller}/{action}",
                 defaults: new { controller = "Animales", action = "Index" });
 
-            
-            
+            routes.MapRoute(name: "Imagenes",
+              url: "img/{nombre}/{tamano}",
+              defaults: new { controller = "Home", action = "Imagen", tamano = "mini" },
+              constraints: new { action = "Imagen", controller = "Home", tamano = ("mini|medium|big"), nombre = new ContenidoRutaConstraint() });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

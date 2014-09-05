@@ -140,5 +140,27 @@ namespace LoginCol.Huellitas.Datos
 
             return campos == null ? new List<ValorCampo>() : campos;
         }
+
+        public Contenido ObtenerPorNombre(string nombre, bool quitarGuiones)
+        {
+            Contenido contenido = null;
+            
+            nombre = quitarGuiones ? nombre.Replace("-",string.Empty) : nombre;
+
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    contenido = db.Contenidos
+                        .Where(_ => _.Nombre.Equals(nombre)).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return contenido == null ? new Contenido() : contenido;
+        }
     }
 }
