@@ -2,7 +2,8 @@
     el: "#divVistaEditarContenidos",
 
     events: {
-        "change #Departamento": "cargarCiudades"
+        "change #ZonaGeograficaZonaGeograficaPadreZonaGeograficaId": "cargarCiudades",
+        "click #GuardarContenido" : "guardarContenido"
     },
 
     template: _.template($("#templateEditarContenidoBase").html()),
@@ -12,9 +13,13 @@
     tipoContenido : undefined,
 
     model: undefined,
+
+    app: undefined,
        
     initialize: function (args)
     {
+        this.app = new AppHuellitas({ el : this.el });
+
         if (args.url != undefined)
             this.url = args.url;
 
@@ -49,6 +54,8 @@
         //}
         this.model.set("ContenidoId", id);
         this.model.fetch();
+
+        
         
     },
     mostrarContenido: function ()
@@ -56,28 +63,22 @@
         var contenidoJson = this.model.toJSON();
         contenidoJson.TituloFormulario = "Editar Contenido";
         this.$el.html(this.template(contenidoJson));
-        $("#Nombre").val(this.model.get('Nombre'));
-        $("#Descripcion").val(this.model.get('Descripcion'));
-        $("#TipoContenidoId").val(this.model.get('TipoContenidoId'));
-        $("#ZonaGeograficaId").val(this.model.get('ZonaGeograficaId'));
-        $("#Email").val(this.model.get('Email'));
-        $("#Facebook").val(this.model.get('Facebook'));
-        $("#Twitter").val(this.model.get('Twitter'));
-        $("#Activo").val(this.model.get('Activo'));
 
-        $("#Departamento").val(this.model.get("ZonaGeograficaZonaGeograficaPadreZonaGeograficaId"));
-
+        this.app.deserializarFormulario(this.model.attributes);
+        $("#imgPrincipalContenido").html((new ImagenContenidoView({ id : this.model.get("Nombre")})).el);
+           
         this.tipoContenido.set("TipoContenidoId", this.model.get("TipoContenidoId"));
-        this.tipoContenido.fetch();
+        //this.tipoContenido.fetch();
         this.tipoContenido.once("change", this.cargarCamposAdicionales, this);
 
         this.cargarCiudades();
-        
+
         this.$el.show();
     },
+    //Ciudades
     cargarCiudades: function ()
     {
-        var idZonaPadre = $("#Departamento").val();
+        var idZonaPadre = $("#ZonaGeograficaZonaGeograficaPadreZonaGeograficaId").val();
         this.autoSeleccionarZona = true;
         $("#ZonaGeograficaId").empty();
         this.zonasGeograficas.obtenerZonasPorPadre(idZonaPadre);
@@ -86,5 +87,34 @@
     {        
         var selected = ciudad.get("ZonaGeograficaId") == this.model.get("ZonaGeograficaId");
         $("#ZonaGeograficaId").append("<option value='" + ciudad.get("ZonaGeograficaId") + "' "+ (selected ? "selected" : "") +" >" + ciudad.get("Nombre") + "</option>");
+    },
+    //Fin ciudades
+    //CamposAdicionales
+    cargarCamposAdicionales: function () {
+
+        var templateAdicional = _.template($("#templateCampoAdicional").html());
+        var divCamposAdicionales = $("#divCamposAdicionales");
+        divCamposAdicionales.empty();
+
+        _.each(this.tipoContenido.get("Campos"), function (element, index, list) {
+            var obj = list[index];
+            divCamposAdicionales.append(templateAdicional(obj));
+        });
+
+        this.mostrarCamposAdicionales();
+    },
+    mostrarCamposAdicionales: function () {
+        
+        _.each(this.model.get("Campos"), function (element, index, list) {
+            element = list[index];
+            var inputCampoAdicional = $("#idCampoAdicional_" + element.CampoId);
+            inputCampoAdicional.val(element.Valor);
+        });
+    },
+    //Fin Campos adicionales
+    guardarContenido: function ()
+    {
+        this.serializarFormulario();
     }
+
 });

@@ -1,8 +1,26 @@
-﻿@*<script type="text/ng-template" id="templateCampoAdicional">
+﻿<script type="text/template" id="templateCampoAdicional">
     <div class="form-group">
         <label><%= CampoNombre %></label>
         <div>
-            <input type="text" value="<%=Valor%>" />
+            <% if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Relacional)) { %>
+            <select id="idCampoAdicional_<%= CampoId %>" class="form-control">
+
+                <%
+                    for(var i = 0; i < CampoOpciones.length ; i++)
+                    { %>
+                      
+                      <option value="<%= CampoOpciones[i].OpcionId %>"><%= CampoOpciones[i].Texto %></option>
+                      <%
+                    }
+                %>
+
+            </select>
+            <% }
+            else
+            { %>
+            <input type="text" id="idCampoAdicional_<%= CampoId %>" class="form-control" />
+            <% } %>
         </div>
     </div>
-</script>*@
+</script>
+

@@ -12,8 +12,13 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
         public static void CrearMapeo()
         {
             AutoMapper.Mapper.CreateMap<TipoContenido, string>().ConvertUsing<TipoContenidoTypeConverter>();
-            
-            AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>();
+
+            AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>()
+                .BeforeMap(AntesConvertirContenido)
+                .ForMember(o => o.Campos, opt => opt.Ignore())
+                ;
+                //OJO:Si se quita revisar el listado de contenidos
+                //.ForMember(o => o.Campos, opt => opt.Ignore());
 
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
                // .ForMember(db => db.Campos, model => model.Ignore())
@@ -33,6 +38,25 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<CampoTipoContenido, CampoModel>();
 
             Mapper.CreateMap<OpcionCampo, OpcionCampoModel>();
+        }
+
+        private static void AntesConvertirContenido(Contenido obj, ContenidoModel model)
+        {
+            try
+            {
+                if (obj.Campos == null || obj.Campos.Count == 0)
+                {
+                    model.Campos = new List<ValorCampoModel>();
+                }
+                else
+                {
+                    model.Campos = obj.Campos.Select(Mapper.Map<ValorCampo, ValorCampoModel>).ToList();
+                }
+            }
+            catch (ObjectDisposedException e)
+            {
+                model.Campos = new List<ValorCampoModel>();
+            }
         }
 
         public class TipoContenidoTypeConverter : ITypeConverter<TipoContenido, string>

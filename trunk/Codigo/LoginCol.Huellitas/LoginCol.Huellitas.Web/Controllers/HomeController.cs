@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +27,14 @@ namespace LoginCol.Huellitas.Web.Controllers
         public ActionResult Listar(int? id)
         {
             return View();
+        }
+
+
+        [HttpGet]
+        public FileResult Imagen(string nombre, string tamano)
+        { 
+            ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
+            return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(nombre, TamanoImagenEnum.Pequeno.ToEnum(tamano)) ), "gif");
         }
 
         //[HttpGet]

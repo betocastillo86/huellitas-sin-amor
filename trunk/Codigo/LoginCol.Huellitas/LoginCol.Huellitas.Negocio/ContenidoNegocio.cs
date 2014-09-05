@@ -33,5 +33,51 @@ namespace LoginCol.Huellitas.Negocio
             //contenido.Campos = _contenidos.Value.ObtenerCampos(id);
             return contenido;
         }
+
+        /// <summary>
+        /// Busca un contenido por el nombnre
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="quitarGuiones">Valida si debe remover los guiones al momento de buscar</param>
+        /// <returns></returns>
+        public Contenido ObtenerPorNombre(string nombre, bool quitarGuiones)
+        {
+            return _contenidos.Value.ObtenerPorNombre(nombre, quitarGuiones);
+        }
+
+
+        public string ObtenerImagenPrincipal(string nombre, TamanoImagenEnum tamano)
+        {
+            Contenido contenido = ObtenerPorNombre(nombre, true);
+            return ObtenerImagenPrincipal(contenido.ContenidoId, tamano);   
+        }
+
+        /// <summary>
+        /// Retorna la ruta de la imagen principal del contenido ne lo diferente tamaños
+        /// </summary>
+        /// <param name="idContenido"></param>
+        /// <param name="tamano"></param>
+        /// <returns></returns>
+        public string ObtenerImagenPrincipal(int idContenido, TamanoImagenEnum tamano)
+        {
+            //Contenido contenido = Obtener(idContenido);
+
+            string nombreImagen = string.Empty;
+
+            switch (tamano)
+            {
+                case TamanoImagenEnum.Grande:
+                    nombreImagen = string.Format("~/RecursosContenidos/Imagenes/{0}/{0}_big.gif", idContenido);
+                    break;
+                case TamanoImagenEnum.Pequeno:
+                    nombreImagen = string.Format("~/RecursosContenidos/Imagenes/{0}/{0}_mini.gif", idContenido);
+                    break;
+                case TamanoImagenEnum.Mediano:
+                    nombreImagen = string.Format("~/RecursosContenidos/Imagenes/{0}/{0}_medium.gif", idContenido);
+                    break;
+            }
+
+            return nombreImagen;
+        }
     }
 }

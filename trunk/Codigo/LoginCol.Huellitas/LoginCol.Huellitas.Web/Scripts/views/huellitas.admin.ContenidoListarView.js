@@ -47,7 +47,7 @@ var ContenidoListarView = Backbone.View.extend({
 	    //debugger;
 	   this.$el.hide();
 	   this.undelegateEvents();
-	   this.remove();
+	   //this.remove();
 	}
 });
 

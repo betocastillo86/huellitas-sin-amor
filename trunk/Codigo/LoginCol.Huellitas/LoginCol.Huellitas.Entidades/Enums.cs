@@ -12,4 +12,31 @@ namespace LoginCol.Huellitas.Entidades
         Animal,
         Fundacion
     }
+
+    public enum TamanoImagenEnum
+    { 
+        Grande = 1,
+        Pequeno = 2,
+        Mediano = 3
+    }
+
+    public static class EnumConverter
+    { 
+
+        public static TamanoImagenEnum ToEnum(this TamanoImagenEnum obj, string strEnum)
+        {
+            switch (strEnum)
+	        {
+		        case "mini":
+                    return TamanoImagenEnum.Pequeno;
+                case "large":
+                    return TamanoImagenEnum.Grande;
+                case "medium":
+                    return TamanoImagenEnum.Mediano;
+                default:
+                    return TamanoImagenEnum.Pequeno;
+	        }
+        }
+    }
+
 }

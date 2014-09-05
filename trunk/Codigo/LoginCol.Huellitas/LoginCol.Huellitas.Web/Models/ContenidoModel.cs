@@ -35,6 +35,8 @@ namespace LoginCol.Huellitas.Web.Models
 
 
         public List<TipoContenido> TiposDeContenido { get; set; }
+
+        [Display(Name = "Tipo de contenido", Description = "Tipo de contenido")]
         public int TipoContenidoId { get; set; }
 
         public string TipoContenidoNombre { get; set; }
@@ -44,10 +46,15 @@ namespace LoginCol.Huellitas.Web.Models
         public int Compartidos { get; set; }
 
         [MaxLength(20)]
+        [Display(Name = "Imagen principal", Description = "Imagen principal")]
         public string Imagen { get; set; }
 
         #region Contacto
-        public List<ZonaGeografica> Departamentos { get; set; } 
+        [Required(ErrorMessage = "El Departamento es obligatorio")]
+        [Display(Name = "Departamento", Description = "Departamento")]
+        public List<ZonaGeografica> Departamentos { get; set; }
+        
+        [Display(Name = "Ciudad", Description = "Ciudad")]
         public int ZonaGeograficaId { get; set; }
 
         public int ZonaGeograficaZonaGeograficaPadreZonaGeograficaId { get; set; }
@@ -58,7 +65,8 @@ namespace LoginCol.Huellitas.Web.Models
         //public string Direccion { get; set; }
 
         //public string Telefono { get; set; }
-
+        [Required(ErrorMessage = "El correo electrónico es obligatorio")]
+        [Display(Name = "Correo electrónico", Description = "Correo electrónico")]
         public string Email { get; set; }
 
         public string Facebook { get; set; }

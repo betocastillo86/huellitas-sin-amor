@@ -190,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
+    <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
@@ -548,6 +549,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="RecursosContenidos\Imagenes\" />
     <Folder Include="Scripts\collections\" />
   </ItemGroup>
   <ItemGroup>
