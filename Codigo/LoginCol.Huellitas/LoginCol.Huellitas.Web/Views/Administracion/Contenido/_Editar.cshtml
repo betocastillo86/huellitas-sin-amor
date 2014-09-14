@@ -5,6 +5,7 @@
 
 
 @Html.Partial("~/Views/Administracion/Contenido/_CampoAdicional.cshtml")
+@Html.Partial("~/Views/Administracion/Contenido/_ImagenesContenido.cshtml")
 
 <script type="text/template" id="templateEditarContenidoBase">
     <div class="row">
@@ -70,6 +71,9 @@
                         </div>
                         <div id="divCamposAdicionales">
                         </div>
+                        <div>
+                            <button id="VerGaleriaContenido" type="button">Ver Imagenes</button>
+                        </div>
 
 
                         <div class="checkbox">
@@ -77,7 +81,9 @@
                                 <input type="checkbox"> Check me out
                             </label>
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-default" type="button" id="GuardarContenido" >Guardar</button>
+                        <button class="btn" type="button" id="BtnCancelarEdicion">Cancelar</button>
+                        @Html.ValidationSummary()
                     </form>
                 </div>
             </div>

@@ -37,6 +37,13 @@ namespace LoginCol.Huellitas.Web.Controllers
             return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(nombre, TamanoImagenEnum.Pequeno.ToEnum(tamano)) ), "gif");
         }
 
+        [HttpGet]
+        public FileResult Imagen(int id, string tamano)
+        {
+            ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
+            return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(id, TamanoImagenEnum.Grande.ToEnum(tamano))), "gif");
+        }
+
         //[HttpGet]
         //public string Comprar()
         //{

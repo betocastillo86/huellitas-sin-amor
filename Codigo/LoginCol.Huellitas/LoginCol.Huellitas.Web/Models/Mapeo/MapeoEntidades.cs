@@ -20,6 +20,9 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                 //OJO:Si se quita revisar el listado de contenidos
                 //.ForMember(o => o.Campos, opt => opt.Ignore());
 
+
+            AutoMapper.Mapper.CreateMap<Contenido, ContenidoBaseModel>();
+
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
                // .ForMember(db => db.Campos, model => model.Ignore())
                 .ForMember(o => o.ContenidosRelacionados, d => d.Ignore())
@@ -31,6 +34,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<ZonaGeografica, ZonaGeograficalModel>();
 
             Mapper.CreateMap<ValorCampo, ValorCampoModel>();
+            Mapper.CreateMap<ValorCampoModel, ValorCampo>();
 
             Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
                 //.ForSourceMember( o => o.Contenidos , d => d.Ignore());
@@ -52,6 +56,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                 {
                     model.Campos = obj.Campos.Select(Mapper.Map<ValorCampo, ValorCampoModel>).ToList();
                 }
+
             }
             catch (ObjectDisposedException e)
             {

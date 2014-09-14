@@ -5,19 +5,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class ContenidoModel
+    public class ContenidoModel : ContenidoBaseModel
     {
-        public int ContenidoId { get; set; }
-
-        [Required(ErrorMessage="El nombre es obligatorio")]
-        [MaxLength(50)]
-        [Display(Name="Nombre", Description="Nombre del contenido")]
-        public string Nombre { get; set; }
-
-        [Required(ErrorMessage="La descripción es obligatoria")]
-        [Display(Name="Descripción", Description="Descripción del contenido")]
-        public string Descripcion { get; set; }
-
         public int Visitas { get; set; }
 
         public int Comentarios { get; set; }
@@ -26,20 +15,9 @@ namespace LoginCol.Huellitas.Web.Models
 
         public decimal PromedioVotos { get; set; }
 
-        [Display(Name = "Fecha de Creación", Description = "Fecha de creación del contenido")]
-        public DateTime FechaCreacion { get; set; }
-
-        public DateTime? FechaActualizacion { get; set; }
-
         public DateTime? FechaPublicacion { get; set; }
 
-
         public List<TipoContenido> TiposDeContenido { get; set; }
-
-        [Display(Name = "Tipo de contenido", Description = "Tipo de contenido")]
-        public int TipoContenidoId { get; set; }
-
-        public string TipoContenidoNombre { get; set; }
 
         public int MeGusta { get; set; }
 

@@ -24,7 +24,69 @@ namespace LoginCol.Huellitas.Datos
 
         public bool Actualizar(Contenido obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<ValorCampo> camposAdicionales = obj.Campos;
+
+                using (var db = new Repositorio())
+                {
+                    obj.Campos = null;
+                    db.Contenidos.Attach(obj);
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(obj, EntityState.Modified);
+                    db.SaveChanges();
+                    
+                }
+
+                GuardarCamposAdicionales(obj.ContenidoId, camposAdicionales);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }   
+        }
+
+        private void GuardarCamposAdicionales(int id, List<ValorCampo> camposAdicionales)
+        {
+            List<ValorCampo> camposBD = ObtenerCampos(id);
+
+            using (var db = new Repositorio())
+            {
+                foreach (var campo in camposAdicionales)
+                {
+                    ValorCampo campoBD = camposBD.Where(_ => _.CampoId == campo.CampoId).FirstOrDefault();
+
+                    if (campoBD == null && !string.IsNullOrEmpty(campo.Valor))
+                    {
+                        
+                        
+                        db.ValoresCampos.Add(campo);
+                        
+                    }
+                    else
+                    {
+                        campoBD.Valor = campo.Valor;
+
+                        if (string.IsNullOrEmpty(campo.Valor))
+                        {
+                            db.ValoresCampos.Remove(campoBD);
+                            ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Deleted);
+                        }
+                        else
+                        {
+                            db.ValoresCampos.Attach(campoBD);
+                            ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Modified);
+                        }
+                    }
+                }
+
+                
+                db.SaveChanges();
+            }
+
+           
         }
 
         public bool Eliminar(int id)
@@ -161,6 +223,74 @@ namespace LoginCol.Huellitas.Datos
             }
 
             return contenido == null ? new Contenido() : contenido;
+        }
+
+        public int Crear(Contenido contenido)
+        {
+            try
+            {
+                contenido.FechaCreacion = DateTime.Now;
+
+                using (var db = new Repositorio())
+                {    
+                    db.Contenidos.Add(contenido);
+                    db.SaveChanges();
+                }
+
+                return contenido.ContenidoId;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return 0;
+            }
+        }
+
+        public List<Contenido> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        {
+            
+            
+            try
+            {
+
+                List<ContenidoRelacionado> listaRelacionados = null;
+                using (var db = new Repositorio())
+                {
+                    int tipoRelacionInt = Convert.ToInt32(tipoRelacion);
+
+                    //lista = db.Contenidos
+                    //    .Include(c => c.ContenidosRelacionados)
+                    //    .Where(c => c.ContenidoId == idContenido )
+                    //    .FirstOrDefault().ContenidosRelacionados.Where(_ => _.TipoRelacionContenidoId == tipoRelacionInt).ToList();
+
+
+                    listaRelacionados = db.ContenidosRelacionados
+                        .Include(c => c.ContenidoHijo)
+                        .Include(c => c.ContenidoHijo.TipoContenido)
+                        .Include(c => c.Contenido)
+                        .Include(c => c.Contenido.TipoContenido)
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacionInt).ToList();
+
+                    //lista = db.ContenidosRelacionados.Where(cr => cr.ContenidoId == idContenido).Select(_ => _.ContenidoHijo).ToList();
+
+                    //lista = db.Contenidos
+                    //    .Where(c => c.TipoContenido.TiposDeContenidosRelacionados.Where(tc => tc.TipoRelacionContenidoId == tipoRelacionInt).Count() > 0 
+                    //        && c.ContenidoId == idContenido)
+                    //    .ToList();
+                }
+
+                //Lista de contenidos relacionados extraidos de la consulta
+                List<Contenido> listaContenidos = new List<Contenido>();
+                listaRelacionados.ForEach(r => listaContenidos.Add(r.ContenidoId == idContenido ? r.ContenidoHijo : r.Contenido));
+                return listaContenidos;
+
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return new List<Contenido>();
+            }
+
         }
     }
 }

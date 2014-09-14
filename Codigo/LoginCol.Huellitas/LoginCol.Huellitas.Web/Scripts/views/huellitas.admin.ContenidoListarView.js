@@ -4,50 +4,63 @@ var templateListadoContenidos = _.template($("#templateTrContenidos").html());
 var ContenidoListarView = Backbone.View.extend({
     el: "#divVistaListarContenidos",
 
-	lista: undefined,
+    events: {
+        "click #BtnCrearContenido": "crearContenido"
+    },
 
-	urlModelo: undefined,
+    lista: undefined,
 
-	initialize: function (args) {
+    urlModelo: undefined,
 
-		if (args.urlModelo == undefined)
-			alert("definir la url del modelo");
-		else
-		    this.urlModelo = args.urlModelo;
+    tablaListado : undefined,
 
-		this.render();
-		//this.cargarContenidos();
-	},
+    initialize: function (args) {
 
-	render: function(){
-	    this.cargarContenidos();
-	    this.$el.show();
-	},
+        if (args.urlModelo == undefined)
+            alert("definir la url del modelo");
+        else
+            this.urlModelo = args.urlModelo;
+
+        this.render();
+    },
+
+    render: function(){
+        this.cargarContenidos();
+        this.$el.show();
+    },
     //Carga los contenidos dell listado
-	cargarContenidos: function () {
-	    var listaContenidos = new ContenidoCollection({ url: this.urlModelo });
-        listaContenidos.on("add", this.contenidoAgregado)
-        listaContenidos.fetch({ success: this.contenidosAgregados });
-        this.lista = listaContenidos;
-	},
+    cargarContenidos: function () {
+        this.lista = new ContenidoCollection({ url: this.urlModelo });
+        //listaContenidos.on("add", this.contenidoAgregado)
+	    
+        this.lista.fetch({ success: this.contenidosAgregados });
+        //this.lista = listaContenidos;
+    },
     //Después de consultar los contenidos los carga en el template
-	contenidosAgregados: function (model, response, options)
+    contenidosAgregados: function (model, response, options)
     {
-	    var tablaContenidos = $("#tbodyListadoContenidos");
+        var tbodyListado = $("#tbodyListadoContenidos");
+	    
+        if ($.fn.dataTable.isDataTable("#tableListadoContenidos"))
+        {
+            this.tablaListado.fnDestroy();
+            tbodyListado.html("");
+        }
+	    
+        _.each(model, function (element, index, list) {
+            tbodyListado.append(templateListadoContenidos(list.at(index).toJSON()));
+        });
 
-	    _.each(model, function (element, index, list) {
-	        tablaContenidos.append(templateListadoContenidos(list.at(index).toJSON()));
-	    });
-
-	    $('#tableListadoContenidos').dataTable(optionsDataTable);
-
-	},
+        this.tablaListado = $('#tableListadoContenidos').dataTable(optionsDataTable);
+    },
+	
+    crearContenido : function(){
+        App_Router.navigate("/admin/animales/crear", {trigger: true});
+    },
     //Desactiva la vista despues
-	desactivar: function () {
-	    //debugger;
-	   this.$el.hide();
-	   this.undelegateEvents();
-	   //this.remove();
-	}
+    desactivar: function () {
+        this.$el.hide();
+        this.undelegateEvents();
+    }
 });
 

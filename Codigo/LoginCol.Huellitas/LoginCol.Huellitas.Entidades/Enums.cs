@@ -13,6 +13,11 @@ namespace LoginCol.Huellitas.Entidades
         Fundacion
     }
 
+    public enum TipoRelacionEnum
+    { 
+        Imagen = 1
+    }
+
     public enum TamanoImagenEnum
     { 
         Grande = 1,

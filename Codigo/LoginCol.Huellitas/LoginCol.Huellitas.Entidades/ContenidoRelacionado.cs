@@ -14,7 +14,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public int ContenidoId { get; set; }
 
-        public int ContenidoPadreId { get; set; }
+        public int ContenidoHijoId { get; set; }
 
         public int TipoRelacionContenidoId { get; set; }
 
@@ -22,7 +22,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual Contenido Contenido { get; set; }
 
-        public virtual Contenido ContenidoPadre { get; set; }
+        public virtual Contenido ContenidoHijo { get; set; }
 
         public virtual TipoRelacionContenido TipoRelacionContenido { get; set; }
 

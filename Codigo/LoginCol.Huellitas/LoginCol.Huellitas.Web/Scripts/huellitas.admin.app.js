@@ -17,7 +17,7 @@
         });
     },
 
-    serializarFormulario: function () {
+    serializarFormulario: function (modelo) {
         
         var container = $("#form1");
         var fields = {};
@@ -28,10 +28,30 @@
 
         container.each(function () {
             $.each($(this).serializeArray(), function () {
-                fields[this.name] = this.value;
+                modelo.set(this.name, this.value);
             });
         });
 
-        return fields;
+        return modelo;
+    },
+    obtenerIdDesdeCampo: function (nombreCampo)
+    {
+        var partesCadena = nombreCampo.split("_");
+        var id = -1;
+        if (partesCadena.length > 0)
+            id = parseInt(_.last(partesCadena));
+
+        return id;
+    },
+    recargarValidadores: function () {
+        $.validator.unobtrusive.parseDynamicContent('#form1');
+    },
+    mostrarAlerta: function (texto)
+    {
+        
+    },
+    consola: function (texto)
+    {
+        console.log(texto);
     }
 });

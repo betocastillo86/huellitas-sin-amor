@@ -29,6 +29,11 @@
     
 
     @Styles.Render("~/bundles/admin")
+    @Styles.Render("~/bundles/themes/base/css")
+    @Styles.Render("~/bundles/css")
+    
+
+    
     
 
     @*<link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
@@ -40,6 +45,7 @@
 
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
 
     @Scripts.Render("~/bundles/backbone")
 
@@ -52,9 +58,6 @@
 
     
     
-
-    
-
 </head>
 
 <body>
@@ -162,7 +165,7 @@
             </div>
             <!--/span-->
             <!-- left menu ends -->
-
+            
             <noscript>
                 <div class="alert alert-block col-md-12">
                     <h4 class="alert-heading">Warning!</h4>
@@ -204,24 +207,8 @@
 
         <hr>
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3>Settings</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>Here settings can be configured...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                        <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("~/Views/Shared/_ModalAlertAdmin.cshtml")
+        @Html.Partial("~/Views/Shared/_ModalHtmlAdmin.cshtml")
 
         <footer class="row">
             <p class="col-md-9 col-sm-9 col-xs-12 copyright">
@@ -251,6 +238,8 @@
     <script src="~/Scripts/models/huellitas.admin.Admin.js"></script>
     <script src="~/Scripts/views/huellitas.admin.AdminView.js"></script>
     <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
+    <script src="~/Scripts/views/huellitas.admin.AlertView.js"></script>
+    <script src="~/Scripts/views/huellitas.admin.AlertHtmlView.js"></script>
 
     @*<!-- select or dropdown enhancer -->
     <script src="bower_components/chosen/chosen.jquery.min.js"></script>
