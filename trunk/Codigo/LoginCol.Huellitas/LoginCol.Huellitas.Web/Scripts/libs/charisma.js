@@ -4,7 +4,8 @@ var optionsDataTable = {
     "sPaginationType": "bootstrap",
     "oLanguage": {
         "sLengthMenu": "_MENU_ records per page"
-    }
+    },
+    "bDestroy" : "false"
 };
 
 

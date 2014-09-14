@@ -19,7 +19,7 @@ namespace LoginCol.Huellitas.Datos.Configuracion
             HasRequired(cr => cr.TipoRelacionContenido).WithMany(t => t.ContenidosRelacionados).WillCascadeOnDelete(false);
 
             HasRequired(cr => cr.Contenido).WithMany(c => c.ContenidosRelacionados).HasForeignKey(c => c.ContenidoId).WillCascadeOnDelete(false);
-            HasRequired(cr => cr.ContenidoPadre).WithMany(c => c.ContenidosRelacionadosPadre).HasForeignKey(c => c.ContenidoPadreId).WillCascadeOnDelete(false);
+            HasRequired(cr => cr.ContenidoHijo).WithMany(c => c.ContenidosRelacionadosPadre).HasForeignKey(c => c.ContenidoHijoId).WillCascadeOnDelete(false);
         }
     }
 }

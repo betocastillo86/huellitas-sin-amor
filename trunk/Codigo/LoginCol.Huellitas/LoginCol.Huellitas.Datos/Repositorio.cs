@@ -20,6 +20,8 @@ namespace LoginCol.Huellitas.Datos
 
         public DbSet<Campo> Campos { get; set; }
         public DbSet<Contenido>  Contenidos { get; set; }
+
+        public DbSet<ContenidoRelacionado> ContenidosRelacionados { get; set; }
         public DbSet<ZonaGeografica> ZonasGeograficas { get; set; }
         public DbSet<TipoContenido> TiposContenidos { get; set; }
         public DbSet<ValorCampo> ValoresCampos { get; set; }

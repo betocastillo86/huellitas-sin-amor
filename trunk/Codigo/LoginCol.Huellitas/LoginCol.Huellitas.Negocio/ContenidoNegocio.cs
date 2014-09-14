@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LoginCol.Huellitas.Utilidades;
 
 namespace LoginCol.Huellitas.Negocio
 {
@@ -78,6 +79,32 @@ namespace LoginCol.Huellitas.Negocio
             }
 
             return nombreImagen;
+        }
+
+        public ResultadoOperacion Actualizar(Contenido contenido)
+        {
+           ResultadoOperacion respuesta = new ResultadoOperacion();
+           respuesta.OperacionExitosa = _contenidos.Value.Actualizar(contenido);
+           return respuesta;
+        }
+
+        public ResultadoOperacion Crear(Contenido contenido, int idUsuario)
+        {
+            ResultadoOperacion respuesta = new ResultadoOperacion();
+            contenido.UsuarioId = idUsuario;
+            
+            respuesta.Id = _contenidos.Value.Crear(contenido);
+            respuesta.OperacionExitosa = respuesta.Id > 0;
+
+            if (!respuesta.OperacionExitosa)
+                respuesta.MensajeError = "No fue posible crear el contenido";
+            
+            return respuesta;
+        }
+
+        public List<Contenido> ObtenerImagenes(int idContenido)
+        {
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, TipoRelacionEnum.Imagen);
         }
     }
 }

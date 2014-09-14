@@ -35,10 +35,17 @@ namespace LoginCol.Huellitas.Web
                 url: "Admin/{controller}/{action}",
                 defaults: new { controller = "Animales", action = "Index" });
 
+            routes.MapRoute(name: "ImagenesPorId",
+              url: "img/{id}/{tamano}",
+              defaults: new { controller = "Home", action = "Imagen", tamano = "mini" },
+              constraints: new { action = "Imagen", controller = "Home", tamano = ("mini|medium|big"), id = "/d+" });
+            
             routes.MapRoute(name: "Imagenes",
               url: "img/{nombre}/{tamano}",
               defaults: new { controller = "Home", action = "Imagen", tamano = "mini" },
               constraints: new { action = "Imagen", controller = "Home", tamano = ("mini|medium|big"), nombre = new ContenidoRutaConstraint() });
+
+            
 
             routes.MapRoute(
                 name: "Default",
