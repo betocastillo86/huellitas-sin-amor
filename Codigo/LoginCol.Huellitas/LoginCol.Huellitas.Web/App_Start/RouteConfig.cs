@@ -37,8 +37,8 @@ namespace LoginCol.Huellitas.Web
 
             routes.MapRoute(name: "ImagenesPorId",
               url: "img/{id}/{tamano}",
-              defaults: new { controller = "Home", action = "Imagen", tamano = "mini" },
-              constraints: new { action = "Imagen", controller = "Home", tamano = ("mini|medium|big"), id = "/d+" });
+              defaults: new { controller = "Home", action = "ImagenId", tamano = "mini" },
+              constraints: new { action = "ImagenId", controller = "Home", tamano = ("mini|medium|big"), id = @"\d+" });
             
             routes.MapRoute(name: "Imagenes",
               url: "img/{nombre}/{tamano}",

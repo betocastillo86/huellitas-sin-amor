@@ -29,10 +29,13 @@ namespace LoginCol.Huellitas.Web.Controllers
             {
                 case "animales/listar":
                 case "animales/editar":
+                case "animales/crear":
                     vista = "Animales/Index.cshtml";
                     ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales" };
                     modeloAnimales.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
+                    
                     modeloAnimales.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Animal);
+                    modeloAnimales.Contenido.TiposRelacionContenido = new TipoContenidoNegocio().ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Animal);
                     modelo = modeloAnimales;
                     break;
                 default:
@@ -52,6 +55,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Usuarios", Vinculo = "/Admin/Usuarios/Listar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
+
 
     }
 }

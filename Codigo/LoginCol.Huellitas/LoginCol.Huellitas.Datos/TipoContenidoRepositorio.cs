@@ -18,6 +18,8 @@ namespace LoginCol.Huellitas.Datos
 
             try
             {
+                filtro.TipoContenidoPadre = filtro.TipoContenidoPadre == null ? new TipoContenido() : filtro.TipoContenidoPadre;
+
                 using (Repositorio db = new Repositorio())
                 {
                    lista =  db.TiposContenidos.Where(_ =>
@@ -96,5 +98,29 @@ namespace LoginCol.Huellitas.Datos
 
             return lista == null ? new List<Campo>() : lista;
         }
+
+        public List<TipoRelacionContenido> ObtenerTiposDeRelacionContenido(int id)
+        {
+            List<TipoRelacionContenido> lista = null;
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    lista = db.TiposDeRelacionPorTiposDeContenidos
+                        .Where(t => t.TipoContenidoId == id)
+                        .Select(t => t.TipoRelacionContenido).ToList();
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return lista == null ? new List<TipoRelacionContenido>() : lista;
+        }
+
+
     }
 }

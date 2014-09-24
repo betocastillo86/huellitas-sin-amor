@@ -10,6 +10,19 @@ namespace LoginCol.Huellitas.Web
         public static void Register(HttpConfiguration config)
         {
 
+            config.Routes.MapHttpRoute(
+               name: "ApiFiltroPorTipoContenido",
+               routeTemplate: "api/{controller}/tip-{idTipoContenido}/{esPadre}",
+               defaults: new { controller = "AdminContenidos", esPadre = RouteParameter.Optional},
+               constraints: new { idTipoContenido = @"\d+", esPadre = "(true|false)+" }
+           );
+            
+            config.Routes.MapHttpRoute(
+               name: "ApiFiltroPorContenido",
+               routeTemplate: "api/{controller}/cid-{idContenido}/{idTipoContenido}",
+               defaults: new { controller = "AdminContenidosRelacionados", idTipoContenido = RouteParameter.Optional },
+               constraints: new { idContenido = @"\d+" }
+           );
             
             
             config.Routes.MapHttpRoute(

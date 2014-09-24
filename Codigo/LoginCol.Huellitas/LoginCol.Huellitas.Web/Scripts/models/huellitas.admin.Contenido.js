@@ -19,5 +19,12 @@ var ContenidoCollection = Backbone.Collection.extend({
             this.url = args.url;
 
         console.log("Colección contenido creada");
+    },
+    cargarPorTipo: function (idTipoContenido)
+    {
+        console.log("Conulsta de contenidos por tipo");
+        this.url = "/api/adminanimales/tip-" + idTipoContenido + "/false";
+        this.fetch();
+        return this;
     }
 });

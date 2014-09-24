@@ -38,7 +38,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpGet]
-        public FileResult Imagen(int id, string tamano)
+        public FileResult ImagenId(int id, string tamano)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(id, TamanoImagenEnum.Grande.ToEnum(tamano))), "gif");

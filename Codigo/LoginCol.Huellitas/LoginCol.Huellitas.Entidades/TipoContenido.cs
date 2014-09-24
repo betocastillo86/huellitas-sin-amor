@@ -25,5 +25,6 @@ namespace LoginCol.Huellitas.Entidades
 
 
 
+
     }
 }

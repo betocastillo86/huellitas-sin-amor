@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -74,6 +75,9 @@ namespace LoginCol.Huellitas.Entidades
         public virtual Usuario Usuario { get; set; }
 
         public bool Activo { get; set; }
+
+        [DefaultValue(false)]
+        public bool Eliminado { get; set; }
 
     }
 }

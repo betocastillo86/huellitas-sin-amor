@@ -192,7 +192,7 @@
 
               
                 <div id="appAdminContent">
-                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form1", name = "form1" }))
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form1", name = "form1", enctype = "multipart/form-data" }))
                     { 
                         @RenderBody()
                     }

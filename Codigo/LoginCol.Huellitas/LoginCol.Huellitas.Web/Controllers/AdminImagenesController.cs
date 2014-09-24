@@ -19,5 +19,12 @@ namespace LoginCol.Huellitas.Web.Controllers
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return contenidoNegocio.ObtenerImagenes(id).Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
         }
+
+        [HttpDelete]
+        public bool Delete(int id)
+        {
+            ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
+            return contenidoNegocio.Eliminar(10);
+        }
     }
 }

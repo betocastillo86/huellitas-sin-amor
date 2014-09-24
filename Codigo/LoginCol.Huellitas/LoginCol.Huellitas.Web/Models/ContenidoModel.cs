@@ -55,7 +55,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         public int UsuarioId { get; set; }
 
-        public bool Activo { get; set; }
+        public List<TipoRelacionContenido> TiposRelacionContenido { get; set; }
 
     }
 }

@@ -32,5 +32,15 @@ namespace LoginCol.Huellitas.Negocio
         {
             return _tiposContenidos.Value.Obtener(id);
         }
+
+        public List<TipoRelacionContenido> ObtenerTiposDeRelacionContenido(int id)
+        { 
+            return _tiposContenidos.Value.ObtenerTiposDeRelacionContenido(id);
+        }
+
+        public List<TipoContenido> Obtener()
+        {
+            return _tiposContenidos.Value.Obtener(new TipoContenido());
+        }
     }
 }
