@@ -30,6 +30,9 @@ namespace LoginCol.Huellitas.Datos
         public DbSet<TipoRelacionContenido> TiposRelacionContenidos { get; set; }
         public DbSet<CampoTipoContenido> CamposTiposContenidos { get; set; }
 
+        public DbSet<TipoRelacionTipoContenido> TiposDeRelacionPorTiposDeContenidos { get; set; }
+        
+
         public DbSet<OpcionCampo> OpcionesCampos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<ValorCampoModel, ValorCampo>();
 
             Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
+            Mapper.CreateMap<TipoContenido, TipoContenidoBaseModel>();
                 //.ForSourceMember( o => o.Contenidos , d => d.Ignore());
 
             Mapper.CreateMap<CampoTipoContenido, CampoModel>();

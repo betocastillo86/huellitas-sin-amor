@@ -1,8 +1,14 @@
 ﻿var ImagenModel = Backbone.Model.extend({
-    url: "/api/adminimagenes"
+    url: "/api/adminimagenes",
+    idAttribute: "ContenidoId",
+    eliminar: function ()
+    {
+        this.url = "/api/adminimagenes/" + this.get("ContenidoId");
+        this.destroy();
+    }
 });
 
-var ImagenCollection = Backbone.Model.extend({
+var ImagenCollection = Backbone.Collection.extend({
     url: "/api/adminimagenes",
     
     initialize : function(args){
@@ -10,6 +16,11 @@ var ImagenCollection = Backbone.Model.extend({
             alert("Debe cargar un idContenido padre");
 
         this.url = "/api/adminimagenes/"+args.idContenido;
+    },
+
+    eliminar : function(modelo)
+    {
+        modelo.eliminar();
     },
 
     model : ImagenModel

@@ -6,6 +6,7 @@
 
 @Html.Partial("~/Views/Administracion/Contenido/_CampoAdicional.cshtml")
 @Html.Partial("~/Views/Administracion/Contenido/_ImagenesContenido.cshtml")
+@Html.Partial("~/Views/Administracion/Contenido/_ContenidosRelacionados.cshtml")
 
 <script type="text/template" id="templateEditarContenidoBase">
     <div class="row">
@@ -65,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Imagen)
-                            <input type="file" id="exampleInputFile">
+                            <input type="file" id="exampleInputFile" name="exampleInputFile">
                             <p class="help-block">.jpg</p>
                             <div id="imgPrincipalContenido"></div>
                         </div>
@@ -90,8 +91,12 @@
         </div>
         <!--/span-->
     </div>
+    
 </script>
 
 
 
 <script src="~/Scripts/views/huellitas.admin.ContenidoEditarView.js"></script>
+
+
+<iframe id="upload_iframe"></iframe>

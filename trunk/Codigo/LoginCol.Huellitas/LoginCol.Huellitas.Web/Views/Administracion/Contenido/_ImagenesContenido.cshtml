@@ -1,6 +1,4 @@
-﻿<div id="divImagenesContenido" style="display:none"></div>
-
-<script type="text/ng-template" id="templateImagenesContenido">
+﻿<div id="divImagenesContenido" style="display:none">
     <div class="box-inner">
         <div data-original-title="" class="box-header well">
             <h2><i class="glyphicon glyphicon-picture"></i> Gallery</h2>
@@ -15,11 +13,15 @@
             <ul class="thumbnails gallery" id="ulImagenes"></ul>
         </div>
     </div>
+</div>
+
+<script type="text/ng-template" id="templateImagenesContenido">
+   
 </script>
 
 <script type="text/template" id="templateFilaImagenContenido">
     <li class="thumbnail" id="image-<%= ContenidoId %>">
-        <a href="javascript:;" title="<%= Nombre %>" style="background:url(/img/<%= ContenidoId %>/big)" class="cboxElement"><img alt="Sample Image 1" src="/img/<%= ContenidoId %>/mini" class="grayscale" style="display: block;"></a>
+        <a href="/img/<%= ContenidoId %>/big" title="<%= Nombre %>" style="background:url(/img/<%= ContenidoId %>/mini)" class="cboxElement"><img alt="Sample Image 1" src="/img/<%= ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px" ></a>
     </li>
 </script>
 

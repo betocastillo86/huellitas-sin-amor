@@ -1,0 +1,124 @@
+﻿@model LoginCol.Huellitas.Web.Models.ContenidoModel
+<div id="divContenidosRelacionados">
+
+</div>
+
+<script type="text/template" id="templateContenidosRelacionados">
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div data-original-title="" class="box-header well">
+                    <h2><i class="glyphicon glyphicon-edit"></i> Contenidos Relacionados</h2>
+                    <div class="box-icon">
+                        <a class="btn btn-setting btn-round btn-default" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a class="btn btn-close btn-round btn-default" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <div class="form-group">
+                        @Html.Label("Filtar")
+                        @Html.DropDownList("TipoRelacionContenido", new SelectList(Model.TiposRelacionContenido, "TipoRelacionContenidoId", "Nombre"), "-", new { @class = "form-control" })
+                        <a href="#" class="btn btn-success" id="BtnMostrarAgregarTipoContenido">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Agregar Relación
+                        </a>
+                    </div>
+                    <div class="row" align="center">
+                        <div class="box col-md-12">
+                            <div class="box-inner">
+                                <div data-original-title="" class="box-header well">
+                                    <h2>Contenidos Relacionados</h2>
+                                </div>
+                                <div class="box-content" id="divFilasContenidosRelacionados">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+</script>
+
+<div id="divAgregarContenidoRelacionado" class="modal fade" role="dialog">
+
+</div>
+
+<script id="templateAgregarContenidoRelacionado" type="text/template">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Agregar Contenido</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+
+
+                    <div class="box-inner">
+
+                        <div class="box-content">
+
+                            <div class="form-group">
+                                @Html.Label("Tipo de Relación")
+                                @Html.DropDownList("Relacionados_TipoRelacionContenido", new SelectList(Model.TiposRelacionContenido, "TipoRelacionContenidoId", "Nombre"), new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Tipo de Contenido")
+                                <select id="Relacionados_TiposContenido" name="Relacionados_TiposContenido" class="form-control">
+                                    <option>Seleccione</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Seleccione el contenido que desea relacionar")
+                                <select id="Relacionados_Contenidos" name="Relacionados_Contenidos" class="form-control">
+                                    <option></option>
+                                </select>
+                            </div>
+
+                            <a href="#" class="btn btn-success" id="BtnGuardarContenidoRelacionado">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                Guardar
+                            </a>
+
+
+                        </div>
+                    </div>
+
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cerrar</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</script>
+
+<script type="text/template" id="templateTrContenidoRelacionado">
+    <div class="row" id="trContenidoRelacionado_<%= ContenidoId %>">
+        <div class="col-md-1"><h6><%= ContenidoId %></h6></div>
+        <div class="col-md-4"><h6><%= Nombre %></h6></div>
+        <div class="col-md-4"><h6><%= TipoContenidoNombre %></h6></div>
+        <div class="col-md-1">
+            <a href="#" class="btn btn-success" id="EliminarContenidoRelacionado_<%= ContenidoId %>">
+                <i class="glyphicon glyphicon-remove"></i>
+                Borrar
+            </a>
+        </div>
+    </div>
+</script>
+
+<script src="~/Scripts/models/huellitas.admin.ContenidoRelacionado.js"></script>
+<script src="~/Scripts/views/huellitas.admin.ContenidosRelacionadosView.js"></script>

@@ -24,6 +24,13 @@ namespace LoginCol.Huellitas.Web.Controllers
             TipoContenidoNegocio tipoNegocio = new TipoContenidoNegocio();
             return Json(AutoMapper.Mapper.Map<TipoContenido, TipoContenidoModel>(tipoNegocio.Obtener(id)), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public JsonResult TiposContenidos()
+        {
+            TipoContenidoNegocio tipoNegocio = new TipoContenidoNegocio();
+            List<TipoContenidoBaseModel> listado = tipoNegocio.Obtener().Select(AutoMapper.Mapper.Map<TipoContenido, TipoContenidoBaseModel>).ToList();
+            return Json(listado, JsonRequestBehavior.AllowGet);
+        }
 
        
     }

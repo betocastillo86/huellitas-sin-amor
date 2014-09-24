@@ -8,14 +8,22 @@
     },
     cargarTipoContenido: function () {
 
-        this.url = "/ajaxgenerales/TipoContenido/" + this.get("TipoContenidoId");
-        this.fetch();
-
-
+        if (this.get("TipoContenidoId") != null)
+        {
+            this.url = "/ajaxgenerales/TipoContenido/" + this.get("TipoContenidoId");
+            this.fetch();
+        }
+        
     }
 });
 
-var TipoContenidoCollection = Backbone.Model.extend({
-    model: TipoContenidoModel
+var TipoContenidoCollection = Backbone.Collection.extend({
+    model: TipoContenidoModel,
+
+    cargarTodos: function () {
+        this.url = "/ajaxgenerales/TiposContenidos/";
+        this.fetch();
+        return this;
+    }
 
 });

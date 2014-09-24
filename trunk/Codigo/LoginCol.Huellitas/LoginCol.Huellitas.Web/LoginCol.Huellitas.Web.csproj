@@ -172,10 +172,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminContenidoRelacionadoController.cs" />
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminAnimalesController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\GeneralesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -498,6 +500,7 @@
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
     <Content Include="Scripts\huellitas.admin.router.js" />
+    <Content Include="Scripts\models\huellitas.admin.ContenidoRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
@@ -505,6 +508,7 @@
     <Content Include="Scripts\views\huellitas.admin.AlertView.js" />
     <Content Include="Scripts\views\huellitas.admin.AnimalEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
+    <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -550,6 +554,8 @@
     <Content Include="Scripts\views\huellitas.admin.GaleriaContenidoView.js" />
     <Content Include="Views\Administracion\Contenido\_ImagenesContenido.cshtml" />
     <Content Include="Views\Shared\_ModalHtmlAdmin.cshtml" />
+    <Content Include="Views\Shared\_FileUpload.cshtml" />
+    <Content Include="Views\Administracion\Contenido\_ContenidosRelacionados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -112,6 +112,14 @@
     <Compile Include="Migrations\201409131449527_cambioNombreContenidoRelacionado.Designer.cs">
       <DependentUpon>201409131449527_cambioNombreContenidoRelacionado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409152232560_Eliminado.cs" />
+    <Compile Include="Migrations\201409152232560_Eliminado.Designer.cs">
+      <DependentUpon>201409152232560_Eliminado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409152236129_Eliminado2.cs" />
+    <Compile Include="Migrations\201409152236129_Eliminado2.Designer.cs">
+      <DependentUpon>201409152236129_Eliminado2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />
@@ -170,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409131449527_cambioNombreContenidoRelacionado.resx">
       <DependentUpon>201409131449527_cambioNombreContenidoRelacionado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409152232560_Eliminado.resx">
+      <DependentUpon>201409152232560_Eliminado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409152236129_Eliminado2.resx">
+      <DependentUpon>201409152236129_Eliminado2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

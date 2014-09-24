@@ -21,7 +21,12 @@ namespace LoginCol.Huellitas.Negocio
 
         public List<Contenido> ObtenerPorTipo(TipoContenidoEnum tipoContenido)
         {
-            return _contenidos.Value.ObtenerPorTipo(tipoContenido);
+            return ObtenerPorTipo((int)tipoContenido);
+        }
+
+        public List<Contenido> ObtenerPorTipo(int idTipoContenido)
+        {
+            return _contenidos.Value.ObtenerPorTipo(idTipoContenido);
         }
         public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
         {
@@ -105,6 +110,31 @@ namespace LoginCol.Huellitas.Negocio
         public List<Contenido> ObtenerImagenes(int idContenido)
         {
             return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, TipoRelacionEnum.Imagen);
+        }
+
+        public List<Contenido> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        {
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, tipoRelacion);
+        }
+        public ContenidoRelacionado ObtenerContenidoRelacionado(int idContenido, int idContenidoHijo, int idTipoRelacion)
+        {
+            return _contenidos.Value.ObtenerContenidoRelacionado(idContenido, idContenidoHijo, idTipoRelacion);
+        }
+
+        public bool Eliminar(int idContenido)
+        {
+            return _contenidos.Value.Eliminar(idContenido);
+
+        }
+
+        public bool EliminarContenidoRelacionado(ContenidoRelacionado relacion)
+        {
+            return _contenidos.Value.EliminarContenidoRelacionado(relacion);
+        }
+
+        public bool AgregarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
+        {
+            return _contenidos.Value.AgregarContenidoRelacionado(contenidoRelacionado);
         }
     }
 }

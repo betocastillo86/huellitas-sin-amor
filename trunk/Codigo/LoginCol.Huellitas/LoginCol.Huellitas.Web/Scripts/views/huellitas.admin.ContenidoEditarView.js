@@ -8,7 +8,7 @@
         "click #BtnCrearContenido": "crearContenido",
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
-        "clicl #VerGaleriaContenido": "verGaleria",
+        "click #VerGaleriaContenido": "verGaleria",
     },
 
     template: _.template($("#templateEditarContenidoBase").html()),
@@ -21,7 +21,9 @@
 
     app: undefined,
 
-    galeriaView : undefined,
+    galeriaView: undefined,
+
+    contenidosRelacionadosView: undefined,
 
     initialize: function (args)
     {
@@ -44,6 +46,9 @@
         this.galeriaView = new GaleriaContenidoView({ id : args.id });
         
         this.tipoContenido = new TipoContenidoModel();
+
+        this.app.consola("Galeria de Contenidos Relacionados creada");
+        this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: args.id });
 
         this.render(args);
     },
@@ -91,6 +96,7 @@
     //Ciudades
     cargarCiudades: function ()
     {
+        this.app.consola("Carga las ciudades por padre");
         var idZonaPadre = $("#ZonaGeograficaZonaGeograficaPadreZonaGeograficaId").val();
         this.autoSeleccionarZona = true;
         $("#ZonaGeograficaId").empty();
@@ -108,7 +114,7 @@
         this.tipoContenido.once("change", this.cargarCamposAdicionales, this);
     },
     cargarCamposAdicionales: function () {
-
+        this.app.consola("Carga los campos adicionales cargarCamposAdicionales");
         var templateAdicional = _.template($("#templateCampoAdicional").html());
         var divCamposAdicionales = $("#divCamposAdicionales");
         divCamposAdicionales.empty();
@@ -148,6 +154,26 @@
         if (this.$el.validate().form()) {
             this.model = this.app.serializarFormulario(this.model);
             this.model.set("Campos", this.obtenerCamposAdicionales());
+            debugger;
+
+
+
+            var values = {};
+            _.each($('#form1').serializeArray(), function (input) {
+                values[input.name] = input.value;
+            })
+
+            this.model.save(values, {
+                iframe: true,
+                files: $('#exampleInputFile'),
+                data: values
+            });
+
+
+
+            debugger;
+
+
             this.model.save({}, {success : this.contenidoGuardado });
             
         }
@@ -173,6 +199,7 @@
     verGaleria : function(){
         this.galeriaView.mostrar();
     },
+
     //Desactiva la vista despues
     desactivar: function () {
         //debugger;

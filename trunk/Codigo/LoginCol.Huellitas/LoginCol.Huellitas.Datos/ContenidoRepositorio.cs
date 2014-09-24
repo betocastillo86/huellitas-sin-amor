@@ -91,10 +91,27 @@ namespace LoginCol.Huellitas.Datos
 
         public bool Eliminar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    Contenido contenidoEliminar = db.Contenidos.Where(c => c.ContenidoId == id).FirstOrDefault();
+                    contenidoEliminar.Eliminado = true;
+                    db.Contenidos.Attach(contenidoEliminar);
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(contenidoEliminar, EntityState.Modified);
+                    db.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
         }
 
-        public List<Contenido> ObtenerPorTipo(TipoContenidoEnum tipoContenido)
+        public List<Contenido> ObtenerPorTipo(int idTipoContenido)
         {
             List<Contenido> lista = new List<Contenido>();
 
@@ -106,7 +123,7 @@ namespace LoginCol.Huellitas.Datos
                         .Include(_ => _.TipoContenido)
                         .Include(_ => _.ZonaGeografica)
                         .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
-                        .Where(c => c.TipoContenido.TipoContenidoId == (int)tipoContenido)
+                        .Where(c => c.TipoContenido.TipoContenidoId == idTipoContenido && !c.Eliminado)
                         .ToList();
                 }
 
@@ -133,7 +150,7 @@ namespace LoginCol.Huellitas.Datos
                         .Include(_ => _.TipoContenido)
                         .Include(_ => _.ZonaGeografica)
                         .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
-                        .Where(c => c.TipoContenido.TipoContenidoPadre.TipoContenidoId == (int)tipoContenido)
+                        .Where(c => c.TipoContenido.TipoContenidoPadre.TipoContenidoId == (int)tipoContenido && !c.Eliminado)
                         .ToList();
                 }
 
@@ -164,7 +181,7 @@ namespace LoginCol.Huellitas.Datos
                                     .Include(_ => _.TipoContenido)
                                     .Include(_ => _.Campos.Select(c=> c.Campo))
                                     .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
-                                    .Where(_ => _.ContenidoId.Equals(id)).FirstOrDefault();
+                                    .Where(_ => _.ContenidoId.Equals(id) && !_.Eliminado).FirstOrDefault();
 
                 }
 
@@ -248,8 +265,6 @@ namespace LoginCol.Huellitas.Datos
 
         public List<Contenido> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
         {
-            
-            
             try
             {
 
@@ -258,25 +273,12 @@ namespace LoginCol.Huellitas.Datos
                 {
                     int tipoRelacionInt = Convert.ToInt32(tipoRelacion);
 
-                    //lista = db.Contenidos
-                    //    .Include(c => c.ContenidosRelacionados)
-                    //    .Where(c => c.ContenidoId == idContenido )
-                    //    .FirstOrDefault().ContenidosRelacionados.Where(_ => _.TipoRelacionContenidoId == tipoRelacionInt).ToList();
-
-
                     listaRelacionados = db.ContenidosRelacionados
                         .Include(c => c.ContenidoHijo)
                         .Include(c => c.ContenidoHijo.TipoContenido)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
-                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacionInt).ToList();
-
-                    //lista = db.ContenidosRelacionados.Where(cr => cr.ContenidoId == idContenido).Select(_ => _.ContenidoHijo).ToList();
-
-                    //lista = db.Contenidos
-                    //    .Where(c => c.TipoContenido.TiposDeContenidosRelacionados.Where(tc => tc.TipoRelacionContenidoId == tipoRelacionInt).Count() > 0 
-                    //        && c.ContenidoId == idContenido)
-                    //    .ToList();
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacionInt && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).ToList();
                 }
 
                 //Lista de contenidos relacionados extraidos de la consulta
@@ -291,6 +293,72 @@ namespace LoginCol.Huellitas.Datos
                 return new List<Contenido>();
             }
 
+        }
+
+
+        public bool AgregarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
+        {
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    contenidoRelacionado.FechaCreacion = DateTime.Now;
+                    db.ContenidosRelacionados.Add(contenidoRelacionado);
+                    db.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
+        }
+
+        public ContenidoRelacionado ObtenerContenidoRelacionado(int idContenido, int idContenidoHijo, int idTipoRelacion)
+        {
+            ContenidoRelacionado relacion = null;
+            
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    relacion = db.ContenidosRelacionados
+                        .Include(c => c.ContenidoHijo)
+                        .Include(c => c.ContenidoHijo.TipoContenido)
+                        .Include(c => c.Contenido)
+                        .Include(c => c.Contenido.TipoContenido)
+                        .Where(c => c.ContenidoHijoId == idContenidoHijo && c.ContenidoId == idContenido && c.TipoRelacionContenidoId == idTipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return relacion == null ? new ContenidoRelacionado() : relacion;
+        }
+
+        public bool EliminarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
+        {
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    
+                    db.ContenidosRelacionados.Remove(contenidoRelacionado);
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(contenidoRelacionado, EntityState.Modified);
+                    db.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
         }
     }
 }

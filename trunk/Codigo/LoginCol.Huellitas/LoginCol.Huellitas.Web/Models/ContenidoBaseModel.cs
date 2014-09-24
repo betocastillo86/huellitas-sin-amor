@@ -28,5 +28,7 @@ namespace LoginCol.Huellitas.Web.Models
         public int TipoContenidoId { get; set; }
 
         public string TipoContenidoNombre { get; set; }
+
+        public bool Activo { get; set; }
     }
 }
