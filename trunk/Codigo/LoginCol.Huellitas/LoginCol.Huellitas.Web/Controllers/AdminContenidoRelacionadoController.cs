@@ -14,11 +14,11 @@ namespace LoginCol.Huellitas.Web.Controllers
     public class AdminContenidoRelacionadoController : ApiController
     {
         [HttpGet]
-        public List<ContenidoBaseModel> Get(int idContenido, int idTipoContenido)
+        public List<ContenidoRelacionadoModel> Get(int idContenido, int idTipoContenido)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return contenidoNegocio.ObtenerContenidosRelacionados(idContenido, (TipoRelacionEnum)idTipoContenido)
-                .Select(Mapper.Map<Contenido, ContenidoBaseModel>)
+                .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
                 .ToList();
         }
 
@@ -30,11 +30,10 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpDelete]
-        public bool Delete(ContenidoRelacionado modelo)
+        public bool Delete(int id)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            modelo = contenidoNegocio.ObtenerContenidoRelacionado(modelo.ContenidoId, modelo.ContenidoHijoId, modelo.ContenidoRelacionadoId);
-            return contenidoNegocio.EliminarContenidoRelacionado(modelo);
+            return contenidoNegocio.EliminarContenidoRelacionado(id);
         }
 
     }

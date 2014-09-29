@@ -154,9 +154,6 @@
         if (this.$el.validate().form()) {
             this.model = this.app.serializarFormulario(this.model);
             this.model.set("Campos", this.obtenerCamposAdicionales());
-            debugger;
-
-
 
             var values = {};
             _.each($('#form1').serializeArray(), function (input) {
@@ -168,11 +165,6 @@
                 files: $('#exampleInputFile'),
                 data: values
             });
-
-
-
-            debugger;
-
 
             this.model.save({}, {success : this.contenidoGuardado });
             

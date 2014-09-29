@@ -16,8 +16,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>()
                 .BeforeMap(AntesConvertirContenido)
-                .ForMember(o => o.Campos, opt => opt.Ignore())
-                ;
+                .ForMember(o => o.Campos, opt => opt.Ignore());
                 //OJO:Si se quita revisar el listado de contenidos
                 //.ForMember(o => o.Campos, opt => opt.Ignore());
 
@@ -44,6 +43,8 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<CampoTipoContenido, CampoModel>();
 
             Mapper.CreateMap<OpcionCampo, OpcionCampoModel>();
+
+            AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
         }
 
         private static void AntesConvertirContenido(Contenido obj, ContenidoModel model)

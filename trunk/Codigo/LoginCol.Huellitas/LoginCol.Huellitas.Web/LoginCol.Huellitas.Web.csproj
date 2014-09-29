@@ -193,6 +193,7 @@
     <Compile Include="Models\CampoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
+    <Compile Include="Models\ContenidoRelacionado.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
     <Compile Include="Models\OpcionCampoModel.cs" />
     <Compile Include="Models\SessionModel.cs" />

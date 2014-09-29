@@ -12,13 +12,18 @@
 
     agregarContenidoView: undefined,
 
+    app : undefined,
+
     initialize: function (args) {
         this.idContenido = args.id;
         this.lista = new ContenidoRelacionadoCollection();
         this.lista.on("add", this.mostrarFilaContenido, this);
         this.lista.on("remove", this.contenidoRelacionadoEliminado, this);
         this.templateFilaContenido = _.template($("#templateTrContenidoRelacionado").html());
-        this.agregarContenidoView = new AgregarContenidoRelacionadoView({ id: args.id });
+        this.agregarContenidoView = new AgregarContenidoRelacionadoView({ id: args.id, parent: this, callback: "cargarContenidosRelacionadosPorTipo" });
+        this.app = new AppHuellitas({ el: this.el });
+
+        this.listenTo(Backbone, 'contenido-relacionado-agregado', this.cargarContenidosRelacionadosPorTipo, this);
 
         this.render();
         //this.delegate
@@ -36,11 +41,17 @@
 
     cargarContenidosRelacionadosPorTipo: function () {
         var tipoRelacionContenido = $("#TipoRelacionContenido").val();
-        $("#divFilasContenidosRelacionados").empty();
-        //debugger;
-        this.lista.reset();
         
-        this.lista.cargarContenidos(this.idContenido, tipoRelacionContenido);
+
+        if (tipoRelacionContenido != "")
+        {
+            $("#divFilasContenidosRelacionados").empty();
+            //debugger;
+            this.lista.reset();
+
+            this.lista.cargarContenidos(this.idContenido, tipoRelacionContenido);
+        }
+        
     },
     mostrarFilaContenido: function (model) {
         $("#divFilasContenidosRelacionados").append(this.templateFilaContenido(model.toJSON()));
@@ -51,15 +62,19 @@
     },
     eliminarContenidoRelacionado: function (context)
     {
-        var idContenidoRelacionado = $(context.target).attr("id").split('_')[1];
-        var idTipoRelacion = $("#TipoRelacionContenido").val();
-        var contenidoRelacionado = this.lista.findWhere({ ContenidoId: parseInt(idContenidoRelacionado) });
-        debugger;
-        contenidoRelacionado.eliminar(this.idContenido, idContenidoRelacionado, idTipoRelacion);
+        if (confirm("¿Está seguro de eliminar este contenido relacionado?"))
+        {
+            var objTarget = $(context.target);
+            var idContenidoRelacionado = objTarget.attr("id").split('_')[1];
+            //var idTipoRelacion = $("#TipoRelacionContenido").val();
+            var contenidoRelacionado = this.lista.findWhere({ ContenidoRelacionadoId: parseInt(idContenidoRelacionado) });
+            contenidoRelacionado.eliminar(idContenidoRelacionado);
+        }        
     },
     contenidoRelacionadoEliminado: function (model)
     {
-        alert("eliminado");
+        this.app.consola("Eliminado contenido relacionado " + model.get("ContenidoRelacionadoId"));
+        $("#trContenidoRelacionado_" + model.get("ContenidoRelacionadoId")).remove();
     }
 });
 
@@ -68,7 +83,11 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
 
     el: "#divAgregarContenidoRelacionado",
 
-    template : _.template($("#templateAgregarContenidoRelacionado").html()),
+    template: _.template($("#templateAgregarContenidoRelacionado").html()),
+
+    parent: undefined,
+
+    callback : undefined,
 
     events: {
         "click #BtnGuardarContenidoRelacionado" : "guardarContenidoRelacionado",
@@ -76,9 +95,18 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
     },
 
     initialize: function (args) {
-        if (args != undefined && args.id != undefined)
-            this.idContenido = args.id;
+        if (args != undefined)
+        {
+            if(args.id != undefined)
+                this.idContenido = args.id;
 
+            if (args.parent != undefined)
+                this.parent = args.parent;
+
+            if (args.callback != undefined)
+                this.callback = args.callback;
+        }
+            
         this.render();
     },
 
@@ -90,6 +118,9 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
     mostrar : function()
     {
         this.$el.modal('show');
+    },
+    cerrar: function () {
+        this.$el.modal('hide');
     },
 
     //Inicio TIPOS DE CONTENIDO
@@ -124,9 +155,15 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
         if ($("#Relacionados_Contenidos").val() != "")
         {
             var modelo = new ContenidoRelacionadoModel();
+            modelo.on("sync", this.contenidoGuardado, this);
             var idContenidoRelacionado = $("#Relacionados_Contenidos").val();
             var tipoRelacion = $("#Relacionados_TipoRelacionContenido").val();
             modelo.guardar(this.idContenido, idContenidoRelacionado, tipoRelacion);
         }
     },
+    contenidoGuardado : function()
+    {
+        Backbone.trigger('contenido-relacionado-agregado');
+        this.cerrar();
+    }
 });
