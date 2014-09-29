@@ -14,17 +14,17 @@ namespace LoginCol.Huellitas.Web.Controllers
     public class AdminImagenesController : ApiController
     {
         [HttpGet]
-        public List<ContenidoBaseModel> Get(int id)
+        public List<ContenidoRelacionadoModel> Get(int id)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return contenidoNegocio.ObtenerImagenes(id).Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
+            return contenidoNegocio.ObtenerImagenes(id).Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>).ToList();
         }
 
         [HttpDelete]
         public bool Delete(int id)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return contenidoNegocio.Eliminar(10);
+            return contenidoNegocio.Eliminar(id);
         }
     }
 }

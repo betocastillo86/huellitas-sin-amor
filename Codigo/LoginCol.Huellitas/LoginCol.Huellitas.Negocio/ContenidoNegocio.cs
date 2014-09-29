@@ -107,12 +107,12 @@ namespace LoginCol.Huellitas.Negocio
             return respuesta;
         }
 
-        public List<Contenido> ObtenerImagenes(int idContenido)
+        public List<ContenidoRelacionado> ObtenerImagenes(int idContenido)
         {
             return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, TipoRelacionEnum.Imagen);
         }
 
-        public List<Contenido> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
         {
             return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, tipoRelacion);
         }
@@ -127,9 +127,9 @@ namespace LoginCol.Huellitas.Negocio
 
         }
 
-        public bool EliminarContenidoRelacionado(ContenidoRelacionado relacion)
+        public bool EliminarContenidoRelacionado(int idContenidoRelacionado)
         {
-            return _contenidos.Value.EliminarContenidoRelacionado(relacion);
+            return _contenidos.Value.EliminarContenidoRelacionado(idContenidoRelacionado);
         }
 
         public bool AgregarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)

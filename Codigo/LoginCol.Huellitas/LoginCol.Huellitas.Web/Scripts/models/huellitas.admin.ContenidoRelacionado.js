@@ -3,14 +3,15 @@
 
     url: "/api/admincontenidorelacionado",
 
-    guardar: function (idContenido, idContenidoHijo, idTipoRelacion)
+    guardar: function (idContenido, idContenidoHijo, idTipoRelacion, success)
     {
-        this.set({ ContenidoId: idContenido, ContenidoHijoId: idContenidoHijo, TipoRelacionContenidoId: idTipoRelacion })
+        this.set({ ContenidoId: idContenido, ContenidoHijoId: idContenidoHijo, TipoRelacionContenidoId: idTipoRelacion });
         this.save();
     },
-    eliminar: function (idContenido, idContenidoHijo, idTipoRelacion)
+    eliminar: function (idContenidoRelacionado)
     {
-        this.set({ ContenidoId: idContenido, ContenidoHijoId: idContenidoHijo, TipoRelacionContenidoId: idTipoRelacion })
+        this.url = "/api/admincontenidorelacionado/"+idContenidoRelacionado;
+        this.set({ ContenidoRelacionadoId: idContenidoRelacionado })
         this.destroy({wait:true});
     }
 });

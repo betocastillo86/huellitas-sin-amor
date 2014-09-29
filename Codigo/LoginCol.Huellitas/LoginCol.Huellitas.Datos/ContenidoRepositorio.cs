@@ -263,7 +263,7 @@ namespace LoginCol.Huellitas.Datos
             }
         }
 
-        public List<Contenido> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
         {
             try
             {
@@ -281,16 +281,15 @@ namespace LoginCol.Huellitas.Datos
                         .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacionInt && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).ToList();
                 }
 
-                //Lista de contenidos relacionados extraidos de la consulta
-                List<Contenido> listaContenidos = new List<Contenido>();
-                listaRelacionados.ForEach(r => listaContenidos.Add(r.ContenidoId == idContenido ? r.ContenidoHijo : r.Contenido));
-                return listaContenidos;
+                //Iguala todos los contenidos hijos como los relacionados
+                listaRelacionados.ForEach(r =>  r.ContenidoHijo = (r.ContenidoId == idContenido ? r.ContenidoHijo : r.Contenido));
+                return listaRelacionados;
 
             }
             catch (Exception e)
             {
                 LogErrores.RegistrarError(e);
-                return new List<Contenido>();
+                return new List<ContenidoRelacionado>();
             }
 
         }
@@ -340,15 +339,15 @@ namespace LoginCol.Huellitas.Datos
             return relacion == null ? new ContenidoRelacionado() : relacion;
         }
 
-        public bool EliminarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
+        public bool EliminarContenidoRelacionado(int idContenidoRelacionado)
         {
             try
             {
                 using (var db = new Repositorio())
                 {
-                    
+                    ContenidoRelacionado contenidoRelacionado = db.ContenidosRelacionados.Where(c => c.ContenidoRelacionadoId.Equals(idContenidoRelacionado)).FirstOrDefault();
                     db.ContenidosRelacionados.Remove(contenidoRelacionado);
-                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(contenidoRelacionado, EntityState.Modified);
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(contenidoRelacionado, EntityState.Deleted);
                     db.SaveChanges();
                 }
 

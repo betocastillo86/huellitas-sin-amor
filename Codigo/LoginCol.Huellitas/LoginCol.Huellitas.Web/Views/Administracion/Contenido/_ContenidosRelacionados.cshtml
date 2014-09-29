@@ -19,10 +19,10 @@
                     <div class="form-group">
                         @Html.Label("Filtar")
                         @Html.DropDownList("TipoRelacionContenido", new SelectList(Model.TiposRelacionContenido, "TipoRelacionContenidoId", "Nombre"), "-", new { @class = "form-control" })
-                        <a href="#" class="btn btn-success" id="BtnMostrarAgregarTipoContenido">
+                        <div class="btn btn-success" id="BtnMostrarAgregarTipoContenido">
                             <i class="glyphicon glyphicon-plus"></i>
                             Agregar Relación
-                        </a>
+                        </div>
                     </div>
                     <div class="row" align="center">
                         <div class="box col-md-12">
@@ -81,10 +81,10 @@
                                 </select>
                             </div>
 
-                            <a href="#" class="btn btn-success" id="BtnGuardarContenidoRelacionado">
+                            <div class="btn btn-success" id="BtnGuardarContenidoRelacionado">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 Guardar
-                            </a>
+                            </div>
 
 
                         </div>
@@ -107,15 +107,15 @@
 </script>
 
 <script type="text/template" id="templateTrContenidoRelacionado">
-    <div class="row" id="trContenidoRelacionado_<%= ContenidoId %>">
-        <div class="col-md-1"><h6><%= ContenidoId %></h6></div>
-        <div class="col-md-4"><h6><%= Nombre %></h6></div>
-        <div class="col-md-4"><h6><%= TipoContenidoNombre %></h6></div>
+    <div class="row" id="trContenidoRelacionado_<%= ContenidoRelacionadoId %>">
+        <div class="col-md-1"><h6><%= ContenidoHijo.ContenidoId %></h6></div>
+        <div class="col-md-4"><h6><%= ContenidoHijo.Nombre %></h6></div>
+        <div class="col-md-4"><h6><%= ContenidoHijo.TipoContenidoNombre %></h6></div>
         <div class="col-md-1">
-            <a href="#" class="btn btn-success" id="EliminarContenidoRelacionado_<%= ContenidoId %>">
+            <div class="btn btn-success" id="EliminarContenidoRelacionado_<%= ContenidoRelacionadoId %>">
                 <i class="glyphicon glyphicon-remove"></i>
                 Borrar
-            </a>
+            </div>
         </div>
     </div>
 </script>
