@@ -187,6 +187,7 @@
     <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
+    <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
@@ -510,6 +511,7 @@
     <Content Include="Scripts\views\huellitas.admin.AnimalEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
+    <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
