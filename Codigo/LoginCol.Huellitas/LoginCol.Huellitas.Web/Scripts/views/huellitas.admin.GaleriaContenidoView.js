@@ -3,9 +3,12 @@
 
     url: "/api/adminimagenes",
 
-    //events : {
-    //    "click .thumbnail .gallery-delete": "eliminarImagen"
-    //},
+    events : {
+        "click #BtnMostrarAgregarImagenContenido": "mostrarFormularioImagenNueva",
+        "click #BtnGuardarImagenContenido" : "agregarImagen"
+    },
+
+    idContenidoPadre : undefined,
 
     lista: undefined,
 
@@ -13,14 +16,15 @@
 
     templateFila: undefined,
 
-    alertaView: undefined,
+    //alertaView: undefined,
 
     initialize: function (args)
     {
         if (args.id == undefined)
             alert("falta definir el id");
 
-        this.alertaView = new AlertHtmlView();
+        //this.alertaView = new AlertHtmlView();
+        this.idContenidoPadre = args.id;
 
         this.templateFila = _.template($("#templateFilaImagenContenido").html());
         
@@ -32,20 +36,34 @@
         this.lista.on("add", this.imagenAgregada, this);
         this.lista.fetch();
     },
+    recargarImagenes : function(){
+        $("#ulImagenes").empty();
+        this.lista.fetch();
+        this.cargarPropiedadesGaleria();
+    },
     imagenAgregada: function (model)
     {
         $("#ulImagenes").append(this.templateFila(model.toJSON()));
     },
     mostrar: function () {
-        this.alertaView.mostrar(this.$el.html(), "Imagenes Relacionadas");
+        this.$el.modal('show');
+        //this.alertaView.mostrar(this.$el.html(), "Imagenes Relacionadas");
         this.cargarPropiedadesGaleria();
         this.delegateEvents();
     },
+    agregarImagen : function()
+    {
+        var imagenNueva = new ImagenModel();
+        this.listenTo(imagenNueva, "imagen-guardada-ok", this.recargarImagenes);
+        imagenNueva.set({ Nombre : $("#Nombre-Imagen").val(), Descripcion : $("#Descripcion-Imagen").val() });
+        imagenNueva.crear(this.idContenidoPadre, $("#archivoImagenAdicional"));
+    },
     eliminarImagen : function(id)
     {
-        var models = this.lista.where({ ContenidoId: id });
-        if (models.length > 0)
-            this.lista.eliminar(models[0]);
+        debugger;
+        var model = this.lista.findWhere({ ContenidoRelacionadoId: id });
+        if (model != undefined)
+            this.lista.eliminar(model);
     },
     cargarPropiedadesGaleria : function()
     {
@@ -112,9 +130,15 @@
             }
         });
     },
+    mostrarFormularioImagenNueva : function()
+    {
+        $("#divImagenesFormulario").show();
+        $("#BtnMostrarAgregarImagenContenido").hide();
+    },
     ocultar: function ()
     {
-        this.alertaView.ocultar();
+        this.$el.modal('hide');
+        //this.alertaView.ocultar();
     },
     desactivar: function () {
         this.$el.hide();

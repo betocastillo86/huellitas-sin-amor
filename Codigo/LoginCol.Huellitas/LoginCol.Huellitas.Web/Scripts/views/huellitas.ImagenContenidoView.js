@@ -10,21 +10,30 @@ var ImagenContenidoView = Backbone.View.extend({
 
 	idContenido: undefined,
 
-	tamano : "mini",
+	tamano: "mini",
+
+    evitarCache : false,
 
 	initialize: function (args)
 	{
 		this.idContenido = args.id;
 
 		if (args.tamano != undefined)
-			this.tamano = args.tamano;
+		    this.tamano = args.tamano;
+
+		if (args.evitarCache != undefined)
+		    this.evitarCache = args.evitarCache;
 
 		this.render();
 	},
 
 	render: function ()
 	{
-		var urlImagen = "/img/"+this.idContenido+"/"+this.tamano
+	    var cache = "";
+	    if (this.evitarCache)
+	        cache = "?cache="+Math.random();
+
+	    var urlImagen = "/img/" + this.idContenido + "/" + this.tamano + cache;
 		this.$el.attr("src", urlImagen);
 	}
 

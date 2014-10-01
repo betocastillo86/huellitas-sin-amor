@@ -9,6 +9,8 @@
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
         "click #VerGaleriaContenido": "verGaleria",
+        "click #BtnGuardarImagen": "guardarImagen"
+
     },
 
     template: _.template($("#templateEditarContenidoBase").html()),
@@ -76,7 +78,7 @@
         this.$el.html(this.template(contenidoJson));
 
         this.app.deserializarFormulario(this.model.attributes);
-        $("#imgPrincipalContenido").html((new ImagenContenidoView({ id : this.model.get("Nombre")})).el);
+        this.cargarImagenPrincipal();
            
         
         ////En los casos de creación no carga los campos adicionales desde el comienzo
@@ -92,6 +94,10 @@
 
         this.$el.show();
         this.app.recargarValidadores();
+    },
+    cargarImagenPrincipal: function()
+    {
+        $("#imgPrincipalContenido").html((new ImagenContenidoView({ id: this.model.get("ContenidoId"), evitarCache : true })).el);
     },
     //Ciudades
     cargarCiudades: function ()
@@ -198,6 +204,35 @@
         this.$el.hide();
         this.undelegateEvents();
         //this.remove();
+    },
+
+    //INICIO Guardar Imagenes
+    guardarImagen : function()
+    {
+        
+        if ($("#fileInput")[0].files.length == 1) {
+            var imagen = new ImagenModel();
+            this.listenTo(imagen,"imagen-guardada-ok", this.imagenGuardarOk);
+            this.listenTo(imagen,"imagen-guardada-error", this.imagenGuardarError);
+            imagen.set({ ContenidoId: this.model.get("ContenidoId") });
+            this.app.consola("Antes de guardar imagen");
+            imagen.guardarEnDisco($("#fileInput"));
+        }
+        else {
+            $("#fileInput").addClass("field-validation-error");
+        }
+        
+    },
+    imagenGuardarOk : function()
+    {
+        App_Router.alertaView.mostrar("Imagen guardada correctamente");
+        this.cargarImagenPrincipal();
+    },
+    imagenGuardarError : function()
+    {
+        App_Router.alertaView.mostrar("Error guardando la imagen", "Error");
     }
+    //FIN GuardarImagenes
+
 
 });

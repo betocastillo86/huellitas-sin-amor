@@ -22,7 +22,8 @@ namespace LoginCol.Huellitas.Entidades
     { 
         Grande = 1,
         Pequeno = 2,
-        Mediano = 3
+        Mediano = 3,
+        Original = 4
     }
 
     public static class EnumConverter

@@ -1,26 +1,63 @@
-﻿<div id="divImagenesContenido" style="display:none">
-    <div class="box-inner">
-        <div data-original-title="" class="box-header well">
-            <h2><i class="glyphicon glyphicon-picture"></i> Gallery</h2>
-            <div class="box-icon">
-                <a class="btn btn-setting btn-round btn-default" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                <a class="btn btn-close btn-round btn-default" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+﻿<div id="divImagenesContenido" class="modal fade" role="dialog">
+
+    <div class="modal-dialog" style="width:800px" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Agregar Contenido</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+
+                    <div class="box-inner">
+                        <div data-original-title="" class="box-header well">
+                            <h2><i class="glyphicon glyphicon-picture"></i> Imagenes Relacionadas</h2>
+                            <div class="box-icon">
+                                <a class="btn btn-setting btn-round btn-default" href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                <a class="btn btn-close btn-round btn-default" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div id="divImagenesFormulario" style="display:none">
+                                <div class="form-group">
+                                    @Html.Label("Nombre-Imagen", "Imagen")
+                                    @Html.TextBox("Nombre-Imagen")
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Descripcion-Imagen", "Descripción")
+                                    @Html.TextBox("Descripcion-Imagen")
+                                </div>
+                                <div>
+                                    @Html.Label("Archivo-Imagen", "Imagen")
+                                    <input id="archivoImagenAdicional" name="archivoImagenAdicional" type="file" />
+                                </div>
+                                <div>
+                                    <div class="btn btn-success" id="BtnGuardarImagenContenido">Guardar</div>
+                                    <div class="btn btn-success" id="BtnCancelarImagenContenido">Cancelar</div>
+                                </div>
+                            </div>
+                            <div class="btn btn-success" id="BtnMostrarAgregarImagenContenido">Agregar Imagen</div>
+                            <br>
+                            <ul class="thumbnails gallery" id="ulImagenes"></ul>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cerrar</a>
             </div>
         </div>
-        <div class="box-content">
-            <br>
-            <ul class="thumbnails gallery" id="ulImagenes"></ul>
-        </div>
     </div>
+
 </div>
 
 <script type="text/ng-template" id="templateImagenesContenido">
-   
+
 </script>
 
 <script type="text/template" id="templateFilaImagenContenido">
-    <li class="thumbnail" id="image-<%= ContenidoHijo.ContenidoId %>">
+    <li class="thumbnail" id="image-<%= ContenidoRelacionadoId %>">
         <a href="/img/<%= ContenidoHijo.ContenidoId %>/big" title="<%= ContenidoHijo.Nombre %>" style="background:url(/img/<%= ContenidoHijo.ContenidoId %>/mini)" class="cboxElement"><img alt="Sample Image 1" src="/img/<%= ContenidoHijo.ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px"></a>
     </li>
 </script>

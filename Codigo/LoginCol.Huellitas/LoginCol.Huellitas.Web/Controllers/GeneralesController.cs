@@ -32,6 +32,5 @@ namespace LoginCol.Huellitas.Web.Controllers
             return Json(listado, JsonRequestBehavior.AllowGet);
         }
 
-       
     }
 }

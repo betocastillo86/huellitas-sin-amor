@@ -8,6 +8,15 @@ namespace LoginCol.Huellitas.Utilidades
 {
     public class ResultadoOperacion
     {
+
+        public ResultadoOperacion()
+        {
+
+        }
+        public ResultadoOperacion(bool operacionExitosa)
+        {
+            this.OperacionExitosa = operacionExitosa;
+        }
         public bool OperacionExitosa { get; set; }
 
         public string MensajeError { get; set; }
