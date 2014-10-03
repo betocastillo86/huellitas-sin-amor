@@ -12,7 +12,8 @@ var AdminRouter = Backbone.Router.extend({
 
     editarAnimalView: undefined,
 
-    alertaView : undefined,
+    alertaView: undefined,
+
 
     routes: {
         "admin/animales/listar":"listarAnimales",
@@ -22,6 +23,8 @@ var AdminRouter = Backbone.Router.extend({
     initialize : function(options)
     {
         this.alertaView = new AlertView();
+
+        
     },
     //Inicio Animales
     listarAnimales:function()
@@ -29,16 +32,19 @@ var AdminRouter = Backbone.Router.extend({
         this.desactivarVistaActual();
         this.listarAnimalView = new ContenidoListarView({ urlModelo: "/api/adminanimales" });
         this.vistaActual = this.listarAnimalView;
+        //this.app.cargarFuncionesFormularioPersiana();
     },
     editarAnimal: function (id) {
        this.desactivarVistaActual();
        this.editarAnimalView = new ContenidoEditarView({ id: parseInt(id), url: "/api/adminanimales/" + id });
        this.vistaActual = this.editarAnimalView;
+       //this.app.cargarFuncionesFormularioPersiana();
     },
     crearAnimal:  function (){
         this.desactivarVistaActual();
         this.editarAnimalView = new ContenidoEditarView({ id: 0, url: "/api/adminanimales"});
         this.vistaActual = this.editarAnimalView;
+        //this.app.cargarFuncionesFormularioPersiana();
     },
     //Fin Animales
     desactivarVistaActual: function ()

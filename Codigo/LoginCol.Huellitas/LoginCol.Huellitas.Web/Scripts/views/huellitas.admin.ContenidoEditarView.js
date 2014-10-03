@@ -93,6 +93,7 @@
         this.cargarCiudades();
 
         this.$el.show();
+        this.app.cargarFuncionesFormularioPersiana();
         this.app.recargarValidadores();
     },
     cargarImagenPrincipal: function()
@@ -201,6 +202,9 @@
     //Desactiva la vista despues
     desactivar: function () {
         //debugger;
+        
+        App_Router.navigate("admin/animales/listar", { trigger: true });
+        $("#imgPrincipalContenido").empty();
         this.$el.hide();
         this.undelegateEvents();
         //this.remove();

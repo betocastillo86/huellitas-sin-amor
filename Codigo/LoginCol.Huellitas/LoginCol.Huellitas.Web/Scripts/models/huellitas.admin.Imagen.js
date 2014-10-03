@@ -8,7 +8,10 @@
     },
     eliminar: function ()
     {
-        debugger;
+        //Cuando el contenidoId es indefinido es cuando tiene cargado un Modelo de ContenidoRelacionado
+        if (this.get("ContenidoId") == undefined)
+            this.set("ContenidoId", this.get("ContenidoHijo").ContenidoId);
+
         this.url = "/api/adminimagenes/" + this.get("ContenidoId");
         this.destroy();
     },
