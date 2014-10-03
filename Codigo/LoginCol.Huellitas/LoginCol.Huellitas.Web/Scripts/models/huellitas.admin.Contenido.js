@@ -1,29 +1,41 @@
 ﻿var ContenidoModel = Backbone.Model.extend({
-    url: "/api/contenidos",
+    baseurl : "/api/admincontenidos/",
+    url: "/api/admincontenidos",
     idAttribute: "ContenidoId",
     
     initialize: function (args)
     {
-        if (args.url != undefined)
-            this.url = args.url;
+    },
+
+    cargar: function (idContenido)
+    {
+        this.url = this.baseurl + idContenido;
+        this.fetch();
     }
 
 });
 
 var ContenidoCollection = Backbone.Collection.extend({
     model: ContenidoModel,
-    url: "/Admin/Contenidos",
+    url: "/api/admincontenidos",
     initialize: function (args)
     {
-        if (args.url != undefined)
-            this.url = args.url;
-
         console.log("Colección contenido creada");
+    },
+    cargarPorPadre : function(idTipoContenido)
+    {
+        console.log("Conulsta de contenidos por tipo padre");
+        this.url = "/api/admincontenidos/tip-" + idTipoContenido + "/true";
+        return this.cargar();
     },
     cargarPorTipo: function (idTipoContenido)
     {
         console.log("Conulsta de contenidos por tipo");
-        this.url = "/api/adminanimales/tip-" + idTipoContenido + "/false";
+        this.url = "/api/admincontenidos/tip-" + idTipoContenido + "/false";
+        return this.cargar();
+    },
+    cargar: function ()
+    {
         this.fetch();
         return this;
     }
