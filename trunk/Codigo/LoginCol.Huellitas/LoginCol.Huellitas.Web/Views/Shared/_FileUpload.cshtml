@@ -2,19 +2,3 @@
     ViewBag.Title = "_FileUpload";
     
 }
-<iframe>
-    <form enctype="multipart/form-data" method="post" id="formUpload" action="/api/fileupload/1">
-        <input type="file" name="fileIframe" id="fileIframe" />
-        <button type="submit">Enviar</button>
-    </form>
-</iframe>
-
-
-<script>
-    function EnviarArchivo(id)
-    {
-        $("#formUpload").attr("action", "/api/fileupload/" + id);
-        $("#formUpload").submit();
-    }
-
-</script>

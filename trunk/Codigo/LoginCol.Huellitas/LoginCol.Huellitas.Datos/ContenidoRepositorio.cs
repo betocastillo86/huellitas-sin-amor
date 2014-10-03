@@ -58,11 +58,13 @@ namespace LoginCol.Huellitas.Datos
                 {
                     ValorCampo campoBD = camposBD.Where(_ => _.CampoId == campo.CampoId).FirstOrDefault();
 
-                    if (campoBD == null && !string.IsNullOrEmpty(campo.Valor))
+                    //Si el campo no existe en Base de datos lo agrega
+                    if (campoBD == null)
                     {
                         
-                        
-                        db.ValoresCampos.Add(campo);
+                        //solo cuando el valor es diferente de vacio
+                        if (!string.IsNullOrEmpty(campo.Valor))
+                            db.ValoresCampos.Add(campo);
                         
                     }
                     else

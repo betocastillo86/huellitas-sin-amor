@@ -23,23 +23,27 @@
         if (args.id == undefined)
             alert("falta definir el id");
 
+        $("#ulImagenes").empty();
+
         //this.alertaView = new AlertHtmlView();
         this.idContenidoPadre = args.id;
 
         this.templateFila = _.template($("#templateFilaImagenContenido").html());
         
         this.lista = new ImagenCollection({ idContenido: args.id });
+
         
         this.render();
     },
     render: function () {
         this.lista.on("add", this.imagenAgregada, this);
+        this.lista.on("sync", this.cargarPropiedadesGaleria, this);
         this.lista.fetch();
     },
     recargarImagenes : function(){
         $("#ulImagenes").empty();
         this.lista.fetch();
-        this.cargarPropiedadesGaleria();
+        //this.cargarPropiedadesGaleria();
     },
     imagenAgregada: function (model)
     {
@@ -48,7 +52,7 @@
     mostrar: function () {
         this.$el.modal('show');
         //this.alertaView.mostrar(this.$el.html(), "Imagenes Relacionadas");
-        this.cargarPropiedadesGaleria();
+        //this.cargarPropiedadesGaleria();
         this.delegateEvents();
     },
     agregarImagen : function()
@@ -60,7 +64,6 @@
     },
     eliminarImagen : function(id)
     {
-        debugger;
         var model = this.lista.findWhere({ ContenidoRelacionadoId: id });
         if (model != undefined)
             this.lista.eliminar(model);
