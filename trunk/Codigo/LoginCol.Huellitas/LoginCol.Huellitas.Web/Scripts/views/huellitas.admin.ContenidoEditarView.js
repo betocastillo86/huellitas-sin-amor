@@ -1,6 +1,8 @@
 ﻿var ContenidoEditarView = Backbone.View.extend({
     el: "#divVistaEditarContenidos",
 
+    url: "/api/admincontenidos/",
+
     events: {
         "change #ZonaGeograficaZonaGeograficaPadreZonaGeograficaId": "cargarCiudades",
         "click #GuardarContenido": "guardarContenido",
@@ -25,23 +27,25 @@
 
     galeriaView: undefined,
 
+    //permite controlar las redirecciones 
+    modulo : undefined,
+
     contenidosRelacionadosView: undefined,
 
     initialize: function (args)
     {
         this.app = new AppHuellitas({ el : this.el });
 
-        if (args.url != undefined)
-            this.url = args.url;
-
         if (this.$el == undefined)
             this.$el = $(this.el);
+
+        this.modulo = args.modulo;
 
         this.zonasGeograficas = new ZonaGeograficaCollection();
         this.zonasGeograficas.on("add", this.mostrarCiudades, this);
 
-        this.model = new ContenidoModel({ url: this.url });
-        this.model.on("change:Nombre", this.mostrarContenido, this);
+        this.model = new ContenidoModel();
+        this.model.on("sync", this.mostrarContenido, this);
 
 
         this.app.consola("Galeria de Contenido creada");
@@ -63,8 +67,9 @@
     cargarContenido: function (id)
     {
         if (id > 0) {
-            this.model.set("ContenidoId", id);
-            this.model.fetch();
+            this.model.cargar(id);
+            //this.model.set("ContenidoId", id);
+            //this.model.fetch();
         }
         else {
             this.mostrarContenido();
@@ -167,11 +172,11 @@
                 values[input.name] = input.value;
             })
 
-            this.model.save(values, {
-                iframe: true,
-                files: $('#exampleInputFile'),
-                data: values
-            });
+            //this.model.save(values, {
+            //    iframe: true,
+            //    files: $('#exampleInputFile'),
+            //    data: values
+            //});
 
             this.model.save({}, {success : this.contenidoGuardado });
             
@@ -184,7 +189,7 @@
         
         if (response.OperacionExitosa) {
             App_Router.alertaView.mostrar("Operación exitosa");
-            App_Router.navigate("admin/animales/listar", { trigger: true });
+            App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
         }
         else {
             App_Router.alertaView.mostrar("Ha ocurrido un error:"+response.MensajeError);
@@ -203,7 +208,7 @@
     desactivar: function () {
         //debugger;
         
-        App_Router.navigate("admin/animales/listar", { trigger: true });
+        App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
         $("#imgPrincipalContenido").empty();
         this.$el.hide();
         this.undelegateEvents();

@@ -10,17 +10,16 @@ var ContenidoListarView = Backbone.View.extend({
 
     lista: undefined,
 
-    urlModelo: undefined,
+    //permite controlar las redirecciones 
+    modulo: undefined,
 
-    tablaListado : undefined,
+    tablaListado: undefined,
+
+    idTipoContenidoPadre : undefined,
 
     initialize: function (args) {
-
-        if (args.urlModelo == undefined)
-            alert("definir la url del modelo");
-        else
-            this.urlModelo = args.urlModelo;
-
+        this.idTipoContenidoPadre = args.idTipoContenidoPadre;
+        this.modulo = args.modulo;
         this.render();
     },
 
@@ -30,10 +29,10 @@ var ContenidoListarView = Backbone.View.extend({
     },
     //Carga los contenidos dell listado
     cargarContenidos: function () {
-        this.lista = new ContenidoCollection({ url: this.urlModelo });
+        this.lista = new ContenidoCollection();
         //listaContenidos.on("add", this.contenidoAgregado)
-	    
-        this.lista.fetch({ success: this.contenidosAgregados });
+        this.lista.on("sync", this.contenidosAgregados, this);
+        this.lista.cargarPorPadre(this.idTipoContenidoPadre);
         //this.lista = listaContenidos;
     },
     //Después de consultar los contenidos los carga en el template
@@ -55,7 +54,7 @@ var ContenidoListarView = Backbone.View.extend({
     },
 	
     crearContenido : function(){
-        App_Router.navigate("/admin/animales/crear", {trigger: true});
+        App_Router.navigate("/admin/"+this.modulo+"/crear", {trigger: true});
     },
     //Desactiva la vista despues
     desactivar: function () {

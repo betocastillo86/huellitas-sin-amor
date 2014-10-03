@@ -14,6 +14,8 @@ var AdminRouter = Backbone.Router.extend({
 
     alertaView: undefined,
 
+    idTipoContenidoPadre : 0,
+
 
     routes: {
         "admin/animales/listar":"listarAnimales",
@@ -29,20 +31,23 @@ var AdminRouter = Backbone.Router.extend({
     //Inicio Animales
     listarAnimales:function()
     {
+        this.idTipoContenidoPadre = 2;
         this.desactivarVistaActual();
-        this.listarAnimalView = new ContenidoListarView({ urlModelo: "/api/adminanimales" });
+        this.listarAnimalView = new ContenidoListarView({ idTipoContenidoPadre : this.idTipoContenidoPadre, modulo : "animales" });
         this.vistaActual = this.listarAnimalView;
         //this.app.cargarFuncionesFormularioPersiana();
     },
     editarAnimal: function (id) {
+       this.idTipoContenidoPadre = 2;
        this.desactivarVistaActual();
-       this.editarAnimalView = new ContenidoEditarView({ id: parseInt(id), url: "/api/adminanimales/" + id });
+       this.editarAnimalView = new ContenidoEditarView({ id: parseInt(id), idTipoContenidoPadre: this.idTipoContenidoPadre, modulo: "animales" });
        this.vistaActual = this.editarAnimalView;
        //this.app.cargarFuncionesFormularioPersiana();
     },
-    crearAnimal:  function (){
+    crearAnimal: function () {
+        this.idTipoContenidoPadre = 2;
         this.desactivarVistaActual();
-        this.editarAnimalView = new ContenidoEditarView({ id: 0, url: "/api/adminanimales"});
+        this.editarAnimalView = new ContenidoEditarView({ id: 0, idTipoContenidoPadre: this.idTipoContenidoPadre, modulo: "animales" });
         this.vistaActual = this.editarAnimalView;
         //this.app.cargarFuncionesFormularioPersiana();
     },
