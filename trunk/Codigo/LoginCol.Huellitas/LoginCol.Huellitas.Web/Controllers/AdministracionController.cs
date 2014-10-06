@@ -31,7 +31,7 @@ namespace LoginCol.Huellitas.Web.Controllers
                 case "animales/editar":
                 case "animales/crear":
                     vista = "Animales/Index.cshtml";
-                    ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales" };
+                    ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales", Titulo = "Administración de Animales" };
                     modeloAnimales.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
                     
                     modeloAnimales.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Animal);

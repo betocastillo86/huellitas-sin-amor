@@ -5,7 +5,8 @@
 
     events : {
         "click #BtnMostrarAgregarImagenContenido": "mostrarFormularioImagenNueva",
-        "click #BtnGuardarImagenContenido" : "agregarImagen"
+        "click #BtnGuardarImagenContenido": "agregarImagen",
+        "change #archivoImagenAdicional" : "validarContenidoArchivo"
     },
 
     idContenidoPadre : undefined,
@@ -15,6 +16,8 @@
     template: _.template($("#templateImagenesContenido").html()),
 
     templateFila: undefined,
+
+    app : undefined,
 
     //alertaView: undefined,
 
@@ -32,7 +35,8 @@
         
         this.lista = new ImagenCollection({ idContenido: args.id });
 
-        
+        this.app = new AppHuellitas({ el: this.el });
+
         this.render();
     },
     render: function () {
@@ -67,6 +71,10 @@
         var model = this.lista.findWhere({ ContenidoRelacionadoId: id });
         if (model != undefined)
             this.lista.eliminar(model);
+    },
+    validarContenidoArchivo : function()
+    {
+        return this.app.validarContenidoArchivoGeneral("archivoImagenAdicional");
     },
     cargarPropiedadesGaleria : function()
     {

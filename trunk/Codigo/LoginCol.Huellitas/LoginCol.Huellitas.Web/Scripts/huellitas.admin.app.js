@@ -54,6 +54,19 @@
     {
         console.log(texto);
     },
+    validarContenidoArchivoGeneral : function(idObj)
+    {
+        var extensionesValidas = /^.*\.(jpg|JPG)$/
+        var obj = $("#" + idObj);
+        if (!ValidarTamanoArchivo(obj, 3000000)) {
+            return false;
+        }
+
+        if (!ValidarExtensionArchivo(obj, extensionesValidas)) {
+            App_Router.alertaView.mostrar("Las extensiones no son validas");
+            return false;
+        }
+    },
     cargarFuncionesFormularioPersiana: function ()
     {
         $('.btn-close').click(function (e) {

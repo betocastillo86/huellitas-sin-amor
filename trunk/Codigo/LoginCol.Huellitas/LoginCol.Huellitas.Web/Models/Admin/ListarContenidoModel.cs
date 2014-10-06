@@ -14,6 +14,8 @@ namespace LoginCol.Huellitas.Web.Models.Admin
         }
         public string PrefijoAcciones { get; set; }
 
+        public string Titulo { get; set; }
+
         public ContenidoModel Contenido { get; set; }
     }
 }

@@ -38,11 +38,12 @@ var ContenidoListarView = Backbone.View.extend({
     //Después de consultar los contenidos los carga en el template
     contenidosAgregados: function (model, response, options)
     {
+        
         var tbodyListado = $("#tbodyListadoContenidos");
 	    
         if ($.fn.dataTable.isDataTable("#tableListadoContenidos"))
         {
-            this.tablaListado.fnDestroy();
+            $('#tableListadoContenidos').dataTable().fnDestroy();
             tbodyListado.html("");
         }
 	    

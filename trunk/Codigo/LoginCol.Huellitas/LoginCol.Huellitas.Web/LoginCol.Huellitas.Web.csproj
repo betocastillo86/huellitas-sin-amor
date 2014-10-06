@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
+    <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
@@ -336,6 +337,7 @@
     <Content Include="Images\Admin\thumb.png" />
     <Content Include="Images\Admin\uploadify-cancel.png" />
     <Content Include="Scripts\huellitas.admin.app.js" />
+    <Content Include="Scripts\huellitas.general.js" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\backbone.min.js" />
     <None Include="Scripts\libs\jquery.validate-vsdoc.js" />
