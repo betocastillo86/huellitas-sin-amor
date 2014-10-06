@@ -11,7 +11,9 @@
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
         "click #VerGaleriaContenido": "verGaleria",
-        "click #BtnGuardarImagen": "guardarImagen"
+        "click #BtnGuardarImagen": "guardarImagen",
+        "change #fileInput": "validarContenidoArchivo",
+        
 
     },
 
@@ -47,14 +49,7 @@
         this.model = new ContenidoModel();
         this.model.on("sync", this.mostrarContenido, this);
 
-
-        this.app.consola("Galeria de Contenido creada");
-        this.galeriaView = new GaleriaContenidoView({ id : args.id });
-        
         this.tipoContenido = new TipoContenidoModel();
-
-        this.app.consola("Galeria de Contenidos Relacionados creada");
-        this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: args.id });
 
         this.render(args);
     },
@@ -74,6 +69,11 @@
         else {
             this.mostrarContenido();
         }
+    },
+
+    validarContenidoArchivo : function()
+    {
+        return this.app.validarContenidoArchivoGeneral("fileInput");
     },
     mostrarContenido: function ()
     {
@@ -100,6 +100,7 @@
         this.$el.show();
         this.app.cargarFuncionesFormularioPersiana();
         this.app.recargarValidadores();
+        this.activarFuncionesEdicion(parseInt(this.model.get("ContenidoId")));
     },
     cargarImagenPrincipal: function()
     {
@@ -172,13 +173,8 @@
                 values[input.name] = input.value;
             })
 
-            //this.model.save(values, {
-            //    iframe: true,
-            //    files: $('#exampleInputFile'),
-            //    data: values
-            //});
-
-            this.model.save({}, {success : this.contenidoGuardado });
+            this.model.on("sync", this.contenidoGuardado, this);
+            this.model.save();
             
         }
         else {
@@ -189,12 +185,32 @@
         
         if (response.OperacionExitosa) {
             App_Router.alertaView.mostrar("Operación exitosa");
-            App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
+            //App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
+            this.desactivar();
         }
         else {
             App_Router.alertaView.mostrar("Ha ocurrido un error:"+response.MensajeError);
         }
         
+    },
+    //Cuando está creando no permite realizar algunas acciones
+    activarFuncionesEdicion : function(id)
+    {
+        if (id > 0) {
+            $("#divImagenPrincipal").show();
+            $("#VerGaleriaContenido").show();
+            
+
+            this.app.consola("Galeria de Contenido creada");
+            this.galeriaView = new GaleriaContenidoView({ id: id });
+
+            this.app.consola("Galeria de Contenidos Relacionados creada");
+            this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: id });
+        }
+        else {
+            $("#divImagenPrincipal").hide();
+            $("#VerGaleriaContenido").hide();
+        }
     },
     activarContenido : function()
     {
@@ -210,6 +226,7 @@
         
         App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
         $("#imgPrincipalContenido").empty();
+        if(this.contenidosRelacionadosView != undefined) this.contenidosRelacionadosView.desactivar();
         this.$el.hide();
         this.undelegateEvents();
         //this.remove();

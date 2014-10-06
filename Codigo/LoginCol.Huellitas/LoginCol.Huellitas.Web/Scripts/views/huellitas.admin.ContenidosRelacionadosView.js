@@ -71,6 +71,11 @@
             contenidoRelacionado.eliminar(idContenidoRelacionado);
         }        
     },
+    desactivar : function()
+    {
+        this.$el.empty();
+        this.undelegateEvents();
+    },
     contenidoRelacionadoEliminado: function (model)
     {
         this.app.consola("Eliminado contenido relacionado " + model.get("ContenidoRelacionadoId"));
