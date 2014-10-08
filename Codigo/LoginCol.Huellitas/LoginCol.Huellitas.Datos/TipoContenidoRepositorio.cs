@@ -48,6 +48,17 @@ namespace LoginCol.Huellitas.Datos
                         .Include(_ => _.Campos.Select(c => c.Campo).Select(c => c.Opciones))
                         .Where(_ => _.TipoContenidoId == id)
                         .FirstOrDefault();
+
+
+                    foreach (var campo in obj.Campos)
+                    {
+                        if (((TipoDatoCampo)campo.Campo.TipoDato).Equals(TipoDatoCampo.ConsultaSql) && !string.IsNullOrEmpty(campo.Campo.ConsultaSql))
+                        {
+                            campo.Campo.Opciones = db.Database.SqlQuery<OpcionCampo>(campo.Campo.ConsultaSql).ToList();
+                        }
+                    }
+
+                    
                 }
             }
             catch (Exception e)
@@ -89,6 +100,15 @@ namespace LoginCol.Huellitas.Datos
                        .Include(_ => _.TiposContenidos.Where(t => t.TipoContenidoId == id))
                        .Include(_ => _.Opciones)
                        .ToList();
+
+                   foreach (var campo in lista)
+                   {
+                       if (((TipoDatoCampo)campo.TipoDato).Equals(TipoDatoCampo.ConsultaSql) && !string.IsNullOrEmpty(campo.ConsultaSql))
+                       {
+                           campo.Opciones = db.Database.SqlQuery<OpcionCampo>(campo.ConsultaSql).ToList();
+                       }
+                   }
+
                 }
             }
             catch (Exception e)
@@ -122,5 +142,26 @@ namespace LoginCol.Huellitas.Datos
         }
 
 
+
+        public TipoRelacionContenido ObtenerTipoRelacionContenido(int idTipoRelacionContenido)
+        {
+            TipoRelacionContenido tipo = null;
+            
+            try
+            {
+
+                using (var db = new Repositorio())
+                {
+                    tipo = db.TiposRelacionContenidos
+                        .Where(t => t.TipoRelacionContenidoId.Equals(idTipoRelacionContenido)).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return tipo == null ? new TipoRelacionContenido() : tipo;
+        }
     }
 }

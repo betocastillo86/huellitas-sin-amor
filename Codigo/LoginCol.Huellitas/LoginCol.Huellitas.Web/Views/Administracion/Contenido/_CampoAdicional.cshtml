@@ -2,7 +2,7 @@
     <div class="form-group">
         <label><%= CampoNombre %></label>
         <div>
-            <% if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Relacional)) { %>
+            <% if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Relacional) || CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.ConsultaSql)) { %>
             <select id="idCampoAdicional_<%= CampoId %>" class="form-control">
 
                 <%
@@ -13,7 +13,6 @@
                       <%
                     }
                 %>
-
             </select>
             <% }
             else

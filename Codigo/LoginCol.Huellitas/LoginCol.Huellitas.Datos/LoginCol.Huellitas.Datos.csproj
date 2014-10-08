@@ -120,6 +120,10 @@
     <Compile Include="Migrations\201409152236129_Eliminado2.Designer.cs">
       <DependentUpon>201409152236129_Eliminado2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410080215407_RelacionTipoContenidoLimitado.cs" />
+    <Compile Include="Migrations\201410080215407_RelacionTipoContenidoLimitado.Designer.cs">
+      <DependentUpon>201410080215407_RelacionTipoContenidoLimitado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409152236129_Eliminado2.resx">
       <DependentUpon>201409152236129_Eliminado2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410080215407_RelacionTipoContenidoLimitado.resx">
+      <DependentUpon>201410080215407_RelacionTipoContenidoLimitado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

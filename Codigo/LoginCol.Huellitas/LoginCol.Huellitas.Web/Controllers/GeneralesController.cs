@@ -32,5 +32,18 @@ namespace LoginCol.Huellitas.Web.Controllers
             return Json(listado, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Retorna el listado de tipos de relacion que se pueden encontrar con un tipo de contenido
+        /// </summary>
+        /// <param name="id">Id del tipo de Contenido que se desea filtrar</param>
+        /// <returns></returns>
+        public JsonResult TiposRelacionesPorTipoContenido(int id)
+        {
+            TipoContenidoNegocio tipoNegocio = new TipoContenidoNegocio();
+            List<TipoRelacionContenidoModel> listado = tipoNegocio.ObtenerTiposDeRelacionContenido(id).Select(AutoMapper.Mapper.Map<TipoRelacionContenido, TipoRelacionContenidoModel>).ToList();
+            return Json(listado, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

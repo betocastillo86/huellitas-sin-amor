@@ -21,7 +21,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             //Vista que va cargar dependiendo de la URL
             string vista = "Index";
 
-            string[] partesUrl = queryValues.Split(new char[] { '/' });
+            string[] partesUrl = queryValues.ToLower().Split(new char[] { '/' });
 
             object modelo = null;
 
@@ -30,13 +30,22 @@ namespace LoginCol.Huellitas.Web.Controllers
                 case "animales/listar":
                 case "animales/editar":
                 case "animales/crear":
-                    vista = "Animales/Index.cshtml";
+                    vista = "Contenido/Index.cshtml";
                     ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales", Titulo = "Administración de Animales" };
                     modeloAnimales.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
-                    
                     modeloAnimales.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Animal);
                     modeloAnimales.Contenido.TiposRelacionContenido = new TipoContenidoNegocio().ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Animal);
                     modelo = modeloAnimales;
+                    break;
+                case "fundaciones/listar":
+                case "fundaciones/editar":
+                case "fundaciones/crear":
+                    vista = "Contenido/Index.cshtml";
+                    ListarContenidoModel modeloFundaciones = new ListarContenidoModel() { PrefijoAcciones = "fundaciones", Titulo = "Administración de Fundaciones" };
+                    modeloFundaciones.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
+                    modeloFundaciones.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Fundacion);
+                    modeloFundaciones.Contenido.TiposRelacionContenido = new TipoContenidoNegocio().ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Fundacion);
+                    modelo = modeloFundaciones;
                     break;
                 default:
                     modelo = new ListarContenidoModel();
@@ -51,8 +60,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             List<OpcionMenu> opcionesMenu = new List<OpcionMenu>();
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/admin/animales/listar" });
-            opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/Admin/Fundaciones/Listar" });
-            opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Usuarios", Vinculo = "/Admin/Usuarios/Listar" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Usuarios", Vinculo = "/admin/usuarios/listar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
 

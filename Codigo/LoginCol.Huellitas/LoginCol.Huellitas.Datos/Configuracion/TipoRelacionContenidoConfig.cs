@@ -13,6 +13,8 @@ namespace LoginCol.Huellitas.Datos.Configuracion
         public TipoRelacionContenidoConfig()
         {
             ToTable("TipoRelacionContenido");
+
+            HasRequired(tr => tr.TipoContenido).WithMany(tc => tc.TiposDeRelacionesDeContenido).WillCascadeOnDelete(false);
         }
     }
 }
