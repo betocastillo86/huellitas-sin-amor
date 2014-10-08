@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,13 @@ namespace LoginCol.Huellitas.Web.Controllers
         public List<ContenidoRelacionadoModel> Get(int idContenido, int idTipoContenido)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return contenidoNegocio.ObtenerContenidosRelacionados(idContenido, (TipoRelacionEnum)idTipoContenido)
+            return contenidoNegocio.ObtenerContenidosRelacionados(idContenido, idTipoContenido)
                 .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
                 .ToList();
         }
 
         [HttpPost]
-        public bool Post(ContenidoRelacionado modelo)
+        public ResultadoOperacion Post(ContenidoRelacionado modelo)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return contenidoNegocio.AgregarContenidoRelacionado(modelo);

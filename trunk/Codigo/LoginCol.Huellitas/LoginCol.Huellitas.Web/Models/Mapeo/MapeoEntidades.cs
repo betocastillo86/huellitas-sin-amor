@@ -44,6 +44,8 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             Mapper.CreateMap<OpcionCampo, OpcionCampoModel>();
 
+            Mapper.CreateMap<TipoRelacionContenido, TipoRelacionContenidoModel>();
+
             AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
         }
 

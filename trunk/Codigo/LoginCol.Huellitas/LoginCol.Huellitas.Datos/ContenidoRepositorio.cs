@@ -265,7 +265,7 @@ namespace LoginCol.Huellitas.Datos
             }
         }
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int tipoRelacion)
         {
             try
             {
@@ -273,14 +273,14 @@ namespace LoginCol.Huellitas.Datos
                 List<ContenidoRelacionado> listaRelacionados = null;
                 using (var db = new Repositorio())
                 {
-                    int tipoRelacionInt = Convert.ToInt32(tipoRelacion);
+                    
 
                     listaRelacionados = db.ContenidosRelacionados
                         .Include(c => c.ContenidoHijo)
                         .Include(c => c.ContenidoHijo.TipoContenido)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
-                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacionInt && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).ToList();
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).ToList();
                 }
 
                 //Iguala todos los contenidos hijos como los relacionados

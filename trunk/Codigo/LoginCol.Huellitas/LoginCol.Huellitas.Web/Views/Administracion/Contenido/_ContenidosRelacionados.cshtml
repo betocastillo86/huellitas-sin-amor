@@ -64,9 +64,9 @@
 
                             <div class="form-group">
                                 @Html.Label("Tipo de Relación")
-                                @Html.DropDownList("Relacionados_TipoRelacionContenido", new SelectList(Model.TiposRelacionContenido, "TipoRelacionContenidoId", "Nombre"), new { @class = "form-control" })
+                                <select id="Relacionados_TipoRelacionContenido" name="Relacionados_TipoRelacionContenido" class="form-control"></select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display:none">
                                 @Html.Label("Tipo de Contenido")
                                 <select id="Relacionados_TiposContenido" name="Relacionados_TiposContenido" class="form-control">
                                     <option>Seleccione</option>

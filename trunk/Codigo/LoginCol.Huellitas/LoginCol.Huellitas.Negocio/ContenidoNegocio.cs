@@ -128,12 +128,12 @@ namespace LoginCol.Huellitas.Negocio
 
         public List<ContenidoRelacionado> ObtenerImagenes(int idContenido)
         {
-            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, TipoRelacionEnum.Imagen);
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, (int)TipoRelacionEnum.Imagen);
         }
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, TipoRelacionEnum tipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int idTipoRelacion)
         {
-            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, tipoRelacion);
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion);
         }
         public ContenidoRelacionado ObtenerContenidoRelacionado(int idContenido, int idContenidoHijo, int idTipoRelacion)
         {
@@ -151,9 +151,44 @@ namespace LoginCol.Huellitas.Negocio
             return _contenidos.Value.EliminarContenidoRelacionado(idContenidoRelacionado);
         }
 
-        public bool AgregarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
+        public ResultadoOperacion AgregarContenidoRelacionado(ContenidoRelacionado contenidoRelacionado)
         {
-            return _contenidos.Value.AgregarContenidoRelacionado(contenidoRelacionado);
+            ResultadoOperacion respuesta = new ResultadoOperacion(true);
+
+            try
+            {
+                TipoContenidoNegocio negocioTipoContenido = new TipoContenidoNegocio();
+
+                //Consulta el detalle del nuevo tipo de relacion
+                TipoRelacionContenido tipoRelacion = negocioTipoContenido.ObtenerTipoRelacionContenido(contenidoRelacionado.TipoRelacionContenidoId);
+
+                //Cuenta cuantos contenidos relacionados hay por ese tipo
+                int cantidadRelacionados = ObtenerContenidosRelacionados(contenidoRelacionado.ContenidoId, tipoRelacion.TipoRelacionContenidoId).Count;
+
+                if (cantidadRelacionados >= tipoRelacion.MaximoRegistros && tipoRelacion.MaximoRegistros > 0)
+                {
+                    respuesta.OperacionExitosa = false;
+                    respuesta.MensajeError = "No es posible agregar más registros a este tipo de relación";
+                }
+                else
+                {
+                    if (!_contenidos.Value.AgregarContenidoRelacionado(contenidoRelacionado))
+                    {
+                        respuesta.OperacionExitosa = false;
+                        respuesta.MensajeError = "Ocurrio un error guardando, intente de nuevo";
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                respuesta.OperacionExitosa = false;
+                respuesta.MensajeError = "Ocurrio un error guardando, intente de nuevo";
+            }
+
+
+            return respuesta;
+            
         }
 
         /// <summary>
@@ -222,7 +257,7 @@ namespace LoginCol.Huellitas.Negocio
                                                 ContenidoHijoId = respuesta.Id,
                                                 ContenidoId = idContenidoPadre,
                                                 TipoRelacionContenidoId = (int)TipoRelacionEnum.Imagen
-                                            });
+                                            }).OperacionExitosa;
 
             }
 

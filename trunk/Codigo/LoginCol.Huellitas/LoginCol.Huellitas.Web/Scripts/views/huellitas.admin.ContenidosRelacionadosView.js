@@ -6,21 +6,25 @@
 
     idContenido: undefined,
 
+
     lista: undefined,
 
     templateFilaContenido: undefined,
 
     agregarContenidoView: undefined,
 
-    app : undefined,
+    app: undefined,
+
+
 
     initialize: function (args) {
         this.idContenido = args.id;
+        
         this.lista = new ContenidoRelacionadoCollection();
         this.lista.on("add", this.mostrarFilaContenido, this);
         this.lista.on("remove", this.contenidoRelacionadoEliminado, this);
         this.templateFilaContenido = _.template($("#templateTrContenidoRelacionado").html());
-        this.agregarContenidoView = new AgregarContenidoRelacionadoView({ id: args.id, parent: this, callback: "cargarContenidosRelacionadosPorTipo" });
+        this.agregarContenidoView = new AgregarContenidoRelacionadoView({ id: args.id, idTipoContenido : args.idTipoContenido, parent: this, callback: "cargarContenidosRelacionadosPorTipo" });
         this.app = new AppHuellitas({ el: this.el });
 
         this.listenTo(Backbone, 'contenido-relacionado-agregado', this.cargarContenidosRelacionadosPorTipo, this);
@@ -92,11 +96,19 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
 
     parent: undefined,
 
-    callback : undefined,
+    callback: undefined,
+
+    listaTipoRelaciones: undefined,
+
+    tipoRelacionContenido : undefined,
+
+    idTipoContenido: undefined,
 
     events: {
         "click #BtnGuardarContenidoRelacionado" : "guardarContenidoRelacionado",
-        "change #Relacionados_TiposContenido": "cargarContenidosPorTipo"
+        //"change #Relacionados_TiposContenido": "cargarContenidosPorTipo"
+        "change #Relacionados_TipoRelacionContenido": "cargarContenidosPorTipo"
+        
     },
 
     initialize: function (args) {
@@ -105,12 +117,21 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
             if(args.id != undefined)
                 this.idContenido = args.id;
 
+            if (args.idTipoContenido != undefined)
+                this.idTipoContenido = args.idTipoContenido;
+
             if (args.parent != undefined)
                 this.parent = args.parent;
 
             if (args.callback != undefined)
                 this.callback = args.callback;
         }
+
+
+        this.listaTipoRelaciones = new TipoRelacionContenidoCollection();
+        this.listaTipoRelaciones.on("sync", this.mostrarTiposDeRelaciones, this);
+        //Carga los tipos de relacion
+        this.listaTipoRelaciones.obtenerPorTipoContenido(this.idTipoContenido);
             
         this.render();
     },
@@ -146,11 +167,13 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
     //Inicio FILTRAR POR TIPO DE CONTENIDO
     listaContenidosFiltrados: undefined,
     cargarContenidosPorTipo: function () {
-        var tipoContenidoSeleccionado = $("#Relacionados_TiposContenido").val();
+        //var tipoContenidoSeleccionado = $("#Relacionados_TiposContenido").val();
+        this.tipoRelacionContenido = this.listaTipoRelaciones.findWhere({ TipoRelacionContenidoId: parseInt($("#Relacionados_TipoRelacionContenido").val()) });
         this.listaContenidosFiltrados = new ContenidoCollection({ url: "" });
         $("#Relacionados_Contenidos").empty();
         this.listaContenidosFiltrados.on("add", this.agregarContenidoALista, this);
-        this.listaContenidosFiltrados.cargarPorTipo(tipoContenidoSeleccionado);
+        //Despues de seleccionar el tipo de relacion, se cargan los contenidos que corresponden al tipo de contenido del tipo de relacion
+        this.listaContenidosFiltrados.cargarPorTipo(this.tipoRelacionContenido.get("TipoContenidoId"));
     },
     agregarContenidoALista: function (model) {
         $("#Relacionados_Contenidos").append("<option value='" + model.get("ContenidoId") + "'>" + model.get("Nombre") + "</option>");
@@ -166,9 +189,25 @@ var AgregarContenidoRelacionadoView = Backbone.View.extend({
             modelo.guardar(this.idContenido, idContenidoRelacionado, tipoRelacion);
         }
     },
-    contenidoGuardado : function()
+    mostrarTiposDeRelaciones: function () {
+        var ddlTipoRelacion = $("#Relacionados_TipoRelacionContenido");
+        ddlTipoRelacion.empty();
+        ddlTipoRelacion.append("<option value=''>-</option>");
+        _.each(this.listaTipoRelaciones, function (element, index, list) {
+            element = list.at(index);
+            ddlTipoRelacion.append("<option value='"+element.get("TipoRelacionContenidoId")+"'>"+element.get("Nombre")+"</option>");
+        });
+    },
+    contenidoGuardado : function(respuesta)
     {
-        Backbone.trigger('contenido-relacionado-agregado');
-        this.cerrar();
+        if (respuesta.get("OperacionExitosa")) {
+            Backbone.trigger('contenido-relacionado-agregado');
+            this.cerrar();
+        }
+        else {
+            App_Router.alertaView.mostrar(respuesta.get("MensajeError"));
+        }
+
+        
     }
 });

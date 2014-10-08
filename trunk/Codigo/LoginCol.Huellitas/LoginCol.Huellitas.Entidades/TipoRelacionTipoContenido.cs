@@ -16,6 +16,8 @@ namespace LoginCol.Huellitas.Entidades
 
         public int TipoRelacionContenidoId { get; set; }
 
+        
+
         public virtual TipoContenido TipoContenido { get; set; }
 
         public virtual TipoRelacionContenido TipoRelacionContenido { get; set; }

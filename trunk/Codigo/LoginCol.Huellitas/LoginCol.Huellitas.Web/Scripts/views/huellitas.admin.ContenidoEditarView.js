@@ -46,6 +46,8 @@
         this.zonasGeograficas = new ZonaGeograficaCollection();
         this.zonasGeograficas.on("add", this.mostrarCiudades, this);
 
+
+
         this.model = new ContenidoModel();
         this.model.on("sync", this.mostrarContenido, this);
 
@@ -86,22 +88,20 @@
         this.cargarImagenPrincipal();
            
         
-        ////En los casos de creación no carga los campos adicionales desde el comienzo
-        //if (this.model.get("ContenidoId") != "0")
-        //{
-        //    //this.tipoContenido.set("TipoContenidoId", this.model.get("TipoContenidoId"));
-            
-        //    //this.tipoContenido.once("change", this.cargarCamposAdicionales, this);
-            this.cambiarTipoContenido();
-        //}
+
+        this.cambiarTipoContenido();
+        
 
         this.cargarCiudades();
+
+        
 
         this.$el.show();
         this.app.cargarFuncionesFormularioPersiana();
         this.app.recargarValidadores();
         this.activarFuncionesEdicion(parseInt(this.model.get("ContenidoId")));
     },
+    
     cargarImagenPrincipal: function()
     {
         $("#imgPrincipalContenido").html((new ImagenContenidoView({ id: this.model.get("ContenidoId"), evitarCache : true })).el);
@@ -205,7 +205,7 @@
             this.galeriaView = new GaleriaContenidoView({ id: id });
 
             this.app.consola("Galeria de Contenidos Relacionados creada");
-            this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: id });
+            this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: id, idTipoContenido : this.model.get('TipoContenidoId') });
         }
         else {
             $("#divImagenPrincipal").hide();
