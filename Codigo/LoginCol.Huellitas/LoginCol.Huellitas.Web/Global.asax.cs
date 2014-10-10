@@ -26,7 +26,7 @@ namespace LoginCol.Huellitas.Web
             
             MapeoEntidades.CrearMapeo();
 
-            LoginCol.Huellitas.Web.Models.SessionModel.Usuario = new Models.UsuarioModel() {  UsuarioId = 1 };
+            
         }
     }
 }

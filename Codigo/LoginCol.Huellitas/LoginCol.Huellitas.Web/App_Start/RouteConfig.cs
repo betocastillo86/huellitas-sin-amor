@@ -21,15 +21,20 @@ namespace LoginCol.Huellitas.Web
                 constraints: new { controller = "Generales" }
             );
 
+
             routes.MapRoute(name: "AdministracionIndex",
                 url: "Admin/{action}",
                 defaults: new { controller = "Administracion", action = "Index" },
-                constraints: new { action = "(OpcionesMenu)" });
+                constraints: new { action = @"\b(?:(?!Submodulos)\w)+\b" });
 
             routes.MapRoute(name: "AdministracionSubmodulos",
                 url: "Admin/{*queryValues}",
-                defaults: new { controller = "Administracion", action = "Index" },
-                constraints: new { action = "(Index)" });
+                defaults: new { controller = "Administracion", action = "Submodulos" },
+                constraints: new { action = "(Submodulos)", queryValues = ".+" });
+            
+            
+
+            
 
             routes.MapRoute(name: "Admin",
                 url: "Admin/{controller}/{action}",

@@ -23,7 +23,7 @@ var AdminRouter = Backbone.Router.extend({
         "admin/animales/crear": "crearAnimal",
         "admin/fundaciones/listar": "listarFundaciones",
         "admin/fundaciones/editar/:id": "editarFundacion",
-        "admin/fundaciones/crear": "crearFundacion",
+        "admin/fundaciones/crear": "crearFundacion"
     },
     initialize : function(options)
     {
