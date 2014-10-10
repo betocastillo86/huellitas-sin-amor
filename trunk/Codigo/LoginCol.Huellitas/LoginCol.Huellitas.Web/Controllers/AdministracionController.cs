@@ -1,5 +1,7 @@
 ﻿using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Web.Infraestructure;
+using LoginCol.Huellitas.Web.Models;
 using LoginCol.Huellitas.Web.Models.Admin;
 using System;
 using System.Collections.Generic;
@@ -15,14 +17,12 @@ namespace LoginCol.Huellitas.Web.Controllers
     {
         //
         // GET: /Admin/
-
-        public ActionResult Index(string queryValues)
+        [HttpGet]
+        [Authorize]
+        public ActionResult Submodulos(string queryValues)
         {
-            //Vista que va cargar dependiendo de la URL
             string vista = "Index";
-
             string[] partesUrl = queryValues.ToLower().Split(new char[] { '/' });
-
             object modelo = null;
 
             switch (string.Format("{0}/{1}", partesUrl[0], partesUrl[1]))
@@ -56,12 +56,43 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult Index()
+        {
+            return View(new LoginModel());
+        }
+
+        [HttpPost]
+        public ActionResult Index(LoginModel modelo)
+        {
+            if (this.ModelState.IsValid)
+            {
+                Autenticacion objAutenticacion = new Autenticacion();
+                if (objAutenticacion.AutenticarUsuario(modelo.Usuario, modelo.Clave, true))
+                {
+                    return Redirect("/admin/animales/listar");
+                    //return RedirectToAction("Index", new { queryValues = "animales/listar" });
+                }
+                else
+                {
+                    modelo.Error = "Valide las credenciales de nuevo";
+                }
+            }
+
+            return View(modelo);
+        }
+
+        public ActionResult Salir()
+        {
+            Autenticacion.CerrarSesion();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public JsonResult OpcionesMenu()
         {
             List<OpcionMenu> opcionesMenu = new List<OpcionMenu>();
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/admin/animales/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
-            opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Usuarios", Vinculo = "/admin/usuarios/listar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
 

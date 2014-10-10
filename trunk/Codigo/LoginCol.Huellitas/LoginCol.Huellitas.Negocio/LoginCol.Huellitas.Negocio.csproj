@@ -53,6 +53,7 @@
     <Compile Include="NegocioBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoContenidoNegocio.cs" />
+    <Compile Include="UsuarioNegocio.cs" />
     <Compile Include="ZonaGeograficaNegocio.cs" />
   </ItemGroup>
   <ItemGroup>

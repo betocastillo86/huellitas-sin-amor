@@ -41,5 +41,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual List<Contenido> Contenidos { get; set; }
 
+        public bool EsAdministrador { get; set; }
+
     }
 }

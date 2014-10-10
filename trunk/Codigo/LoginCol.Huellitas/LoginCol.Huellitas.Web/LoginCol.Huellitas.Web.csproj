@@ -186,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
+    <Compile Include="Infraestructure\Autenticacion.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
     <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
@@ -196,7 +197,8 @@
     <Compile Include="Models\CampoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
-    <Compile Include="Models\ContenidoRelacionado.cs" />
+    <Compile Include="Models\ContenidoRelacionadoModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
     <Compile Include="Models\OpcionCampoModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
@@ -299,6 +301,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="e401.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
