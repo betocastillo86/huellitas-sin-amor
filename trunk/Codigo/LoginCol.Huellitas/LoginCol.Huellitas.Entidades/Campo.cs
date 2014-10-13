@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,15 @@ namespace LoginCol.Huellitas.Entidades
     public enum TipoDatoCampo
     { 
         Int = 1,
-        Bit,
-        Varchar,
-        Relacional,
-        ConsultaSql
+        Bit = 2,
+        Varchar = 3,
+
+        [Description("Tabla configurada para relacionar los campos")]
+        Relacional = 4,
+        [Description("Consulta SQl que trae clave y valor para relacionar")]
+        ConsultaSql = 5,
+        [Description("Multiples valores posibles para el campo")]
+        Multiple = 6
+
     }
 }

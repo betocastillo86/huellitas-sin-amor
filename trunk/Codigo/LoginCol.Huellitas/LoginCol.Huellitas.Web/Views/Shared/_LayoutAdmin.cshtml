@@ -33,7 +33,7 @@
     @Styles.Render("~/bundles/css")
     
 
-    
+    <script src="~/Home/ConstantesJs"></script>
     
 
     @*<link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
@@ -42,6 +42,8 @@
     <link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
     <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>*@
+
+    @Scripts.Render("~/bundles/huellitas")
 
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
@@ -79,13 +81,13 @@
             <!-- user dropdown starts -->
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> @LoginCol.Huellitas.Web.Models.SessionModel.Usuario.Nombres</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Profile</a></li>
                     <li class="divider"></li>
-                    <li><a href="/admin/salir">Logout</a></li>
+                    <li><a href="/admin/salir">Salir</a></li>
                 </ul>
             </div>
             <!-- user dropdown ends -->
@@ -110,27 +112,7 @@
             <!-- theme selector ends -->
 
             <ul class="collapse navbar-collapse nav navbar-nav top-menu">
-                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-star"></i> Dropdown <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <form class="navbar-search pull-left">
-                        <input placeholder="Search" class="search-query form-control col-md-10" name="query"
-                               type="text">
-                    </form>
-                </li>
+                <li><a href="/"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
             </ul>
 
         </div>
@@ -202,13 +184,12 @@
         <footer class="row">
             <p class="col-md-9 col-sm-9 col-xs-12 copyright">
                 &copy; <a href="http://usman.it" target="_blank">
-                    Muhammad
-                    Usman
-                </a> 2012 - 2014
+                    Login Colombia
+                </a> 2014
             </p>
 
             <p class="col-md-3 col-sm-3 col-xs-12 powered-by">
-                Powered by: <a href="http://usman.it/free-responsive-admin-template">Charisma</a>
+                Powered by: <a href="#">Login Colombia</a>
             </p>
         </footer>
 

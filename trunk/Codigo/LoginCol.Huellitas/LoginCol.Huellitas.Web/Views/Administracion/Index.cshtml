@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = ".: Administración de Huellitas sin hogar :.";
     Layout = null;
 }
 @model LoginCol.Huellitas.Web.Models.LoginModel
@@ -42,6 +42,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     @Scripts.Render("~/bundles/backbone")
+    @Scripts.Render("~/bundles/huellitas")
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -70,8 +71,8 @@
                     @if (string.IsNullOrEmpty(Model.Error))
                     {
                         <div class="alert alert-info">
-                        Please login with your Username and Password.
-                    </div>
+                        Ingrese su usuario y contraseña
+                        </div>
                     }
                     else
                     { 
@@ -121,9 +122,6 @@
     @Scripts.Render("~/bundles/chosen")
     @Scripts.Render("~/bundles/colorbox")
     @Scripts.Render("~/bundles/jqueryTemplate")
-
-
-    <script src="~/Scripts/huellitas.general.js"></script>
 
 </body>
 </html>

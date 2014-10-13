@@ -56,9 +56,10 @@
     },
     validarContenidoArchivoGeneral : function(idObj)
     {
-        var extensionesValidas = /^.*\.(jpg|JPG)$/
+        //var extensionesValidas = /^.*\.(jpg|JPG)$/
+        var extensionesValidas = Constantes.ExtensionesImagenes;
         var obj = $("#" + idObj);
-        if (!ValidarTamanoArchivo(obj, 3000000)) {
+        if (!ValidarTamanoArchivo(obj, Constantes.TamanoMaximoCargaArchivos)) {
             return false;
         }
 

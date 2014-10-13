@@ -247,7 +247,7 @@ namespace LoginCol.Huellitas.Negocio
         public ResultadoOperacion AgregarImagen(int idContenidoPadre, Contenido contenido, int idUsuario)
         { 
             contenido.TipoContenidoId = (int)TipoContenidoEnum.Imagen;
-            contenido.ZonaGeograficaId = Configuraciones.ZonaGeograficaPorDefecto;
+            contenido.ZonaGeograficaId = ParametrizacionNegocio.ZonaGeograficaPorDefecto;
             ResultadoOperacion respuesta = Crear(contenido, idUsuario);
 
             if (respuesta.OperacionExitosa)

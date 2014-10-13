@@ -45,6 +45,11 @@
         this.lista.fetch();
     },
     recargarImagenes : function(){
+
+        $("#Nombre-Imagen").val("");
+        $("#Descripcion-Imagen").val("");
+        $("#Archivo-Imagen").val("");
+
         $("#ulImagenes").empty();
         this.lista.fetch();
         //this.cargarPropiedadesGaleria();

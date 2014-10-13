@@ -26,6 +26,9 @@ namespace LoginCol.Huellitas.Web
                         "~/Scripts/libs/jquery.unobtrusive*",
                         "~/Scripts/libs/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/huellitas")
+                .Include("~/Scripts/huellitas.general.js")
+                .Include("~/Home/ConstantesJs"));
 
 
 
