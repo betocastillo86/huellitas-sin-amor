@@ -30,6 +30,8 @@ namespace LoginCol.Huellitas.Datos
         public DbSet<TipoRelacionContenido> TiposRelacionContenidos { get; set; }
         public DbSet<CampoTipoContenido> CamposTiposContenidos { get; set; }
 
+        public DbSet<Parametrizacion> Parametrizaciones { get; set; }
+
         public DbSet<TipoRelacionTipoContenido> TiposDeRelacionPorTiposDeContenidos { get; set; }
         
 
@@ -48,6 +50,7 @@ namespace LoginCol.Huellitas.Datos
             modelBuilder.Configurations.Add(new UsuarioConfig());
             modelBuilder.Configurations.Add(new CampoTipoContenidoConfig());
             modelBuilder.Configurations.Add(new OpcionCampoConfig());
+            modelBuilder.Configurations.Add(new ParametrizacionConfig());
 
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 

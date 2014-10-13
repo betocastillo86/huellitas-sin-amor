@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -50,8 +51,6 @@ namespace LoginCol.Huellitas.Web.Controllers
         [HttpPost]
         public async Task<ResultadoOperacion>  Post(int id)
         {
-
-            
             ResultadoOperacion respuesta = new ResultadoOperacion();
 
             if (!Request.Content.IsMimeMultipartContent())
@@ -64,15 +63,38 @@ namespace LoginCol.Huellitas.Web.Controllers
 
                 try
                 {
+                    
                     var provider = await Request.Content.ReadAsMultipartAsync<InMemoryMultipartFormDataStreamProvider>(new InMemoryMultipartFormDataStreamProvider());
+                    
                     System.Web.Mvc.FormCollection formData = provider.FormData;
+                    
                     IList<HttpContent> fileContentList = provider.Files;
                     
                     var fileDataList = provider.GetFiles();
+                    
                     var files = await fileDataList;
 
-                    ContenidoNegocio contenidoNegocio = new ContenidoNegocio(System.Web.HttpContext.Current.Server.MapPath("~"));
-                    respuesta = contenidoNegocio.GuardarImagen(id, files.FirstOrDefault().Data);
+                    if (files.FirstOrDefault().Size <= ParametrizacionNegocio.TamanoMaximoCargaArchivos)
+                    {
+                        Regex regex = new Regex(ParametrizacionNegocio.ExtensionesImagenes);
+                        
+                        if (regex.IsMatch(files.FirstOrDefault().FileName))
+                        {
+                            ContenidoNegocio contenidoNegocio = new ContenidoNegocio(System.Web.HttpContext.Current.Server.MapPath("~"));
+                            respuesta = contenidoNegocio.GuardarImagen(id, files.FirstOrDefault().Data);
+                        }
+                        else
+                        {
+                            respuesta.OperacionExitosa = false;
+                            respuesta.MensajeError = "La extensión del archivo no es valida";
+                        }
+                    }
+                    else
+                    {
+                        respuesta.OperacionExitosa = false;
+                        respuesta.MensajeError = "El archivo sobrepasa el tamaño valido";
+                    }
+                    
                 }
                 catch (Exception e)
                 {

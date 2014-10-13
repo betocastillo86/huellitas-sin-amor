@@ -140,11 +140,24 @@
         this.mostrarCamposAdicionales();
     },
     mostrarCamposAdicionales: function () {
-        
+        var camposAdicionalesTipo = this.tipoContenido.get("Campos");
+
         _.each(this.model.get("Campos"), function (element, index, list) {
-            element = list[index];
-            var inputCampoAdicional = $("#idCampoAdicional_" + element.CampoId);
-            inputCampoAdicional.val(element.Valor);
+            
+            var tipo = _.findWhere(camposAdicionalesTipo, { CampoId: element.CampoId }).CampoTipoDato;
+
+            //Si es de seleccion multiple checkea los valores
+            if (tipo == 6) {
+                var inputCampoAdicional = $("input[name='idCampoAdicionalMultiple_"+element.CampoId+"'][value='" + element.Valor + "']");
+                inputCampoAdicional.prop("checked", true);
+            }
+            else {
+                element = list[index];
+                var inputCampoAdicional = $("#idCampoAdicional_" + element.CampoId);
+                inputCampoAdicional.val(element.Valor);
+            }
+
+            
         });
     },
     obtenerCamposAdicionales: function () {
@@ -154,8 +167,36 @@
         var app = this.app;
 
         _.each($("#divCamposAdicionales :input"), function (element, index, list) {
-            element = list[index];
-            camposAdicionales.push({ CampoId: app.obtenerIdDesdeCampo(element.id), Valor: $(element).val() });
+            element = $(list[index]);
+
+            //busca el id del campo
+            var idCampo = app.obtenerIdDesdeCampo(element.attr("id"));
+
+            var guardarCampo = true;
+
+            //Si el de opcion multiple se debe validar si el elmento está checkeado para agregarlo o no
+            if (element.attr("id").indexOf('Multiple') > 0)
+            {
+                guardarCampo = element.is(":checked");
+            }
+
+            if (guardarCampo)
+            {
+                camposAdicionales.push({ CampoId: idCampo, Valor: element.val() });
+
+                ////busca en el listado ya adicionado si ese campo ya existe para sumarle un valor
+                //var campoEncontrado = _.findWhere(camposAdicionales, { CampoId: idCampo })
+                ////Si el campo no está lo agrega
+                //if (campoEncontrado == undefined) {
+                //    camposAdicionales.push({ CampoId: idCampo, Valor: element.val() });
+                //}
+                //else {
+                //    //Si el campo ya existe le adiciona una de las opciones
+                //    campoEncontrado.Valor = campoEncontrado.Valor + "," + element.val();
+                //}
+            }
+            
+
         });
 
         return camposAdicionales;

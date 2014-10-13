@@ -48,47 +48,67 @@ namespace LoginCol.Huellitas.Datos
             }   
         }
 
-        private void GuardarCamposAdicionales(int id, List<ValorCampo> camposAdicionales)
+        /// <summary>
+        /// Guarda la información de los campos adicionales
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="camposAdicionales"></param>
+        /// <returns></returns>
+        private bool GuardarCamposAdicionales(int id, List<ValorCampo> camposAdicionales)
         {
-            List<ValorCampo> camposBD = ObtenerCampos(id);
 
-            using (var db = new Repositorio())
+            try
             {
-                foreach (var campo in camposAdicionales)
+                List<ValorCampo> camposBD = ObtenerCampos(id);
+                
+                using (var db = new Repositorio())
                 {
-                    ValorCampo campoBD = camposBD.Where(_ => _.CampoId == campo.CampoId).FirstOrDefault();
+                    //Se deben eliminar todas las opciones de campo multiple para poder ser insertadas de nuevo
+                    db.ValoresCampos.RemoveRange(db.ValoresCampos.Where(_ => _.Campo.TipoDato == TipoDatoCampo.Multiple && _.ContenidoId == id));
+                    
+                    //db.SaveChanges();
 
-                    //Si el campo no existe en Base de datos lo agrega
-                    if (campoBD == null)
+                    foreach (var campo in camposAdicionales)
                     {
-                        
-                        //solo cuando el valor es diferente de vacio
-                        if (!string.IsNullOrEmpty(campo.Valor))
-                            db.ValoresCampos.Add(campo);
-                        
-                    }
-                    else
-                    {
-                        campoBD.Valor = campo.Valor;
+                        ValorCampo campoBD = camposBD.Where(_ => _.CampoId == campo.CampoId && _.Campo.TipoDato != TipoDatoCampo.Multiple).FirstOrDefault();
 
-                        if (string.IsNullOrEmpty(campo.Valor))
+                        //Si el campo no existe en Base de datos lo agrega
+                        if (campoBD == null)
                         {
-                            db.ValoresCampos.Remove(campoBD);
-                            ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Deleted);
+
+                            //solo cuando el valor es diferente de vacio
+                            if (!string.IsNullOrEmpty(campo.Valor))
+                                db.ValoresCampos.Add(campo);
+
                         }
                         else
                         {
-                            db.ValoresCampos.Attach(campoBD);
-                            ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Modified);
+                            campoBD.Valor = campo.Valor;
+
+                            if (string.IsNullOrEmpty(campo.Valor))
+                            {
+                                db.ValoresCampos.Remove(campoBD);
+                                ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Deleted);
+                            }
+                            else
+                            {
+                                db.ValoresCampos.Attach(campoBD);
+                                ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(campoBD, EntityState.Modified);
+                            }
                         }
                     }
+
+
+                    db.SaveChanges();
                 }
 
-                
-                db.SaveChanges();
+                return true;
             }
-
-           
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
         }
 
         public bool Eliminar(int id)

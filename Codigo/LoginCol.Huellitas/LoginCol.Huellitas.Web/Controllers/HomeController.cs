@@ -3,6 +3,7 @@ using LoginCol.Huellitas.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -42,6 +43,16 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return File(Server.MapPath(contenidoNegocio.ObtenerRutaImagenPrincipal(id, TamanoImagenEnum.Grande.ToEnum(tamano))), "gif");
+        }
+
+        public JavaScriptResult ConstantesJs()
+        {
+            StringBuilder js = new StringBuilder();
+            js.Append("var Constantes = { ");
+            js.AppendFormat("ExtensionesImagenes : {0}", ParametrizacionNegocio.ExtensionesImagenes);
+            js.AppendFormat(", TamanoMaximoCargaArchivos : '{0}'", ParametrizacionNegocio.TamanoMaximoCargaArchivos);
+            js.Append(" }");
+            return JavaScript(js.ToString());
         }
 
         //[HttpGet]

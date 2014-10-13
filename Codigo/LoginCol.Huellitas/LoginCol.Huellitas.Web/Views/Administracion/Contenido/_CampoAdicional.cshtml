@@ -3,21 +3,31 @@
         <label><%= CampoNombre %></label>
         <div>
             <% if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Relacional) || CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.ConsultaSql)) { %>
-            <select id="idCampoAdicional_<%= CampoId %>" class="form-control">
+                <select id="idCampoAdicional_<%= CampoId %>" class="form-control">
 
-                <%
-                    for(var i = 0; i < CampoOpciones.length ; i++)
-                    { %>
+                    <%
+                        for(var i = 0; i < CampoOpciones.length ; i++)
+                        { %>
                       
-                      <option value="<%= CampoOpciones[i].OpcionId %>"><%= CampoOpciones[i].Texto %></option>
-                      <%
-                    }
-                %>
-            </select>
+                          <option value="<%= CampoOpciones[i].OpcionId %>"><%= CampoOpciones[i].Texto %></option>
+                          <%
+                        }
+                    %>
+                </select>
+            <% } 
+            else if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Bit)){ %>
+                <input type="checkbox" id="idCampoAdicional_<%= CampoId %>" class="form-control" />    
             <% }
-            else
-            { %>
-            <input type="text" id="idCampoAdicional_<%= CampoId %>" class="form-control" />
+            else if(CampoTipoDato == @((int)LoginCol.Huellitas.Entidades.TipoDatoCampo.Multiple)){
+            
+                for(var i = 0; i < CampoOpciones.length ; i++)
+                { %>
+                    <b><%= CampoOpciones[i].Texto %></b> 
+            <input type="checkbox" id="idCampoAdicionalMultiple<%=i%>_<%= CampoId %>" value="<%= CampoOpciones[i].OpcionId %>" name="idCampoAdicionalMultiple_<%= CampoId %>" /> 
+                <% }
+            }
+            else { %>
+                <input type="text" id="idCampoAdicional_<%= CampoId %>" class="form-control" />
             <% } %>
         </div>
     </div>
