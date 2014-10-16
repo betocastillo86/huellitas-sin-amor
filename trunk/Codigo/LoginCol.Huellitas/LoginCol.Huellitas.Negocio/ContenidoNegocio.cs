@@ -20,13 +20,13 @@ namespace LoginCol.Huellitas.Negocio
             _contenidos = new Lazy<ContenidoRepositorio>(false);
         }
         
-        public  Lazy<ContenidoRepositorio> _contenidos { get; set; }
+        private  Lazy<ContenidoRepositorio> _contenidos { get; set; }
 
 
 
         public List<Contenido> ObtenerPorTipo(int tipoContenido)
         {
-            return ObtenerPorTipo((int)tipoContenido);
+            return ObtenerPorTipo((int)tipoContenido, false);
         }
 
         public List<Contenido> ObtenerPorTipo(int idTipoContenido, bool esPadre)

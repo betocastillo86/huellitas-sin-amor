@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web.Mvc;
 
 namespace LoginCol.Huellitas.Web.Controllers
@@ -44,6 +45,18 @@ namespace LoginCol.Huellitas.Web.Controllers
             return Json(listado, JsonRequestBehavior.AllowGet);
         }
 
+        public JavaScriptResult ConstantesJs()
+        {
+            StringBuilder js = new StringBuilder();
+            js.Append("var Constantes = { ");
+            js.AppendFormat("ExtensionesImagenes : {0}", ParametrizacionNegocio.ExtensionesImagenes);
+            js.AppendFormat(", TamanoMaximoCargaArchivos : '{0}'", ParametrizacionNegocio.TamanoMaximoCargaArchivos);
+            js.AppendFormat(", CampoGeneroId : '{0}'", ParametrizacionNegocio.CampoGeneroId);
+            js.AppendFormat(", CampoColorId : '{0}'", ParametrizacionNegocio.CampoColorId);
+            js.AppendFormat(", CampoTamanoId : '{0}'", ParametrizacionNegocio.CampoTamanoId);
+            js.Append(" }");
+            return JavaScript(js.ToString());
+        }
 
     }
 }

@@ -38,5 +38,11 @@ namespace LoginCol.Huellitas.Negocio
         public static string ExtensionesImagenes { get { return String("ExtensionesImagenes"); } }
 
         public static int ZonaGeograficaPorDefecto { get { return Int("ZonaGeograficaPorDefecto"); } }
+
+        public static int CampoGeneroId { get { return Int("CampoGeneroId"); } }
+
+        public static int CampoColorId { get { return Int("CampoColorId"); } }
+
+        public static int CampoTamanoId { get { return Int("CampoTamanoId"); } }
     }
 }

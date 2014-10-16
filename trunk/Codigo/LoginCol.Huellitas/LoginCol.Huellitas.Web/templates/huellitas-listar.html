@@ -1,0 +1,36 @@
+﻿<section id="first" class="conteFormCaso slide">
+    <div class="container clearfix">
+        <h2>ENCUENTRA TU HUELLITA</h2>
+        <h3>SOLO BUSCA POR LAS CARACTERISTICAS DEL QUE QUISIERAS FUERA TU HUELLITA</h3>
+        <form>
+            <select id="ddlGenero" class="grid_3">
+            </select>
+            <select id="ddlColor" class="grid_3">
+            </select>
+            <select id="ddlTamano" class="grid_3">
+            </select>
+            <select id="ddlEdad" class="grid_3 omega">
+                <option>-</option>
+                <% for (var iEdad; iEdad < 20 ; iEdad++)
+                { %>
+                   <option><%=iEdad%></option>
+                <% } %>
+            </select>
+
+            <div class="grid_3">
+                <input class="check" type="checkbox" />
+                <span>CONVIVE CON MÁS PERROS</span>
+            </div>
+            <div class="grid_3">
+                <input class="check" type="checkbox" />
+                <span>CONVIVE CON NIÑOS</span>
+            </div>
+            <div class="grid_3 omega">
+                <input class="check" type="checkbox" />
+                <span>CONVIVE CON ANCIANOS</span>
+            </div>
+            <br />
+            <div class="btn">ENVIAR</div>
+        </form>
+    </div>
+</section>

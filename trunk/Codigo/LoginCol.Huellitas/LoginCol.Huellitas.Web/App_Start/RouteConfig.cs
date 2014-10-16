@@ -22,6 +22,8 @@ namespace LoginCol.Huellitas.Web
             );
 
 
+            #region Admin
+
             routes.MapRoute(name: "AdministracionIndex",
                 url: "Admin/{action}",
                 defaults: new { controller = "Administracion", action = "Index" },
@@ -32,13 +34,14 @@ namespace LoginCol.Huellitas.Web
                 defaults: new { controller = "Administracion", action = "Submodulos" },
                 constraints: new { action = "(Submodulos)", queryValues = ".+" });
             
-            
-
-            
-
             routes.MapRoute(name: "Admin",
                 url: "Admin/{controller}/{action}",
                 defaults: new { controller = "Animales", action = "Index" });
+
+
+            #endregion
+
+            #region Imagenes
 
             routes.MapRoute(name: "ImagenesPorId",
               url: "img/{id}/{tamano}",
@@ -50,14 +53,27 @@ namespace LoginCol.Huellitas.Web
               defaults: new { controller = "Home", action = "Imagen", tamano = "mini" },
               constraints: new { action = "Imagen", controller = "Home", tamano = ("mini|medium|big"), nombre = new ContenidoRutaConstraint() });
 
-            
+            #endregion
+
+            #region Front
+
+            //routes.MapRoute(
+            //    name: "BackboneDefault",
+            //    url: "{*queryvalues}",
+            //    defaults: new { controller = "Home", action = "Index" },
+            //    constraints: new { controller = "(Home)", queryvalues = "(Index|huellitas)" }
+            //);
+
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                constraints: new { controller = "(Home)" }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            #endregion
+
+            
         }
     }
 }

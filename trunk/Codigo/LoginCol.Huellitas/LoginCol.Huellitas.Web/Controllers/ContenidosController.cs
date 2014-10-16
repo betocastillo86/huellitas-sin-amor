@@ -8,23 +8,25 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Linq;
 using LoginCol.Huellitas.Web.Models;
+using System.Collections.Generic;
 namespace LoginCol.Huellitas.Web.Controllers
 {
     public class ContenidosController : ApiController
     {
-        ////
-        //// GET: /Contenidos/
+        
+        [HttpGet]
+        public List<ContenidoBaseModel> Get()
+        {
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            return nContenido.ObtenerPorTipo(4).Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
+        }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
-        public HttpResponseMessage Get()
+        public List<ContenidoBaseModel> Perros()
         {
-            //return Request.CreateResponse(HttpStatusCode.OK, new ContenidosNegocio().ObtenerPorTipo(TipoContenidoEnum.Animal).Select(Mapper.Map<Contenido, ContenidoModel>).ToList());
-            return null;
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            return nContenido.ObtenerPorTipo(4).Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
         }
 
     }

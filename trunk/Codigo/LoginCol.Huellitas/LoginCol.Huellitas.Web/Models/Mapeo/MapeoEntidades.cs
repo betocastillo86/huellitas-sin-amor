@@ -46,8 +46,22 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             Mapper.CreateMap<TipoRelacionContenido, TipoRelacionContenidoModel>();
 
+            Mapper.CreateMap<Campo, CampoModel>()
+                .BeforeMap(ConvertCampoToCampoModel);
+
             AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
+
         }
+
+        private static void ConvertCampoToCampoModel(Campo obj, CampoModel model)
+        {
+            model.CampoNombre = obj.Nombre;
+            model.CampoOpciones = obj.Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
+            model.CampoTipoDato = obj.TipoDato;
+        }
+
+
+        
 
         private static void AntesConvertirContenido(Contenido obj, ContenidoModel model)
         {

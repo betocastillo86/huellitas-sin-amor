@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CampoNegocio.cs" />
     <Compile Include="ContenidoNegocio.cs" />
     <Compile Include="NegocioBase.cs" />
     <Compile Include="ParametrizacionNegocio.cs" />
