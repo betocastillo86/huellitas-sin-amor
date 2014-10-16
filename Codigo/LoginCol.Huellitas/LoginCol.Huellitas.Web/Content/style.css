@@ -1,0 +1,440 @@
+/* Global */
+
+body {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #8a8683;
+	background:url(../images/bkg_azul.png) repeat;
+}
+img {
+	max-width: 100%;
+}
+a:link {
+	color: #f68f67;
+	text-decoration: none;
+}
+a:hover {
+	color: #bde2df;
+	text-decoration: none;
+}
+a:visited {
+	color: #f68f67;
+	text-decoration: none;
+}
+.color1{
+	background:#304A6F;
+	}
+.color2{
+	background:#EF525B;
+	}
+.color3{
+	background:#FBB000;
+	}
+.color4{
+	background:#529AD9;
+	}
+p{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+	margin:0;
+	padding:8px 0;
+	line-height:140%;
+	}
+h2{
+	color:#FFF;
+	font-size:40px;
+	font-weight:700;
+	line-height:1;
+	}
+br{
+	clear:both !important;
+	}
+.no-margin{
+	margin:0 !important;
+	}
+.no-padding{
+	padding:0 !important;
+	}
+header{
+	position:fixed !important;
+	top:0;
+	width:100%;
+	background:url(../images/bkg_gris.png) repeat;
+	}
+/* Navigation */
+#logo {
+	text-align: center;
+	margin: 10px 0;
+	background:url(../images/logo.svg) no-repeat center;
+	height:90px;
+	width:161px;
+}
+#first{
+	margin:110px 0 0;
+	}
+/* General Slides */ 
+
+.slide {
+	background-attachment: fixed !important;
+	width:100%;
+	height:auto;
+	position: relative;
+	padding:50px 0;
+}
+/* Slide 1 */ 
+
+#slide1 {
+	background-color:#E5FDFF;
+}
+#slide1 h1 {
+	font-size: 3.8em;
+	letter-spacing: -3px;
+	line-height: 0px;
+	color:#8a8683;
+	font-weight: 700;
+}
+#slide1 h2 {
+	font-size: 2em;
+	color: #8a8683;
+	line-height: 0px;
+	padding-bottom:20px;
+	font-weight: 400;
+}
+/* Slide 2 */ 
+
+#slide2 {
+	background-image:url(../images/bkg_azul.png);
+	background-color:#f68f67;
+	color:#ffffff;
+}
+/*home*/
+.conteBien{
+	}
+.conteBien h2{
+	color:#FFF;
+	font-size:40px;
+	font-weight:700;
+	line-height:1;
+	}
+.conteBien h3{
+	color:#FF8A8D;
+	font-size:25px;
+	font-weight:400;
+	line-height:2;
+	margin:0;
+	}
+.cajax3{
+	background:#3F77BF;
+}
+.cajax3 .caja_icon{
+	text-align:center;
+	color:#FFF;
+	font-size:110px;
+	line-height:1;
+	}
+.parrafo h3{
+	font-size:25px;
+	font-weight:700;
+	line-height:1;
+	color:#FFF;
+	}
+.parrafo p{
+	text-align:justify;
+	font-size:18px;
+	line-height:140%;
+	}
+.cajax3 a{
+	width:130px;
+	background:#EF525B;
+	color:#FFF;
+	}
+.btn{
+	text-align:center;
+	height:24px;
+	padding:8px 0 7px;
+	display:block;
+	float:left;
+	margin-right:10px;
+	font-size:16px;
+	font-weight:700;
+	}
+.conteFunda{
+	}
+.conteFunda h2{
+	color:#FFF;
+	font-size:40px;
+	font-weight:700;
+	line-height:1;
+	}
+.conteFunda ul{
+	margin:0;
+	padding:0;
+	}
+.conteFunda ul li{
+	height:80px;
+	cursor:pointer;
+	}
+.conteConta{
+	}
+.conteConta .bannerDona{
+	background:url(../images/banner_dona.jpg) no-repeat center;
+	width:auto;
+	height:420px;
+	margin:0 20px 0 0;
+	}
+.bannerDona .tit{
+	font-size:60px;
+	color: #fff;
+    font-weight: 300;
+    line-height: 1;
+	padding:20px;
+	}
+.bannerDona .parraDona{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:20px;
+	line-height:140%;
+	margin:0 20px 20px;
+	width:70%;
+	}
+.bannerDona .btn{
+	background:#ef525b;
+    color: #fff;
+    width: 130px;
+	margin:0 0 0 10px;
+	}
+form{
+	width:100%;
+	}
+form h2{
+	font-size:25px;
+	color: #fff;
+    font-weight: 700;
+    line-height: 1;
+	}
+form h3{
+	color: #ff8a8d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2;
+    margin: 0;
+	}
+form input{
+	font-family: 'Oswald', sans-serif;
+	display:block;
+	border:none;
+	padding:5px 10px;
+	color:#304A6F;
+	text-align:left;
+	font-size:16px;
+	font-weight:300;
+	}
+form select{
+	font-family: 'Oswald', sans-serif;
+	display:block;
+	border:none;
+	padding:5px 10px;
+	color:#304A6F;
+	text-align:left;
+	font-size:16px;
+	font-weight:300;
+	}
+form textarea{
+	font-family: 'Oswald', sans-serif;
+	display:block;
+	border:none;
+	padding:5px 10px;
+	margin:10px 0 20px;
+	color:#304A6F;
+	text-align:left;
+	font-size:16px;
+	font-weight:300;
+	width:calc(100% - 20px);
+	height:120px;
+	}
+form input.check{
+	width:35px;
+	height:35px;
+	background:#FFF;
+	border:1px solid #3F77BF;
+	display:inline-block;
+	}
+form .btn{
+	float:left;
+	background:#ef525b;
+    color: #fff;
+    width: 130px;
+	}
+/*fin home*/
+/*casos*/
+.conteFormCaso{
+	background:url(../images/bkg_amarillo.png) repeat;
+	}
+.conteFormCaso h3{
+	color:#3F77BF;
+	font-size: 25px;
+    font-weight: 400;
+    line-height: 2;
+    margin: 0;
+	}
+.conteGaleria{
+	background:url(../images/bkg_gris.png) repeat;
+	}
+.cajaCaso{
+	background-size:100%;
+	width:100%;
+	min-height:300px;
+	}
+.cajaCaso article{
+	width:260px;
+	min-height:220px;
+	height:auto;
+	float:right;
+	padding:60px 20px 20px;
+	}
+article h3{
+	font-size:25px;
+	font-weight:700;
+	color:#FFF;
+	line-height:1;
+	}
+article h4{
+	font-size:16px;
+	font-weight:400;
+	color:#FFF;
+	line-height:2;
+	}
+article p{
+	font-size:14px;
+	}
+article .btn{
+	color: #fff;
+    width: 130px;
+	}
+.c_tipo1{
+	background: rgba(49, 73, 114, 0.9);
+	}
+.c_tipo1 .btn{
+	background:#304A6F;
+	}
+.c_tipo2{
+	background: rgba(234, 84, 89, 0.9);
+	}
+.c_tipo2 .btn{
+	background:#EF525B;
+	}
+.c_tipo3{
+	background: rgba(250, 177, 0, 0.9);
+	}
+.c_tipo3 .btn{
+	background:#FBB000;
+	}
+.c_tipo4{
+	background: rgba(86, 153, 222, 0.9);
+	}
+.c_tipo4 .btn{
+	background:#529AD9;
+	}
+/*fin casos*/
+/*fundaciones*/
+.conte_fundaciones{
+	background:url(../images/bkg_amarillo.png) repeat;
+	}
+.cajaFunda{
+	}
+.cajaFunda article{
+	width:calc(100% - 40px);
+	height:auto;
+	padding:20px;
+	}
+.footerFunda{
+	width:100%;
+	height:160px;
+	}
+.footerFunda .img{
+	float:left;
+	width:50%;
+	height:100%;
+	background-position:center;
+	background-size:100px;
+	}
+article p.scroll{
+	overflow-y:scroll;
+	height:105px;
+	}
+/*fin fundaciones*/
+/*footer*/
+footer{
+	width:100%;
+	margin:40px 0;
+	}
+footer .redes{
+	width:250px;
+	margin:0 auto;
+	height:auto;
+	}
+.redes a{
+	width:40px;
+	height:40px;
+	border-radius:100%;
+	display:block;
+	float:left;
+	margin:0 10px;
+	}
+a.twt{
+	background:#87CFE0;
+	text-align:center;
+	}
+a.fb{
+	background:#6982B7;
+	text-align:center;
+	}
+a.youtube{
+	background:#FF8A8E;
+	text-align:center;
+	}
+a.blog{
+	background:#FFCE6F;
+	text-align:center;
+	}
+/*fin footer*/
+/* Slide 3 */ 
+#slide3 {
+	background:url(../images/bkg_rosa.png) repeat;
+}
+/* Slide 4 */
+#slide4 {
+	background:url(../images/bkg_azul.png) repeat;
+	color:#FFF;
+}
+/* Tablet */
+@media screen and (max-width: 1024px) {
+#logo {
+	width: 100%;
+	text-align: center;
+}
+.slide {
+	background-attachment: fixed;
+	width:100%;
+	position: relative;
+	padding:150px 0;
+}
+}
+
+
+
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+#logo {
+	width: 100%;
+	text-align: center;
+}
+.slide {
+	background-attachment: fixed;
+	width:100%;
+	position: relative;
+	padding:150px 0;
+}
+
+}

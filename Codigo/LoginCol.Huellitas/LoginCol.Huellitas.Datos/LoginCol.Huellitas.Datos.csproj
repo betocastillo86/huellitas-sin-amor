@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalesRepositorio.cs" />
+    <Compile Include="CampoRepositorio.cs" />
     <Compile Include="Configuracion\CampoConfig.cs" />
     <Compile Include="Configuracion\CampoTipoContenidoConfig.cs" />
     <Compile Include="Configuracion\ComentarioConfig.cs" />

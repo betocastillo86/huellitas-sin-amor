@@ -12,7 +12,13 @@ namespace LoginCol.Huellitas.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string queryValues)
+        {
+            
+            return View();
+        }
+
+        public ActionResult huellitas()
         {
             return View();
         }
@@ -45,15 +51,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             return File(Server.MapPath(contenidoNegocio.ObtenerRutaImagenPrincipal(id, TamanoImagenEnum.Grande.ToEnum(tamano))), "gif");
         }
 
-        public JavaScriptResult ConstantesJs()
-        {
-            StringBuilder js = new StringBuilder();
-            js.Append("var Constantes = { ");
-            js.AppendFormat("ExtensionesImagenes : {0}", ParametrizacionNegocio.ExtensionesImagenes);
-            js.AppendFormat(", TamanoMaximoCargaArchivos : '{0}'", ParametrizacionNegocio.TamanoMaximoCargaArchivos);
-            js.Append(" }");
-            return JavaScript(js.ToString());
-        }
+        
 
         //[HttpGet]
         //public string Comprar()

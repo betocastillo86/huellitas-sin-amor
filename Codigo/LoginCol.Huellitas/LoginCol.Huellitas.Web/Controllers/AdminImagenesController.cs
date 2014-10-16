@@ -78,16 +78,16 @@ namespace LoginCol.Huellitas.Web.Controllers
                     {
                         Regex regex = new Regex(ParametrizacionNegocio.ExtensionesImagenes);
                         
-                        if (regex.IsMatch(files.FirstOrDefault().FileName))
-                        {
-                            ContenidoNegocio contenidoNegocio = new ContenidoNegocio(System.Web.HttpContext.Current.Server.MapPath("~"));
-                            respuesta = contenidoNegocio.GuardarImagen(id, files.FirstOrDefault().Data);
-                        }
-                        else
-                        {
-                            respuesta.OperacionExitosa = false;
-                            respuesta.MensajeError = "La extensión del archivo no es valida";
-                        }
+                        //if (regex.IsMatch(files.FirstOrDefault().FileName))
+                        //{
+                        ContenidoNegocio contenidoNegocio = new ContenidoNegocio(System.Web.HttpContext.Current.Server.MapPath("~"));
+                        respuesta = contenidoNegocio.GuardarImagen(id, files.FirstOrDefault().Data);
+                        //}
+                        //else
+                        //{
+                        //    respuesta.OperacionExitosa = false;
+                        //    respuesta.MensajeError = "La extensión del archivo no es valida";
+                        //}
                     }
                     else
                     {

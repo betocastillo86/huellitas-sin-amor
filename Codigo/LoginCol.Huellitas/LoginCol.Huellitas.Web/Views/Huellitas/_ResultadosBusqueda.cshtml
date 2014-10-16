@@ -1,0 +1,28 @@
+﻿<div id="divResultadosBusqueda"></div>
+<script id="templateResultadosBusqueda" type="text/template">
+    <section class="conteGaleria slide">
+        <div class="container clearfix">
+            <%
+            var nombreEstilo = 1;
+
+            for (var i = 0; i < obj.length ; i++) {
+                var contenido = obj[i];
+            %>
+
+            <div class="grid_6 no-margin">
+                <div class="cajaCaso" style="background:url(img/<%=contenido.ContenidoId%>/medium) no-repeat;">
+                    <article class="c_tipo<%=nombreEstilo%>">
+                        <h3><%=contenido.Nombre%></h3>
+                        <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
+                        <p><%=contenido.Descripcion %> </p>
+                        <a class="btn" href="javascript:;">CONOCE MÁS</a>
+                    </article>
+                </div>
+            </div>
+                <%
+                nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
+                } %>
+            </div>
+    </section>
+</script>
+<script src="~/Scripts/views/huellitas.ResultadosHuellitasView.js"></script>

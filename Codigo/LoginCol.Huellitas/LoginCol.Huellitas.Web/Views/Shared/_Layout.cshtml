@@ -1,41 +1,95 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
     <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
-    @Styles.Render("~/Content/css")
-
+    @Styles.Render("~/bundles/cssfrontend")
 
     @Scripts.Render("~/bundles/modernizr")
 
+    <script src="~/Generales/ConstantesJs"></script>
+
+    <!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/backbone")
-    
-
+    @Scripts.Render("~/bundles/frontend")
 </head>
+
 <body>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">
-                    <a href="~/">ASP.NET Web API</a></p>
-            </div>
-            <div class="float-right">
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+    <div id="outer-wrap">
+        <div id="inner-wrap">
+            <!--menu-->
+            <header id="top" role="banner">
+                <div class="block"> <a class="nav-btn" id="nav-open-btn" href="#nav"><span class="icon-add"></span></a> </div>
+                <div class="container">
+                    <div id="logo"></div>
+                </div>
+            </header>
+            <nav id="nav" role="navigation">
+                <div class="block">
+                    <ul class="navigation">
+                        <li data-slide="1" class="is-active"> <a href="javascript:;">Home</a> </li>
+                        <li data-slide="2"> <a href="javascript:;">Casos si amor</a> </li>
+                        <li data-slide="3"> <a href="javascript:;">Adopta</a> </li>
+                        <li data-slide="4"> <a href="javascript:;">Cuidado animal</a> </li>
+                        <li> <a href="javascript:;">Denuncia</a> </li>
+                        <li> <a href="javascript:;">Quienes somos</a> </li>
+                        <br />
                     </ul>
-                </nav>
+                    <div class="menuLogin">
+                        <a href="javascript:;" class="btn_login">INICIAR SESIÓN</a> <a href="javascript:;" class="btn_sesion">REGISTRARME</a>
+                        <div class="btn_search"> <span class="icon-lupa"></span> </div>
+                    </div>
+                    <a class="close-btn" id="nav-close-btn" href="javascript:;top"><span class="icon-alert"></span></a>
+                </div>
+            </nav>
+            <!--menu-->
+            <div id="divMainContent">
+                @RenderBody()
             </div>
+            <footer>
+                <div class="redes">
+                    <a href="javascript:;" class="fb"></a>
+                    <a href="javascript:;" class="youtube"></a>
+                    <a href="javascript:;" class="twt"></a>
+                    <a href="javascript:;" class="blog"></a>
+                    <br />
+                </div>
+            </footer>
         </div>
-    </header>
-    
-        @RenderBody()    
-    
-    
+        <!--/#inner-wrap-->
+    </div>
+    @*<script src="js/menu.js"></script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>*@
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/views/huellitas.BaseView.js"></script>
+    <script src="~/Scripts/huellitas.templateManager.js"></script>
+    <script src="~/Scripts/huellitas.general.js"></script>
+    <script src="~/Scripts/huellitas.router.js"></script>
+    <script src="~/Scripts/views/huellitas.ListarHuellitasView.js"></script>
+    <script src="~/Scripts/models/huellitas.Campo.js"></script>
+
 </body>
 </html>

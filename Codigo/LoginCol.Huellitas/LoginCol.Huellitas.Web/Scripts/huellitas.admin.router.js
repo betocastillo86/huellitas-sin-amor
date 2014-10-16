@@ -1,8 +1,4 @@
-﻿var AdminRouter
-
-
-
-var AdminRouter = Backbone.Router.extend({
+﻿var AdminRouter = Backbone.Router.extend({
 
 
     //Vista actual utilizada en el sistema

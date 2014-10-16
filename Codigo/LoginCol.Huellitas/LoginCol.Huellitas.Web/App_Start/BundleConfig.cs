@@ -73,6 +73,24 @@ namespace LoginCol.Huellitas.Web
 
             bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/site.css"));
 
+
+            bundles.Add(new StyleBundle("~/bundles/cssfrontend")
+                .Include("~/Content/normalize.css")
+                .Include("~/Content/grid.css")
+                .Include("~/Content/menu_styles.css")
+                .Include("~/Content/style.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/frontend")
+                .Include("~/Scripts/libs/modernizr_menu.js")
+                .Include("~/Scripts/libs/jquery.stellar.js")
+                .Include("~/Scripts/libs/waypoints.js")
+                .Include("~/Scripts/libs/menu.js")
+                .Include("~/Scripts/libs/jquery.easing.1.3.js")
+                .Include("~/Scripts/libs/huellitas.front.init.js")
+                .Include("~/Scripts/libs/TrafficCop.js"));
+
+
             bundles.Add(new StyleBundle("~/bundles/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
