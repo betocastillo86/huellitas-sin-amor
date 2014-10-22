@@ -9,8 +9,10 @@ namespace LoginCol.Huellitas.Entidades
     public enum TipoContenidoEnum
     { 
         Imagen = 1,
-        Animal,
-        Fundacion
+        Animal = 2,
+        Fundacion = 3,
+        Perro = 4,
+        Gato = 5
     }
 
     public enum TipoRelacionEnum
@@ -29,13 +31,13 @@ namespace LoginCol.Huellitas.Entidades
     public static class EnumConverter
     { 
 
-        public static TamanoImagenEnum ToEnum(this TamanoImagenEnum obj, string strEnum)
+        public static TamanoImagenEnum ToEnum(string strEnum)
         {
             switch (strEnum)
 	        {
 		        case "mini":
                     return TamanoImagenEnum.Pequeno;
-                case "large":
+                case "big":
                     return TamanoImagenEnum.Grande;
                 case "medium":
                     return TamanoImagenEnum.Mediano;

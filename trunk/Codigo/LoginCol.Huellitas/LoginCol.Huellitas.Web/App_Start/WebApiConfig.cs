@@ -23,8 +23,8 @@ namespace LoginCol.Huellitas.Web
                defaults: new { controller = "AdminContenidosRelacionados", idTipoContenido = RouteParameter.Optional },
                constraints: new { idContenido = @"\d+" }
            );
-            
-            
+
+
             config.Routes.MapHttpRoute(
                name: "DefaultApi",
                routeTemplate: "api/{controller}/{id}",

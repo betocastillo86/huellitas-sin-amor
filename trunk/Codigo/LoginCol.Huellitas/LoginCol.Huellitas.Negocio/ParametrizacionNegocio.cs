@@ -44,5 +44,9 @@ namespace LoginCol.Huellitas.Negocio
         public static int CampoColorId { get { return Int("CampoColorId"); } }
 
         public static int CampoTamanoId { get { return Int("CampoTamanoId"); } }
+
+        public static int CampoEdadId { get { return Int("CampoEdadId"); } }
+
+        public static int CampoRecomendadoParaId { get { return Int("CampoRecomendadoParaId"); } }
     }
 }

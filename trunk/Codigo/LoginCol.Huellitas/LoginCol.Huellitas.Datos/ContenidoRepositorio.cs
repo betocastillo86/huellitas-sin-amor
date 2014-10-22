@@ -381,5 +381,102 @@ namespace LoginCol.Huellitas.Datos
                 return false;
             }
         }
+
+        /// <summary>
+        /// Realiza el filtro de contenidos de acuerdo a los paramentros enviados en el camposFiltros
+        /// </summary>
+        /// <param name="idTipoContenido">id del tipo de contenido por el que se debe filtrar inicialmente</param>
+        /// <param name="esPadre">true: Busca los contenidos por el tipo Padre false: Busca los contenidos por el mismo tipo</param>
+        /// <param name="camposFiltros">listado de campos y valores de los filtros</param>
+        /// <returns>Listado de contenidos encontrados de acuerdo a la busqueda</returns>
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, List<FiltroContenido> camposFiltros)
+        {
+            List<Contenido> lista = null;
+            try
+            {
+                using (var db = new Repositorio())
+                {
+
+                    //Listado de contenidos que aplican a los filtros por campo
+                    List<int> contenidosPorFiltro = new List<int>();
+                    
+                    //Consulta los contenidos que posiblemente cumplen con el filtro de campos
+                    if (camposFiltros.Count > 0)
+                    {
+                        StringBuilder consulta = new StringBuilder();
+                        consulta.AppendLine("SELECT ContenidoId FROM (");
+                            consulta.AppendLine("SELECT count(ContenidoId) as cantidad, ContenidoId");
+                            consulta.AppendLine(" FROM ValorCampo");
+                            consulta.AppendLine( "WHERE");
+                            int contarCondiciones = 0;
+                            //Cuenta las opciones adicionales incluidas cuando se hace una busqueda multiple
+                            int contarOpcionesAdicionales = 0;
+                            foreach (var campo in camposFiltros)
+                            {
+                                if (contarCondiciones > 0)
+                                    consulta.Append(" or ");
+
+                                switch (campo.TipoFiltro)
+                                {
+                                    case TipoFiltroContenidoEnum.Igual:
+                                    default:
+                                        consulta.AppendFormat(" (CampoId = {0} and Valor = '{1}')", campo.CampoId, campo.Valor);
+                                        break;
+                                    case TipoFiltroContenidoEnum.Rango:
+                                        consulta.AppendFormat(" (CampoId = {0} and Valor between '{1}' and '{2}')", campo.CampoId, campo.Valor, campo.ValorHasta);
+                                        break;
+                                    case TipoFiltroContenidoEnum.MultipleOpcion:
+                                        int contarOpciones = 0;
+
+                                        consulta.Append("(");
+                                        //Toma cada una de las opciones y las agrega al filtro
+                                        foreach (var opcion in campo.Valor.Split(new char[]{','}))
+                                        {
+                                            if (contarOpciones > 0) consulta.Append(" or ");
+                                            consulta.AppendFormat(" (CampoId = {0} and Valor = '{1}')", campo.CampoId, opcion);
+                                            contarOpciones++;
+                                        }
+                                        //Suma la cantidad de opciones adicionales para poder coincidir el final de busquedas con el mismo numero de criterios
+                                        contarOpcionesAdicionales += contarOpciones - 1;
+                                        consulta.Append(")");
+                                        break;
+                                }
+
+                                contarCondiciones++;
+                            }
+                            consulta.AppendLine(" GROUP BY ContenidoId");
+
+                            consulta.AppendFormat(") as f where	f.cantidad = {0}", camposFiltros.Count + contarOpcionesAdicionales);
+
+                        List<object> paramsQuery = new List<object>();
+                        contenidosPorFiltro = db.Database.SqlQuery<int>(consulta.ToString(), paramsQuery.ToArray()).ToList().ToList();
+                    }
+
+                    //Inicia consulta de los detalles de los contenidos
+                    var query = db.Contenidos
+                        .Include(c => c.TipoContenido)
+                        .Include(c => c.TipoContenido.TipoContenidoPadre);
+
+                    //Si no hay filtros seleccionados no realiza el filtro 
+                    if(camposFiltros.Count > 0)
+                        query = query.Where(c => contenidosPorFiltro.Contains(c.ContenidoId)) ;
+
+                    //Si es padre consulta por el tipo de contenido padre
+                    if(esPadre)
+                        query = query.Where(c=> c.TipoContenido.TipoContenidoPadre.TipoContenidoId == idTipoContenido);
+                    else
+                        query = query.Where(c=> c.TipoContenidoId == idTipoContenido);
+
+                    lista = query.ToList();
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return lista == null ? new List<Contenido>() : lista;
+        }
     }
 }

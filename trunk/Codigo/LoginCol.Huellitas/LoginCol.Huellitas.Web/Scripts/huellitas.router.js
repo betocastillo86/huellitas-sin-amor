@@ -2,7 +2,8 @@
     vistaActual : undefined,
 
     routes: {
-         "huellitas" : "listarHuellitas"
+        "huellitas": "listarHuellitas",
+        "huellitas/": "listarHuellitas"
     },
 
     listarHuellitas: function ()
