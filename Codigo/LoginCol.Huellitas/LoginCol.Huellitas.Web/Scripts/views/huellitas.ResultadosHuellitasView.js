@@ -21,7 +21,6 @@
     {
         this.listaContenidos.on("sync", this.render, this);
         this.listaContenidos.cargarHuellitasPorFiltro(args);
-        
         //this.render();
     }
 });

@@ -48,6 +48,7 @@
     <Compile Include="Contenido.cs" />
     <Compile Include="ContenidoRelacionado.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="FiltroContenido.cs" />
     <Compile Include="OpcionCampo.cs" />
     <Compile Include="Parametrizacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

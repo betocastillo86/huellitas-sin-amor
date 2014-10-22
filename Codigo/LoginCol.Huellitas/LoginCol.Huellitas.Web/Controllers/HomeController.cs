@@ -41,14 +41,14 @@ namespace LoginCol.Huellitas.Web.Controllers
         public FileResult Imagen(string nombre, string tamano)
         { 
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(nombre, TamanoImagenEnum.Pequeno.ToEnum(tamano)) ), "gif");
+            return File(Server.MapPath(contenidoNegocio.ObtenerImagenPrincipal(nombre, EnumConverter.ToEnum(tamano))), "gif");
         }
 
         [HttpGet]
         public FileResult ImagenId(int id, string tamano)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return File(Server.MapPath(contenidoNegocio.ObtenerRutaImagenPrincipal(id, TamanoImagenEnum.Grande.ToEnum(tamano))), "gif");
+            return File(Server.MapPath(contenidoNegocio.ObtenerRutaImagenPrincipal(id, EnumConverter.ToEnum(tamano))), "gif");
         }
 
         

@@ -13,6 +13,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public List<OpcionCampoModel> Generos { get; set; }
 
+        public List<OpcionCampoModel> RecomendadoPara { get; set; }
+
 
     }
 }

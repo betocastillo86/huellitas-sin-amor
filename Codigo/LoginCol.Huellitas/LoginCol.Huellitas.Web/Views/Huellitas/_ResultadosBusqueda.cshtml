@@ -20,8 +20,12 @@
                 </div>
             </div>
                 <%
-                nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
-                } %>
+                 nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
+                } 
+
+                if(obj.length == 0) { %>
+                  <div>No se encontraron resultados con tu busqueda</div>
+                <% } %>
             </div>
     </section>
 </script>

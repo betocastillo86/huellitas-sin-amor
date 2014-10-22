@@ -9,7 +9,11 @@ var ContenidoCollection = Backbone.Collection.extend({
 
     cargarHuellitasPorFiltro: function (args)
     {
-        this.url = "/api/contenidos/perros";
+        var queryString = "";
+        if (args != undefined)
+            queryString = "/?"+$.param(args);
+
+        this.url = "/api/contenidos/tip-" + Constantes.TipoContenidoAnimales + "/true/"+ queryString;
         this.fetch();
         return this;
     }

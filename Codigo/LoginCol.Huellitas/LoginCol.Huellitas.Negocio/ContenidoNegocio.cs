@@ -29,6 +29,7 @@ namespace LoginCol.Huellitas.Negocio
             return ObtenerPorTipo((int)tipoContenido, false);
         }
 
+
         public List<Contenido> ObtenerPorTipo(int idTipoContenido, bool esPadre)
         {
             if (esPadre)
@@ -207,9 +208,9 @@ namespace LoginCol.Huellitas.Negocio
                 if (Archivos.GuardarArchivoEnDisco(imagenOriginal, bytes, true))
                 {
                     //Intenta redimensionar las imagenes
-                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 600, 600);
-                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 300, 300);
-                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 100, 100);
+                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
+                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
+                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
 
                     //Intenta guardar las imagenes
                     if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
@@ -262,6 +263,12 @@ namespace LoginCol.Huellitas.Negocio
             }
 
             return respuesta;
+        }
+
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, List<FiltroContenido> camposFiltros)
+        {
+            ContenidoRepositorio rContenido = new ContenidoRepositorio();
+            return rContenido.FiltrarContenidos(idTipoContenido, esPadre, camposFiltros);
         }
     }
 }
