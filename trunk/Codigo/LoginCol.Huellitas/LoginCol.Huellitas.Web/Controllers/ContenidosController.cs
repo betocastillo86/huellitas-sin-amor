@@ -15,7 +15,7 @@ namespace LoginCol.Huellitas.Web.Controllers
     {
 
         [HttpGet]
-        public List<ContenidoBaseModel> Get(int idTipoContenido, bool esPadre, [FromUri] FiltroApiContenidos filtro)
+        public List<ContenidoListadoModel> Get(int idTipoContenido, bool esPadre, [FromUri] FiltroApiContenidos filtro)
         {
             ContenidoNegocio nContenido = new ContenidoNegocio();
 
@@ -28,7 +28,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             //Realiza el filtro en negocio cargando los campos desde el querystring
             List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtro.ObtenerValorCampo());
-            return contenidos.Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
+            return contenidos.Select(Mapper.Map<Contenido, ContenidoListadoModel>).ToList();
         }
 
     }

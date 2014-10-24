@@ -35,6 +35,7 @@ var ContenidoListarView = Backbone.View.extend({
         this.lista.cargarPorPadre(this.idTipoContenidoPadre);
         //this.lista = listaContenidos;
     },
+
     //Después de consultar los contenidos los carga en el template
     contenidosAgregados: function (model, response, options)
     {

@@ -64,6 +64,13 @@ namespace LoginCol.Huellitas.Web
             //    constraints: new { controller = "(Home)", queryvalues = "(Index|huellitas)" }
             //);
 
+            routes.MapRoute(
+                name: "BuscadorHuellitas",
+                url: "{controller}/buscar/{*queryValues}",
+                defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "Huellitas", action = "Index" }
+            );
+
 
             routes.MapRoute(
                 name: "Default",

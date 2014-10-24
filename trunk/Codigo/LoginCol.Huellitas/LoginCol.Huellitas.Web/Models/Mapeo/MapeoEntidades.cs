@@ -23,6 +23,8 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoBaseModel>();
 
+            AutoMapper.Mapper.CreateMap<Contenido, ContenidoListadoModel>();
+
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
                // .ForMember(db => db.Campos, model => model.Ignore())
                 .ForMember(o => o.ContenidosRelacionados, d => d.Ignore())

@@ -455,7 +455,9 @@ namespace LoginCol.Huellitas.Datos
                     //Inicia consulta de los detalles de los contenidos
                     var query = db.Contenidos
                         .Include(c => c.TipoContenido)
-                        .Include(c => c.TipoContenido.TipoContenidoPadre);
+                        .Include(c => c.TipoContenido.TipoContenidoPadre)
+                        .Include(c=> c.ZonaGeografica)
+                        .Include(c => c.Campos.Select(v => v.Campo));
 
                     //Si no hay filtros seleccionados no realiza el filtro 
                     if(camposFiltros.Count > 0)
