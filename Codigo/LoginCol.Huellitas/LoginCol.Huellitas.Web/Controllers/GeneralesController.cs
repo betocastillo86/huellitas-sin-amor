@@ -50,11 +50,12 @@ namespace LoginCol.Huellitas.Web.Controllers
             StringBuilder js = new StringBuilder();
             js.Append("var Constantes = { ");
             js.AppendFormat("ExtensionesImagenes : {0}", ParametrizacionNegocio.ExtensionesImagenes);
-            js.AppendFormat(", TamanoMaximoCargaArchivos : '{0}'", ParametrizacionNegocio.TamanoMaximoCargaArchivos);
-            js.AppendFormat(", TipoContenidoAnimales : '{0}'", Convert.ToInt32(TipoContenidoEnum.Animal));
-            js.AppendFormat(", CampoGeneroId : '{0}'", ParametrizacionNegocio.CampoGeneroId);
-            js.AppendFormat(", CampoColorId : '{0}'", ParametrizacionNegocio.CampoColorId);
-            js.AppendFormat(", CampoTamanoId : '{0}'", ParametrizacionNegocio.CampoTamanoId);
+            js.AppendFormat(", TamanoMaximoCargaArchivos : {0}", ParametrizacionNegocio.TamanoMaximoCargaArchivos);
+            js.AppendFormat(", TipoContenidoAnimales : {0}", Convert.ToInt32(TipoContenidoEnum.Animal));
+            js.AppendFormat(", CampoGeneroId : {0}", ParametrizacionNegocio.CampoGeneroId);
+            js.AppendFormat(", CampoColorId : {0}", ParametrizacionNegocio.CampoColorId);
+            js.AppendFormat(", CampoTamanoId : {0}", ParametrizacionNegocio.CampoTamanoId);
+            js.AppendFormat(", CampoEdadId : {0}", ParametrizacionNegocio.CampoEdadId);
             js.Append(" }");
             return JavaScript(js.ToString());
         }

@@ -194,6 +194,7 @@
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\CampoModel.cs" />
+    <Compile Include="Models\ContenidoListadoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
     <Compile Include="Models\ContenidoRelacionadoModel.cs" />

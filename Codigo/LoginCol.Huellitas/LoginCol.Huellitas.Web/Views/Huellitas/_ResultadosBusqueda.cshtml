@@ -7,15 +7,25 @@
 
             for (var i = 0; i < obj.length ; i++) {
                 var contenido = obj[i];
+                
+                var edad = _.findWhere(contenido.Campos, { CampoId : Constantes.CampoEdadId });
+                if(edad == undefined)
+                    edad = "";
+                else if(edad.Valor == 0 )
+                    edad = "Menos de un año";
+                else if(edad.Valor == 1 )
+                    edad = "1 año";
+                else
+                    edad = edad.Valor + " años";
             %>
 
             <div class="grid_6 no-margin">
                 <div class="cajaCaso" style="background:url(img/<%=contenido.ContenidoId%>/medium) no-repeat;">
                     <article class="c_tipo<%=nombreEstilo%>">
                         <h3><%=contenido.Nombre%></h3>
-                        <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
+                        <h4>EDAD: <%=  edad %></h4>
                         <p><%=contenido.Descripcion %> </p>
-                        <a class="btn" href="javascript:;">CONOCE MÁS</a>
+                        <a class="btn" href="">CONOCE MÁS</a>
                     </article>
                 </div>
             </div>
