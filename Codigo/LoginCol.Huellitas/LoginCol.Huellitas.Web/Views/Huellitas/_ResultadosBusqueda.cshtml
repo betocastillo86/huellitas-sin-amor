@@ -1,42 +1,49 @@
-﻿<div id="divResultadosBusqueda"></div>
+﻿
+<section class="conteGaleria slide">
+    <div class="container clearfix">
+        <div id="divResultadosBusqueda"></div>
+    </div>
+</section>
+<div id="paginadorHuellitas"></div>
+
 <script id="templateResultadosBusqueda" type="text/template">
-    <section class="conteGaleria slide">
-        <div class="container clearfix">
-            <%
-            var nombreEstilo = 1;
 
-            for (var i = 0; i < obj.length ; i++) {
-                var contenido = obj[i];
-                
-                var edad = _.findWhere(contenido.Campos, { CampoId : Constantes.CampoEdadId });
-                if(edad == undefined)
-                    edad = "";
-                else if(edad.Valor == 0 )
-                    edad = "Menos de un año";
-                else if(edad.Valor == 1 )
-                    edad = "1 año";
-                else
-                    edad = edad.Valor + " años";
-            %>
+    <%
+    var nombreEstilo = 1;
 
-            <div class="grid_6 no-margin">
-                <div class="cajaCaso" style="background:url(img/<%=contenido.ContenidoId%>/medium) no-repeat;">
-                    <article class="c_tipo<%=nombreEstilo%>">
-                        <h3><%=contenido.Nombre%></h3>
-                        <h4>EDAD: <%=  edad %></h4>
-                        <p><%=contenido.Descripcion %> </p>
-                        <a class="btn" href="">CONOCE MÁS</a>
-                    </article>
-                </div>
-            </div>
-                <%
-                 nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
-                } 
+    for (var i = 0; i < obj.length ; i++) {
+    var contenido = obj[i];
 
-                if(obj.length == 0) { %>
-                  <div>No se encontraron resultados con tu busqueda</div>
-                <% } %>
-            </div>
-    </section>
+    var edad = _.findWhere(contenido.Campos, { CampoId : Constantes.CampoEdadId });
+    if(edad == undefined)
+    edad = "";
+    else if(edad.Valor == 0 )
+    edad = "Menos de un año";
+    else if(edad.Valor == 1 )
+    edad = "1 año";
+    else
+    edad = edad.Valor + " años";
+    %>
+
+    <div class="grid_6 no-margin">
+        <div class="cajaCaso" style="background:url(/img/<%=contenido.ContenidoId%>/medium) no-repeat;">
+            <article class="c_tipo<%=nombreEstilo%>">
+                <h3><%=contenido.Nombre%></h3>
+                <h4>EDAD: <%=  edad %></h4>
+                <p><%=contenido.Descripcion %> </p>
+                @*<a class="btn" href="">CONOCE MÁS</a>*@
+            </article>
+        </div>
+    </div>
+    <%
+    nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
+    }
+
+    if(obj.length == 0) { %>
+    <div>No se encontraron resultados con tu busqueda</div>
+    <% }
+    else { %>
+    <a class="btn siguientePagina">Siguiente</a>
+    <% } %>
 </script>
 <script src="~/Scripts/views/huellitas.ResultadosHuellitasView.js"></script>

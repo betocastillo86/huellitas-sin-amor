@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="divListarFundaciones">
+    <section id="first" class="conteFormCaso slide">
+        <div class="container clearfix">
+            <h2>ENCUENTRA LAS FUNDACIONES</h2>
+            <h3>BUSCA LAS FUNDACIONES</h3>
+            <form>
+                @Html.DropDownList("ddlZonaGeograficaPadre", new SelectList(Model.ZonasPadre, "ZonaGeograficaId", "Nombre"), "DEPARTAMENTO", new { @class = "grid_3" })
+                <select class="grid_3" id="ddlZonaGeografica">
+                    <option>CIUDAD</option>
+                </select>
+                <div class="btn" id="btnBuscar">BUSCAR</div>
+            </form>
+        </div>
+    </section>
+    @Html.Partial("~/Views/Fundaciones/_ResultadosBusqueda.cshtml")
+</div>
+
+<script src="~/Scripts/models/huellitas.Contenido.js"></script>
+<script src="~/Scripts/views/huellitas.ListarFundacionesView.js"></script>
+<script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
+
+@section scripts
+{
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true">
+    </script>    
+}

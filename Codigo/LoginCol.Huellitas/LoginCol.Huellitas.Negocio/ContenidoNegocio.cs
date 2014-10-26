@@ -265,10 +265,10 @@ namespace LoginCol.Huellitas.Negocio
             return respuesta;
         }
 
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, List<FiltroContenido> camposFiltros)
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase, List<FiltroContenido> camposFiltros)
         {
             ContenidoRepositorio rContenido = new ContenidoRepositorio();
-            return rContenido.FiltrarContenidos(idTipoContenido, esPadre, camposFiltros);
+            return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros);
         }
     }
 }

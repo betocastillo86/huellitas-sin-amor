@@ -178,13 +178,14 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
+    <Compile Include="Controllers\FundacionesController.cs" />
     <Compile Include="Controllers\GeneralesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuellitasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelpers\HtmlHelperInputExtensions.cs" />
+    <Compile Include="Helpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\Autenticacion.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
     <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
     <Compile Include="Models\ContenidoRelacionadoModel.cs" />
+    <Compile Include="Models\ListarFundacionesModel.cs" />
     <Compile Include="Models\ListarHuellitasModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
@@ -570,9 +572,14 @@
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
+    <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.BaseView.js" />
+    <Content Include="Scripts\views\huellitas.MapaView.js" />
+    <Content Include="Scripts\views\huellitas.ResultadosFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
+    <Content Include="Scripts\libs\jquery.jscroll.js" />
+    <Content Include="Scripts\libs\jquery.jscroll.min.js" />
     <Content Include="templates\huellitas-listar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -622,9 +629,12 @@
     <Content Include="Views\Administracion\Contenido\Index.cshtml" />
     <Content Include="Views\Huellitas\Index.cshtml" />
     <Content Include="Views\Huellitas\_ResultadosBusqueda.cshtml" />
+    <Content Include="Views\Fundaciones\Index.cshtml" />
+    <Content Include="Views\Fundaciones\_ResultadosBusqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HtmlHelpers\" />
     <Folder Include="RecursosContenidos\Imagenes\" />
     <Folder Include="Scripts\collections\" />
   </ItemGroup>

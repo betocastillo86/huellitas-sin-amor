@@ -25,9 +25,25 @@ namespace LoginCol.Huellitas.Web.Controllers
                 idTipoContenido = filtro.tipo;
                 esPadre = false;
             }
+            else if (filtro.tipoPadre > 0)
+            {
+                idTipoContenido = filtro.tipoPadre;
+                esPadre = true;
+            }
+
+            Contenido filtroBase = new Contenido();
+
+            if (filtro.zona > 0)
+                filtroBase.ZonaGeograficaId = filtro.zona;
+
+            int resultadosPorPagina = 8;
 
             //Realiza el filtro en negocio cargando los campos desde el querystring
-            List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtro.ObtenerValorCampo());
+            List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo())
+                .Skip(resultadosPorPagina*filtro.paginaActual)
+                .Take(resultadosPorPagina)
+                .ToList();
+
             return contenidos.Select(Mapper.Map<Contenido, ContenidoListadoModel>).ToList();
         }
 
@@ -42,6 +58,12 @@ namespace LoginCol.Huellitas.Web.Controllers
         public int edad { get; set; }
 
         public string recomendado { get; set; }
+
+        public int paginaActual { get; set; }
+
+        public int zona { get; set; }
+
+        public int tipoPadre { get; set; }
 
         public List<FiltroContenido> ObtenerValorCampo()
         {

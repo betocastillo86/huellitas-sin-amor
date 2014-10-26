@@ -65,10 +65,10 @@ namespace LoginCol.Huellitas.Web
             //);
 
             routes.MapRoute(
-                name: "BuscadorHuellitas",
+                name: "BuscadorContenidos",
                 url: "{controller}/buscar/{*queryValues}",
                 defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
-                constraints: new { controller = "Huellitas", action = "Index" }
+                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Index" }
             );
 
 

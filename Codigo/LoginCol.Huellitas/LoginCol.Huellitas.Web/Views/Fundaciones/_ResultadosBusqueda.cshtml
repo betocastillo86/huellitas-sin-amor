@@ -1,0 +1,57 @@
+﻿<section class="conteGaleria slide">
+    <div class="container clearfix">
+        <div id="divResultadosBusqueda"></div>
+    </div>
+</section>
+<div id="paginadorHuellitas"></div>
+
+<script id="templateResultadosBusqueda" type="text/template">
+
+    <%
+    var nombreEstilo = 1;
+
+    for (var i = 0; i < obj.length ; i++) {
+    var contenido = obj[i];
+
+    %>
+
+    <div class="cajaFunda color<%=nombreEstilo%>">
+        <div class="grid_4 no-margin" id="mapa<%=contenido.ContenidoId%>" style="width: 384px; height: 384px;">
+
+        </div>
+        <div class="grid_8  no-margin">
+            <article>
+                <h3><%=contenido.Nombre%></h3>
+                
+                <p class="scroll">
+                <%=contenido.ZonaGeograficaNombre %><br />
+                <%=contenido.Descripcion %>
+
+                </p>
+                <a class="btn" href="javascript:;">CONOCE MÁS</a>
+                <br />
+            </article>
+            <div class="footerFunda">
+                <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/medium) no-repeat; "></div>
+                <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/medium) no-repeat; "></div>
+                <br />
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <%
+    nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
+    }
+
+    if(obj.length == 0) { %>
+    <div>No se encontraron resultados con tu busqueda</div>
+    <% }
+    else { %>
+    <a class="btn siguientePagina">Siguiente</a>
+    <% } %>
+</script>
+
+
+<script src="~/Scripts/views/huellitas.ResultadosHuellitasView.js"></script>
+<script src="~/Scripts/views/huellitas.MapaView.js"></script> 

@@ -1,6 +1,12 @@
 ﻿var ContenidoModel = Backbone.Model.extend({
     idAttribute: "ContenidoId",
-    url : "/api/contenidos"
+    url: "/api/contenidos",
+
+    obtenerValorCampo: function (campo)
+    {
+        var campoEncontrado = _.findWhere(this.get("Campos"), { CampoNombre: campo });
+        return campoEncontrado != undefined ? campoEncontrado.Valor : "";
+    }
 });
 
 var ContenidoCollection = Backbone.Collection.extend({
@@ -9,6 +15,7 @@ var ContenidoCollection = Backbone.Collection.extend({
 
     cargarHuellitasPorFiltro: function (args)
     {
+
         var queryString = "";
         if (args != undefined)
             queryString = "/?"+$.param(args);
