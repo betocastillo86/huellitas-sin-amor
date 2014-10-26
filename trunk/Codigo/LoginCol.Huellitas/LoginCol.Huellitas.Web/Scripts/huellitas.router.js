@@ -4,7 +4,10 @@
     routes: {
         "huellitas": "listarHuellitas",
         "huellitas/": "listarHuellitas",
-        "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)": "buscarHuellitas"
+        "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)": "buscarHuellitas",
+        "fundaciones" : "listarFundaciones",
+        "fundaciones/": "listarFundaciones",
+        "fundaciones/buscar(/z:zona)": "buscarFundaciones"
     },
 
     listarHuellitas: function ()
@@ -19,11 +22,24 @@
         var vistaListarAnimales = undefined;
         if (this.vistaActual == undefined)
         {
-            vistaListarAnimales = new ListarHuellitasView({sinFiltroInicial : true});
+            //inicializa la vista pero pasa parametro para no cargar los contenidos
+            vistaListarAnimales = new ListarHuellitasView({ cargar: false });
             this.vistaActual = vistaListarAnimales;
         }
 
         this.vistaActual.filtrarContenidosDesdeUrl(tipo, genero, color, tamano, edad, recomendado);
+    },
+    listarFundaciones: function ()
+    {
+        var vistaListarFundaciones = new ListarFundacionesView();
+        this.vistaActual = vistaListarFundaciones;
+        
+    },
+    buscarFundaciones: function (zona)
+    {
+        var vistaListarFundaciones = new ListarFundacionesView({ cargar: false });
+        this.vistaActual = vistaListarFundaciones;
+        vistaListarFundaciones.filtrarContenidosDesdeUrl(zona);
     }
 });
 

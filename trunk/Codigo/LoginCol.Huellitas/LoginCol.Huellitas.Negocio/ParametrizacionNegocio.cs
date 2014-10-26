@@ -23,7 +23,7 @@ namespace LoginCol.Huellitas.Negocio
             return Convert.ToInt32(datosParametrizacion.Obtener(llave));
         }
 
-        private static string  String(string llave)
+        public static string  String(string llave)
         {
             return datosParametrizacion.Obtener(llave);
         }

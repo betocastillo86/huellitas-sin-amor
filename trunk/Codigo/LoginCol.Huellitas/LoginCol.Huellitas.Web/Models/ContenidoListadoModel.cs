@@ -22,6 +22,8 @@ namespace LoginCol.Huellitas.Web.Models
         [Display(Name = "Ciudad", Description = "Ciudad")]
         public int ZonaGeograficaId { get; set; }
 
+        public string ZonaGeograficaNombre { get; set; }
+
         public List<ValorCampoModel> Campos { get; set; }
     }
 }

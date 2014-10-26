@@ -5,7 +5,6 @@ var ListarHuellitasView = Backbone.View.extend({
     events : {
         "click #btnBuscar": "filtrarContenidos"
     },
-
     obtenerCampo: function(campo)
     {
         switch (campo) {
@@ -39,23 +38,24 @@ var ListarHuellitasView = Backbone.View.extend({
     {
         this.vistaResultados = new ResultadosHuellitasView();
 
-        if (args != undefined)
-        {
-            if (args.sinFiltroInicial != undefined && !args.sinFiltroInicial)
-                this.vistaResultados.cargarContenidos();
+        if (args != undefined) {
+            if (args.cargar != undefined && args.cargar)
+                this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
         }
-        else
-        {
-            this.vistaResultados.cargarContenidos();
+        else {
+            //por defecto carga los resultados cuando no viene el parametro
+            this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
         }
-                
+
+        
+
         this.render();
     },
     render: function ()
     {
         return this;
     },
-    filtrarContenidos: function ()
+    obtenerFiltroSeleccionado : function()
     {
         var filtros = {
             tipo: this.obtenerCampo("tipo").valor,
@@ -63,8 +63,15 @@ var ListarHuellitasView = Backbone.View.extend({
             color: this.obtenerCampo("color").valor,
             tamano: this.obtenerCampo("tamano").valor,
             edad: this.obtenerCampo("edad").valor,
-            recomendado: this.obtenerCampo("recomendadoPara").valor
+            recomendado: this.obtenerCampo("recomendadoPara").valor,
+            paginaActual: -1
         };
+        return filtros;
+    },
+    filtrarContenidos: function ()
+    {
+        
+        var filtros = this.obtenerFiltroSeleccionado();
 
         var url = "/huellitas/buscar";
         if (this.obtenerCampo("tipo").valor > 0)
@@ -86,18 +93,20 @@ var ListarHuellitasView = Backbone.View.extend({
             url += "/rp" + this.obtenerCampo("recomendadoPara").valor + "_" + this.obtenerCampo("recomendadoPara").texto;
         
         App_Router.navigate(url, { trigger: false });
+
+        this.vistaResultados.limpiarResultados();
         this.vistaResultados.cargarContenidos(filtros);
     },
     filtrarContenidosDesdeUrl: function (tipo, genero, color, tamano, edad, recomendado)
     {
-        
         var filtros = {
             tipo: tipo == undefined ? 0 : parseInt(tipo.split("_")[0]),
             genero: genero == undefined ? 0 : parseInt(genero.split("_")[0]),
             color: color == undefined ? 0 : parseInt(color.split("_")[0]),
             tamano: tamano == undefined ? 0 : parseInt(tamano.split("_")[0]),
             edad: edad == undefined ? 0 : parseInt(edad.split("_")[0]),
-            recomendado: recomendado == undefined ? "" : recomendado.split("_")[0]
+            recomendado: recomendado == undefined ? "" : recomendado.split("_")[0],
+            paginaActual:-1
         };
 
         if (filtros.tipo > 0)

@@ -388,8 +388,9 @@ namespace LoginCol.Huellitas.Datos
         /// <param name="idTipoContenido">id del tipo de contenido por el que se debe filtrar inicialmente</param>
         /// <param name="esPadre">true: Busca los contenidos por el tipo Padre false: Busca los contenidos por el mismo tipo</param>
         /// <param name="camposFiltros">listado de campos y valores de los filtros</param>
+        /// <param name="filtroBase">Filtros adicionales que van ligados al contenido</param>
         /// <returns>Listado de contenidos encontrados de acuerdo a la busqueda</returns>
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, List<FiltroContenido> camposFiltros)
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros)
         {
             List<Contenido> lista = null;
             try
@@ -468,6 +469,9 @@ namespace LoginCol.Huellitas.Datos
                         query = query.Where(c=> c.TipoContenido.TipoContenidoPadre.TipoContenidoId == idTipoContenido);
                     else
                         query = query.Where(c=> c.TipoContenidoId == idTipoContenido);
+
+                    //agrega los filtros base
+                    query = query.Where(c => (filtroBase.ZonaGeograficaId == 0 || c.ZonaGeograficaId == filtroBase.ZonaGeograficaId) );
 
                     lista = query.ToList();
                     
