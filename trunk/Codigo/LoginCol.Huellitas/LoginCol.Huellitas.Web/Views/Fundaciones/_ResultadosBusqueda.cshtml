@@ -13,6 +13,10 @@
     for (var i = 0; i < obj.length ; i++) {
     var contenido = obj[i];
 
+    var imagenAdicional = _.first(contenido.Imagenes);
+    if(imagenAdicional == undefined)
+        imagenAdicional = contenido.ContenidoId;
+
     %>
 
     <div class="cajaFunda color<%=nombreEstilo%>">
@@ -33,7 +37,7 @@
             </article>
             <div class="footerFunda">
                 <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/medium) no-repeat; "></div>
-                <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/medium) no-repeat; "></div>
+                <div class="img" style="background: url(/img/<%=imagenAdicional%>/medium) no-repeat; "></div>
                 <br />
             </div>
         </div>

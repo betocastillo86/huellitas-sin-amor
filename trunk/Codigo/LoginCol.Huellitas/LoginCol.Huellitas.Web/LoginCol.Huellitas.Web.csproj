@@ -576,10 +576,7 @@
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
-    <Content Include="Scripts\views\huellitas.ResultadosFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
-    <Content Include="Scripts\libs\jquery.jscroll.js" />
-    <Content Include="Scripts\libs\jquery.jscroll.min.js" />
     <Content Include="templates\huellitas-listar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

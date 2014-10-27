@@ -458,6 +458,7 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.TipoContenido)
                         .Include(c => c.TipoContenido.TipoContenidoPadre)
                         .Include(c=> c.ZonaGeografica)
+                        .Include(c => c.ContenidosRelacionados)
                         .Include(c => c.Campos.Select(v => v.Campo));
 
                     //Si no hay filtros seleccionados no realiza el filtro 
@@ -474,6 +475,9 @@ namespace LoginCol.Huellitas.Datos
                     query = query.Where(c => (filtroBase.ZonaGeograficaId == 0 || c.ZonaGeograficaId == filtroBase.ZonaGeograficaId) );
 
                     lista = query.ToList();
+
+                    //carga las imagenes del contenido
+                    //lista.ForEach(c => c.ContenidosRelacionados = ObtenerContenidosRelacionados(c.ContenidoId, (int)TipoRelacionEnum.Imagen));
                     
                 }
             }
