@@ -23,7 +23,8 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoBaseModel>();
 
-            AutoMapper.Mapper.CreateMap<Contenido, ContenidoListadoModel>();
+            AutoMapper.Mapper.CreateMap<Contenido, ContenidoListadoModel>()
+                .BeforeMap(ImagenesContenido);
 
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
                // .ForMember(db => db.Campos, model => model.Ignore())
@@ -55,6 +56,28 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
         }
 
+        private static void ImagenesContenido(Contenido obj, ContenidoListadoModel model)
+        {
+            model.Imagenes = new List<int>();
+            
+            try
+            {
+                if (obj.ContenidosRelacionados != null)
+                {
+                    //Agrega los contenidos relacionados como imagenes
+                    obj.ContenidosRelacionados
+                        .Where(r => r.TipoRelacionContenidoId == (int)TipoRelacionEnum.Imagen)
+                        .ToList()
+                        .ForEach(r => model.Imagenes.Add(r.ContenidoHijoId));
+                }
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+            
+        }
+
+
         private static void ConvertCampoToCampoModel(Campo obj, CampoModel model)
         {
             model.CampoNombre = obj.Nombre;
@@ -79,7 +102,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                 }
 
             }
-            catch (ObjectDisposedException e)
+            catch (ObjectDisposedException)
             {
                 model.Campos = new List<ValorCampoModel>();
             }

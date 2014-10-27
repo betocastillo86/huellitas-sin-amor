@@ -25,5 +25,7 @@ namespace LoginCol.Huellitas.Web.Models
         public string ZonaGeograficaNombre { get; set; }
 
         public List<ValorCampoModel> Campos { get; set; }
+
+        public List<int> Imagenes { get; set; }
     }
 }
