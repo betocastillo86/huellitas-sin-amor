@@ -23,5 +23,19 @@ namespace LoginCol.Huellitas.Web.Controllers
             modelo.RecomendadoPara = nCampo.Obtener(ParametrizacionNegocio.CampoRecomendadoParaId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             return View(modelo);
         }
+
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {   
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            DetalleHuellitaModel modelo = Mapper.Map<Contenido, DetalleHuellitaModel>(nContenido.Obtener(id));
+
+            ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
+
+            if(hogarDePaso != null)
+                modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
+
+            return View(modelo);
+        }
     }
 }

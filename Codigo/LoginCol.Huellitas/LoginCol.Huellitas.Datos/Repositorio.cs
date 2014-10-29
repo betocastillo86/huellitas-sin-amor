@@ -15,7 +15,7 @@ namespace LoginCol.Huellitas.Datos
         public Repositorio()
             : base("Name=ConexionHuellitas")
         {
-            
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Campo> Campos { get; set; }
@@ -54,7 +54,8 @@ namespace LoginCol.Huellitas.Datos
 
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 
-            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.LazyLoadingEnabled = false;
+           
 
             //Database.SetInitializer<Repositorio>(new GeneradorLlaveUnica<Repositorio>());
         }

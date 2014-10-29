@@ -199,6 +199,7 @@
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
     <Compile Include="Models\ContenidoRelacionadoModel.cs" />
+    <Compile Include="Models\DetalleHuellitaModel.cs" />
     <Compile Include="Models\ListarFundacionesModel.cs" />
     <Compile Include="Models\ListarHuellitasModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -628,6 +629,8 @@
     <Content Include="Views\Huellitas\_ResultadosBusqueda.cshtml" />
     <Content Include="Views\Fundaciones\Index.cshtml" />
     <Content Include="Views\Fundaciones\_ResultadosBusqueda.cshtml" />
+    <Content Include="Views\Fundaciones\Detalle.cshtml" />
+    <Content Include="Views\Huellitas\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

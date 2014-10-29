@@ -129,12 +129,12 @@ namespace LoginCol.Huellitas.Negocio
 
         public List<ContenidoRelacionado> ObtenerImagenes(int idContenido)
         {
-            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, (int)TipoRelacionEnum.Imagen);
+            return ObtenerContenidosRelacionados(idContenido, (int)TipoRelacionEnum.Imagen);
         }
 
         public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int idTipoRelacion)
         {
-            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion);
+            return ObtenerContenidosRelacionados(idContenido, idTipoRelacion, false);
         }
         public ContenidoRelacionado ObtenerContenidoRelacionado(int idContenido, int idContenidoHijo, int idTipoRelacion)
         {
@@ -270,5 +270,18 @@ namespace LoginCol.Huellitas.Negocio
             ContenidoRepositorio rContenido = new ContenidoRepositorio();
             return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros);
         }
+
+
+
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)
+        {
+            return ObtenerContenidosRelacionados(id, (int) tipoRelacionEnum, cargarCampos);
+        }
+
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int idTipoRelacion, bool cargarCampos)
+        {
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion, cargarCampos);
+        }
+
     }
 }
