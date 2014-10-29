@@ -202,6 +202,7 @@ namespace LoginCol.Huellitas.Datos
                                     .Include(_ => _.ZonaGeografica)
                                     .Include(_ => _.TipoContenido)
                                     .Include(_ => _.Campos.Select(c=> c.Campo))
+                                    .Include(_ => _.Campos.Select(c => c.Campo.Opciones))
                                     .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
                                     .Where(_ => _.ContenidoId.Equals(id) && !_.Eliminado).FirstOrDefault();
 
@@ -285,7 +286,7 @@ namespace LoginCol.Huellitas.Datos
             }
         }
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int tipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int tipoRelacion, bool cargarCampos)
         {
             try
             {
@@ -295,12 +296,20 @@ namespace LoginCol.Huellitas.Datos
                 {
                     
 
-                    listaRelacionados = db.ContenidosRelacionados
+                    var query  = db.ContenidosRelacionados
                         .Include(c => c.ContenidoHijo)
                         .Include(c => c.ContenidoHijo.TipoContenido)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
-                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado).ToList();
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);
+                    
+                    if(cargarCampos)
+                        query = query
+                            .Include(c => c.ContenidoHijo.Campos)
+                            .Include(c => c.ContenidoHijo.Campos.Select( ca => ca.Campo))
+                            .Include(c => c.ContenidoHijo.Campos.Select( ca => ca.Campo.Opciones));
+                    
+                    listaRelacionados = query.ToList();
                 }
 
                 //Iguala todos los contenidos hijos como los relacionados

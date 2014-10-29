@@ -12,5 +12,7 @@ namespace LoginCol.Huellitas.Web.Models
         public string CampoNombre { get; set; }
 
         public string Valor { get; set; }
+
+        public string ValorTexto { get; set; }
     }
 }

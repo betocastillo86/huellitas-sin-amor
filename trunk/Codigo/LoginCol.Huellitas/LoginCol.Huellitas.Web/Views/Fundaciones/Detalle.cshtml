@@ -1,0 +1,16 @@
+﻿@model LoginCol.Huellitas.Web.Models.ContenidoModel
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="divDetalleContenido">
+    <div>
+        @Html.Label("Color")
+        
+        @Html.ObtenerCampoDeContenido(Model, "Color");
+
+    </div>
+    
+
+</div>

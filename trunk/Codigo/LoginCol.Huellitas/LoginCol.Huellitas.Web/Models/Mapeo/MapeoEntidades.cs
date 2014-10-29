@@ -4,6 +4,7 @@ using LoginCol.Huellitas.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models.Mapeo
@@ -15,6 +16,10 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             AutoMapper.Mapper.CreateMap<TipoContenido, string>().ConvertUsing<TipoContenidoTypeConverter>();
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>()
+                .BeforeMap(AntesConvertirContenido)
+                .ForMember(o => o.Campos, opt => opt.Ignore());
+
+            AutoMapper.Mapper.CreateMap<Contenido, DetalleHuellitaModel>()
                 .BeforeMap(AntesConvertirContenido)
                 .ForMember(o => o.Campos, opt => opt.Ignore());
                 //OJO:Si se quita revisar el listado de contenidos
@@ -36,7 +41,9 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             Mapper.CreateMap<ZonaGeografica, ZonaGeograficalModel>();
 
-            Mapper.CreateMap<ValorCampo, ValorCampoModel>();
+            Mapper.CreateMap<ValorCampo, ValorCampoModel>()
+                .BeforeMap(ValorCampoToValorCampoModel);
+
             Mapper.CreateMap<ValorCampoModel, ValorCampo>();
 
             Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
@@ -54,6 +61,46 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
 
+        }
+
+        private static void ValorCampoToValorCampoModel(ValorCampo obj, ValorCampoModel model)
+        {
+            try
+            {
+                if (obj.Campo != null)
+                {
+                    switch (obj.Campo.TipoDato)
+                    {
+                        case TipoDatoCampo.Int:
+                        case TipoDatoCampo.Varchar:
+                            model.ValorTexto = obj.Valor;
+                            break;
+                        case TipoDatoCampo.Bit:
+                            model.ValorTexto = obj.Valor.ToLower().Equals("true") ? "Si" : "No";
+                            break;
+                        case TipoDatoCampo.Relacional:
+                            model.ValorTexto = obj.Campo.Opciones
+                                .Where(o => o.OpcionId.Equals(Convert.ToInt32(obj.Valor)))
+                                .FirstOrDefault().Texto;
+                            break;
+                        case TipoDatoCampo.ConsultaSql:
+                            break;
+                        case TipoDatoCampo.Multiple:
+                            if (obj.Campo.Opciones != null)
+                            {
+                               model.ValorTexto = obj.Campo.Opciones
+                                     .Where(o => o.OpcionId.Equals(Convert.ToInt32(obj.Valor)))
+                                     .FirstOrDefault().Texto;
+                            }
+
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (ObjectDisposedException){}
+           
         }
 
         private static void ImagenesContenido(Contenido obj, ContenidoListadoModel model)
@@ -76,6 +123,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             }
             
         }
+
 
 
         private static void ConvertCampoToCampoModel(Campo obj, CampoModel model)
