@@ -38,5 +38,33 @@ namespace LoginCol.Huellitas.Datos
 
             return usuario == null ? new Usuario() : usuario;
         }
+
+        public int CrearUsuario(Usuario usuario)
+        {
+
+            using (var db = new Repositorio())
+            {
+                usuario.FechaRegistro = DateTime.Now;
+                db.Usuarios
+                    .Add(usuario);
+                db.SaveChanges();
+            }
+
+            return usuario.UsuarioId;
+        }
+
+        public Usuario ObtenerUsuarioPorCorreo(string correo)
+        {
+            Usuario usuario = null;
+
+            using (var db = new Repositorio())
+            {
+                usuario = db.Usuarios
+                    .Where(u => u.Correo.Equals(correo))
+                    .FirstOrDefault();
+            }
+
+            return usuario ?? new Usuario();
+        }
     }
 }

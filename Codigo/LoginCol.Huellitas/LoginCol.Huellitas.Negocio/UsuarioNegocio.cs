@@ -29,5 +29,30 @@ namespace LoginCol.Huellitas.Negocio
         {
             return _usuarios.Value.AutenticarUsuario(correo, Seguridad.MD5(clave));
         }
+
+        public Usuario ObtenerUsuarioPorCorreo(string correo)
+        {
+            return _usuarios.Value.ObtenerUsuarioPorCorreo(correo);
+        }
+
+        /// <summary>
+        /// Crea un usuario partiendo del correo y los nombres
+        /// El usuario queda inactivo y no es administrador
+        /// </summary>
+        /// <param name="correo">correo del usuario</param>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
+        public Usuario CrearUsuarioDesdeCorreo(string correo, string nombre)
+        {
+            Usuario usuario = new Usuario();
+            usuario.Correo = correo;
+            usuario.Nombres = nombre;
+            usuario.Apellidos = ".";
+            usuario.EsAdministrador = false;
+            usuario.Clave = ".";
+            usuario.Activo = false;
+            usuario.UsuarioId = _usuarios.Value.CrearUsuario(usuario);
+            return usuario;
+        }
     }
 }

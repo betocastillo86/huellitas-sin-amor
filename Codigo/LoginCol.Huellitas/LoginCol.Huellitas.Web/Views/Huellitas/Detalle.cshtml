@@ -2,32 +2,41 @@
 @{
     ViewBag.Title = "Detalle";
 }
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-Nombre: @Model.Nombre <br />
-Historia: @Model.Descripcion <br />
-Genero: @Html.ObtenerCampoDeContenido(Model, "Genero") <br />
-Color: @Html.ObtenerCampoDeContenido(Model, "Color") <br />
-Tamaño: @Html.ObtenerCampoDeContenido(Model, "Tamaño") <br />
-Edad: @Html.ObtenerCampoDeContenido(Model, "Edad") <br />
-Comportamiento: @Html.ObtenerCampoDeContenido(Model, "Comportamiento") <br />
-Recomendado Para: @Html.ObtenerCampoDeContenido(Model, "RecomendadoPara") <br />
+<div id="divDetalleContenido">
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    Nombre: @Model.Nombre <br />
+    Historia: @Model.Descripcion <br />
+    Genero: @Html.ObtenerCampoDeContenido(Model, "Genero") <br />
+    Color: @Html.ObtenerCampoDeContenido(Model, "Color") <br />
+    Tamaño: @Html.ObtenerCampoDeContenido(Model, "Tamaño") <br />
+    Edad: @Html.ObtenerCampoDeContenido(Model, "Edad") <br />
+    Comportamiento: @Html.ObtenerCampoDeContenido(Model, "Comportamiento") <br />
+    Recomendado Para: @Html.ObtenerCampoDeContenido(Model, "RecomendadoPara") <br />
 
-Visitas: @Model.Visitas
+    Visitas: @Model.Visitas
 
-Comentarios: @Model.Comentarios
+    Comentarios: @Model.Comentarios
 
-@if (Model.HogarDePaso != null)
-{ 
-    <H1>HOGAR DE PASO</H1>
-    <div>Nombre: @Model.HogarDePaso.Nombre</div> 
-    <div>Direccion: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</div> 
-    <div>Teléfono: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</div> 
-    <div>Encargado: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</div> 
+    @if (Model.HogarDePaso != null)
+    {
+        <h1>HOGAR DE PASO</h1>
+        <div>Nombre: @Model.HogarDePaso.Nombre</div>
+        <div>Direccion: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</div>
+        <div>Teléfono: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</div>
+        <div>Encargado: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</div>
+
+    }
+    <div id="divComentarios"></div>
+    @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
+
+    @section scripts{
+    <script src="~/Scripts/views/huellitas.DetalleHuellitaView.js"></script>
+    }
+
     
-}
 
 
 
 
 
-
+</div>

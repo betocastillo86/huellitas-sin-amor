@@ -12,7 +12,10 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/backbone").Include(
                 "~/Scripts/libs/json2.js",
                 "~/Scripts/libs/underscore.js",
-                "~/Scripts/libs/backbone.js"
+                "~/Scripts/libs/backbone.js",
+                "~/Scripts/libs/backbone-validation.js",
+                "~/Scripts/libs/backbone.stickit.js"
+                
                         
                 ));
             
