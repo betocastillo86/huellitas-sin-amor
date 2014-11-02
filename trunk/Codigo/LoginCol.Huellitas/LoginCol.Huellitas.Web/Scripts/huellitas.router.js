@@ -4,6 +4,7 @@
     routes: {
         "huellitas": "listarHuellitas",
         "huellitas/": "listarHuellitas",
+        "huellitas/:id/:nombre": "detalleHuellita",
         "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)": "buscarHuellitas",
         "fundaciones" : "listarFundaciones",
         "fundaciones/": "listarFundaciones",
@@ -40,6 +41,11 @@
         var vistaListarFundaciones = new ListarFundacionesView({ cargar: false });
         this.vistaActual = vistaListarFundaciones;
         vistaListarFundaciones.filtrarContenidosDesdeUrl(zona);
+    },
+    detalleHuellita: function (id, nombre)
+    {
+        var vistaDetalleContenido = new DetalleHuellitaView({ id: id });
+        this.vistaActual = vistaDetalleContenido;
     }
 });
 

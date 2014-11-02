@@ -10,7 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <style>
+        .invalid {
+            border:solid 1px red;
+        }
 
+    </style>
     @Styles.Render("~/bundles/cssfrontend")
 
     @Scripts.Render("~/bundles/modernizr")
@@ -90,6 +95,7 @@
     <script src="~/Scripts/huellitas.router.js"></script>
     
     <script src="~/Scripts/models/huellitas.Campo.js"></script>
+    <script src="~/Scripts/huellitas.app.js"></script>
 
 </body>
 </html>

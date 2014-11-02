@@ -1,0 +1,51 @@
+﻿using LoginCol.Huellitas.Datos;
+using LoginCol.Huellitas.Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LoginCol.Huellitas.Negocio
+{
+    public class ComentarioNegocio
+    {
+        public List<Comentario> ObtenerComentarios(int idContenido)
+        {
+            ComentarioRepositorio dComentario = new ComentarioRepositorio();
+            return dComentario.ObtenerComentarios(idContenido);
+        }
+
+        /// <summary>
+        /// Crea un comentario en la Base de datos y registra al usuario si este no existe en la Base de datos, relacionandolo
+        /// </summary>
+        /// <param name="comentario">datos del comentario</param>
+        /// <returns></returns>
+        public int AgregarComentario(Comentario comentario)
+        {
+            UsuarioNegocio nUsuario = new UsuarioNegocio();
+
+            //Busca si hay usuarios registrados con ese correo
+            comentario.UsuarioId = nUsuario.ObtenerUsuarioPorCorreo(comentario.Usuario.Correo).UsuarioId;
+            
+            //Valida si el suuario que esta poniendo el comentario esta registrado o no
+            if (comentario.UsuarioId == 0)
+            {
+                //Si no existe lo crea
+                comentario.UsuarioId = nUsuario.CrearUsuarioDesdeCorreo(comentario.Usuario.Correo, comentario.Usuario.Nombres).UsuarioId;
+            }
+
+
+            if (comentario.UsuarioId > 0)
+            {
+                //Agrega el comentario a Base de datos
+                ComentarioRepositorio dComentario = new ComentarioRepositorio();
+                comentario.Activo = true;
+                comentario.Usuario = null;
+                return dComentario.AgregarComentario(comentario);
+            }
+            else
+                return 0;
+        }
+    }
+}

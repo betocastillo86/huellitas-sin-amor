@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
+    <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
     <Compile Include="Controllers\FundacionesController.cs" />
     <Compile Include="Controllers\GeneralesController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\CampoModel.cs" />
+    <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\ContenidoListadoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
@@ -379,9 +381,13 @@
     <Content Include="Scripts\huellitas.general.js" />
     <Content Include="Scripts\huellitas.router.js" />
     <Content Include="Scripts\huellitas.templateManager.js" />
+    <Content Include="Scripts\libs\backbone-validation.min.js" />
+    <Content Include="Scripts\libs\backbone-validation.js" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\backbone.min.js" />
     <None Include="Scripts\libs\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\libs\backbone.stickit.js" />
+    <Content Include="Scripts\libs\backbone.stickit.min.js" />
     <Content Include="Scripts\libs\bootstrap-tour.js" />
     <Content Include="Scripts\libs\bootstrap-tour.min.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
@@ -558,6 +564,7 @@
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
     <Content Include="Scripts\models\huellitas.admin.TipoRelacionContenido.js" />
     <Content Include="Scripts\models\huellitas.Campo.js" />
+    <Content Include="Scripts\models\huellitas.Comentario.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.js" />
@@ -572,6 +579,8 @@
     <Content Include="Scripts\views\huellitas.admin.AnimalEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
+    <Content Include="Scripts\views\huellitas.ComentariosView.js" />
+    <Content Include="Scripts\views\huellitas.DetalleHuellitaView.js" />
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
@@ -631,6 +640,7 @@
     <Content Include="Views\Fundaciones\_ResultadosBusqueda.cshtml" />
     <Content Include="Views\Fundaciones\Detalle.cshtml" />
     <Content Include="Views\Huellitas\Detalle.cshtml" />
+    <Content Include="Views\Shared\_Comentarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,27 @@
+﻿<script id="templateComentarios" type="text/template">
+    <form>
+        <div>
+            Nombre <br />
+            <input type="text" id="UsuarioNombres"  /> 
+            <div  id="UsuarioNombresError"></div>
+            <br />
+            Email <br />
+            <input type="text" id="CorreoElectronico"  />
+            <div  id="CorreoElectronicoError"></div>
+            <br />
+            Comentario<br />
+            <textarea id="Texto"></textarea>
+            <div  id="TextoError"></div>
+        </div>
+        <%
+
+        _.each(obj, function(comentario){     %>
+        <div><%= comentario.FechaCreacion %></div>
+        <div><%= comentario.UsuarioNombre %></div>
+        <div><%= comentario.Texto %></div>
+        <% })%>
+        <button type="button" id="btnGuardarComentario">Guardar Comentario</button>
+    </form>
+</script>
+<script src="~/Scripts/models/huellitas.Comentario.js"></script>
+<script src="~/Scripts/views/huellitas.ComentariosView.js"></script>

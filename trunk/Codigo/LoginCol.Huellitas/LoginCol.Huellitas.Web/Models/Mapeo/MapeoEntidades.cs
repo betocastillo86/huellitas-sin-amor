@@ -59,8 +59,24 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<Campo, CampoModel>()
                 .BeforeMap(ConvertCampoToCampoModel);
 
+            Mapper.CreateMap<Comentario, ComentarioModel>();
+
             AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
 
+            Mapper.CreateMap<ComentarioModel, Comentario>()
+                .AfterMap(ComentarioModelToComentario);
+
+        }
+
+        private static void ComentarioModelToComentario(ComentarioModel model, Comentario obj)
+        {
+            if (obj.Usuario == null)
+            {
+                obj.Usuario = new Usuario();
+            }
+
+            obj.Usuario.Correo = model.CorreoElectronico;
+            obj.Usuario.Nombres = model.UsuarioNombres;
         }
 
         private static void ValorCampoToValorCampoModel(ValorCampo obj, ValorCampoModel model)
@@ -79,9 +95,10 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                             model.ValorTexto = obj.Valor.ToLower().Equals("true") ? "Si" : "No";
                             break;
                         case TipoDatoCampo.Relacional:
-                            model.ValorTexto = obj.Campo.Opciones
-                                .Where(o => o.OpcionId.Equals(Convert.ToInt32(obj.Valor)))
-                                .FirstOrDefault().Texto;
+                            if(obj.Campo.Opciones != null)
+                                model.ValorTexto = obj.Campo.Opciones
+                                    .Where(o => o.OpcionId.Equals(Convert.ToInt32(obj.Valor)))
+                                    .FirstOrDefault().Texto;
                             break;
                         case TipoDatoCampo.ConsultaSql:
                             break;
