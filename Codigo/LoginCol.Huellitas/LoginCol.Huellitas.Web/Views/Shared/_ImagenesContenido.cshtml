@@ -1,0 +1,19 @@
+﻿
+<script id="templateImagenesContenido" type="text/template">
+    
+
+    <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
+
+    <img src="/img/<%=obj.ContenidoId%>/mini" class="imagenAdicional" contenidoid="<%=obj.ContenidoId%>" />
+    <%
+        
+        _.each(obj.Imagenes, function(imagen){
+    
+            %>
+    <img src="/img/<%=imagen.ContenidoHijo.ContenidoId%>/mini" class="imagenAdicional" contenidoId="<%=imagen.ContenidoHijo.ContenidoId%>" />
+            <%
+        });
+    %>
+</script>
+<script src="~/Scripts/models/huellitas.admin.Imagen.js"></script>
+<script src="~/Scripts/views/huellitas.ImagenesContenidoView.js"></script>

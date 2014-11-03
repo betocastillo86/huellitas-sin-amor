@@ -45,29 +45,10 @@
 var ComentarioCollection = Backbone.Collection.extend({
     model: ComentarioModel,
 
-    obtenerComentarios: function (contenidoId)
+    obtenerComentarios: function (contenidoId, pagina)
     {
-        this.url = "/api/comentarios/cid-" + contenidoId;
+        this.url = "/api/comentarios/cid-" + contenidoId + "?pagina="+(pagina ?  pagina : 0);
         this.fetch();
-        return this;
-    },
-    agregarComentario: function (contenidoId, nombre, email, comentario)
-    {
-        var modelo = new ComentarioModel();
-        modelo.on("guardado", this.comentarioGuardado, this);
-        modelo.on("invalido", this.comentarioInvalido, this);
-        modelo.agregarComentario(contenidoId, nombre, email, comentario)
-        return this;
-    },
-    comentarioGuardado: function (modelo)
-    {
-        this.add(modelo);
-        this.trigger("guardado", this);
-        return this;
-    },
-    comentarioInvalido: function (errores)
-    {
-        this.trigger("invalido", errores);
         return this;
     }
 });

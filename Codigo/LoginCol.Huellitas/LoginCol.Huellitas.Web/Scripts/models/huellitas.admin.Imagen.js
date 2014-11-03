@@ -73,5 +73,9 @@ var ImagenCollection = Backbone.Collection.extend({
         modelo.eliminar();
     },
 
-    model : ImagenModel
+    obtenerImagenes : function(contenidoId)
+    {
+        //this.url = "/api/adminimagenes/" + contenidoId;
+        this.fetch();
+    }
 });

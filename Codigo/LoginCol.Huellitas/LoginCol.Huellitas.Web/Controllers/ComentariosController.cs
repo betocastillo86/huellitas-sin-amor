@@ -14,11 +14,14 @@ namespace LoginCol.Huellitas.Web.Controllers
     public class ComentariosController : ApiController
     {
         [HttpGet]
-        public List<ComentarioModel> Get(int idContenido)
+        public List<ComentarioModel> Get(int idContenido, [FromUri] int? pagina)
         {
             ComentarioNegocio nComentarios = new ComentarioNegocio();
+            int resultadosPorPagina = ParametrizacionNegocio.ComentariosPorPagina;
             return nComentarios.ObtenerComentarios(idContenido)
                 .Select(Mapper.Map<Comentario, ComentarioModel>)
+                .Skip(resultadosPorPagina * pagina ?? 0)
+                .Take(resultadosPorPagina)
                 .ToList();
         }
 
@@ -27,7 +30,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             ComentarioNegocio nComentario = new ComentarioNegocio();
             Comentario comentario = Mapper.Map<ComentarioModel, Comentario>(modelo);
-            modelo.ComentarioId = nComentario.AgregarComentario(comentario);
+            //modelo.ComentarioId = nComentario.AgregarComentario(comentario);
+            modelo = Mapper.Map<Comentario, ComentarioModel>(nComentario.AgregarComentario(comentario));
             return modelo;
         }
     }

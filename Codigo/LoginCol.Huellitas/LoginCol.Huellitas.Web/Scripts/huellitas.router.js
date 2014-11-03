@@ -8,7 +8,8 @@
         "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)": "buscarHuellitas",
         "fundaciones" : "listarFundaciones",
         "fundaciones/": "listarFundaciones",
-        "fundaciones/buscar(/z:zona)": "buscarFundaciones"
+        "fundaciones/buscar(/z:zona)": "buscarFundaciones",
+        "fundaciones/:id/:nombre": "detalleFundacion"
     },
 
     listarHuellitas: function ()
@@ -46,6 +47,11 @@
     {
         var vistaDetalleContenido = new DetalleHuellitaView({ id: id });
         this.vistaActual = vistaDetalleContenido;
+    },
+    detalleFundacion: function (id, nombre)
+    {
+        var vistaDetalleFundacion = new DetalleFundacionView({ id: id });
+        this.vistaActual = vistaDetalleFundacion;
     }
 });
 

@@ -56,7 +56,11 @@ namespace LoginCol.Huellitas.Web.Controllers
             js.AppendFormat(", CampoColorId : {0}", ParametrizacionNegocio.CampoColorId);
             js.AppendFormat(", CampoTamanoId : {0}", ParametrizacionNegocio.CampoTamanoId);
             js.AppendFormat(", CampoEdadId : {0}", ParametrizacionNegocio.CampoEdadId);
-            js.AppendFormat(", TipoContenidoFundaciones : {0}", Convert.ToInt32(TipoContenidoEnum.Fundacion));
+            js.AppendFormat(", TipoContenidoFundaciones : {0}", Convert.ToInt32(TipoRelacionEnum.Fundacion));
+            js.AppendFormat(", TipoRelacionAnimalesSimilares : {0}", Convert.ToInt32(TipoRelacionEnum.AnimalesSimilares));
+            js.AppendFormat(", TipoRelacionPerrosFundacion : {0}", Convert.ToInt32(TipoRelacionEnum.PerrosEnFundacion));
+            
+            
             js.Append(" }");
             return JavaScript(js.ToString());
         }

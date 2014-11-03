@@ -16,9 +16,11 @@ namespace LoginCol.Huellitas.Entidades
     }
 
     public enum TipoRelacionEnum
-    { 
+    {
         Imagen = 1,
-        Fundacion = 3
+        PerrosEnFundacion=2,
+        Fundacion = 3,
+        AnimalesSimilares = 4
     }
 
     public enum TamanoImagenEnum

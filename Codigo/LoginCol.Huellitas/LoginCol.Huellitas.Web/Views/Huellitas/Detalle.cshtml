@@ -3,11 +3,17 @@
     ViewBag.Title = "Detalle";
 }
 <div id="divDetalleContenido">
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    Nombre: @Model.Nombre <br />
-    Historia: @Model.Descripcion <br />
-    Genero: @Html.ObtenerCampoDeContenido(Model, "Genero") <br />
-    Color: @Html.ObtenerCampoDeContenido(Model, "Color") <br />
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    <div id="divImagenesContenido"></div>
+    @Html.Partial("~/Views/Shared/_ImagenesContenido.cshtml")
+    @Html.Partial("~/Views/Shared/_CompartirRedesSociales.cshtml")
+    
+
+    <div id="divVideo"></div>
+    @Html.Partial("~/Views/Shared/_VideoContenido.cshtml")
+    @Html.HiddenFor(m => m.UrlVideo)
+
+    Nombre : @Html.LabelFor(m => m.Nombre)
     Tamaño: @Html.ObtenerCampoDeContenido(Model, "Tamaño") <br />
     Edad: @Html.ObtenerCampoDeContenido(Model, "Edad") <br />
     Comportamiento: @Html.ObtenerCampoDeContenido(Model, "Comportamiento") <br />
@@ -15,11 +21,11 @@
 
     Visitas: @Model.Visitas
 
-    Comentarios: @Model.Comentarios
+    Comentarios:<span id="contarComentarios">@Model.Comentarios</span> 
 
     @if (Model.HogarDePaso != null)
     {
-        <h1>HOGAR DE PASO</h1>
+        <h1><a href="/fundaciones/@Model.HogarDePaso.ContenidoId/@Model.HogarDePaso.Nombre">HOGAR DE PASO</a></h1>
         <div>Nombre: @Model.HogarDePaso.Nombre</div>
         <div>Direccion: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</div>
         <div>Teléfono: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</div>
@@ -28,6 +34,10 @@
     }
     <div id="divComentarios"></div>
     @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
+
+
+    <div id="divPerrosRelacionados"></div>
+    @Html.Partial("~/Views/Shared/_ContenidosRelacionados.cshtml")
 
     @section scripts{
     <script src="~/Scripts/views/huellitas.DetalleHuellitaView.js"></script>

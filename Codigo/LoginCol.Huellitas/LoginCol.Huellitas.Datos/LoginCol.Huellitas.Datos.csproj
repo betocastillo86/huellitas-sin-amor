@@ -143,6 +143,14 @@
     <Compile Include="Migrations\201410130227294_Configuraciones21.Designer.cs">
       <DependentUpon>201410130227294_Configuraciones21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411031935176_CampoVideo.cs" />
+    <Compile Include="Migrations\201411031935176_CampoVideo.Designer.cs">
+      <DependentUpon>201411031935176_CampoVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411031946149_CampoVideo1.cs" />
+    <Compile Include="Migrations\201411031946149_CampoVideo1.Designer.cs">
+      <DependentUpon>201411031946149_CampoVideo1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParametrizacionRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410130227294_Configuraciones21.resx">
       <DependentUpon>201410130227294_Configuraciones21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411031935176_CampoVideo.resx">
+      <DependentUpon>201411031935176_CampoVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411031946149_CampoVideo1.resx">
+      <DependentUpon>201411031946149_CampoVideo1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

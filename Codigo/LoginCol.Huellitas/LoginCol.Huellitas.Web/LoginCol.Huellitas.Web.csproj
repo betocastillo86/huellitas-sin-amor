@@ -201,6 +201,7 @@
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
     <Compile Include="Models\ContenidoRelacionadoModel.cs" />
+    <Compile Include="Models\DetalleFundacionModel.cs" />
     <Compile Include="Models\DetalleHuellitaModel.cs" />
     <Compile Include="Models\ListarFundacionesModel.cs" />
     <Compile Include="Models\ListarHuellitasModel.cs" />
@@ -378,6 +379,7 @@
     <Content Include="Images\sunglasses.png" />
     <Content Include="Images\twitter.png" />
     <Content Include="Scripts\huellitas.admin.app.js" />
+    <Content Include="Scripts\huellitas.app.js" />
     <Content Include="Scripts\huellitas.general.js" />
     <Content Include="Scripts\huellitas.router.js" />
     <Content Include="Scripts\huellitas.templateManager.js" />
@@ -580,13 +582,19 @@
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.ComentariosView.js" />
+    <Content Include="Scripts\views\huellitas.ContenidoRelacionadoView.js" />
+    <Content Include="Scripts\views\huellitas.DetalleFundacionView.js" />
     <Content Include="Scripts\views\huellitas.DetalleHuellitaView.js" />
+    <Content Include="Scripts\views\huellitas.FacebookShareView.js" />
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
+    <Content Include="Scripts\views\huellitas.ImagenesContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
+    <Content Include="Scripts\views\huellitas.TwitterShareView.js" />
+    <Content Include="Scripts\views\huellitas.VideoView.js" />
     <Content Include="templates\huellitas-listar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -641,6 +649,10 @@
     <Content Include="Views\Fundaciones\Detalle.cshtml" />
     <Content Include="Views\Huellitas\Detalle.cshtml" />
     <Content Include="Views\Shared\_Comentarios.cshtml" />
+    <Content Include="Views\Shared\_ImagenesContenido.cshtml" />
+    <Content Include="Views\Shared\_CompartirRedesSociales.cshtml" />
+    <Content Include="Views\Shared\_ContenidosRelacionados.cshtml" />
+    <Content Include="Views\Shared\_VideoContenido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
