@@ -21,7 +21,7 @@ namespace LoginCol.Huellitas.Negocio
         /// </summary>
         /// <param name="comentario">datos del comentario</param>
         /// <returns></returns>
-        public int AgregarComentario(Comentario comentario)
+        public Comentario AgregarComentario(Comentario comentario)
         {
             UsuarioNegocio nUsuario = new UsuarioNegocio();
 
@@ -42,10 +42,12 @@ namespace LoginCol.Huellitas.Negocio
                 ComentarioRepositorio dComentario = new ComentarioRepositorio();
                 comentario.Activo = true;
                 comentario.Usuario = null;
-                return dComentario.AgregarComentario(comentario);
+                //comentario.FechaCreacion = DateTime.Now;
+                comentario = dComentario.AgregarComentario(comentario);
             }
-            else
-                return 0;
+
+
+            return comentario;
         }
     }
 }

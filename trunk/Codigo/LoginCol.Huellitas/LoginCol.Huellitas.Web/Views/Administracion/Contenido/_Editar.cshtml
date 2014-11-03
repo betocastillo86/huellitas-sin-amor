@@ -59,9 +59,14 @@
                             @Html.TextBoxFor(model => model.Twitter, new { @class = "form-control" })
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(model => model.UrlVideo)
+                            @Html.TextBoxFor(model => model.UrlVideo, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Activo)
                             @Html.CheckBoxFor(model => model.Activo)
                         </div>
+
                         <div class="form-group" id="divImagenPrincipal">
                             @Html.LabelFor(model => model.Imagen)
                             

@@ -13,14 +13,19 @@
             <textarea id="Texto"></textarea>
             <div  id="TextoError"></div>
         </div>
+        <button type="button" id="btnGuardarComentario">Guardar Comentario</button>
+        <br />
+        COMENTARIOS ANTERIORES <br />
         <%
-
         _.each(obj, function(comentario){     %>
         <div><%= comentario.FechaCreacion %></div>
-        <div><%= comentario.UsuarioNombre %></div>
+        <div><%= comentario.UsuarioNombres %></div>
         <div><%= comentario.Texto %></div>
-        <% })%>
-        <button type="button" id="btnGuardarComentario">Guardar Comentario</button>
+        <% }) %>
+       
+         
+        <div id="btnSiguientePagina">SIGUIENTE</div>
+        
     </form>
 </script>
 <script src="~/Scripts/models/huellitas.Comentario.js"></script>

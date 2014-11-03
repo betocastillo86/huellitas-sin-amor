@@ -27,5 +27,14 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View(modelo);
         }
 
+
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            DetalleFundacionModel modelo = Mapper.Map<Contenido, DetalleFundacionModel>(nContenido.Obtener(id));
+            return View(modelo);
+        }
+
     }
 }

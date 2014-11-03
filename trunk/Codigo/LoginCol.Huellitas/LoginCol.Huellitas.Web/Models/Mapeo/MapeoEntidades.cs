@@ -13,7 +13,8 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
     {
         public static void CrearMapeo()
         {
-            AutoMapper.Mapper.CreateMap<TipoContenido, string>().ConvertUsing<TipoContenidoTypeConverter>();
+
+            #region Contenido
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoModel>()
                 .BeforeMap(AntesConvertirContenido)
@@ -22,9 +23,12 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             AutoMapper.Mapper.CreateMap<Contenido, DetalleHuellitaModel>()
                 .BeforeMap(AntesConvertirContenido)
                 .ForMember(o => o.Campos, opt => opt.Ignore());
-                //OJO:Si se quita revisar el listado de contenidos
-                //.ForMember(o => o.Campos, opt => opt.Ignore());
 
+            AutoMapper.Mapper.CreateMap<Contenido, DetalleFundacionModel>()
+                .BeforeMap(AntesConvertirContenido)
+                .ForMember(o => o.Campos, opt => opt.Ignore());
+            //OJO:Si se quita revisar el listado de contenidos
+            //.ForMember(o => o.Campos, opt => opt.Ignore());
 
             AutoMapper.Mapper.CreateMap<Contenido, ContenidoBaseModel>();
 
@@ -32,39 +36,69 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                 .BeforeMap(ImagenesContenido);
 
             AutoMapper.Mapper.CreateMap<ContenidoModel, Contenido>()
-               // .ForMember(db => db.Campos, model => model.Ignore())
+                // .ForMember(db => db.Campos, model => model.Ignore())
                 .ForMember(o => o.ContenidosRelacionados, d => d.Ignore())
                 .ForMember(o => o.ContenidosRelacionadosPadre, d => d.Ignore())
                 .ForMember(o => o.TipoContenido, d => d.Ignore())
                 .ForMember(o => o.Usuario, d => d.Ignore())
                 .ForMember(o => o.ZonaGeografica, d => d.Ignore());
 
+
+            AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
+
+            Mapper.CreateMap<TipoRelacionContenido, TipoRelacionContenidoModel>();
+
+            #endregion
+
+            #region Comentario
+
+            Mapper.CreateMap<Comentario, ComentarioModel>();
+
+            Mapper.CreateMap<ComentarioModel, Comentario>()
+                .AfterMap(ComentarioModelToComentario);
+
+            #endregion
+
+            #region Zona Geografica
+
             Mapper.CreateMap<ZonaGeografica, ZonaGeograficalModel>();
+
+            #endregion
+
+            #region Valores y Campos
 
             Mapper.CreateMap<ValorCampo, ValorCampoModel>()
                 .BeforeMap(ValorCampoToValorCampoModel);
 
             Mapper.CreateMap<ValorCampoModel, ValorCampo>();
 
-            Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
-            Mapper.CreateMap<TipoContenido, TipoContenidoBaseModel>();
-                //.ForSourceMember( o => o.Contenidos , d => d.Ignore());
-
             Mapper.CreateMap<CampoTipoContenido, CampoModel>();
 
             Mapper.CreateMap<OpcionCampo, OpcionCampoModel>();
 
-            Mapper.CreateMap<TipoRelacionContenido, TipoRelacionContenidoModel>();
-
             Mapper.CreateMap<Campo, CampoModel>()
                 .BeforeMap(ConvertCampoToCampoModel);
 
-            Mapper.CreateMap<Comentario, ComentarioModel>();
+            #endregion
 
-            AutoMapper.Mapper.CreateMap<ContenidoRelacionado, ContenidoRelacionadoModel>();
+            #region Tipo Contenido
+            AutoMapper.Mapper.CreateMap<TipoContenido, string>().ConvertUsing<TipoContenidoTypeConverter>();
+            Mapper.CreateMap<TipoContenido, TipoContenidoModel>();
+            Mapper.CreateMap<TipoContenido, TipoContenidoBaseModel>();
+            
+            //.ForSourceMember( o => o.Contenidos , d => d.Ignore());
 
-            Mapper.CreateMap<ComentarioModel, Comentario>()
-                .AfterMap(ComentarioModelToComentario);
+            #endregion
+
+            
+
+            
+
+           
+
+            
+
+            
 
         }
 

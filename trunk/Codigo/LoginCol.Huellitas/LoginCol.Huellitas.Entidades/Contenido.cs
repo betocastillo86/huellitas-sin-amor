@@ -79,5 +79,7 @@ namespace LoginCol.Huellitas.Entidades
         [DefaultValue(false)]
         public bool Eliminado { get; set; }
 
+        public string UrlVideo { get; set; }
+
     }
 }

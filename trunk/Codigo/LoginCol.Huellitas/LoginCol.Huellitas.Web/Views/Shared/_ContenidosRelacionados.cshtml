@@ -1,0 +1,16 @@
+﻿<script id="templateContenidosRelacionados" type="text/template">
+
+    <%= obj.Titulo %>
+    <%  _.each(obj.Contenidos, function(contenido){ %>
+    <div>
+        <a href="/huellitas/<%=contenido.ContenidoHijo.ContenidoId%>/<%=contenido.ContenidoHijo.Nombre%>">
+            <img src="/img/<%=contenido.ContenidoHijo.ContenidoId%>/mini" />
+            <%=contenido.ContenidoHijo.Nombre%>
+        </a>
+            
+</div>
+    <%  }); %>
+
+</script>
+<script src="~/Scripts/models/huellitas.admin.ContenidoRelacionado.js"></script>
+<script src="~/Scripts/views/huellitas.ContenidoRelacionadoView.js"></script>

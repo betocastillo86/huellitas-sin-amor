@@ -48,5 +48,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         public List<TipoRelacionContenido> TiposRelacionContenido { get; set; }
 
+        [MaxLength(100)]
+        public string UrlVideo { get; set; }
     }
 }

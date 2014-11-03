@@ -1,16 +1,41 @@
-﻿@model LoginCol.Huellitas.Web.Models.ContenidoModel
+﻿@model LoginCol.Huellitas.Web.Models.DetalleFundacionModel
 @{
-    ViewBag.Title = "Detalle";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalle Fundacion";
 }
-
 <div id="divDetalleContenido">
-    <div>
-        @Html.Label("Color")
-        
-        @Html.ObtenerCampoDeContenido(Model, "Color");
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    <div id="divImagenesContenido"></div>
+    @Html.Partial("~/Views/Shared/_ImagenesContenido.cshtml")
+    @Html.Partial("~/Views/Shared/_CompartirRedesSociales.cshtml")
 
-    </div>
-    
+
+    <div id="divVideo"></div>
+    @Html.Partial("~/Views/Shared/_VideoContenido.cshtml")
+    @Html.HiddenFor(m => m.UrlVideo)
+
+    Nombre : @Html.LabelFor(m => m.Nombre)
+    Direccion: @Html.ObtenerCampoDeContenido(Model, "Direccion") <br />
+    Encargado: @Html.ObtenerCampoDeContenido(Model, "Encargado") <br />
+    Telefono: @Html.ObtenerCampoDeContenido(Model, "Telefono") <br />
+    Celular: @Html.ObtenerCampoDeContenido(Model, "Celular") <br />
+    @Html.Hidden("Latitud", @Html.ObtenerCampoDeContenido(Model, "Latitud"))
+    @Html.Hidden("Longitud", @Html.ObtenerCampoDeContenido(Model, "Longitud"))
+
+    Visitas: @Model.Visitas
+
+    Comentarios:<span id="contarComentarios">@Model.Comentarios</span>
+
+
+    <div id="divComentarios"></div>
+    @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
+
+
+    <div id="divPerrosRelacionados"></div>
+    @Html.Partial("~/Views/Shared/_ContenidosRelacionados.cshtml")
+
+    @section scripts{
+        <script src="~/Scripts/views/huellitas.DetalleFundacionView.js"></script>
+    }
+
 
 </div>
