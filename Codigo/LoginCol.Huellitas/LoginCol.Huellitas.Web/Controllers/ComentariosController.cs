@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,22 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpPost]
-        public ComentarioModel Post(ComentarioModel modelo)
+        public bool Post(ComentarioModel modelo)
         {
             ComentarioNegocio nComentario = new ComentarioNegocio();
             Comentario comentario = Mapper.Map<ComentarioModel, Comentario>(modelo);
             //modelo.ComentarioId = nComentario.AgregarComentario(comentario);
-            modelo = Mapper.Map<Comentario, ComentarioModel>(nComentario.AgregarComentario(comentario));
-            return modelo;
+
+            try
+            {
+                modelo = Mapper.Map<Comentario, ComentarioModel>(nComentario.AgregarComentario(comentario));
+                return modelo.ComentarioId > 0;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
         }
     }
 }

@@ -32,8 +32,12 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
 
-            if(hogarDePaso != null)
+            if (hogarDePaso != null)
+            {
                 modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
+                modelo.HogarDePaso.CorreoElectronico = hogarDePaso.ContenidoHijo.Email;
+            }
+                
 
             return View(modelo);
         }

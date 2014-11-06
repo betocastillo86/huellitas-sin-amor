@@ -2,51 +2,97 @@
 @{
     ViewBag.Title = "Detalle";
 }
+
+
+
+
+
+
 <div id="divDetalleContenido">
-    <br /><br /><br /><br /><br /><br /><br /><br />
-    <div id="divImagenesContenido"></div>
-    @Html.Partial("~/Views/Shared/_ImagenesContenido.cshtml")
-    @Html.Partial("~/Views/Shared/_CompartirRedesSociales.cshtml")
-    
+
+
+
+
+
+
+
+
+    <div class="container clearfix">
+
+        <div id="divImagenesContenido"></div>
+        @Html.Partial("~/Views/Shared/_ImagenesContenido.cshtml")
+
+
+        <div class="descriPerfil grid_6 omega">
+            <div class="descri_mascota">
+                <h2><span class="icon-alert"></span>@Html.DisplayFor(m => m.Nombre)</h2>
+                <div>TAMAÑO: @Html.ObtenerCampoDeContenido(Model, "Tamaño")</div>
+                <div>GENERO: @Html.ObtenerCampoDeContenido(Model, "Genero")</div>
+                <div>EDAD: @Html.ObtenerCampoDeContenido(Model, "Edad") AÑO(S)</div>
+                <div>COMPORTAMIENTO: @Html.ObtenerCampoDeContenido(Model, "Comportamiento")</div>
+                <div>RECOMENDADO PARA: @Html.ObtenerCampoDeContenido(Model, "RecomendadoPara")</div>
+                <div>LOCALIZACIÓN: BOGOTÁ</div>
+            </div>
+            <div class="compartir">
+                <span>COMPARTE EN:</span>
+                <b id="divFacebook"></b>
+                <b id="divTwitter"></b>
+                @Html.Partial("~/Views/Shared/_CompartirRedesSociales.cshtml")
+            </div>
+            <div class="conte_visitas">
+                <span class="icon-calendar"></span>@Model.Visitas
+                <span class="icon-calendar"></span><div id="contarComentarios" style="display:inline-block">@Model.Comentarios</div>
+            </div>
+            <p class="parrafo">@Html.DisplayFor(m => m.Descripcion)</p>
+            <a class="btn" href="javascript:;">ADOPTAME</a>
+            <a class="btn" href="javascript:;">APADRINAME</a>
+        </div>
+
+
+        @if (Model.HogarDePaso != null)
+        {
+            <div class="grid_6 conte_datos">
+                <h2>HOGAR DE PASO: <a href="/fundaciones/@Model.HogarDePaso.ContenidoId/@Model.HogarDePaso.Nombre"><b>@Model.HogarDePaso.Nombre</b></a></h2>
+                <h3>CONTACTO: <span>@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</span></h3>
+                <ul>
+                    <li>@Model.HogarDePaso.ZonaGeograficaNombre / @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</li>
+                    <li>CORREO: @Model.HogarDePaso.CorreoElectronico</li>
+                    <li>CEL: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Celular")</li>
+                    <li>TEL:@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</li>
+                </ul>
+            </div>
+        }
+
+
+
+        @*<div class="grid_6 conte_datos omega">
+                <h2>PADRINO: <b>ERIKA PRADO</b></h2>
+                <h3>DONACIÓN MENSUAL: <span>$150.000</span></h3>
+                <ul>
+                    <li>TIEMPO: 3 meses</li>
+                    <li>CORREO: fundacion@host.com</li>
+                    <li>CEL: 320 3546789</li>
+                    <li>TEL:3669223</li>
+                </ul>
+            </div>*@
+    </div>
+
+    <!--similares-->
+    <div id="divPerrosRelacionados"></div>
+    @Html.Partial("~/Views/Shared/_ContenidosRelacionados.cshtml")
+    <!--fin similares-->
+    <!--comentarios-->
+    <div id="divComentarios"></div>
+    @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
+    <!--fin comentarios-->
 
     <div id="divVideo"></div>
     @Html.Partial("~/Views/Shared/_VideoContenido.cshtml")
     @Html.HiddenFor(m => m.UrlVideo)
 
-    Nombre : @Html.LabelFor(m => m.Nombre)
-    Tamaño: @Html.ObtenerCampoDeContenido(Model, "Tamaño") <br />
-    Edad: @Html.ObtenerCampoDeContenido(Model, "Edad") <br />
-    Comportamiento: @Html.ObtenerCampoDeContenido(Model, "Comportamiento") <br />
-    Recomendado Para: @Html.ObtenerCampoDeContenido(Model, "RecomendadoPara") <br />
-
-    Visitas: @Model.Visitas
-
-    Comentarios:<span id="contarComentarios">@Model.Comentarios</span> 
-
-    @if (Model.HogarDePaso != null)
-    {
-        <h1><a href="/fundaciones/@Model.HogarDePaso.ContenidoId/@Model.HogarDePaso.Nombre">HOGAR DE PASO</a></h1>
-        <div>Nombre: @Model.HogarDePaso.Nombre</div>
-        <div>Direccion: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</div>
-        <div>Teléfono: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</div>
-        <div>Encargado: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</div>
-
-    }
-    <div id="divComentarios"></div>
-    @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
-
-
-    <div id="divPerrosRelacionados"></div>
-    @Html.Partial("~/Views/Shared/_ContenidosRelacionados.cshtml")
-
-    @section scripts{
-    <script src="~/Scripts/views/huellitas.DetalleHuellitaView.js"></script>
-    }
-
-    
-
-
-
-
-
 </div>
+
+@section scripts{
+    <script src="~/Scripts/views/huellitas.DetalleHuellitaView.js"></script>
+    @Scripts.Render("~/bundles/slide")
+}

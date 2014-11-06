@@ -28,6 +28,7 @@
     render: function ()
     {
         this.$el.html(this.template({ Titulo: this.titulo, Contenidos: this.listaContenidos.toJSON() }));
+        $('#cbp-fwslider').cbpFWSlider();
         return this;
     }
 });

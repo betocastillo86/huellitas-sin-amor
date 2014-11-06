@@ -33,6 +33,10 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/huellitas.general.js")
                 .Include("~/Home/ConstantesJs"));
 
+            bundles.Add(new ScriptBundle("~/bundles/slide").Include(
+                "~/Scripts/libs/jquery.cbpFWSlider.js"));
+
+            
 
 
             //Librerias adicionales del template charisma
@@ -79,6 +83,7 @@ namespace LoginCol.Huellitas.Web
 
             bundles.Add(new StyleBundle("~/bundles/cssfrontend")
                 .Include("~/Content/normalize.css")
+                .Include("~/Content/slider.css")
                 .Include("~/Content/grid.css")
                 .Include("~/Content/menu_styles.css")
                 .Include("~/Content/style.css"));

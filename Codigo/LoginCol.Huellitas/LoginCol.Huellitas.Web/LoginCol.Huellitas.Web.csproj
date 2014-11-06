@@ -255,6 +255,7 @@
     <Content Include="Content\grid.css" />
     <Content Include="Content\menu_styles.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_55_fbec88_40x100.png" />
@@ -373,6 +374,7 @@
     <Content Include="Images\galeria\img_02.jpg" />
     <Content Include="Images\galeria\img_03.jpg" />
     <Content Include="Images\galeria\img_04.jpg" />
+    <Content Include="Images\galeria\img_galeriaprueba.jpg" />
     <Content Include="Images\img_mapa.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo.svg" />
@@ -453,6 +455,8 @@
     <Content Include="Scripts\libs\jquery-ui.js" />
     <Content Include="Scripts\libs\jquery-ui.min.js" />
     <Content Include="Scripts\libs\jquery.autogrow-textarea.js" />
+    <Content Include="Scripts\libs\jquery.cbpFWSlider.js" />
+    <Content Include="Scripts\libs\jquery.cbpFWSlider.min.js" />
     <Content Include="Scripts\libs\jquery.cookie.js" />
     <Content Include="Scripts\libs\jquery.dataTables.js" />
     <Content Include="Scripts\libs\jquery.dataTables.min.js" />
