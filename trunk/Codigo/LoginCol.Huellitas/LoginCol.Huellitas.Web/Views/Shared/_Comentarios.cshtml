@@ -1,32 +1,51 @@
 ﻿<script id="templateComentarios" type="text/template">
-    <form>
-        <div>
-            Nombre <br />
-            <input type="text" id="UsuarioNombres"  /> 
-            <div  id="UsuarioNombresError"></div>
+
+    <section class="conte_comentarios slide">
+        <div class="container clearfix">
+            <h2>COMENTARIOS</h2>
+            <h3>LOREM IPSUM ES SIMPLEMENTE EL TEXTO DE RELLENO DE LAS IMPRENTAS</h3>
+            <input type="text" id="UsuarioNombres" placeholder="NOMBRE" /><span id="UsuarioNombresError"></span>
+            <input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRÓNICO" /><span id="CorreoElectronicoError"></span>
+            <textarea placeholder="DEJANOS TU COMENTARIO:" id="Texto"></textarea><span id="TextoError"></span>
+            <a id="btnGuardarComentario" class="btn">COMENTAR</a>
             <br />
-            Email <br />
-            <input type="text" id="CorreoElectronico"  />
-            <div  id="CorreoElectronicoError"></div>
-            <br />
-            Comentario<br />
-            <textarea id="Texto"></textarea>
-            <div  id="TextoError"></div>
+            <ul>
+
+                <%
+                _.each(obj, function(comentario){     %>
+
+                <li class="comentario">
+                    <h4><%= comentario.UsuarioNombres %> - <%= comentario.FechaCreacion %></h4>
+                    <p><%= comentario.Texto %></p>
+                </li>
+
+
+                <% }) %>
+
+                <div class="mas_scroll" id="btnSiguientePagina">Ver más</div>
+
+            </ul>
         </div>
-        <button type="button" id="btnGuardarComentario">Guardar Comentario</button>
-        <br />
-        COMENTARIOS ANTERIORES <br />
-        <%
-        _.each(obj, function(comentario){     %>
-        <div><%= comentario.FechaCreacion %></div>
-        <div><%= comentario.UsuarioNombres %></div>
-        <div><%= comentario.Texto %></div>
-        <% }) %>
-       
-         
-        <div id="btnSiguientePagina">SIGUIENTE</div>
-        
-    </form>
 </script>
 <script src="~/Scripts/models/huellitas.Comentario.js"></script>
 <script src="~/Scripts/views/huellitas.ComentariosView.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>

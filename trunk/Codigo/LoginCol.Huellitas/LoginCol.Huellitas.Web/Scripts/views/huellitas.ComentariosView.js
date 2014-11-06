@@ -62,7 +62,6 @@
                 this.listadoComentarios.add(nuevoModelo.models);
             else
             {
-                alert("Quitar trigger del metodo guardarComentario");
                 this.trigger("comentarioAgregado", nuevoModelo);
                 this.listadoComentarios.push(nuevoModelo);
             }
@@ -81,7 +80,8 @@
         
         Huellitas.removerErroresFormulario(this);
         this.model.agregarComentario({ success: this.cargarComentarios, invalid: this.formularioInvalido }, this);
-        this.trigger("comentarioAgregado", "");
+        //this.model.on("sync", this.cargarComentarios, this);
+       // this.model.agregarComentario({ invalid: this.formularioInvalido }, this);
         
     },
     formularioInvalido : function(errores, ctx)

@@ -1,19 +1,26 @@
 ﻿
 <script id="templateImagenesContenido" type="text/template">
-    
 
-    <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
 
-    <img src="/img/<%=obj.ContenidoId%>/mini" class="imagenAdicional" contenidoid="<%=obj.ContenidoId%>" />
-    <%
-        
-        _.each(obj.Imagenes, function(imagen){
-    
-            %>
-    <img src="/img/<%=imagen.ContenidoHijo.ContenidoId%>/mini" class="imagenAdicional" contenidoId="<%=imagen.ContenidoHijo.ContenidoId%>" />
+
+    <div class="grid_6">
+        <div class="galeria_perfil">
+            <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
+        </div>
+        <ul class="gale_mini">
+            <li style="background-image: url(/img/<%=obj.ContenidoId%>/mini)" class="imagenAdicional" contenidoid="<%=obj.ContenidoId%>"></li>
             <%
-        });
-    %>
+            var ultimaImagen = obj.Imagenes.length ? _.last(obj.Imagenes).ContenidoHijo.ContenidoId : 0;
+            _.each(obj.Imagenes, function(imagen){
+            %>
+            <li style="background-image: url(/img/<%=imagen.ContenidoHijo.ContenidoId%>/mini)" class="<%= ultimaImagen == imagen.ContenidoHijo.ContenidoId ? 'no-margin' : '' %>"  contenidoid="<%=imagen.ContenidoHijo.ContenidoId%>"></li>
+            <%
+            });
+            %>
+        </ul>
+    </div>
+
+
 </script>
 <script src="~/Scripts/models/huellitas.admin.Imagen.js"></script>
 <script src="~/Scripts/views/huellitas.ImagenesContenidoView.js"></script>

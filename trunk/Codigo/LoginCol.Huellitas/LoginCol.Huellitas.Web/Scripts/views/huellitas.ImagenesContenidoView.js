@@ -3,7 +3,8 @@
     tagName: "div",
 
     events: {
-        "click .imagenAdicional" : "mostrarImagen"
+        //"click .imagenAdicional" : "mostrarImagen"
+        "click li": "mostrarImagen"
     },
 
     listaImagenes : undefined,
@@ -17,6 +18,7 @@
         this.contenidoId = args.id;
         this.listaImagenes = new ImagenCollection({ idContenido : args.id});
         this.cargarImagenes();
+        this.render();
     },
     cargarImagenes: function ()
     {
@@ -28,10 +30,11 @@
         //carga un objeto para ser enviado al template
         var contenido = { ContenidoId: this.contenidoId, Imagenes: this.listaImagenes.toJSON() };
         this.$el.html(this.template(contenido));
+        return this;
     },
     mostrarImagen : function(obj)
     {
-        var idImagen = $(obj.currentTarget).attr("contenidoId");
+        var idImagen = $(obj.target).attr("contenidoId");
         this.$("#imagenPrincipal").attr("src", "/img/" + idImagen + "/medium");
          
     },

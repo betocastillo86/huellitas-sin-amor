@@ -299,6 +299,7 @@ namespace LoginCol.Huellitas.Datos
                     var query  = db.ContenidosRelacionados
                         .Include(c => c.ContenidoHijo)
                         .Include(c => c.ContenidoHijo.TipoContenido)
+                        .Include(c => c.ContenidoHijo.ZonaGeografica)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
                         .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);

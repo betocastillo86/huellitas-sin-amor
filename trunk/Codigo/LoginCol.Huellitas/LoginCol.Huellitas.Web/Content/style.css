@@ -5,7 +5,7 @@ body {
 	font-weight: 400;
 	font-size: 16px;
 	color: #8a8683;
-	background:url(../images/bkg_azul.png) repeat;
+	background:url(../images/bkg_gris.png) repeat;
 }
 img {
 	max-width: 100%;
@@ -40,6 +40,7 @@ p{
 	margin:0;
 	padding:8px 0;
 	line-height:140%;
+	font-size:14px;
 	}
 h2{
 	color:#FFF;
@@ -73,6 +74,33 @@ header{
 #first{
 	margin:110px 0 0;
 	}
+textarea {
+    border: medium none;
+    color: #304a6f;
+    display: block;
+    font-family: 'Oswald',sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    height: 120px;
+    margin: 10px 0 20px;
+    padding: 5px 10px;
+    text-align: left;
+    width:100%;
+	resize:none;
+}
+.mas_scroll{
+	text-align:center;
+	height:24px;
+	padding:8px 0 7px;
+	margin:20px auto 0;
+	font-size:16px;
+	font-weight:700;
+	background:#ef525b;
+    color: #fff;
+    width: 130px;
+	text-transform:uppercase;
+	cursor:pointer;
+	}
 /* General Slides */ 
 
 .slide {
@@ -84,22 +112,8 @@ header{
 }
 /* Slide 1 */ 
 
-#slide1 {
+.slide_home {
 	background-color:#E5FDFF;
-}
-#slide1 h1 {
-	font-size: 3.8em;
-	letter-spacing: -3px;
-	line-height: 0px;
-	color:#8a8683;
-	font-weight: 700;
-}
-#slide1 h2 {
-	font-size: 2em;
-	color: #8a8683;
-	line-height: 0px;
-	padding-bottom:20px;
-	font-weight: 400;
 }
 /* Slide 2 */ 
 
@@ -240,17 +254,7 @@ form select{
 	font-weight:300;
 	}
 form textarea{
-	font-family: 'Oswald', sans-serif;
-	display:block;
-	border:none;
-	padding:5px 10px;
-	margin:10px 0 20px;
-	color:#304A6F;
-	text-align:left;
-	font-size:16px;
-	font-weight:300;
 	width:calc(100% - 20px);
-	height:120px;
 	}
 form input.check{
 	width:35px;
@@ -293,19 +297,20 @@ form .btn{
 	padding:60px 20px 20px;
 	}
 article h3{
-	font-size:25px;
+	font-size:23px;
 	font-weight:700;
 	color:#FFF;
 	line-height:1;
 	}
 article h4{
-	font-size:16px;
+	font-size:14px;
 	font-weight:400;
 	color:#FFF;
 	line-height:2;
 	}
 article p{
 	font-size:14px;
+	white-space:normal;
 	}
 article .btn{
 	color: #fff;
@@ -363,6 +368,195 @@ article p.scroll{
 	height:105px;
 	}
 /*fin fundaciones*/
+/*perfiles*/
+.conte_perfil{
+	background:url(../images/bkg_rosa.png) repeat;
+	}
+.galeria_perfil{
+	}
+.galeria_perfil img{
+	width:100%;
+	}
+.gale_mini{
+	margin:10px 0 0;
+	padding:0;
+	list-style:none;
+	}
+.gale_mini li{
+	cursor:pointer;
+	width:calc(25% - 15px);
+	background:#3366FF;
+	height:80px;
+	float:left;
+	margin:0 20px 0 0;
+	}
+.descriPerfil{
+	position:relative;
+	}
+.descri_mascota{
+	font-size:14px;
+	color:#FFF;
+	}
+.descri_mascota h2{
+	font-size:30px;
+	text-align:left;
+	text-transform:uppercase;
+	margin:0 0 5px;
+	}
+.descri_mascota h2 span{
+	color:#304A6F;
+	font-size:25px;
+	padding:0 5px 0 0;
+	}
+.compartir{
+	position:absolute;
+	top:0;
+	right:0;
+	color:#FFF;
+	font-size:16px;
+	}
+.compartir span{
+	display:block;
+	float:left;
+	padding:7px 0;
+	}
+.compartir a {
+    border-radius: 100%;
+	display:block;
+	float:left;
+    height: 40px;
+    margin: 0 10px;
+    width: 40px;
+}
+.conte_visitas{
+	position:absolute;
+	top:110px;
+	right:0;
+	color:#FFF;
+	}
+.conte_visitas span{
+	font-size:30px;
+	color:#3F77BF;
+	margin:0 5px 0 15px;
+	}
+.descriPerfil .parrafo{
+	height:250px;
+	overflow-y:scroll;
+	text-align:justify;
+	font-size:14px;
+	}
+.descriPerfil .btn{
+	float:left;
+	background:#ef525b;
+    color: #fff;
+    width: 130px;
+	}
+.conte_datos{
+	margin:20px 0 0;
+	}
+.conte_datos h2{
+	font-size:20px;
+	font-weight:400;
+	cursor:pointer;
+	}
+.conte_datos h2 b{
+	font-weight:700;
+	}
+.conte_datos h3{
+	font-size:18px;
+	color:#2C4567;
+	font-weight:400;
+	}
+.conte_datos h3 span{
+	font-weight:300;
+	}
+.conte_datos ul{
+	padding:6px 0 0;
+	margin:0;
+	list-style:none;
+	}
+.conte_datos ul li{
+	float:left;
+	width:50%;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+	font-size:14px;
+	}
+.conte_similar{
+	background:url(../images/bkg_gris.png) repeat;
+	}
+.conte_similar .cbp-fwslider{
+	margin:0;
+	padding:10px 0 60px;
+	}
+.conte_similar h2 {
+    color:#304A6D;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1;
+}
+.conte_similar .cajaSimilar{
+	background-size:auto 100%;
+    min-height: 195px;
+    width: 100%;
+	position:relative;
+	cursor:pointer;
+	overflow:hidden
+	}
+.cajaSimilar article {
+	width:calc(100% - 20px);
+    height:auto;
+    padding:10px;
+	position:absolute;
+	bottom:-40%;
+	transition:all 0.6s ease;
+	}
+.cajaSimilar:hover article{
+	bottom:0;
+	}
+.conte_comentarios{
+	background:url(../images/bkg_azul.png) repeat;
+	}
+.conte_comentarios h2 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+}
+.conte_comentarios h3 {
+    color: #ff8a8d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2;
+    margin: 0;
+}
+.conte_comentarios .btn{
+	background:#ef525b;
+    color: #fff;
+    width: 130px;
+	}
+.conte_comentarios ul{
+	padding:10px 0 0;
+	margin:0;
+	list-style:none;
+	}
+li.comentario{
+	width:100%;
+	height:auto;
+	border-bottom:1px dashed #FFF;
+	}
+li.comentario h4{
+	color:#FF8A8C;
+	font-size:16px;
+	font-weight:400;
+	margin:10px 0 0;
+	}
+li.comentario p{
+	text-align:justify;
+	line-height:normal;
+	padding:0 0 8px;
+	}
+/*fin perfiles*/
 /*footer*/
 footer{
 	width:100%;
