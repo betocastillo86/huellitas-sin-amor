@@ -15,6 +15,8 @@
 
     vistaVideo: undefined,
 
+    mapaView : undefined,
+
     initialize: function (args) {
         this.contenidoId = args.id;
         this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido" });
@@ -24,8 +26,9 @@
 
         this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: 'http://www.huellitassinamor.com/' });
         this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: 'http://www.huellitassinamor.com/', texto: 'Linda pagina de twitter' });
-        this.vistaPerrosRelacionados = new ContenidoRelacionadoView({ el: "#divPerrosRelacionados", id: this.contenidoId, tipoRelacion: Constantes.TipoRelacionFundacion, titulo: "ANIMALES SIMILARES" });
-        this.vistaVideo = new VideoView({ el: "#divVideo", urlVideo: this.$("#UrlVideo").val() });
+        this.vistaPerrosRelacionados = new ContenidoRelacionadoView({ el: "#divPerrosRelacionados", id: this.contenidoId, tipoRelacion: Constantes.TipoRelacionFundacion, titulo: "NUESTRAS HUELLITAS" });
+        //this.vistaVideo = new VideoView({ el: "#divVideo", urlVideo: this.$("#UrlVideo").val() });
+        this.mapaView = new MapaView({ el: "#mapaContenido", latitud: parseFloat($("#Latitud").val()), longitud: parseFloat($("#Longitud").val()) });
         this.render();
     },
     sumarComentario: function (ultimoComentario) {

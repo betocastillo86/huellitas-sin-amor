@@ -96,7 +96,7 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/libs/menu.js")
                 //.Include("~/Scripts/libs/jquery.jscroll.js")
                 .Include("~/Scripts/libs/jquery.easing.1.3.js")
-                .Include("~/Scripts/libs/huellitas.front.init.js")
+                //.Include("~/Scripts/libs/huellitas.front.init.js")
                 .Include("~/Scripts/libs/TrafficCop.js"));
 
 

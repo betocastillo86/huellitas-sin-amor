@@ -35,16 +35,17 @@
                 @foreach (var opcion in Model.RecomendadoPara)
                 {
                     <div class="grid_3">
-                    <input class="check" type="checkbox" name="recomendadoPara" value="@opcion.OpcionId" />
-                    <span>@opcion.Texto</span>
-                </div>
+                        <input class="check" type="checkbox" name="recomendadoPara" value="@opcion.OpcionId" />
+                        <span>@opcion.Texto</span>
+                    </div>
                 }
                 <br />
-                <div class="btn" id="btnBuscar" >BUSCAR</div>
+                <div class="btn" id="btnBuscar">BUSCAR</div>
             </form>
         </div>
-    </section>
-    @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
+
+        @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
+        </section>
 </div>
 <script src="~/Scripts/models/huellitas.Contenido.js"></script>
 <script src="~/Scripts/views/huellitas.ListarHuellitasView.js"></script>
