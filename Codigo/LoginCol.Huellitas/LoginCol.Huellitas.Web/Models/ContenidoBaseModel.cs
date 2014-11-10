@@ -15,6 +15,8 @@ namespace LoginCol.Huellitas.Web.Models
         [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Nombre { get; set; }
 
+        public string NombreLink { get { return Nombre.Replace(" ", "-"); } }
+
         [Required(ErrorMessage = "La descripción es obligatoria")]
         [Display(Name = "Descripción", Description = "Descripción del contenido")]
         public string Descripcion { get; set; }
