@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @-ms-viewport {
   width: device-width;
 }
@@ -31,7 +31,7 @@ body {
   padding: 0;
   border: 0;
   outline: none;
-  background: #333333 url(../img/close-btn.svg) left center no-repeat;
+  background: #333333 url(../images/close-btn.svg) left center no-repeat;
   background-size: 1.875em 1.875em;
   overflow: hidden;
   white-space: nowrap;
@@ -54,7 +54,7 @@ body {
   padding: 0;
   border: 0;
   outline: none;
-  background: #333333 url(../img/nav-icon.svg) left center no-repeat;
+  background: #333333 url(../images/nav-icon.svg) left center no-repeat;
   background-size: 1.875em 1.5em;
   overflow: hidden;
   white-space: nowrap;
