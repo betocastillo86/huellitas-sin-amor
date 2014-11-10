@@ -6,19 +6,25 @@
     <div class="grid_6">
         <div class="galeria_perfil">
             <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
+            <iframe id="divPlayerVideo" width="420" height="315"
+                    src="https://www.youtube.com/embed/<%=obj.UrlVideo%>" style="display:none"></iframe>
         </div>
         <ul class="gale_mini">
+            <% if(obj.UrlVideo) { %>
+            <li style="background-image: url(http://img.youtube.com/vi/<%=obj.UrlVideo%>/2.jpg)"  contenidoid="<%=obj.ContenidoId%>" id="btnVideo"></li>
+            <% } %>
             <li style="background-image: url(/img/<%=obj.ContenidoId%>/mini)" class="imagenAdicional" contenidoid="<%=obj.ContenidoId%>"></li>
             <%
             var ultimaImagen = obj.Imagenes.length ? _.last(obj.Imagenes).ContenidoHijo.ContenidoId : 0;
             _.each(obj.Imagenes, function(imagen){
             %>
-            <li style="background-image: url(/img/<%=imagen.ContenidoHijo.ContenidoId%>/mini)" class="<%= ultimaImagen == imagen.ContenidoHijo.ContenidoId ? 'no-margin' : '' %>"  contenidoid="<%=imagen.ContenidoHijo.ContenidoId%>"></li>
+            <li style="background-image: url(/img/<%=imagen.ContenidoHijo.ContenidoId%>/mini)" class="<%= ultimaImagen == imagen.ContenidoHijo.ContenidoId ? 'no-margin' : '' %> imagenAdicional"  contenidoid="<%=imagen.ContenidoHijo.ContenidoId%>"></li>
             <%
             });
             %>
         </ul>
     </div>
+
 
 
 </script>

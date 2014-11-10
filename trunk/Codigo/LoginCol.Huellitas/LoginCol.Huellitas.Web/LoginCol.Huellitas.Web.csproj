@@ -598,7 +598,6 @@
     <Content Include="Scripts\views\huellitas.MapaView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.TwitterShareView.js" />
-    <Content Include="Scripts\views\huellitas.VideoView.js" />
     <Content Include="templates\huellitas-listar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -656,7 +655,6 @@
     <Content Include="Views\Shared\_ImagenesContenido.cshtml" />
     <Content Include="Views\Shared\_CompartirRedesSociales.cshtml" />
     <Content Include="Views\Shared\_ContenidosRelacionados.cshtml" />
-    <Content Include="Views\Shared\_VideoContenido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

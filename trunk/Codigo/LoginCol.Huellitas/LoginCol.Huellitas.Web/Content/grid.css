@@ -22,9 +22,13 @@
 .grid_8,
 .grid_9,
 .grid_10,
-.grid_11,
+.grid_11 {
+	margin: 0 2% 1% 0;
+	float: left;
+	display: block;
+}
 .grid_12 {
-	margin: 0 1% 1% 0;
+	margin:0 0 1%;
 	float: left;
 	display: block;
 } 
