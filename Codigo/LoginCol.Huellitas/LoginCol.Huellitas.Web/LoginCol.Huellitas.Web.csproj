@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SoundInTheory.DynamicImage">
+      <HintPath>..\packages\DynamicImage.3.1.1\lib\net40\SoundInTheory.DynamicImage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -144,6 +147,9 @@
       <Private>True</Private>
       <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
@@ -155,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DynamicImage.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -189,9 +196,11 @@
     <Compile Include="Helpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\Autenticacion.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
+    <Compile Include="Infraestructure\CookiesManager.cs" />
     <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Infraestructure\SumarVisitaAttribute.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />

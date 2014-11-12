@@ -93,9 +93,7 @@ namespace LoginCol.Huellitas.Utilidades
                 //Si se debe hacer backup lo marca nuevamente con la fecha de la eliminación
                 if (hacerBackup && File.Exists(nombreArchivo))
                 {
-                    string extension = Path.GetExtension(nombreArchivo);
-                    string nuevoArchivo = string.Format("{0}\\{1}{2}{3}", carpeta, Path.GetFileName(nombreArchivo).Replace(extension, string.Empty), DateTime.Now.ToString("yyyyMMddhhmmss"), extension);
-                    File.Copy(nombreArchivo, nuevoArchivo);
+                    RealizarBackupArchivo(nombreArchivo);
                 }
 
                 System.IO.FileStream stream = new System.IO.FileStream(nombreArchivo, System.IO.FileMode.Create, System.IO.FileAccess.Write);
@@ -109,6 +107,14 @@ namespace LoginCol.Huellitas.Utilidades
                 LogErrores.RegistrarError(e);
                 return false;
             }
+        }
+
+        public static void RealizarBackupArchivo(string nombreArchivo)
+        {
+            string carpeta = Directory.GetParent(nombreArchivo).FullName;
+            string extension = Path.GetExtension(nombreArchivo);
+            string nuevoArchivo = string.Format("{0}\\{1}{2}{3}", carpeta, Path.GetFileName(nombreArchivo).Replace(extension, string.Empty), DateTime.Now.ToString("yyyyMMddhhmmss"), extension);
+            File.Copy(nombreArchivo, nuevoArchivo);
         }
 
 
