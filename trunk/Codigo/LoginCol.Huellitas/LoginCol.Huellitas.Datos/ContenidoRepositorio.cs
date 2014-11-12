@@ -498,5 +498,25 @@ namespace LoginCol.Huellitas.Datos
 
             return lista == null ? new List<Contenido>() : lista;
         }
+
+        /// <summary>
+        /// Suma una visita para el Contenido
+        /// </summary>
+        /// <param name="idContenido"></param>
+        public void SumarVisita(int idContenido)
+        {
+            using (var db = new Repositorio())
+            {
+                Contenido contenido = db.Contenidos
+                    .Where(c => c.ContenidoId.Equals(idContenido))
+                    .FirstOrDefault();
+
+                if (contenido != null)
+                {
+                    contenido.Visitas++;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

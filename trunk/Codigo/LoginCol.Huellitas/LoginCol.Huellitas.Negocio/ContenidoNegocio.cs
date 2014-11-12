@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LoginCol.Huellitas.Utilidades;
+using SoundInTheory.DynamicImage.Fluent;
+using SoundInTheory.DynamicImage.Filters;
 
 namespace LoginCol.Huellitas.Negocio
 {
@@ -208,14 +210,28 @@ namespace LoginCol.Huellitas.Negocio
                 if (Archivos.GuardarArchivoEnDisco(imagenOriginal, bytes, true))
                 {
                     //Intenta redimensionar las imagenes
-                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
-                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
-                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
+
+                    //ImageLayerBuilder image = LayerBuilder.Image
+                    //    .SourceFile(imagenOriginal)
+                    //    .WithFilter(FilterBuilder.Resize.To(800,800, ResizeMode.UniformFill));
+                    
+                    //image.Source.GetBitmap()["Bytes"]
+                    //SoundInTheory.DynamicImage.Sources.BytesImageSource bytes = new SoundInTheory.DynamicImage.Sources.BytesImageSource();
+                    //bytes.GetBitmap()
+
+                    //byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
+                    //byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
+                    //byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
 
                     //Intenta guardar las imagenes
-                    if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
-                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
-                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
+                    //if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
+                    //    !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
+                    //    !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
+                    if(
+                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), 800, 800) ||
+                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), 500, 500) ||
+                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), 200, 200) 
+                        )
                     {
                         respuesta.OperacionExitosa = false;
                         respuesta.MensajeError = "No fue posible guardar la imagen grande";
@@ -283,5 +299,14 @@ namespace LoginCol.Huellitas.Negocio
             return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion, cargarCampos);
         }
 
+
+        /// <summary>
+        /// Suma visita a un contenido
+        /// </summary>
+        /// <param name="p"></param>
+        public void SumarVisita(int idContenido)
+        {
+            _contenidos.Value.SumarVisita(idContenido);
+        }
     }
 }

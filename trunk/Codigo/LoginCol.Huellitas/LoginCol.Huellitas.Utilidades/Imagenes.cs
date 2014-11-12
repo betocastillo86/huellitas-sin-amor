@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SoundInTheory.DynamicImage.Filters;
+using SoundInTheory.DynamicImage.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -11,34 +13,68 @@ namespace LoginCol.Huellitas.Utilidades
 {
     public class Imagenes
     {
-        public static byte[] RedimensionarImagen(String path, int width, int height)
+        //public static byte[] RedimensionarImagen(String path, int width, int height)
+        //{
+        //    Bitmap imgIn = new Bitmap(path);
+        //    double y = imgIn.Height;
+        //    double x = imgIn.Width;
+
+        //    double factor = 1;
+        //    if (width > 0)
+        //    {
+        //        factor = width / x;
+        //    }
+        //    else if (height > 0)
+        //    {
+        //        factor = height / y;
+        //    }
+        //    System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+        //    Bitmap imgOut = new Bitmap((int)(x * factor), (int)(y * factor));
+
+        //    // Set DPI of image (xDpi, yDpi)
+        //    imgOut.SetResolution(72, 72);
+
+        //    Graphics g = Graphics.FromImage(imgOut);
+        //    g.Clear(Color.White);
+        //    g.DrawImage(imgIn, new Rectangle(0, 0, (int)(factor * x), (int)(factor * y)),
+        //      new Rectangle(0, 0, (int)x, (int)y), GraphicsUnit.Pixel);
+
+        //    imgOut.Save(outStream, getImageFormat(path));
+        //    return outStream.ToArray();
+        //}
+
+        /// <summary>
+        /// Redimensiona las imagenes
+        /// </summary>
+        /// <param name="rutaOriginal"></param>
+        /// <param name="nuevaRuta"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static bool RedimensionarImagen(String rutaOriginal, string nuevaRuta, int width, int height)
         {
-            Bitmap imgIn = new Bitmap(path);
-            double y = imgIn.Height;
-            double x = imgIn.Width;
-
-            double factor = 1;
-            if (width > 0)
+            try
             {
-                factor = width / x;
+                //Si el archivo existe realiza el backup del archivo
+                if (File.Exists(nuevaRuta))
+                {
+                    Archivos.RealizarBackupArchivo(nuevaRuta);
+                }
+
+                ImageLayerBuilder image = LayerBuilder.Image
+                             .SourceFile(rutaOriginal)
+                             .WithFilter(FilterBuilder.Resize.To(width, height, ResizeMode.Uniform));
+
+                image.Source
+                    .GetBitmap().Save(nuevaRuta);
+
+                return true;
             }
-            else if (height > 0)
+            catch (Exception e)
             {
-                factor = height / y;
+                LogErrores.RegistrarError(e);
+                return false;
             }
-            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
-            Bitmap imgOut = new Bitmap((int)(x * factor), (int)(y * factor));
-
-            // Set DPI of image (xDpi, yDpi)
-            imgOut.SetResolution(72, 72);
-
-            Graphics g = Graphics.FromImage(imgOut);
-            g.Clear(Color.White);
-            g.DrawImage(imgIn, new Rectangle(0, 0, (int)(factor * x), (int)(factor * y)),
-              new Rectangle(0, 0, (int)x, (int)y), GraphicsUnit.Pixel);
-
-            imgOut.Save(outStream, getImageFormat(path));
-            return outStream.ToArray();
         }
 
         private static string getContentType(String path)
