@@ -33,6 +33,11 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             ContenidoNegocio nContenido = new ContenidoNegocio();
             DetalleFundacionModel modelo = Mapper.Map<Contenido, DetalleFundacionModel>(nContenido.Obtener(id));
+
+            if (modelo == null || !modelo.Activo)
+                return RedirectToAction("Index", "Fundaciones");
+                
+
             return View(modelo);
         }
 

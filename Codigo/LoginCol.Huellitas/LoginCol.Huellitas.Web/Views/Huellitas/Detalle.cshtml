@@ -1,6 +1,6 @@
 ﻿@model LoginCol.Huellitas.Web.Models.DetalleHuellitaModel
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = string.Format("{0} - Huellita sin Hogar", Model.Nombre);
 }
 
 
@@ -31,6 +31,7 @@
                     <div>EDAD: @Html.ObtenerCampoDeContenido(Model, "Edad") AÑO(S)</div>
                     <div>COMPORTAMIENTO: @Html.ObtenerCampoDeContenido(Model, "Comportamiento")</div>
                     <div>RECOMENDADO PARA: @Html.ObtenerCampoDeContenido(Model, "RecomendadoPara")</div>
+                    <div>ESTERILIZADO: @Html.ObtenerCampoDeContenido(Model, "Esterilizado")</div>
                     <div>LOCALIZACIÓN: @Model.ZonaGeograficaNombre</div>
                 </div>
                 <div class="compartir">

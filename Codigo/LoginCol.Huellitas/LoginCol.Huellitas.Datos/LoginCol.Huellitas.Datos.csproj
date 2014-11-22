@@ -60,8 +60,10 @@
     <Compile Include="Configuracion\OpcionCampoConfig.cs" />
     <Compile Include="Configuracion\ParametrizacionConfig.cs" />
     <Compile Include="Configuracion\TipoContenidoConfig.cs" />
+    <Compile Include="Configuracion\TipoRelacionConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionContenidoConfig.cs" />
     <Compile Include="Configuracion\UsuarioConfig.cs" />
+    <Compile Include="Configuracion\UsuarioContenidoConfig.cs" />
     <Compile Include="Configuracion\ValorCampoConfig.cs" />
     <Compile Include="Configuracion\ZonaGeograficaConfig.cs" />
     <Compile Include="ContenidoRepositorio.cs" />
@@ -151,6 +153,10 @@
     <Compile Include="Migrations\201411031946149_CampoVideo1.Designer.cs">
       <DependentUpon>201411031946149_CampoVideo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411130332591_UsuarioContenido.cs" />
+    <Compile Include="Migrations\201411130332591_UsuarioContenido.Designer.cs">
+      <DependentUpon>201411130332591_UsuarioContenido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParametrizacionRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411031946149_CampoVideo1.resx">
       <DependentUpon>201411031946149_CampoVideo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411130332591_UsuarioContenido.resx">
+      <DependentUpon>201411130332591_UsuarioContenido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

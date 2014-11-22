@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Activo)
-                            @Html.CheckBoxFor(model => model.Activo)
+                            <input data-val="true" data-val-required="El campo Activo es obligatorio." id="Activo" name="Activo" type="checkbox" value="true" />
                         </div>
 
                         <div class="form-group" id="divImagenPrincipal">

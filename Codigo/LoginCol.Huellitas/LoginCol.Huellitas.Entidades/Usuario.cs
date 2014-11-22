@@ -22,6 +22,7 @@ namespace LoginCol.Huellitas.Entidades
         public string Nombres { get; set; }
 
         [Required]
+        //[MaxLength(50)]
         public string Apellidos { get; set; }
         
         [Required]
@@ -42,6 +43,9 @@ namespace LoginCol.Huellitas.Entidades
         public virtual List<Contenido> Contenidos { get; set; }
 
         public bool EsAdministrador { get; set; }
+
+        public virtual List<UsuarioContenido> ContenidosRelacionados { get; set; }
+
 
     }
 }

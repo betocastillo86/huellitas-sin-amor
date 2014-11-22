@@ -1,6 +1,6 @@
 ﻿@model LoginCol.Huellitas.Web.Models.DetalleFundacionModel
 @{
-    ViewBag.Title = "Detalle Fundacion";
+    ViewBag.Title = string.Format("{0} - Fundaciones", Model.Nombre);
 }
 <div id="divDetalleContenido">
     @Html.Hidden("Latitud", @Html.ObtenerCampoDeContenido(Model, "Latitud"))

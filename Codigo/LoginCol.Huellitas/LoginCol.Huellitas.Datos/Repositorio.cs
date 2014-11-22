@@ -51,6 +51,8 @@ namespace LoginCol.Huellitas.Datos
             modelBuilder.Configurations.Add(new CampoTipoContenidoConfig());
             modelBuilder.Configurations.Add(new OpcionCampoConfig());
             modelBuilder.Configurations.Add(new ParametrizacionConfig());
+            modelBuilder.Configurations.Add(new TipoRelacionConfig());
+            modelBuilder.Configurations.Add(new UsuarioContenidoConfig());
 
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 

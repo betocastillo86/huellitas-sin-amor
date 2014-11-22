@@ -55,7 +55,9 @@
     <Compile Include="TipoContenido.cs" />
     <Compile Include="TipoRelacionContenido.cs" />
     <Compile Include="TipoRelacionTipoContenido.cs" />
+    <Compile Include="TipoRelacion.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioContenido.cs" />
     <Compile Include="ValorCampo.cs" />
     <Compile Include="ZonaGeografica.cs" />
   </ItemGroup>

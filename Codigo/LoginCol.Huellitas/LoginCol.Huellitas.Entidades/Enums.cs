@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,21 @@ namespace LoginCol.Huellitas.Entidades
         Pequeno = 2,
         Mediano = 3,
         Original = 4
+    }
+
+    public enum TipoDatoCampo
+    {
+        Int = 1,
+        Bit = 2,
+        Varchar = 3,
+
+        [Description("Tabla configurada para relacionar los campos")]
+        Relacional = 4,
+        [Description("Consulta SQl que trae clave y valor para relacionar")]
+        ConsultaSql = 5,
+        [Description("Multiples valores posibles para el campo")]
+        Multiple = 6
+
     }
 
     public static class EnumConverter

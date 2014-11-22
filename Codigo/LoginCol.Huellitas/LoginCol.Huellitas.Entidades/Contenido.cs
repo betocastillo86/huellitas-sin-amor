@@ -81,5 +81,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public string UrlVideo { get; set; }
 
+        public virtual List<UsuarioContenido> UsuariosRelacionados { get; set; }
+
     }
 }
