@@ -25,7 +25,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual ICollection<TipoRelacionContenido> TiposDeRelacionesDeContenido { get; set; }
 
-
+        public virtual ICollection<TipoRelacion> TiposRelacionesUsuarios { get; set; }
 
 
     }

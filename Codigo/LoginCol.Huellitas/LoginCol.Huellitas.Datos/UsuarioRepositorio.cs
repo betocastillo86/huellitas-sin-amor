@@ -66,5 +66,19 @@ namespace LoginCol.Huellitas.Datos
 
             return usuario ?? new Usuario();
         }
+
+        public List<Usuario> ObtenerUsuariosActivos(bool soloAdmin)
+        {
+            List<Usuario> usuarios;
+
+            using (var db = new Repositorio())
+            {
+                usuarios = db.Usuarios
+                    .Where(u => u.Activo && u.EsAdministrador == soloAdmin)
+                    .ToList();
+            }
+
+            return usuarios ?? new List<Usuario>();
+        }
     }
 }

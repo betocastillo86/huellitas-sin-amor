@@ -201,7 +201,8 @@
     @Scripts.Render("~/bundles/colorbox")
     @Scripts.Render("~/bundles/jqueryTemplate")
     
-    
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/views/huellitas.admin.ContenidoEditarView.js"></script>    
     <script src="~/Scripts/huellitas.admin.router.js"></script>
     <script src="~/Scripts/huellitas.admin.app.js"></script>
     <script src="~/Scripts/models/huellitas.admin.TipoRelacionContenido.js"></script>
@@ -211,8 +212,13 @@
     <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
     <script src="~/Scripts/views/huellitas.admin.AlertView.js"></script>
     <script src="~/Scripts/views/huellitas.admin.AlertHtmlView.js"></script>
+
     
+
+
+
     <script src="~/Scripts/huellitas.general.js"></script>
+    
     @*<!-- select or dropdown enhancer -->
     <script src="bower_components/chosen/chosen.jquery.min.js"></script>
     <!-- plugin for gallery image view -->

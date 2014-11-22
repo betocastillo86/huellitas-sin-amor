@@ -62,6 +62,7 @@
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />
     <Compile Include="ContenidoNegocio.cs" />
+    <Compile Include="HuellitaNegocio.cs" />
     <Compile Include="NegocioBase.cs" />
     <Compile Include="ParametrizacionNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

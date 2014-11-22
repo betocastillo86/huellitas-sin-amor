@@ -47,6 +47,12 @@ namespace LoginCol.Huellitas.Entidades
 
     }
 
+    public enum TipoRelacionUsuariosEnum
+    { 
+        Adoptante,
+        Padrino
+    }
+
     public static class EnumConverter
     { 
 
@@ -65,5 +71,7 @@ namespace LoginCol.Huellitas.Entidades
 	        }
         }
     }
+
+    
 
 }

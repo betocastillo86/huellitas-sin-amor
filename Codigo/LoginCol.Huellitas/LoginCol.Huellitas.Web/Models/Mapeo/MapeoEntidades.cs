@@ -90,15 +90,26 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             #endregion
 
-            
+            #region Usuarios
+            AutoMapper.Mapper.CreateMap<Usuario, UsuarioModel>();
+            AutoMapper.Mapper.CreateMap<UsuarioModel, Usuario>();
+            AutoMapper.Mapper.CreateMap<Usuario, UsuarioBaseModel>();
+            AutoMapper.Mapper.CreateMap<UsuarioBaseModel, Usuario>();
+            AutoMapper.Mapper.CreateMap<UsuarioContenido, UsuarioRelacionadoModel>();
+            AutoMapper.Mapper.CreateMap<UsuarioRelacionadoModel, UsuarioContenido>();
 
-            
 
-           
+            #endregion
 
-            
 
-            
+
+
+
+
+
+
+
+
 
         }
 

@@ -209,29 +209,21 @@ namespace LoginCol.Huellitas.Negocio
                 string imagenOriginal= ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Original);
                 if (Archivos.GuardarArchivoEnDisco(imagenOriginal, bytes, true))
                 {
-                    //Intenta redimensionar las imagenes
 
-                    //ImageLayerBuilder image = LayerBuilder.Image
-                    //    .SourceFile(imagenOriginal)
-                    //    .WithFilter(FilterBuilder.Resize.To(800,800, ResizeMode.UniformFill));
-                    
-                    //image.Source.GetBitmap()["Bytes"]
-                    //SoundInTheory.DynamicImage.Sources.BytesImageSource bytes = new SoundInTheory.DynamicImage.Sources.BytesImageSource();
-                    //bytes.GetBitmap()
 
-                    //byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
-                    //byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
-                    //byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
+                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
+                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
+                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
 
                     //Intenta guardar las imagenes
-                    //if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
-                    //    !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
-                    //    !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
-                    if(
-                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), 800, 800) ||
-                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), 500, 500) ||
-                        !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), 200, 200) 
-                        )
+                    if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
+                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
+                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
+                    //if(
+                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), 800, 800) ||
+                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), 500, 500) ||
+                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), 200, 200) 
+                    //    )
                     {
                         respuesta.OperacionExitosa = false;
                         respuesta.MensajeError = "No fue posible guardar la imagen grande";
@@ -307,6 +299,28 @@ namespace LoginCol.Huellitas.Negocio
         public void SumarVisita(int idContenido)
         {
             _contenidos.Value.SumarVisita(idContenido);
+        }
+
+        public List<UsuarioContenido> ObtenerUsuariosRelacionados(int idContenido, int idTipoRelacion)
+        {
+            return ObtenerUsuariosRelacionados(idContenido, idTipoRelacion, false);
+        }
+
+        private List<UsuarioContenido> ObtenerUsuariosRelacionados(int idContenido, int idTipoRelacion, bool cargarCampos)
+        {
+            return _contenidos.Value.ObtenerUsuariosRelacionados(idContenido, idTipoRelacion, cargarCampos);
+        }
+
+        public ResultadoOperacion AgregarUsuarioRelacionado(UsuarioContenido usuarioContenido)
+        {
+            ResultadoOperacion respuesta = new ResultadoOperacion();
+            respuesta.OperacionExitosa = _contenidos.Value.AgregarUsuarioRelacionado(usuarioContenido);
+            return respuesta;
+        }
+
+        public bool EliminarUsuarioRelacionado(int idUsuarioContenido)
+        {
+            return _contenidos.Value.EliminarUsuarioRelacionado(idUsuarioContenido);
         }
     }
 }
