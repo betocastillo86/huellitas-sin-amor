@@ -161,7 +161,28 @@ namespace LoginCol.Huellitas.Datos
                 LogErrores.RegistrarError(e);
             }
 
-            return tipo == null ? new TipoRelacionContenido() : tipo;
+            return tipo ?? new TipoRelacionContenido();
+        }
+
+        public List<TipoRelacion> ObtenerTiposDeRelacionUsuarios(int idTipoContenido)
+        {
+            List<TipoRelacion> lista = null;
+
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    lista = db.TiposRelaciones
+                        .Where(t => t.TipoContenidoId.Equals(idTipoContenido))
+                        .ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return lista ?? new List<TipoRelacion>();
         }
     }
 }

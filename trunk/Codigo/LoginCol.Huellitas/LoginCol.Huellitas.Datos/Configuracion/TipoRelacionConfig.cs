@@ -15,6 +15,11 @@ namespace LoginCol.Huellitas.Datos.Configuracion
             ToTable("TipoRelacion");
 
             HasKey(t => t.TipoRelacionId);
+
+            HasRequired(t => t.TipoContenido)
+                .WithMany(c => c.TiposRelacionesUsuarios)
+                .HasForeignKey(t => t.TipoContenidoId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

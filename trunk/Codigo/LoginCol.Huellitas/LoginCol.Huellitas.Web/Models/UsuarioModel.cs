@@ -5,8 +5,7 @@ using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class UsuarioModel
+    public class UsuarioModel : UsuarioBaseModel
     {
-        public int UsuarioId { get; set; }
     }
 }

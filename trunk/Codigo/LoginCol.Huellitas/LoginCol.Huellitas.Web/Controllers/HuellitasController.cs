@@ -34,6 +34,15 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
 
+            HuellitaNegocio nHuellitas = new HuellitaNegocio();
+            UsuarioContenido padrino = nHuellitas.ObtenerAdoptanteOPadrino(id);
+
+            if (padrino != null)
+            {
+                modelo.AdoptantePadrino = Mapper.Map<Usuario, UsuarioBaseModel>(padrino.Usuario);
+                modelo.TipoAdoptante = (TipoRelacionUsuariosEnum) padrino.TipoRelacionId;
+            }
+
             if (hogarDePaso != null)
             {
                 modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
@@ -42,5 +51,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             return View(modelo);
         }
+
+
     }
 }

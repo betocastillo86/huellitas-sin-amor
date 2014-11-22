@@ -25,6 +25,8 @@ namespace LoginCol.Huellitas.Web.Controllers
             string[] partesUrl = queryValues.ToLower().Split(new char[] { '/' });
             object modelo = null;
 
+            var nTipoContenido = new TipoContenidoNegocio();
+
             switch (string.Format("{0}/{1}", partesUrl[0], partesUrl[1]))
             {
                 case "animales/listar":
@@ -34,7 +36,9 @@ namespace LoginCol.Huellitas.Web.Controllers
                     ListarContenidoModel modeloAnimales = new ListarContenidoModel() { PrefijoAcciones = "animales", Titulo = "Administración de Animales" };
                     modeloAnimales.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
                     modeloAnimales.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Animal);
-                    modeloAnimales.Contenido.TiposRelacionContenido = new TipoContenidoNegocio().ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Animal);
+                    modeloAnimales.Contenido.TiposRelacionContenido = nTipoContenido.ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Animal);
+                    modeloAnimales.Contenido.TiposRelacionUsuario = nTipoContenido.ObtenerTiposDeRelacionUsuarios((int)TipoContenidoEnum.Animal);
+                    modeloAnimales.Contenido.Usuarios = new UsuarioNegocio().ObtenerUsuariosActivos(false).Select(AutoMapper.Mapper.Map<Usuario,UsuarioModel>).ToList(); 
                     modelo = modeloAnimales;
                     break;
                 case "fundaciones/listar":
@@ -54,6 +58,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             return View(string.Format("~/Views/Administracion/{0}", vista), modelo);
         }
+
 
         [HttpGet]
         public ActionResult Index()

@@ -57,5 +57,10 @@ namespace LoginCol.Huellitas.Negocio
         {
             return _tiposContenidos.Value.Obtener(new TipoContenido());
         }
+
+        public List<TipoRelacion> ObtenerTiposDeRelacionUsuarios(int idTipoContenido)
+        {
+            return _tiposContenidos.Value.ObtenerTiposDeRelacionUsuarios(idTipoContenido);
+        }
     }
 }

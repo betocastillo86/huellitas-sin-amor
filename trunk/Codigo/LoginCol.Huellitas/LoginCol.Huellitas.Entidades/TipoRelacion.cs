@@ -21,5 +21,10 @@ namespace LoginCol.Huellitas.Entidades
         
         [MaxLength(500)]
         public string Descripcion { get; set; }
+
+        public int TipoContenidoId { get; set; }
+
+        public virtual TipoContenido TipoContenido { get; set; }
+
     }
 }

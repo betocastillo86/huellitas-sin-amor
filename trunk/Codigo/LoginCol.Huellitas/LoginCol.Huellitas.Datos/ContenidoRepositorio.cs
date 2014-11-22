@@ -519,5 +519,87 @@ namespace LoginCol.Huellitas.Datos
                 }
             }
         }
+
+        public List<UsuarioContenido> ObtenerUsuariosRelacionados(int idContenido, int idTipoRelacion, bool cargarCampos)
+        {
+            try
+            {
+
+                List<UsuarioContenido> listaRelacionados = null;
+                using (var db = new Repositorio())
+                {
+                    var query = db.UsuariosContenidos
+                        .Include(c => c.Usuario)
+                        .Include(c => c.Contenido)
+                        .Include(c => c.Contenido.TipoContenido)
+                        .Where(c => c.ContenidoId == idContenido);
+
+
+                    listaRelacionados = query.ToList();
+                }
+
+                return listaRelacionados;
+
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return new List<UsuarioContenido>();
+            }
+        }
+
+        public bool AgregarUsuarioRelacionado(UsuarioContenido usuarioContenido)
+        {
+            try
+            {
+                bool operacionExitosa = false;
+                using (var db = new Repositorio())
+                {
+
+                    //Si ya tenia un contenido relacionado lo elimina
+                    var relacionAnterior = db.UsuariosContenidos
+                        .Where(u => u.ContenidoId == usuarioContenido.ContenidoId && u.TipoRelacionId == usuarioContenido.TipoRelacionId )
+                        .FirstOrDefault();
+
+                    if (relacionAnterior != null)
+                    {
+                        ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(relacionAnterior, EntityState.Deleted);
+                    }
+                    
+                    db.UsuariosContenidos
+                        .Add(usuarioContenido);
+
+                    operacionExitosa =  db.SaveChanges() > 0;
+                }
+
+                return operacionExitosa;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
+        }
+
+        public bool EliminarUsuarioRelacionado(int idUsuarioContenido)
+        {
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    UsuarioContenido contenidoRelacionado = db.UsuariosContenidos.Where(c => c.UsuarioContenidoId.Equals(idUsuarioContenido)).FirstOrDefault();
+                    db.UsuariosContenidos.Remove(contenidoRelacionado);
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(contenidoRelacionado, EntityState.Deleted);
+                    db.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+                return false;
+            }
+        }
     }
 }

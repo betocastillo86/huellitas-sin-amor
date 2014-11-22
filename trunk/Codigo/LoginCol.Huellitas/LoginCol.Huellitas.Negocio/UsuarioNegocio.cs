@@ -54,5 +54,10 @@ namespace LoginCol.Huellitas.Negocio
             usuario.UsuarioId = _usuarios.Value.CrearUsuario(usuario);
             return usuario;
         }
+
+        public List<Usuario> ObtenerUsuariosActivos(bool soloAdmin)
+        {
+            return _usuarios.Value.ObtenerUsuariosActivos(soloAdmin);
+        }
     }
 }

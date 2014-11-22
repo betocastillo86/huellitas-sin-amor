@@ -157,6 +157,14 @@
     <Compile Include="Migrations\201411130332591_UsuarioContenido.Designer.cs">
       <DependentUpon>201411130332591_UsuarioContenido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411221519218_TipoRelacionTipoContenido.cs" />
+    <Compile Include="Migrations\201411221519218_TipoRelacionTipoContenido.Designer.cs">
+      <DependentUpon>201411221519218_TipoRelacionTipoContenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411221524208_TipoRelacionTipoContenido1.cs" />
+    <Compile Include="Migrations\201411221524208_TipoRelacionTipoContenido1.Designer.cs">
+      <DependentUpon>201411221524208_TipoRelacionTipoContenido1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParametrizacionRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +255,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411130332591_UsuarioContenido.resx">
       <DependentUpon>201411130332591_UsuarioContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411221519218_TipoRelacionTipoContenido.resx">
+      <DependentUpon>201411221519218_TipoRelacionTipoContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411221524208_TipoRelacionTipoContenido1.resx">
+      <DependentUpon>201411221524208_TipoRelacionTipoContenido1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

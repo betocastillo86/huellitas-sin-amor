@@ -258,8 +258,11 @@
             this.app.consola("Galeria de Contenido creada");
             this.galeriaView = new GaleriaContenidoView({ id: id });
 
-            this.app.consola("Galeria de Contenidos Relacionados creada");
-            this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: id, idTipoContenido : this.model.get('TipoContenidoId') });
+            this.app.consola("Vista Contenidos Relacionados creada");
+            this.contenidosRelacionadosView = new ContenidosRelacionadosView({ id: id, idTipoContenido: this.model.get('TipoContenidoId') });
+
+            this.app.consola("Vista Usuarios Relacionados creada");
+            this.contenidosRelacionadosView = new UsuariosRelacionadosView({ id: id, idTipoContenido: this.model.get('TipoContenidoId') });
         }
         else {
             $("#divImagenPrincipal").hide();
