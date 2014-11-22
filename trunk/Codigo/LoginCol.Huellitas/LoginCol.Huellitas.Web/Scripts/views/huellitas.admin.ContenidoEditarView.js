@@ -151,6 +151,11 @@
                 var inputCampoAdicional = $("input[name='idCampoAdicionalMultiple_"+element.CampoId+"'][value='" + element.Valor + "']");
                 inputCampoAdicional.prop("checked", true);
             }
+            if (tipo == 2)
+            {
+                var inputCampoAdicional = $("#idCampoAdicional_" + element.CampoId);
+                inputCampoAdicional.prop("checked", element.Valor == "true");
+            }
             else {
                 element = list[index];
                 var inputCampoAdicional = $("#idCampoAdicional_" + element.CampoId);
@@ -175,9 +180,14 @@
             var guardarCampo = true;
 
             //Si el de opcion multiple se debe validar si el elmento está checkeado para agregarlo o no
-            if (element.attr("id").indexOf('Multiple') > 0)
-            {
+            if (element.attr("id").indexOf('Multiple') > 0) {
                 guardarCampo = element.is(":checked");
+            }
+            else {
+                if (element.attr("type") == "checkbox")
+                {
+                    element.val(element.is(":checked") ? "true" : "false");
+                }
             }
 
             if (guardarCampo)
@@ -211,6 +221,9 @@
 
             var values = {};
             _.each($('#form1').serializeArray(), function (input) {
+                if (input.name == "Activo")
+                    input.value = input.value == "true";
+
                 values[input.name] = input.value;
             })
 

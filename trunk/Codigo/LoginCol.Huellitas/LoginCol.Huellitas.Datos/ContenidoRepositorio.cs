@@ -469,7 +469,8 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.TipoContenido.TipoContenidoPadre)
                         .Include(c=> c.ZonaGeografica)
                         .Include(c => c.ContenidosRelacionados)
-                        .Include(c => c.Campos.Select(v => v.Campo));
+                        .Include(c => c.Campos.Select(v => v.Campo))
+                        .Where(c => c.Activo);
 
                     //Si no hay filtros seleccionados no realiza el filtro 
                     if(camposFiltros.Count > 0)

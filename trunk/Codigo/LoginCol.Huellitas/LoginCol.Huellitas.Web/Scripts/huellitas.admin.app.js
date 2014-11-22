@@ -28,6 +28,10 @@
 
         container.each(function () {
             $.each($(this).serializeArray(), function () {
+
+                if (this.value == "true" || this.value == "false")
+                    this.value = this.value == "true";
+
                 modelo.set(this.name, this.value);
             });
         });

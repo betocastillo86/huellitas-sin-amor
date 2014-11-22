@@ -13,8 +13,14 @@ namespace LoginCol.Huellitas.Datos.Configuracion
         public CampoTipoContenidoConfig()
         {
             ToTable("CampoTipoContenido");
-            HasRequired(ctc => ctc.Campo).WithMany(c => c.TiposContenidos).HasForeignKey(f => f.CampoId).WillCascadeOnDelete(false);
-            HasRequired(ctc => ctc.TipoContenido).WithMany(tc => tc.Campos).HasForeignKey(f => f.TipoContenidoId).WillCascadeOnDelete(false);
+            HasRequired(ctc => ctc.Campo)
+                .WithMany(c => c.TiposContenidos)
+                .HasForeignKey(f => f.CampoId)
+                .WillCascadeOnDelete(false);
+            HasRequired(ctc => ctc.TipoContenido)
+                .WithMany(tc => tc.Campos)
+                .HasForeignKey(f => f.TipoContenidoId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

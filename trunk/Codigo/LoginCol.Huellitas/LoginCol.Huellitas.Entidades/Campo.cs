@@ -27,18 +27,5 @@ namespace LoginCol.Huellitas.Entidades
         public virtual List<ValorCampo> Valores { get; set; }
     }
 
-    public enum TipoDatoCampo
-    { 
-        Int = 1,
-        Bit = 2,
-        Varchar = 3,
-
-        [Description("Tabla configurada para relacionar los campos")]
-        Relacional = 4,
-        [Description("Consulta SQl que trae clave y valor para relacionar")]
-        ConsultaSql = 5,
-        [Description("Multiples valores posibles para el campo")]
-        Multiple = 6
-
-    }
+    
 }

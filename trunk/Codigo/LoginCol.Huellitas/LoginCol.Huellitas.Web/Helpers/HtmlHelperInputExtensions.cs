@@ -53,7 +53,6 @@ namespace System.Web.Mvc.Html
 
                     if (str.Length > 0)
                         str.Append(", ");
-
                     str.Append(c.ValorTexto);
                 });
 
