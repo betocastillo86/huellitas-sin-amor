@@ -49,6 +49,8 @@ namespace LoginCol.Huellitas.Web.Controllers
                     modeloFundaciones.Contenido.Departamentos = new ZonaGeograficaNegocio().ObtenerZonasGeograficasPorPadre(Convert.ToInt32(ConfigurationManager.AppSettings["IdZonaGeograficaDefecto"]));
                     modeloFundaciones.Contenido.TiposDeContenido = new TipoContenidoNegocio().ObtenerPorPadre((int)TipoContenidoEnum.Fundacion);
                     modeloFundaciones.Contenido.TiposRelacionContenido = new TipoContenidoNegocio().ObtenerTiposDeRelacionContenido((int)TipoContenidoEnum.Fundacion);
+                    modeloFundaciones.Contenido.TiposRelacionUsuario = nTipoContenido.ObtenerTiposDeRelacionUsuarios((int)TipoContenidoEnum.Fundacion);
+                    modeloFundaciones.Contenido.Usuarios = new UsuarioNegocio().ObtenerUsuariosActivos(false).Select(AutoMapper.Mapper.Map<Usuario, UsuarioModel>).ToList(); 
                     modelo = modeloFundaciones;
                     break;
                 default:

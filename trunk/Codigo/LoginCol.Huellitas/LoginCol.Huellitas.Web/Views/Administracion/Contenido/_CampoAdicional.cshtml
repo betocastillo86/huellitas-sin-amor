@@ -22,7 +22,7 @@
             
                 for(var i = 0; i < CampoOpciones.length ; i++)
                 { %>
-                    <b><%= CampoOpciones[i].Texto %></b> 
+                    <%= CampoOpciones[i].Texto %>
             <input type="checkbox" id="idCampoAdicionalMultiple<%=i%>_<%= CampoId %>" value="<%= CampoOpciones[i].OpcionId %>" name="idCampoAdicionalMultiple_<%= CampoId %>" /> 
                 <% }
             }
