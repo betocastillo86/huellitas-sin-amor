@@ -165,6 +165,10 @@
     <Compile Include="Migrations\201411221524208_TipoRelacionTipoContenido1.Designer.cs">
       <DependentUpon>201411221524208_TipoRelacionTipoContenido1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411291450557_CamposActivos.cs" />
+    <Compile Include="Migrations\201411291450557_CamposActivos.Designer.cs">
+      <DependentUpon>201411291450557_CamposActivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParametrizacionRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -261,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411221524208_TipoRelacionTipoContenido1.resx">
       <DependentUpon>201411221524208_TipoRelacionTipoContenido1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411291450557_CamposActivos.resx">
+      <DependentUpon>201411291450557_CamposActivos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

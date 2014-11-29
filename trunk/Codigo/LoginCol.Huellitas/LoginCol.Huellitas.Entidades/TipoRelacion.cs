@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace LoginCol.Huellitas.Entidades
         public string Descripcion { get; set; }
 
         public int TipoContenidoId { get; set; }
+
+        [DefaultValue(true)]
+        public bool Activo { get; set; }
 
         public virtual TipoContenido TipoContenido { get; set; }
 

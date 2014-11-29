@@ -21,9 +21,8 @@ namespace LoginCol.Huellitas.Datos
                 {
                     campo = db.Campos
                         .Include(c => c.Opciones)
-                        .Where(c => c.CampoId == idCampo)
-                        .ToList()
-                        .FirstOrDefault();
+                        .FirstOrDefault(c => c.CampoId == idCampo);
+
                 }
             }
             catch (Exception e)
