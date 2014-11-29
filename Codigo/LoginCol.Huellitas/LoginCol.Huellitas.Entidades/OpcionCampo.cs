@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace LoginCol.Huellitas.Entidades
         public int CampoId { get; set; }
 
         public string Texto { get; set; }
+        
+        [DefaultValue(true)]
+        public bool Activo { get; set; }
 
         public virtual Campo Campo { get; set; }
 

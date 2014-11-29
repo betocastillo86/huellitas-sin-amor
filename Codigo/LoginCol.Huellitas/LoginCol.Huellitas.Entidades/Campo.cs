@@ -20,6 +20,9 @@ namespace LoginCol.Huellitas.Entidades
 
         public string ConsultaSql { get; set; }
 
+        [DefaultValue(true)]
+        public bool Activo { get; set; }
+
         public virtual List<CampoTipoContenido> TiposContenidos { get; set; }
 
         public virtual List<OpcionCampo> Opciones { get; set; }

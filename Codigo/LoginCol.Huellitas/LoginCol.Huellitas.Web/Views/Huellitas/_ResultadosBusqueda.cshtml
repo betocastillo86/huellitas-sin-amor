@@ -30,7 +30,7 @@
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
-                <p><%=contenido.Descripcion %> </p>
+                <p><%= contenido.Descripcion.length > 120 ? contenido.Descripcion.substr(0,120)+ "..." :  contenido.Descripcion%> </p>
                 <a class="btn" href="/huellitas/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
             </article>
         </div>

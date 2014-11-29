@@ -4,9 +4,20 @@ body {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 400;
 	font-size: 16px;
-	color: #8a8683;
+	color: #2c4566;
 	background:url(../images/bkg_gris.png) repeat;
 }
+#back-top-wrapper{
+	bottom: 10px;
+    overflow: hidden;
+    position: fixed;
+    right: 10px;
+    z-index:99999999;
+	width:50px;
+	height:50px;
+	background:#36F;
+	cursor:pointer;
+	}
 img {
 	max-width: 100%;
 }
@@ -22,18 +33,6 @@ a:visited {
 	color: #f68f67;
 	text-decoration: none;
 }
-.color1{
-	background:#304A6F;
-	}
-.color2{
-	background:#EF525B;
-	}
-.color3{
-	background:#FBB000;
-	}
-.color4{
-	background:#529AD9;
-	}
 p{
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#FFF;
@@ -63,6 +62,33 @@ br{
 .right{
 	float:right;
 	}
+/*colores*/
+.color1{background:#304A6F;}
+.color2{background:#FBB000;}
+.color3{background:#529AD9;}
+.color4{background:#EF525B;}
+.color5{background:#DFE0E3;}
+.color6{background:#3F77BF;}
+.color7{background:#FFCE6F;}
+.color8{background:#6DBFF2;}
+.color9{background:#F4F4F4;}
+.color10{background:#FF8A8E;}
+.color1_text{color:#304A6F !important;}
+.color2_text{color:#FBB000 !important;}
+.color3_text{color:#529AD9 !important;}
+.color4_text{color:#EF525B !important;}
+.color5_text{color:#DFE0E3 !important;}
+.color6_text{color:#3F77BF !important;}
+.color7_text{color:#FFCE6F !important;}
+.color8_text{color:#6DBFF2 !important;}
+.color9_text{color:#F4F4F4 !important;}
+.color10_text{color:#FF8A8E !important;}
+
+.color1 .btn{background:#FBB000;}
+.color2 .btn{background:#304A6F;}
+.color3 .btn{background:#EF525B;}
+.color4 .btn{background:#529AD9;}
+/*fin colores*/
 header{
 	position:fixed !important;
 	top:0;
@@ -91,7 +117,7 @@ textarea {
     margin: 10px 0 20px;
     padding: 5px 10px;
     text-align: left;
-    width:100%;
+    width:calc(100% - 20px);
 	resize:none;
 }
 .mas_scroll{
@@ -119,8 +145,9 @@ textarea {
 /* Slide 1 */ 
 
 .slide_home {
-	background-color:#E5FDFF;
-}
+	background:url(../images/bkg_slide.jpg) no-repeat;
+	background-size:auto 100%;
+	}
 /* Slide 2 */ 
 
 #slide2 {
@@ -145,13 +172,17 @@ textarea {
 	margin:0;
 	}
 .cajax3{
-	background:#3F77BF;
+	background: rgba(63, 119, 191, 0.3);
 }
 .cajax3 .caja_icon{
 	text-align:center;
 	color:#FFF;
 	font-size:110px;
 	line-height:1;
+	margin:20px;
+	}
+.cajax3 .parrafo{
+	margin:0 20px;
 	}
 .parrafo h3{
 	font-size:25px;
@@ -161,16 +192,18 @@ textarea {
 	}
 .parrafo p{
 	text-align:justify;
-	font-size:18px;
+	font-size:16px;
 	line-height:140%;
 	}
 .cajax3 a{
 	width:130px;
 	background:#EF525B;
 	color:#FFF;
+	margin:20px;
 	}
 .btn{
 	text-align:center;
+	text-transform:uppercase;
 	height:24px;
 	padding:8px 0 7px;
 	display:block;
@@ -197,10 +230,9 @@ textarea {
 .conteConta{
 	}
 .conteConta .bannerDona{
-	background:url(../images/banner_dona.jpg) no-repeat center;
-	width:auto;
+	background:url(../images/banner_dona.jpg) no-repeat center / cover;
 	height:420px;
-	margin:0 20px 0 0;
+	margin:0 2% 0 0;
 	}
 .bannerDona .tit{
 	font-size:60px;
@@ -247,6 +279,7 @@ form input{
 	text-align:left;
 	font-size:16px;
 	font-weight:300;
+	width:calc(100% - 20px);
 	}
 form select{
 	font-family: 'Oswald', sans-serif;
@@ -266,7 +299,8 @@ form input.check{
 	height:35px;
 	background:#FFF;
 	border:1px solid #3F77BF;
-	display:inline-block;
+	display:block;
+	float:left;
 	}
 form .btn{
 	float:left;
@@ -274,32 +308,70 @@ form .btn{
     color: #fff;
     width: 130px;
 	}
+	/*quienes*/
+	.conte_vision{
+		}
+	.conte_vision span{
+		color:#FFF;
+		font-size:100px;
+		text-align:center;
+		display:block;
+		float:left;
+		margin:9% 0;
+		}
+	.conte_vision .caja_vision{
+		float:left;
+		width:calc(100% - 120px);
+		float:left;
+		margin:0 0 0 20px;
+		}
+	.caja_vision h4{
+		font-size:25px;
+		color:#FFF;
+		}
+	.caja_vision p{
+		font-size:14px !important;
+		text-align:justify;
+		padding:0;
+		}
+	.conte_nosotros{
+		background:url(../images/bkg_amarillo.png) repeat;
+		}
+	.conte_nosotros .caja_integra{
+		background:#FFD37D;
+		}
+	.conte_nosotros .caja_integra .descri_integra h3{
+		color:#2D4568;
+		}
+	/*fin quienes*/
 /*fin home*/
 /*casos*/
 .conteFormCaso{
-	background:url(../images/bkg_amarillo.png) repeat;
+	background:url(../images/bkg_azul.png) repeat;
+	color:#FFF;
 	}
-.conteFormCaso h3{
-	color:#3F77BF;
+.conteFormCaso h3, .slideAdopta h3{
+	color:#ff8a8e;
 	font-size: 25px;
     font-weight: 400;
-    line-height: 2;
-    margin: 0;
+    line-height:110%;
+	margin:6px 0 0;
 	}
 .conteGaleria{
 	background:url(../images/bkg_gris.png) repeat;
 	}
 .cajaCaso{
-	background-size:100%;
+	background-size:cover;
+	background-position:center;
 	width:100%;
-	min-height:300px;
+	min-height:250px;
 	}
 .cajaCaso article{
-	width:260px;
-	min-height:220px;
+	width:230px;
+	min-height:190px;
 	height:auto;
 	float:right;
-	padding:60px 20px 20px;
+	padding:40px 10px 20px;
 	}
 article h3{
 	font-size:23px;
@@ -316,41 +388,92 @@ article h4{
 article p{
 	font-size:14px;
 	white-space:normal;
+	color:#FFF;
 	}
 article .btn{
 	color: #fff;
     width: 130px;
 	}
+.conte_check{
+	}
+.conte_check input{
+	margin:0 !important;
+	}
+.conte_check span{
+	display:block;
+	padding:5px 0;
+	float:left;
+	font-weight:300;
+	}
+.tipoMasco{
+	float:left;
+	width:50%;
+	}
+.tipoMasco span{
+	font-size:30px;
+	}
 .c_tipo1{
 	background: rgba(49, 73, 114, 0.9);
 	}
 .c_tipo1 .btn{
-	background:#304A6F;
+	background:#FBB000;
 	}
 .c_tipo2{
 	background: rgba(234, 84, 89, 0.9);
 	}
 .c_tipo2 .btn{
-	background:#EF525B;
+	background:#529AD9;
 	}
 .c_tipo3{
 	background: rgba(250, 177, 0, 0.9);
 	}
 .c_tipo3 .btn{
-	background:#FBB000;
+	background:#304A6F;
 	}
 .c_tipo4{
 	background: rgba(86, 153, 222, 0.9);
 	}
 .c_tipo4 .btn{
-	background:#529AD9;
+	background:#EF525B;
 	}
 /*fin casos*/
 /*fundaciones*/
 .conte_fundaciones{
-	background:url(../images/bkg_amarillo.png) repeat;
+	background:url(../images/bkg_gris.png) repeat;
+	}
+.conte_fundaciones h3 {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+}
+.text_funda{
+	width:68%;
+	position:relative;
+	}
+.text_funda ul{
+	position:absolute;
+	top:20px;
+	right:20px;
+	text-align:right;
+	list-style:none;
+	margin:0;
+	padding:0;
+	width:360px;
+	}
+.text_funda ul li{
+	font-size:14px;
+	float:left;
+	width:50%;
+	}
+.conte_fundaciones p{
+	text-align:justify;
 	}
 .cajaFunda{
+	color:#FFF;
+	margin:0 0 20px;
+	}
+.cajaFunda mapa{
+	height:100%;
 	}
 .cajaFunda article{
 	width:calc(100% - 40px);
@@ -359,18 +482,18 @@ article .btn{
 	}
 .footerFunda{
 	width:100%;
-	height:160px;
+	height:110px;
 	}
 .footerFunda .img{
 	float:left;
 	width:50%;
 	height:100%;
-	background-position:center;
-	background-size:100px;
+	background:#FFF center / cover no-repeat;
 	}
 article p.scroll{
 	overflow-y:scroll;
-	height:105px;
+	height:80px;
+	margin:30px 0 10px;
 	}
 /*fin fundaciones*/
 /*perfiles*/
@@ -442,6 +565,9 @@ article p.scroll{
 	right:0;
 	color:#FFF;
 	}
+.view_funda{
+	 top:185px;
+	}
 .conte_visitas span{
 	font-size:30px;
 	color:#3F77BF;
@@ -454,7 +580,7 @@ article p.scroll{
 	font-size:14px;
 	}
 .descriPerfil .btn{
-	background:#ef525b;
+	background:#3F77BF;
     color: #fff;
     width: 130px;
 	}
@@ -571,6 +697,9 @@ li.comentario p{
 	width:100%;
 	margin:10px 0;
 	}
+.historia p{
+	text-align:justify;
+	}
 .integrantes h2, .historia h2{
 	font-size: 30px;
     margin: 0 0 5px;
@@ -584,7 +713,7 @@ li.comentario p{
 	background:#6DBFF2;
 	}
 .caja_integra .img{
-	background:url(../images/img_beto.jpg) no-repeat center / 100% auto #C60;
+	background:url(../images/img_beto.jpg) no-repeat center / cover #C60;
 	width:100px;
 	min-height:100px;
 	height:100%;
@@ -606,10 +735,114 @@ li.comentario p{
 	padding:0;
 	}
 /*fin perfiles*/
+/*adopta*/
+.slideAdopta{
+	background:url(../images/bkg_amarillo.png) repeat;
+	}
+.img_slideAdopta{
+	}
+.img_slideAdopta img{
+	width:100%;
+	}
+.slideAdopta .descriAdopta{
+	}
+.descriAdopta h4{
+	font-size:20px;
+	color:#3F77BF;
+	font-weight:400;
+	text-transform:uppercase;
+	}
+.descriAdopta p{
+	font-size:18px;
+	color:#2C4566;
+	line-height:normal;
+	white-space:normal;
+	}
+.form_adopta{
+	background:url(../images/bkg_azul.png) repeat;
+	position:relative;
+	}
+.col_encuesta{
+	width:50%;
+	float:left;
+	margin:0 0 1%;
+	}
+.col_encuesta input{
+	width:70%;
+	display:inline-block;
+	}
+.conte_pasos{
+	width:100%;
+	height:40px;
+	color:#F4F4F4;
+	margin:0;
+	padding:0;
+	position:absolute;
+	top:0;
+	left:0;
+	list-style:none;
+	}
+.conte_pasos li{
+	margin:0;
+	padding:0;
+	float:left;
+	cursor:pointer;
+	width:calc(25% - 2px);
+	border-top:solid #F4F4F4 1px;
+	border-bottom:solid #F4F4F4 1px;
+	position:relative;
+	height:40px;
+	text-align:center;
+	text-transform:uppercase;
+	}
+	.conte_pasos li:before{
+		border-bottom: 20px solid transparent;
+		border-left: 10px solid #F4F4F4;
+		border-top: 20px solid transparent;
+		content: "";
+		display: inline-block;
+		right: -10px;
+		position: absolute;
+		top:0;
+		}
+	.conte_pasos li:after {
+		border-bottom: 19px solid transparent;
+		border-left: 9px solid #304A6F;
+		border-top: 19px solid transparent;
+		content: "";
+		display: inline-block;
+		right:-9px;
+		position: absolute;
+		top:0;
+	}
+.conte_pasos li.active{
+	background:#F4F4F4;
+	color:#304A6F;
+	}
+	.conte_pasos li.active:after{
+		border-bottom: 20px solid transparent;
+		border-left: 10px solid #F4F4F4;
+		border-top: 20px solid transparent;
+		right:-12px;
+		}
+/*fin adopta*/
 /*footer*/
 footer{
 	width:100%;
 	margin:40px 0;
+	color:#304A6E;
+	}
+footer h3{
+	font-size:25px;
+	text-align:center;
+	font-weight:700;
+	line-height:1;
+	padding:5px 0 0;
+	}
+footer h4{
+	font-size:12px;
+	text-align:center;
+	font-weight:300;
 	}
 footer .redes{
 	width:250px;
@@ -645,10 +878,15 @@ a.blog{
 #slide3 {
 	background:url(../images/bkg_rosa.png) repeat;
 }
-/* Slide 4 */
+/* contacto */
 #slide4 {
 	background:url(../images/bkg_azul.png) repeat;
 	color:#FFF;
+}
+#contacto{
+	background:url(../images/bkg_azul.png) repeat;
+	color:#FFF;
+	padding:0;
 }
 /* Tablet */
 @media screen and (max-width: 1024px) {
@@ -660,13 +898,175 @@ a.blog{
 	background-attachment: fixed;
 	width:100%;
 	position: relative;
-	padding:150px 0;
+	padding:50px 0;
 }
 }
-
-
-
-
+@media screen and (max-width: 800px) {
+.cajaCaso article {
+    min-height: 210px;
+    padding: 30px 10px 10px;
+    width: 180px;
+}
+article p{
+	font-size:13px;
+	}
+}
+@media screen and (max-width: 768px) {
+#first {
+    margin: 0;
+    padding-top: 140px;
+}
+}
+@media screen and (max-width: 640px) {
+.cajaCaso {
+    min-height: 170px;
+}
+.cajaCaso article {
+    min-height: 140px;
+    padding: 20px 10px 10px;
+    width: 145px;
+}
+article h3 {
+    font-size: 25px;
+}
+article h4 {
+    font-size: 16px;
+    line-height: 120%;
+	padding: 9px 0;
+}
+.cajaCaso article p{
+	display:none;
+	}
+.conteBien h3{
+	font-size:20px;
+	}
+.cajax3{
+	margin:20px 0 0;
+	}
+.conte_fundaciones h3{
+	font-size:20px;
+	}
+.conte_vision{
+	background: rgba(251, 175, 0, 0.3);
+	margin:10px 0;
+	}
+.conte_vision span{
+	float:none;
+	margin:20px 20px 0;
+	}
+.caja_vision p{
+	font-size:16px;
+	}
+.conte_vision .caja_vision{
+	float:none;
+	width:calc(100% - 40px);
+	margin:20px;
+	}
+.caja_vision h4{
+	font-size:30px;
+	}
+.caja_integra{
+	margin:10px 0;
+	}
+.caja_integra .img{
+	width:100%;
+	height:220px;
+	}
+.caja_integra .descri_integra{
+	width:calc(100% - 20px);
+	}
+.conteFormCaso h3, .slideAdopta h3{
+	line-height:120%;
+	margin:10px 0;
+	font-size:20px;
+	}
+form select{
+	margin:10px 0 !important;
+	}
+form input{
+	margin:10px 0 !important;
+	}
+.bannerDona{
+	display:none;
+	}
+#contacto{
+	padding:50px 0;
+	}
+.conte_check {
+	margin:10px 0;
+}
+.descriPerfil .parrafo{
+	height:auto;
+	overflow:auto;
+	}
+.descri_mascota{
+	margin:10px 0;
+	}
+.conte_datos{
+	margin:20px 0;
+	}
+.gale_mini li{
+	height:65px;
+	}
+.compartir{
+	position:relative;
+	margin:10px 0 20px;
+	}
+.conte_visitas{
+	position:relative;
+	top:0;
+	text-align:right;
+	margin:10px 0 0;
+	}
+.conte_datos ul li{
+	width:100%;
+	}
+.cajaSimilar article{
+	bottom:0px;
+	}
+.conte_similar .cajaSimilar{
+	margin:0 0 20px;
+	}
+li.comentario{
+	margin:0 0 20px;
+	}
+.text_funda {
+    width: 100%;
+}
+.cajaFunda .mapa_funda{
+	height:140px;
+	}
+article p.scroll{
+	height:auto;
+	}
+.text_funda ul{
+	position:relative;
+	width:auto;
+	top:0;
+	right:0;
+	text-align:left;
+	margin:10px 0;
+	}
+.text_funda ul li{
+	float:none;
+	width:auto;
+	line-height:110%;
+	}
+article p.scroll{
+	display:none;
+	}
+.footerFunda{
+	position:absolute;
+	top:0;
+	right:0;
+	width:100px;
+	height:100%;
+	}
+.footerFunda .img{
+	width:100%;
+	height:50%;
+	}
+}
 /* Mobile */
 @media screen and (max-width: 480px) {
 #logo {
@@ -677,7 +1077,7 @@ a.blog{
 	background-attachment: fixed;
 	width:100%;
 	position: relative;
-	padding:150px 0;
+	padding:50px 0;
 }
 
 }
