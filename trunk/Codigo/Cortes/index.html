@@ -30,6 +30,7 @@
 <body>
 <div id="outer-wrap">
   <div id="inner-wrap"> 
+  <div id="back-top-wrapper" data-slide="1"></div>
     <!--menu-->
     <header id="top" role="banner">
       <div class="block"> <a class="nav-btn" id="nav-open-btn" href="#nav"><span class="icon-add"></span></a> </div>
@@ -40,12 +41,10 @@
     <nav id="nav" role="navigation">
       <div class="block">
         <ul class="navigation">
-          <li data-slide="1" class="is-active"> <a href="javascript:;">Home</a> </li>
-          <li data-slide="2"> <a href="javascript:;">Casos si amor</a> </li>
-          <li data-slide="3"> <a href="javascript:;">Adopta</a> </li>
-          <li data-slide="4"> <a href="javascript:;">Cuidado animal</a> </li>
-          <li> <a href="javascript:;">Denuncia</a> </li>
-          <li> <a href="javascript:;">Quienes somos</a> </li>
+          <li class="is-active"> <a href="javascript:;">Home</a> </li>
+          <li> <a href="casos.html">Casos si amor</a> </li>
+          <li> <a href="adopta.html">Adopta</a> </li>
+          <li data-slide="2"> <a href="javascript:;">Quienes somos</a> </li>
           <br/>
         </ul>
         <div class="menuLogin"> <a href="javascript:;" class="btn_login">INICIAR SESIÓN</a> <a href="javascript:;" class="btn_sesion">REGISTRARME</a>
@@ -60,7 +59,7 @@
 					<li>
                     	<div class="container clearfix">
                           <div class="grid_6 no-margin">
-                            <div style="background:url(images/galeria/img_01.jpg) no-repeat;" class="cajaCaso">
+                            <div style="background-image:url(images/galeria/img_01.jpg);" class="cajaCaso">
                               <article class="c_tipo1">
                                 <h3>LENON</h3>
                                 <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
@@ -69,7 +68,7 @@
                             </div>
                           </div>
                           <div class="grid_6 no-margin">
-                            <div style="background:url(images/galeria/img_02.jpg) no-repeat;" class="cajaCaso">
+                            <div style="background-image:url(images/galeria/img_02.jpg);" class="cajaCaso">
                               <article class="c_tipo2">
                                 <h3>LENON</h3>
                                 <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
@@ -83,7 +82,7 @@
 					<li>
                     	<div class="container clearfix">
                           <div class="grid_6 no-margin">
-                            <div style="background:url(images/galeria/img_03.jpg) no-repeat;" class="cajaCaso">
+                            <div style="background-image:url(images/galeria/img_03.jpg);" class="cajaCaso">
                               <article class="c_tipo3">
                                 <h3>LENON</h3>
                                 <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
@@ -92,7 +91,7 @@
                             </div>
                           </div>
                           <div class="grid_6 no-margin">
-                            <div style="background:url(images/galeria/img_04.jpg) no-repeat;" class="cajaCaso">
+                            <div style="background-image:url(images/galeria/img_04.jpg);" class="cajaCaso">
                               <article class="c_tipo4">
                                 <h3>LENON</h3>
                                 <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
@@ -105,7 +104,7 @@
 				</ul>
 			</div>
     </section>
-    <section class="slide" id="slide2" data-slide="1" data-stellar-background-ratio="0.5">
+    <section class="slide" id="slide2">
       <div class="container clearfix conteBien">
           <h2>¡BIENVENIDOS!</h2>
           <h3>ELLOS NECESITAN TU AMOR Y APOYO</h3>
@@ -135,7 +134,7 @@
           </div>
       </div>
     </section>
-    <section class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
+    <section class="slide" id="slide3">
     	<div class="container clearfix conteFunda">
         	<h2>FUNDACIONES</h2>
             <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
@@ -148,28 +147,89 @@
             </ul>
         </div>
     </section>
-    <section class="slide no-padding" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+    <section class="slide" id="contacto">
       <div class="container clearfix conteConta">
-      	<div class="grid_5 no-margin">
-        	<div class="bannerDona">
-            	<div class="tit">DONACIONES</div>
-                <div class="parraDona">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</div>
-                <a href="javascript:;" class="btn">LIMPIAR</a>
-            </div>
+      	<div class="bannerDona grid_5">
+            <div class="tit">DONACIONES</div>
+            <div class="parraDona">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</div>
+            <a href="javascript:;" class="btn">LIMPIAR</a>
         </div>
         <form class="grid_7 omega">
         	<h2>CONTACTANOS</h2>
-        	<h3>LOREM IPSUM ES SIMPLEMENTE EL TEXTO DE RELLENO DE LAS IMPRENTAS Y ARCHIVOS DE TEXTO</h3>
+        	<h3>LOREM IPSUM ES SIMPLEMENTE EL TEXTO.</h3>
             <p>Lorem ipsum dolor sit amet, consec tetuer adipiscing. Praesent vestibu lum molestie lacuiirhs. Aenean non ummy hendreriauris. Phasellllus.</p>
-            <input type="text" class="grid_4" placeholder="NOMBRE:"/>
-            <input type="text" class="grid_4" placeholder="APELLIDOS:"/>
-            <input type="tel" class="grid_4 omega" placeholder="CELULAR:"/>
+            <div class="grid_4">
+	            <input type="text" placeholder="NOMBRE:"/>
+            </div>
+            <div class="grid_4">
+	            <input type="text" placeholder="APELLIDOS:"/>
+            </div>
+            <div class="grid_4 omega">
+	            <input type="tel" placeholder="CELULAR:"/>
+            </div>
             <br/>
             <textarea placeholder="ESCRIBE TU COMENTARIO AQUÍ"></textarea>
             <a href="javascript:;" class="btn">LIMPIAR</a>
             <a href="javascript:;" class="btn">ENVIAR</a>
         </form>
       </div>
+    </section>
+    <section class="conte_nosotros slide" data-slide="2" data-stellar-background-ratio="0.5">
+    	<div class="container clearfix">
+        	<h2>QUIENES SOMOS</h2>
+            <h3 class="color3_text">ELLOS NECESITAN TU AMOR Y APOYO</h3>
+            <p style="font-size:18px;" class="color1_text">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500.</p>
+            <div class="conte_vision grid_6">
+            	<span class="icon-alert"></span>
+                <div class="caja_vision">
+                	<h4>MISIÓN</h4>
+                    <p class="color1_text">Somos una Institución de Educación Superior de propiedad social, formamos personas competentes para responder a las dinámicas del mundo, contribuimos a la construcción y difusión del conocimiento, apoyamos el desarrollo competitivo del país a través de sus organizaciones y buscamos el mejoramiento de la calidad de vida de las comunidades, influidos por la economía solidaria que nos dio origen.</p>
+                </div>
+            </div>
+            <div class="conte_vision grid_6 omega">
+            	<span class="icon-alert"></span>
+                <div class="caja_vision">
+                	<h4>VISIÓN</h4>
+                    <p class="color1_text">Somos una Institución de Educación Superior de propiedad social, formamos personas competentes para responder a las dinámicas del mundo, contribuimos a la construcción y difusión del conocimiento, apoyamos el desarrollo competitivo del país a través de sus organizaciones y buscamos el mejoramiento de la calidad de vida de las comunidades, influidos por la economía solidaria que nos dio origen.</p>
+                </div>
+            </div>
+            <br/>
+            <h3 class="color3_text">NUESTRO EQUIPO</h3>
+        	<div class="integrantes grid_12">
+                <div class="caja_integra grid_6">
+                	<div class="img"></div>
+                    <div class="descri_integra">
+                    	<h3>GABRIEL CASTILLO - VETERINARIO</h3>
+                        <p>Creador y fundador de todo el proyecto. Somos una Institución de Educación Superior de propiedad social.</p>
+                    </div>
+                    <br/>
+                </div>
+                <div class="caja_integra grid_6 omega">
+                	<div class="img"></div>
+                    <div class="descri_integra">
+                    	<h3>GABRIEL CASTILLO - VETERINARIO</h3>
+                        <p>Creador y fundador de todo el proyecto. Somos una Institución de Educación Superior de propiedad social.</p>
+                    </div>
+                    <br/>
+                </div>
+                <div class="caja_integra grid_6">
+                	<div class="img"></div>
+                    <div class="descri_integra">
+                    	<h3>GABRIEL CASTILLO - VETERINARIO</h3>
+                        <p>Creador y fundador de todo el proyecto. Somos una Institución de Educación Superior de propiedad social.</p>
+                    </div>
+                    <br/>
+                </div>
+                <div class="caja_integra grid_6 omega">
+                	<div class="img"></div>
+                    <div class="descri_integra">
+                    	<h3>GABRIEL CASTILLO - VETERINARIO</h3>
+                        <p>Creador y fundador de todo el proyecto. Somos una Institución de Educación Superior de propiedad social.</p>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </div>
     </section>
     <footer>
     	<div class="redes">
@@ -179,6 +239,8 @@
         	<a href="javascript:;" class="blog"></a>
             <br/>
         </div>
+        <h3>COPYRIGTH</h3>
+        <h4>© 2014 | Políticas de privacidad</h4>
     </footer>
   </div>
   <!--/#inner-wrap--> 
