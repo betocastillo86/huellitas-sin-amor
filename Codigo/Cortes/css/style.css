@@ -63,16 +63,16 @@ br{
 	float:right;
 	}
 /*colores*/
-.color1{background:#304A6F;}
-.color2{background:#FBB000;}
-.color3{background:#529AD9;}
-.color4{background:#EF525B;}
-.color5{background:#DFE0E3;}
-.color6{background:#3F77BF;}
-.color7{background:#FFCE6F;}
-.color8{background:#6DBFF2;}
-.color9{background:#F4F4F4;}
-.color10{background:#FF8A8E;}
+.color1{background:#304A6F !important;}
+.color2{background:#FBB000 !important;}
+.color3{background:#529AD9 !important;}
+.color4{background:#EF525B !important;}
+.color5{background:#DFE0E3 !important;}
+.color6{background:#3F77BF !important;}
+.color7{background:#FFCE6F !important;}
+.color8{background:#6DBFF2 !important;}
+.color9{background:#F4F4F4 !important;}
+.color10{background:#FF8A8E !important;}
 .color1_text{color:#304A6F !important;}
 .color2_text{color:#FBB000 !important;}
 .color3_text{color:#529AD9 !important;}
@@ -395,6 +395,7 @@ article .btn{
     width: 130px;
 	}
 .conte_check{
+	height:35px;
 	}
 .conte_check input{
 	margin:0 !important;
@@ -888,6 +889,55 @@ a.blog{
 	color:#FFF;
 	padding:0;
 }
+/*fin contacto */
+/*se busca*/
+.seBusca{
+	background:url(../images/header_busco.jpg) repeat center 90px / cover;
+	text-align:center;
+	}
+.seBusca h2{
+	color:#FFF;
+	font-size:65px;
+	font-weight:300;
+	margin:50px 0 0;
+	}
+.seBusca h3{
+	color:#FBB000;
+	font-size:35px;
+	font-weight:700;
+	margin:0 0 50px;
+	}
+.conteBusca{
+	background:url(../images/bkg_rojo.png) repeat;
+	color:#FFF;
+	}
+.conteBusca h3{
+	font-size:25px;
+	}
+.conteBusca .nav_busca{
+	list-style:none;
+	margin:20px 0 0;
+	}
+.nav_busca li{
+	background:rgba(255, 138, 142, 0.3);
+	padding:20px 0;
+	text-align:center;
+	border:1px dashed #FFF;
+	text-transform:uppercase;
+	font-size:20px;
+	font-weight:700;
+	}
+.sel{
+	margin:0 4%;
+	cursor:pointer;
+	}
+.nav_busca li span{
+	font-size:100px;
+	margin:0 0 10px;
+	display:block;
+	}
+.nav_busca li
+/*fin se busca*/
 /* Tablet */
 @media screen and (max-width: 1024px) {
 #logo {
@@ -994,6 +1044,7 @@ form input{
 	}
 .conte_check {
 	margin:10px 0;
+	height:auto;
 }
 .descriPerfil .parrafo{
 	height:auto;
@@ -1065,6 +1116,9 @@ article p.scroll{
 .footerFunda .img{
 	width:100%;
 	height:50%;
+	}
+.sel{
+	margin:20px 0 0;
 	}
 }
 /* Mobile */
