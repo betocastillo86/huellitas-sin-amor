@@ -516,7 +516,7 @@ article p.scroll{
 	}
 .gale_mini li{
 	cursor:pointer;
-	width:calc(25% - 15px);
+	width:80px;
 	background:#3366FF;
 	height:80px;
 	float:left;
@@ -576,8 +576,10 @@ article p.scroll{
 	}
 .descriPerfil .parrafo{
 	height:250px;
-	overflow-y:scroll;
 	text-align:justify;
+	margin:0 0 20px;
+	}
+.descriPerfil .parrafo p{
 	font-size:14px;
 	}
 .descriPerfil .btn{
@@ -936,8 +938,8 @@ a.blog{
 	margin:0 0 10px;
 	display:block;
 	}
-.nav_busca li
 /*fin se busca*/
+
 /* Tablet */
 @media screen and (max-width: 1024px) {
 #logo {
