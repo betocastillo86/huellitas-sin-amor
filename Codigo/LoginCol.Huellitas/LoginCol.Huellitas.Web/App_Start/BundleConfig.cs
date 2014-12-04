@@ -83,10 +83,9 @@ namespace LoginCol.Huellitas.Web
 
             bundles.Add(new StyleBundle("~/bundles/cssfrontend")
                 .Include("~/Content/normalize.css")
-                .Include("~/Content/slider.css")
-                .Include("~/Content/grid.css")
-                .Include("~/Content/menu_styles.css")
+                .Include("~/Content/columnas_scrollbar_slider.css")
                 .Include("~/Content/style.css"));
+                .Include("~/Content/animate.css")
 
 
             bundles.Add(new ScriptBundle("~/bundles/frontend")

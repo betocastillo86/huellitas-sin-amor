@@ -44,7 +44,9 @@
                     <span class="icon-calendar"></span>@Model.Visitas
                     <span class="icon-calendar"></span><div id="contarComentarios" style="display:inline-block">@Model.Comentarios</div>
                 </div>
-                <p class="parrafo">@Html.DisplayFor(m => m.Descripcion)</p>
+                <div class="parrafo demo-y">
+                    <p>@Html.DisplayFor(m => m.Descripcion)</p>
+                </div>
                 <a class="btn left" href="javascript:;">ADOPTAME</a>
                 <a class="btn left" href="javascript:;">APADRINAME</a>
             </div>

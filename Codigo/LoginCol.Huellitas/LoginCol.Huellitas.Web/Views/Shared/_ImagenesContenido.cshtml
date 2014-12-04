@@ -5,11 +5,12 @@
 
     <div class="grid_6">
         <div class="galeria_perfil">
+            @*<div class="img" style="background-image:url(/img/<%=obj.ContenidoId%>/medium;" id="imagenPrincipal"></div>*@
             <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
             <iframe id="divPlayerVideo" width="420" height="315"
                     src="https://www.youtube.com/embed/<%=obj.UrlVideo%>" style="display:none"></iframe>
         </div>
-        <ul class="gale_mini">
+        <ul class="gale_mini demo-x">
             <% if(obj.UrlVideo) { %>
             <li style="background-image: url(http://img.youtube.com/vi/<%=obj.UrlVideo%>/2.jpg)"  contenidoid="<%=obj.ContenidoId%>" id="btnVideo"></li>
             <% } %>
