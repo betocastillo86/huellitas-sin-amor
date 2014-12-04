@@ -4,9 +4,17 @@
         <div class="container clearfix">
             <h2>COMENTARIOS</h2>
             <h3>LOREM IPSUM ES SIMPLEMENTE EL TEXTO DE RELLENO DE LAS IMPRENTAS</h3>
-            <input type="text" id="UsuarioNombres" placeholder="NOMBRE" /><span id="UsuarioNombresError"></span>
-            <input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRÓNICO" /><span id="CorreoElectronicoError"></span>
-            <textarea placeholder="DEJANOS TU COMENTARIO:" id="Texto"></textarea><span id="TextoError"></span>
+            <form>
+                <div class="grid_6"
+                    ><input type="text" id="UsuarioNombres" placeholder="NOMBRE*" />
+                    <span class="obliga" id="UsuarioNombresError"></span>
+                </div>
+                <div class="grid_6 omega">
+                    <input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRÓNICO*" />
+                    <span class="obliga" id="CorreoElectronicoError"></span>
+                </div>
+            </form>
+            <textarea placeholder="DEJANOS TU COMENTARIO:" id="Texto"></textarea><span class="obliga" id="TextoError"></span>
             <a id="btnGuardarComentario" class="btn">COMENTAR</a>
             <br />
             <ul>
