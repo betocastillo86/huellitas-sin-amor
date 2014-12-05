@@ -36,6 +36,9 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/slide").Include(
                 "~/Scripts/libs/jquery.cbpFWSlider.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/scroll").Include(
+               "~/Scripts/libs/jquery.mCustomScrollbar.js"));
+
             
 
 
@@ -84,8 +87,8 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new StyleBundle("~/bundles/cssfrontend")
                 .Include("~/Content/normalize.css")
                 .Include("~/Content/columnas_scrollbar_slider.css")
-                .Include("~/Content/style.css"));
-                .Include("~/Content/animate.css")
+                .Include("~/Content/style.css")
+                .Include("~/Content/animate.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/frontend")

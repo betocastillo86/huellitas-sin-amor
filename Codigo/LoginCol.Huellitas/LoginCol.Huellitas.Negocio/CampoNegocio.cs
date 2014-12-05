@@ -24,5 +24,10 @@ namespace LoginCol.Huellitas.Negocio
         {
             return Repositorio.Obtener(idCampo);
         }
+
+        public Campo Obtener(string nombreCampo)
+        {
+            return Repositorio.Obtener(nombreCampo);
+        }
     }
 }

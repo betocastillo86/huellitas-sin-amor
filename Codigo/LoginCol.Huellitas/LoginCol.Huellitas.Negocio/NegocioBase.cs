@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginCol.Huellitas.Negocio.Directorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,14 @@ namespace LoginCol.Huellitas.Negocio
     {
         public NegocioBase()
         {
-
+            this._rutasFisicas = new RutaFisicaWeb();
         }
 
-        public NegocioBase(string rutaServidor)
+        protected readonly IRutasFisicas _rutasFisicas;
+
+        public NegocioBase(IRutasFisicas rutasFisicas)
         {
-            this._rutaServidor = rutaServidor;
+            this._rutasFisicas = rutasFisicas;
         }
         
         private string _rutaServidor = string.Empty;
@@ -23,16 +26,12 @@ namespace LoginCol.Huellitas.Negocio
         {
             get
             {
-                if (string.IsNullOrEmpty(_rutaServidor))
+                if (this._rutasFisicas == null)
                 {
-                    throw new Exception("No se ha cargado la ruta del servidor");
+                    throw new Exception("no hay instanciado un IrutasFisicas");
                 }
                 else
-                    return _rutaServidor;
-            }
-            set
-            {
-                _rutaServidor = value;
+                    return _rutasFisicas.ObtenerRutaFisica();
             }
         }
     }

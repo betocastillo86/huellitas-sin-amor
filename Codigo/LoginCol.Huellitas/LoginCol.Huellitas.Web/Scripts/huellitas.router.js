@@ -2,14 +2,22 @@
     vistaActual : undefined,
 
     routes: {
+        "": "home",
+        "/": "home",
         "huellitas": "listarHuellitas",
         "huellitas/": "listarHuellitas",
+        "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)": "buscarHuellitas",
         "huellitas/:id/:nombre": "detalleHuellita",
-        "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)": "buscarHuellitas",
         "fundaciones" : "listarFundaciones",
         "fundaciones/": "listarFundaciones",
         "fundaciones/buscar(/z:zona)": "buscarFundaciones",
-        "fundaciones/:id/:nombre": "detalleFundacion"
+        "fundaciones/:id/:nombre": "detalleFundacion",
+        "home/perdidos" : "inicioPerdidos"
+    },
+
+    home : function()
+    {
+        $('#cbp-fwslider').cbpFWSlider();
     },
 
     listarHuellitas: function ()
@@ -19,23 +27,22 @@
         this.vistaActual = vistaListarAnimales;
     },
 
-    buscarHuellitas: function (tipo, genero, color, tamano, edad, recomendado)
+    buscarHuellitas: function (tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre)
     {
         var vistaListarAnimales = undefined;
         if (this.vistaActual == undefined)
         {
             //inicializa la vista pero pasa parametro para no cargar los contenidos
-            vistaListarAnimales = new ListarHuellitasView({ cargar: false });
+            vistaListarAnimales = new ListarHuellitasView({ cargar: false, zona : zona, zonaPadre : zonaPadre });
             this.vistaActual = vistaListarAnimales;
         }
 
-        this.vistaActual.filtrarContenidosDesdeUrl(tipo, genero, color, tamano, edad, recomendado);
+        this.vistaActual.filtrarContenidosDesdeUrl(tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre);
     },
     listarFundaciones: function ()
     {
         var vistaListarFundaciones = new ListarFundacionesView();
         this.vistaActual = vistaListarFundaciones;
-        
     },
     buscarFundaciones: function (zona)
     {
@@ -52,6 +59,15 @@
     {
         var vistaDetalleFundacion = new DetalleFundacionView({ id: id });
         this.vistaActual = vistaDetalleFundacion;
+    },
+    inicioPerdidos: function ()
+    {
+        var vistaPerdidos = new PerdidosView();
+        this.vistaActual = vistaPerdidos;
+    },
+    navegar: function (url, opt)
+    {
+        this.navigate(url.replace(" ", "-"), opt);
     }
 });
 

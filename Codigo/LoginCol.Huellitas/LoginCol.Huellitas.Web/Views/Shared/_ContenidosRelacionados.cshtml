@@ -16,7 +16,7 @@
 
 
 
-                        <div class="grid_3">
+                        <div class="grid_3 <%= contador > 0 && contador%3 == 0 ? " omega" : "" %>">
                             <div style="background-image: url(/img/<%=contenido.ContenidoHijo.ContenidoId%>/mini);" class="cajaSimilar">
                                 <article class="c_tipo1">
                                     <h3> <a href="/huellitas/<%=contenido.ContenidoHijo.ContenidoId%>/<%=contenido.ContenidoHijo.NombreLink%>"><%=contenido.ContenidoHijo.Nombre%></a></h3>
@@ -37,7 +37,7 @@
                 }); %>
             </ul>
         </div>
-
+        <div class="mas_scroll">Ver todos</div>
     </section>
 </script>
 <script src="~/Scripts/models/huellitas.admin.ContenidoRelacionado.js"></script>

@@ -87,6 +87,13 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             return View(modelo);
         }
+        #region Parametrizacion
+        public ActionResult Parametrizacion()
+        {
+            return View(new ParametrizacionNegocio().Obtener());
+        }
+        #endregion
+        
 
         public ActionResult Salir()
         {
@@ -100,6 +107,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             List<OpcionMenu> opcionesMenu = new List<OpcionMenu>();
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/admin/animales/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 3, Nombre = "Parametrizacion", Vinculo = "/admin/parametrizacion" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
 

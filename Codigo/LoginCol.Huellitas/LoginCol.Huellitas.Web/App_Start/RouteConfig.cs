@@ -64,6 +64,15 @@ namespace LoginCol.Huellitas.Web
             //    constraints: new { controller = "(Home)", queryvalues = "(Index|huellitas)" }
             //);
 
+
+
+            routes.MapRoute(
+                name: "BuscadorContenidos",
+                url: "{controller}/buscar/{*queryValues}",
+                defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Index" }
+            );
+
             #region detalle Contenido
 
             routes.MapRoute(
@@ -75,12 +84,7 @@ namespace LoginCol.Huellitas.Web
 
             #endregion
 
-            routes.MapRoute(
-                name: "BuscadorContenidos",
-                url: "{controller}/buscar/{*queryValues}",
-                defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
-                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Index" }
-            );
+            
 
 
             routes.MapRoute(

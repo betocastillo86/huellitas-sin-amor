@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using LoginCol.Huellitas.Utilidades;
 using SoundInTheory.DynamicImage.Fluent;
 using SoundInTheory.DynamicImage.Filters;
+using LoginCol.Huellitas.Negocio.Directorios;
 
 namespace LoginCol.Huellitas.Negocio
 {
@@ -18,7 +19,7 @@ namespace LoginCol.Huellitas.Negocio
             _contenidos = new Lazy<ContenidoRepositorio>(false);
         }
 
-        public ContenidoNegocio(string rutaServidor) : base(rutaServidor){
+        public ContenidoNegocio(IRutasFisicas rutasFisicas) : base(rutasFisicas){
             _contenidos = new Lazy<ContenidoRepositorio>(false);
         }
         
@@ -273,10 +274,19 @@ namespace LoginCol.Huellitas.Negocio
             return respuesta;
         }
 
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase, List<FiltroContenido> camposFiltros)
+        /// <summary>
+        /// Filtros de los contenidos
+        /// </summary>
+        /// <param name="idTipoContenido"></param>
+        /// <param name="esPadre"></param>
+        /// <param name="filtroBase"></param>
+        /// <param name="camposFiltros"></param>
+        /// <param name="contenidosRelacionados">Listado de contenidos relacionados</param>
+        /// <returns></returns>
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase, List<FiltroContenido> camposFiltros, List<ContenidoRelacionado> contenidosRelacionados)
         {
             ContenidoRepositorio rContenido = new ContenidoRepositorio();
-            return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros);
+            return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros, contenidosRelacionados);
         }
 
 

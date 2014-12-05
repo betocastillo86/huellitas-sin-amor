@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Negocio.Directorios;
 using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Infraestructure;
 using LoginCol.Huellitas.Web.Models;
@@ -80,7 +81,7 @@ namespace LoginCol.Huellitas.Web.Controllers
                         
                         //if (regex.IsMatch(files.FirstOrDefault().FileName))
                         //{
-                        ContenidoNegocio contenidoNegocio = new ContenidoNegocio(System.Web.HttpContext.Current.Server.MapPath("~"));
+                        ContenidoNegocio contenidoNegocio = new ContenidoNegocio(new RutaFisicaWeb());
                         respuesta = contenidoNegocio.GuardarImagen(id, files.FirstOrDefault().Data);
                         //}
                         //else

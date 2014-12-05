@@ -3,7 +3,7 @@ var ListarFundacionesView = Backbone.View.extend({
 	el : "#divListarFundaciones",
 
 	events :{
-		"change #ddlZonaGeograficaPadre" : "cargarCiudades",
+		//"change #ddlZonaGeograficaPadre" : "cargarCiudades",
 		"click #btnBuscar" : "filtrarFundaciones"
 	},
 
@@ -11,10 +11,12 @@ var ListarFundacionesView = Backbone.View.extend({
 
 	vistaResultados: undefined,
 
-	initialize: function (args) {
-	    this.ddlZonaGeografica = this.$("#ddlZonaGeografica");
-	    this.vistaResultados = new ResultadosHuellitasView({tipo:"f"});
+	vistaZonas: undefined,
 
+	initialize: function (args) {
+	    this.ddlZonaGeografica = this.$("#ddlZonaCiudad");
+	    this.vistaResultados = new ResultadosHuellitasView({tipo:"f"});
+	    this.vistaZonas = new ZonasGeograficasView({ el: "#formBusqueda" });
 
 	    if (args != undefined) {
 	        if (args.cargar != undefined && args.cargar)
@@ -30,28 +32,28 @@ var ListarFundacionesView = Backbone.View.extend({
 	    return;
 	},
 
-	cargarCiudades : function(obj)
-	{
-		var zonasGeograficas = new ZonaGeograficaCollection();
-		zonasGeograficas.on("sync", this.mostrarCiudades, this);
-		zonasGeograficas.obtenerZonasPorPadre($(obj.target).val());
-	},
+	//cargarCiudades : function(obj)
+	//{
+	//	var zonasGeograficas = new ZonaGeograficaCollection();
+	//	zonasGeograficas.on("sync", this.mostrarCiudades, this);
+	//	zonasGeograficas.obtenerZonasPorPadre($(obj.target).val());
+	//},
 
-	mostrarCiudades : function(ciudades)
-	{
-		var ddl = this.ddlZonaGeografica;
-		ddl.empty();
-		ddl.append("<option>CIUDAD</option>");
-		_.each(ciudades.toJSON(), function(ciudad){
-			ddl.append("<option value='"+ciudad.ZonaGeograficaId+"'>"+ciudad.Nombre+"</option>");
-		});
-	},
+	//mostrarCiudades : function(ciudades)
+	//{
+	//	var ddl = this.ddlZonaGeografica;
+	//	ddl.empty();
+	//	ddl.append("<option>CIUDAD</option>");
+	//	_.each(ciudades.toJSON(), function(ciudad){
+	//		ddl.append("<option value='"+ciudad.ZonaGeograficaId+"'>"+ciudad.Nombre+"</option>");
+	//	});
+	//},
 
 	obtenerCampo : function(campo)
 	{
 		switch (campo) {
             case "zona":
-                var campo = this.$("#ddlZonaGeografica :selected");
+                var campo = this.$("#ddlZonaCiudad :selected");
                 return { valor: parseInt(campo.val()), texto: campo.text() };
             default:
                 return 0;
@@ -93,7 +95,7 @@ var ListarFundacionesView = Backbone.View.extend({
 	    };
 
 	    if (filtros.zona > 0)
-	        this.$("#ddlZonaGeografica").val(filtros.zona);
+	        this.ddlZonaGeografica.val(filtros.zona);
 
 	    this.vistaResultados.cargarContenidos(filtros);
 	}

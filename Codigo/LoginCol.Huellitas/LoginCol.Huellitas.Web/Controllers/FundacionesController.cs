@@ -19,10 +19,10 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             ListarFundacionesModel modelo = new ListarFundacionesModel();
             
-            ZonaGeograficaNegocio nZonas = new ZonaGeograficaNegocio();
-            modelo.ZonasPadre = nZonas.ObtenerZonasGeograficasPorPadre(ParametrizacionNegocio.ZonaGeograficaPorDefecto)
-                .Select(Mapper.Map<ZonaGeografica, ZonaGeograficalModel>)
-                .ToList();
+            //ZonaGeograficaNegocio nZonas = new ZonaGeograficaNegocio();
+            //modelo.ZonasPadre = nZonas.ObtenerZonasGeograficasPorPadre(ParametrizacionNegocio.ZonaGeograficaPorDefecto)
+            //    .Select(Mapper.Map<ZonaGeografica, ZonaGeograficalModel>)
+            //    .ToList();
             
             return View(modelo);
         }

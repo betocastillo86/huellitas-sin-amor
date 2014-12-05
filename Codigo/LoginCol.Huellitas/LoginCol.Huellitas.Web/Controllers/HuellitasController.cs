@@ -21,6 +21,10 @@ namespace LoginCol.Huellitas.Web.Controllers
             modelo.Colores = nCampo.Obtener(ParametrizacionNegocio.CampoColorId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             modelo.Tamanos = nCampo.Obtener(ParametrizacionNegocio.CampoTamanoId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             modelo.Generos = nCampo.Obtener(ParametrizacionNegocio.CampoGeneroId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
+
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            modelo.Fundaciones = nContenido.ObtenerPorTipoPadre(TipoContenidoEnum.Fundacion).Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
+            
             modelo.RecomendadoPara = nCampo.Obtener(ParametrizacionNegocio.CampoRecomendadoParaId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             return View(modelo);
         }

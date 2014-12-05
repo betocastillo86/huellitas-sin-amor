@@ -22,3 +22,7 @@ function ValidarExtensionArchivo(obj, extensionesPermitidas)
         return true;
     }
 }
+
+/*scroll*/
+
+    

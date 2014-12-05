@@ -400,7 +400,8 @@ namespace LoginCol.Huellitas.Datos
         /// <param name="camposFiltros">listado de campos y valores de los filtros</param>
         /// <param name="filtroBase">Filtros adicionales que van ligados al contenido</param>
         /// <returns>Listado de contenidos encontrados de acuerdo a la busqueda</returns>
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros)
+        /// <param name="contenidosRelacionados">Contenidos relacionados por los que se debe filtrar. Propiedades: IDContenido  y TipoRelacion</param>
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros, List<ContenidoRelacionado> contenidosRelacionados)
         {
             List<Contenido> lista = null;
             try
@@ -472,6 +473,14 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.Campos.Select(v => v.Campo))
                         .Where(c => c.Activo);
 
+                    //Recorre todos los contenidos relacionados y realiza el filtro sobre ellos
+                    foreach (var relacionado in contenidosRelacionados)
+                    {
+                        query = query
+                            .Where(c => c.ContenidosRelacionados
+                                .Where(cr => cr.ContenidoHijoId == relacionado.ContenidoId).Count() > 0);
+                    }
+
                     //Si no hay filtros seleccionados no realiza el filtro 
                     if(camposFiltros.Count > 0)
                         query = query.Where(c => contenidosPorFiltro.Contains(c.ContenidoId)) ;
@@ -483,7 +492,13 @@ namespace LoginCol.Huellitas.Datos
                         query = query.Where(c=> c.TipoContenidoId == idTipoContenido);
 
                     //agrega los filtros base
-                    query = query.Where(c => (filtroBase.ZonaGeograficaId == 0 || c.ZonaGeograficaId == filtroBase.ZonaGeograficaId) );
+                    if(filtroBase.ZonaGeograficaId > 0)
+                        query = query.Where(c => c.ZonaGeograficaId == filtroBase.ZonaGeograficaId);
+
+                    if(filtroBase.ZonaGeografica!= null &&  filtroBase.ZonaGeografica.ZonaGeograficaPadre != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId > 0)
+                        query = query.Where(c => c.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId == filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId);
+
+                    
 
                     lista = query.ToList();
 

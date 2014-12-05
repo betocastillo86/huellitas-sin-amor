@@ -1,4 +1,6 @@
-﻿using LoginCol.Huellitas.Negocio;
+﻿using AutoMapper;
+using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Negocio;
 using LoginCol.Huellitas.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -57,6 +59,20 @@ namespace System.Web.Mvc.Html
                 });
 
             return str.ToString();
+        }
+
+
+        public static MvcHtmlString DropDownListZonas(this HtmlHelper htmlHelper, int? idZonaPadre, string seleccionar = "", string primeraOpcion = "DEPARTAMENTO", string estilo = "", string id = "ZonaGeograficaId")
+        {
+            ZonaGeograficaNegocio nZonas = new ZonaGeograficaNegocio();
+            List<ZonaGeograficalModel> zonas = nZonas.ObtenerZonasGeograficasPorPadre(!idZonaPadre.HasValue ? ParametrizacionNegocio.ZonaGeograficaPorDefecto : idZonaPadre.Value)
+                .Select(Mapper.Map<ZonaGeografica, ZonaGeograficalModel>)
+                .ToList();
+  
+            return SelectExtensions
+                .DropDownList(htmlHelper,
+                                id,
+                                new SelectList(zonas, "ZonaGeograficaId", "Nombre", seleccionar), primeraOpcion, new { @class = estilo });
         }
 
 

@@ -20,16 +20,23 @@
     %>
 
     <div class="cajaFunda color<%=nombreEstilo%>">
-        <div class="grid_4 no-margin" id="mapa<%=contenido.ContenidoId%>" style="width: 384px; height: 384px;">
+        <div class="mapa_funda grid_4 no-margin" id="mapa<%=contenido.ContenidoId%>" >
 
         </div>
-        <div class="grid_8  no-margin">
+        <div class="text_funda grid_8  no-margin">
             <article>
                 <h3><%=contenido.Nombre%></h3>
-                
-                <p class="scroll">
-                <%=contenido.ZonaGeograficaNombre %><br />
-                <%=contenido.Descripcion %>
+
+                <ul>
+                    <li><%=contenido.ZonaGeograficaNombre %> / XXXXXXXXXXXXXX</li>
+                    <li>XXXXXXXXXXXXXXXXXX</li>
+                    <li>XXXXXXXXXXXX</li>
+                    <li>XXXXXXXXXXXXXXXXX</li>
+                </ul>
+
+                <p class="scroll demo-y">
+                    <br />
+                    <%=contenido.Descripcion %>
 
                 </p>
                 <a class="btn" href="/fundaciones/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
@@ -51,7 +58,8 @@
     <div>No se encontraron resultados con tu busqueda</div>
     <% }
     else { %>
-    <a class="btn siguientePagina">Siguiente</a>
+    <br />
+    <div class="mas_scroll siguientePagina">Ver más</div>
     <% } %>
 </script>
 

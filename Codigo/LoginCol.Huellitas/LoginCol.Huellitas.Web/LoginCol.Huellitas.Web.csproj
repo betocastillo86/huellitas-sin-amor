@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminUsuarioRelacionadoController.cs" />
+    <Compile Include="Controllers\ArchivosController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelperCampos.cs" />
     <Compile Include="Helpers\HtmlHelperInputExtensions.cs" />
     <Compile Include="Infraestructure\Autenticacion.cs" />
     <Compile Include="Infraestructure\ContenidoRutaConstraint.cs" />
@@ -218,6 +220,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
     <Compile Include="Models\OpcionCampoModel.cs" />
+    <Compile Include="Models\PerdidosModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\TipoContenidoModel.cs" />
     <Compile Include="Models\TipoRelacionContenidoModel.cs" />
@@ -475,6 +478,8 @@
     <Content Include="Scripts\libs\jquery.easing.1.3.js" />
     <Content Include="Scripts\libs\jquery.history.js" />
     <Content Include="Scripts\libs\jquery.iphone.toggle.js" />
+    <Content Include="Scripts\libs\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Scripts\libs\jquery.mCustomScrollbar.js" />
     <Content Include="Scripts\libs\jquery.noty.js" />
     <Content Include="Scripts\libs\jquery.raty.js" />
     <Content Include="Scripts\libs\jquery.raty.min.js" />
@@ -582,6 +587,7 @@
     <Content Include="Scripts\models\huellitas.admin.ContenidoRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
     <Content Include="Scripts\models\huellitas.admin.TipoRelacionContenido.js" />
+    <Content Include="Scripts\models\huellitas.Archivo.js" />
     <Content Include="Scripts\models\huellitas.Campo.js" />
     <Content Include="Scripts\models\huellitas.Comentario.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
@@ -610,8 +616,10 @@
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
+    <Content Include="Scripts\views\huellitas.PerdidosView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.TwitterShareView.js" />
+    <Content Include="Scripts\views\huellitas.ZonasGeograficasView.js" />
     <Content Include="templates\huellitas-listar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -670,6 +678,10 @@
     <Content Include="Views\Shared\_CompartirRedesSociales.cshtml" />
     <Content Include="Views\Shared\_ContenidosRelacionados.cshtml" />
     <Content Include="Views\Administracion\Contenido\_UsuariosRelacionados.cshtml" />
+    <Content Include="Views\Home\Perdidos.cshtml" />
+    <Content Include="Scripts\models\huellitas.ContenidoPerdido.js" />
+    <Content Include="Scripts\views\huellitas.SubirArchivoView.js" />
+    <Content Include="Views\Administracion\Parametrizacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
