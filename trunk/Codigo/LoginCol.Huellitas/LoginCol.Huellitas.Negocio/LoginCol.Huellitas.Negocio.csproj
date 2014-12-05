@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,9 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivosTemporalesNegocio.cs" />
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />
     <Compile Include="ContenidoNegocio.cs" />
+    <Compile Include="Directorios\IRutasFisicas.cs" />
+    <Compile Include="Directorios\RutaFisicaWeb.cs" />
     <Compile Include="HuellitaNegocio.cs" />
     <Compile Include="NegocioBase.cs" />
     <Compile Include="ParametrizacionNegocio.cs" />

@@ -654,8 +654,8 @@ article .btn{
 	color:#FFF;
 	margin:0 0 20px;
 	}
-.cajaFunda mapa{
-	height:100%;
+.cajaFunda .mapa_funda{
+	height:348px;
 	}
 .cajaFunda article{
 	width:calc(100% - 40px);
@@ -673,7 +673,7 @@ article .btn{
 	background:#FFF center / cover no-repeat;
 	}
 article p.scroll{
-	overflow-y:scroll;
+	
 	height:80px;
 	margin:30px 0 10px;
 	}

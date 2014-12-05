@@ -38,6 +38,8 @@
         //carga un objeto para ser enviado al template
         var contenido = { ContenidoId: this.contenidoId, Imagenes: this.listaImagenes.toJSON(), UrlVideo : this.urlVideo };
         this.$el.html(this.template(contenido));
+        
+        Huellitas.cargarScroll();
         this.render();
         return this;
     },

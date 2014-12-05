@@ -15,6 +15,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public List<OpcionCampoModel> RecomendadoPara { get; set; }
 
+        public List<ContenidoBaseModel> Fundaciones { get; set; }
+
 
     }
 }

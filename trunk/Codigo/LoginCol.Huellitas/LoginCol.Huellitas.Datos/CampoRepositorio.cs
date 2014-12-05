@@ -33,5 +33,28 @@ namespace LoginCol.Huellitas.Datos
 
             return campo == null ? new Campo() : campo;
         }
+
+
+        public Campo Obtener(string nombreCampo)
+        {
+            Campo campo = null;
+
+            try
+            {
+                using (var db = new Repositorio())
+                {
+                    campo = db.Campos
+                        .Include(c => c.Opciones)
+                        .FirstOrDefault(c => c.Nombre.Equals(nombreCampo));
+
+                }
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+            }
+
+            return campo == null ? new Campo() : campo;
+        }
     }
 }

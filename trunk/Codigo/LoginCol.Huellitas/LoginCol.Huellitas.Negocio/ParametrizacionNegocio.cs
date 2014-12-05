@@ -1,4 +1,5 @@
 ﻿using LoginCol.Huellitas.Datos;
+using LoginCol.Huellitas.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,5 +51,10 @@ namespace LoginCol.Huellitas.Negocio
         public static int CampoRecomendadoParaId { get { return Int("CampoRecomendadoParaId"); } }
 
         public static int ComentariosPorPagina { get { return Int("ComentariosPorPagina"); } }
+
+        public List<Parametrizacion> Obtener()
+        {
+            return datosParametrizacion.Obtener();
+        }
     }
 }

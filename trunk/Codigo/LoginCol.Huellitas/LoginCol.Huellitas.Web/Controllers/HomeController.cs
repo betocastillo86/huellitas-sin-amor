@@ -1,5 +1,6 @@
 ﻿using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,21 @@ namespace LoginCol.Huellitas.Web.Controllers
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
             return File(Server.MapPath(contenidoNegocio.ObtenerRutaImagenPrincipal(id, EnumConverter.ToEnum(tamano))), "gif");
         }
+
+        #region Perdidos
+        public ActionResult Perdidos()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Perdidos(PerdidosModel modelo)
+        {
+            
+            return View();
+        }
+        #endregion
+        
 
         
 

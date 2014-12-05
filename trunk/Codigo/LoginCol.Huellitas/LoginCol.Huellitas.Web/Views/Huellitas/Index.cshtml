@@ -15,19 +15,8 @@
             <h2>ENCUENTRA TU HUELLITA</h2>
             <h3>SOLO BUSCA POR LAS CARACTERISTICAS DEL QUE QUISIERAS FUERA TU HUELLITA</h3>
             <form>
-                @Html.DropDownList("ddlGenero", new SelectList(Model.Generos, "OpcionId", "Texto"), "GENERO", new { @class = "grid_2" })
-                @Html.DropDownList("ddlColor", new SelectList(Model.Colores, "OpcionId", "Texto"), "COLOR", new { @class = "grid_2" })
-                @Html.DropDownList("ddlTamano", new SelectList(Model.Tamanos, "OpcionId", "Texto"), "TAMAÑO", new { @class = "grid_2" })
 
-                <select id="ddlEdad" class="grid_2 omega">
-                    <option>EDAD</option>
-                    <option value="1">De 0 a 1</option>
-                    <option value="2">De 1 a 3</option>
-                    <option value="3">De 3 a 5</option>
-                    <option value="4">Más de 5 (Te lo agradecerá)</option>
-                </select>
-                <div class="clear"></div>
-                <div class="conte_check grid_3">
+                <div class="conte_check grid_2">
                     <div class="tipoMasco">
                         <input class="check" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
                         <span class="icon-alert"></span>
@@ -37,13 +26,37 @@
                         <span class="icon-alert"></span>
                     </div>
                 </div>
+
+                <select id="ddlZonaDepartamento" class="grid_2"><option>DEPARTAMENTO</option></select>
+                <select id="ddlZonaCiudad" class="grid_2"><option>CIUDAD</option></select>
+
+                @Html.DropDownList("ddlGenero", new SelectList(Model.Generos, "OpcionId", "Texto"), "GENERO", new { @class = "grid_2" })
+
+                @Html.DropDownList("ddlColor", new SelectList(Model.Colores, "OpcionId", "Texto"), "COLOR", new { @class = "grid_2 " })
+
+                @Html.DropDownList("ddlTamano", new SelectList(Model.Tamanos, "OpcionId", "Texto"), "TAMAÑO", new { @class = "grid_2 omega" })
+                @Html.DropDownList("ddlFundacion", new SelectList(Model.Fundaciones, "ContenidoId", "Nombre"), "FUNDACION", new { @class = "grid_2" })
+
+                <select id="ddlEdad" class="grid_2 ">
+                    <option>EDAD</option>
+                    <option value="1">De 0 a 1</option>
+                    <option value="2">De 1 a 3</option>
+                    <option value="3">De 3 a 5</option>
+                    <option value="4">Más de 5 (Te lo agradecerá)</option>
+                </select>
+
                 @foreach (var opcion in Model.RecomendadoPara)
                 {
-                    <div class="grid_2">
+                    <div class="grid_2 omega">
                         <input class="check" type="checkbox" name="recomendadoPara" value="@opcion.OpcionId" />
                         <span>@opcion.Texto</span>
                     </div>
                 }
+
+                
+
+                
+                
                 <br />
                 <div class="btn" id="btnBuscar">BUSCAR</div>
             </form>
@@ -53,5 +66,11 @@
         @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
     
 </div>
-<script src="~/Scripts/models/huellitas.Contenido.js"></script>
-<script src="~/Scripts/views/huellitas.ListarHuellitasView.js"></script>
+@section scripts{
+    <script src="~/Scripts/models/huellitas.Contenido.js"></script>
+    <script src="~/Scripts/views/huellitas.ListarHuellitasView.js"></script>
+    <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
+    <script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>   
+}
+
+

@@ -33,13 +33,25 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             Contenido filtroBase = new Contenido();
 
+            //Si la zona padre viene como filtro, la zona principal debe venir igual a 0
+            if (filtro.zonaPadre > 0 && filtro.zona == 0)
+            {
+                filtroBase.ZonaGeografica = new ZonaGeografica(filtro.zonaPadre);
+            }
+                
+                
+
             if (filtro.zona > 0)
                 filtroBase.ZonaGeograficaId = filtro.zona;
 
             int resultadosPorPagina = 8;
 
+            var contenidosRelacionados = new List<ContenidoRelacionado>();
+            if (filtro.fundacion > 0)
+                contenidosRelacionados.Add(new ContenidoRelacionado() { ContenidoId = filtro.fundacion, TipoRelacionContenidoId = (int)TipoRelacionEnum.Fundacion });
+
             //Realiza el filtro en negocio cargando los campos desde el querystring
-            List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo())
+            List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados)
                 .Skip(resultadosPorPagina*filtro.paginaActual)
                 .Take(resultadosPorPagina)
                 .ToList();
@@ -63,7 +75,11 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         public int zona { get; set; }
 
+        public int zonaPadre { get; set; }
+
         public int tipoPadre { get; set; }
+
+        public int fundacion { get; set; }
 
         public List<FiltroContenido> ObtenerValorCampo()
         {

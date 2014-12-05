@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginCol.Huellitas.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,18 @@ namespace LoginCol.Huellitas.Datos
             }
 
             return valor;
+        }
+
+        public List<Entidades.Parametrizacion> Obtener()
+        {
+            List<Parametrizacion> lista;
+
+            using (var db = new Repositorio())
+            {
+                lista = db.Parametrizaciones.ToList();
+            }
+
+            return lista ?? new List<Parametrizacion>();
         }
     }
 }

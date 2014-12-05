@@ -63,6 +63,10 @@
             }
         });
 
+        //Para las fundaciones carga el scroll
+        if (ctx.tipo == 'f')
+            Huellitas.cargarScroll();
+
         this.listaContenidos.add(models);
     },
     siguientePagina: function (obj)

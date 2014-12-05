@@ -1,0 +1,102 @@
+﻿@model LoginCol.Huellitas.Web.Models.PerdidosModel
+@{
+    ViewBag.Title = "Perdidos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="first" class="seBusca slide">
+    <div class="container clearfix">
+        <h2>MASCOTAS PERDIDAS</h2>
+        <h3>ELLOS NECESITAN TU AMOR Y APOYO</h3>
+
+    </div>
+</section>
+<!--se busca-->
+<div id="divPerdidosGeneral">
+    <section class="conteBusca slide">
+        <div class="container clearfix conteConta">
+            <h3>LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT.</h3>
+            <p>Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio.</p>
+            <nav class="nav_busca">
+                <li class="sel grid_3 addform" id="btnBusco">
+                    <span class="icon-add"></span>
+                    BUSCO MI MASCOTA
+                </li>
+                <li class="sel grid_3 addform" id="btnEncuentro">
+                    <span class="icon-add"></span>
+                    ENCONTRE UNA MAScota
+                </li>
+                <li class="sel grid_3 reportadas" id="btnReportadas">
+                    <span class="icon-add"></span>
+                    Mascotas reportadas
+                </li>
+
+
+                <form id="formRegistrar" class="grid_9 omega" style="display:none" action="/home/perdidos" method="post" enctype="multipart/form-data">
+                    <div class="conte_check grid_4">
+                        <div class="tipoMasco">
+                            <input class="check" type="radio" name="TipoId" checked="checked" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
+                            <span class="icon-alert"></span>
+                        </div>
+                        <div class="tipoMasco">
+                            <input class="check" type="radio" name="TipoId" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Gato)">
+                            <span class="icon-alert"></span>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        @Html.EditorFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL" })
+                    </div>
+                    @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
+
+
+                    <select id="ddlZonaDepartamento" class="grid_4">
+                        <option>DEPARTAMENTO</option>
+                    </select>
+                    <select id="ddlZonaCiudad" class="grid_4">
+                        <option>CIUDAD</option>
+                    </select>
+
+                    
+                    @Html.DropDownListFor(m => m.Zona, new SelectList((new string[]{"BARRIO"}).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id="ddlZonaBarrio" })
+
+                    @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
+                    <div class="grid_4">
+                        @Html.TextBoxFor(m => m.ContactoNombre, new { placeholder = "NOMBRE DE CONTACTO" })
+                    </div>
+                    <div class="grid_4 omega">
+                        @Html.TextBoxFor(m => m.ContactoTelefono, new { placeholder = "TELEFONO DE CONTACTO" })
+                    </div>
+                    <div class="grid_4 ">
+                        @Html.TextBoxFor(m => m.ContactoCorreo, new { placeholder = "TELEFONO DE CONTACTO" })
+                    </div>
+
+                    <div class="grid_4" id="divArchivoPerdido">
+                        
+                    </div>
+                    <input type="hidden" id="Imagen" />
+                    <div  class="btn color3" id="btnGuardar">GUARDAR</div>
+
+
+                </form>
+                <br />
+            </nav>
+        </div>
+    </section>
+
+</div>
+
+@Html.Partial("_FileUpload")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/bundles/css")
+
+    <script src="~/Scripts/views/huellitas.PerdidosView.js"></script>
+    <script src="~/Scripts/models/huellitas.ContenidoPerdido.js"></script>
+    <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
+    <script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>
+}
+
+
+<!--fin se busca-->

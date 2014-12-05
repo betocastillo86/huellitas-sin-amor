@@ -29,6 +29,10 @@
         this.vistaPerrosRelacionados = new ContenidoRelacionadoView({ el: "#divPerrosRelacionados", id: this.contenidoId, tipoRelacion: Constantes.TipoRelacionFundacion, titulo: "NUESTRAS HUELLITAS" });
         //this.vistaVideo = new VideoView({ el: "#divVideo", urlVideo: this.$("#UrlVideo").val() });
         this.mapaView = new MapaView({ el: "#mapaContenido", latitud: parseFloat($("#Latitud").val()), longitud: parseFloat($("#Longitud").val()) });
+
+
+        
+
         this.render();
     },
     sumarComentario: function (ultimoComentario) {

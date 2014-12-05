@@ -9,22 +9,27 @@
         <div class="container clearfix">
             <h2>FUNDACIONES</h2>
             <h3>BUSCA LAS FUNDACIONES</h3>
-            <form>
-                @Html.DropDownList("ddlZonaGeograficaPadre", new SelectList(Model.ZonasPadre, "ZonaGeograficaId", "Nombre"), "DEPARTAMENTO", new { @class = "grid_3" })
-                <select class="grid_3" id="ddlZonaGeografica">
+            <form id="formBusqueda">
+                @*@Html.DropDownList("ddlZonaGeograficaPadre", new SelectList(Model.ZonasPadre, "ZonaGeograficaId", "Nombre"), "DEPARTAMENTO", new { @class = "grid_3" })*@
+                <select class="grid_3" id="ddlZonaDepartamento">
+                    <option>DEPARTAMENTO</option>
+                </select>
+                <select class="grid_3" id="ddlZonaCiudad">
                     <option>CIUDAD</option>
                 </select>
                 <div class="btn" id="btnBuscar">BUSCAR</div>
             </form>
         </div>
 
-        @Html.Partial("~/Views/Fundaciones/_ResultadosBusqueda.cshtml")
+        
     </section>
+    @Html.Partial("~/Views/Fundaciones/_ResultadosBusqueda.cshtml")
 </div>
 
 <script src="~/Scripts/models/huellitas.Contenido.js"></script>
 <script src="~/Scripts/views/huellitas.ListarFundacionesView.js"></script>
 <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
+<script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>
 
 @section scripts
 {
