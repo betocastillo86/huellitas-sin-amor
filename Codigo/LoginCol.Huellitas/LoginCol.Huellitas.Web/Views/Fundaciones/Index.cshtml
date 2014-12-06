@@ -26,13 +26,14 @@
     @Html.Partial("~/Views/Fundaciones/_ResultadosBusqueda.cshtml")
 </div>
 
-<script src="~/Scripts/models/huellitas.Contenido.js"></script>
 <script src="~/Scripts/views/huellitas.ListarFundacionesView.js"></script>
-<script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
-<script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>
+
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/scroll")
+    @Scripts.Render("~/bundles/backbone_contenido")
+    @Scripts.Render("~/bundles/backbone_zonasGeograficas")
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true">
     </script>
 }

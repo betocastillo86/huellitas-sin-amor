@@ -52,25 +52,20 @@
                         <span>@opcion.Texto</span>
                     </div>
                 }
-
-                
-
-                
-                
+               
                 <br />
                 <div class="btn" id="btnBuscar">BUSCAR</div>
             </form>
         </div>
     </section>
 
-        @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
+     @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
     
 </div>
 @section scripts{
-    <script src="~/Scripts/models/huellitas.Contenido.js"></script>
-    <script src="~/Scripts/views/huellitas.ListarHuellitasView.js"></script>
-    <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
-    <script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>   
+    @Scripts.Render("~/bundles/backbone_contenido")
+    @Scripts.Render("~/bundles/backbone_zonasGeograficas")
+    @Scripts.Render("~/bundles/backbone_lhuellitas")
 }
 
 

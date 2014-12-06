@@ -19,7 +19,8 @@
         "admin/animales/crear": "crearAnimal",
         "admin/fundaciones/listar": "listarFundaciones",
         "admin/fundaciones/editar/:id": "editarFundacion",
-        "admin/fundaciones/crear": "crearFundacion"
+        "admin/fundaciones/crear": "crearFundacion",
+        "admin/parametrizacion" : "listarParametrizacion"
     },
     initialize : function(options)
     {
@@ -72,6 +73,10 @@
         this.editarAnimalView = new ContenidoEditarView({ id: 0, idTipoContenidoPadre: this.idTipoContenidoPadre, modulo: "fundaciones" });
         this.vistaActual = this.editarAnimalView;
         //this.app.cargarFuncionesFormularioPersiana();
+    },
+    listarParametrizacion : function()
+    {
+        this.vistaActual = new ParametrizacionView();
     },
     //Fin Fundaciones
     desactivarVistaActual: function ()

@@ -42,7 +42,8 @@
                 </div>
                 <div class="conte_visitas">
                     <span class="icon-calendar"></span>@Model.Visitas
-                    <span class="icon-calendar"></span><div id="contarComentarios" style="display:inline-block">@Model.Comentarios</div>
+                    <span class="icon-calendar"></span>
+                    <div id="contarComentarios" style="display: inline-block">@Model.Comentarios</div>
                 </div>
                 <div class="parrafo demo-y">
                     <p>@Html.DisplayFor(m => m.Descripcion)</p>
@@ -79,7 +80,7 @@
                 </div>
             }
 
-           
+
         </div>
     </section>
     <!--similares-->
@@ -97,4 +98,6 @@
 @section scripts{
     <script src="~/Scripts/views/huellitas.DetalleHuellitaView.js"></script>
     @Scripts.Render("~/bundles/slide")
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/scroll")
 }

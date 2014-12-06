@@ -18,15 +18,10 @@
     </style>
     @Styles.Render("~/bundles/cssfrontend")
 
-    @Scripts.Render("~/bundles/modernizr")
-
-    <script src="~/Generales/ConstantesJs"></script>
-
+    
     <!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/backbone")
-    @Scripts.Render("~/bundles/frontend")
-    @Scripts.Render("~/bundles/scroll")
+    
+    
 </head>
 
 <body>
@@ -89,15 +84,23 @@
             })();
 
         </script>*@
+    
+
+    <script src="~/Generales/ConstantesJs"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/backbone")
+    @Scripts.Render("~/bundles/menuEfecto")
+    
+    
+
+    @Scripts.Render("~/bundles/backbone_router")
+
     @RenderSection("scripts", required: false)
 
-    <script src="~/Scripts/views/huellitas.BaseView.js"></script>
-    <script src="~/Scripts/huellitas.templateManager.js"></script>
-    <script src="~/Scripts/huellitas.general.js"></script>
-    <script src="~/Scripts/huellitas.router.js"></script>
+    @*<script src="~/Scripts/models/huellitas.Campo.js"></script>*@
+    
 
-    <script src="~/Scripts/models/huellitas.Campo.js"></script>
-    <script src="~/Scripts/huellitas.app.js"></script>
+    
 
 </body>
 </html>
