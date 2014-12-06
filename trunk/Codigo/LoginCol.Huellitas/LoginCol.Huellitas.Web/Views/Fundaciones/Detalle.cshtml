@@ -1,6 +1,7 @@
 ﻿@model LoginCol.Huellitas.Web.Models.DetalleFundacionModel
 @{
     ViewBag.Title = string.Format("{0} - Fundaciones", Model.Nombre);
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="divDetalleContenido">
     @Html.Hidden("Latitud", @Html.ObtenerCampoDeContenido(Model, "Latitud"))
@@ -94,13 +95,18 @@
 
 
 
-    @section scripts{
-        <script src="~/Scripts/views/huellitas.DetalleFundacionView.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true">
-        </script>
-    <script src="~/Scripts/views/huellitas.MapaView.js"></script>
-    @Scripts.Render("~/bundles/slide")
-    }
+    
 
 
 </div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/slide")
+    @Scripts.Render("~/bundles/scroll")
+    @Scripts.Render("~/bundles/backbonevalidation")
+
+    <script src="~/Scripts/views/huellitas.DetalleFundacionView.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true"></script>
+    <script src="~/Scripts/views/huellitas.MapaView.js"></script>
+}

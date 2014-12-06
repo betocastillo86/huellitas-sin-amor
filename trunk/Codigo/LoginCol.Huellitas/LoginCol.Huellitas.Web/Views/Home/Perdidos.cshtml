@@ -91,11 +91,12 @@
 {
     @Scripts.Render("~/bundles/jqueryval")
     @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/backbonevalidation")
 
     <script src="~/Scripts/views/huellitas.PerdidosView.js"></script>
     <script src="~/Scripts/models/huellitas.ContenidoPerdido.js"></script>
-    <script src="~/Scripts/models/huellitas.ZonaGeografica.js"></script>
-    <script src="~/Scripts/views/huellitas.ZonasGeograficasView.js"></script>
+    
+    @Scripts.Render("~/bundles/backbone_zonasGeograficas")
 }
 
 

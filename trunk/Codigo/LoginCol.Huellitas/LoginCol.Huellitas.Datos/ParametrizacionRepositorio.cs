@@ -34,5 +34,22 @@ namespace LoginCol.Huellitas.Datos
 
             return lista ?? new List<Parametrizacion>();
         }
+
+        public bool Actualizar(Parametrizacion modelo)
+        {
+            bool respuesta = false;
+
+            using (var db = new Repositorio())
+            {
+                db.Parametrizaciones
+                    .Where(p => p.Llave.Equals(modelo.Llave))
+                    .ToList()
+                    .ForEach(p => p.Valor = modelo.Valor);
+
+                respuesta = db.SaveChanges() > 0;
+            }
+
+            return respuesta;
+        }
     }
 }

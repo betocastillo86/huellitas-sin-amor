@@ -43,8 +43,7 @@
     <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>*@
 
-    @Scripts.Render("~/bundles/huellitas")
-
+    
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
@@ -202,6 +201,7 @@
     @Scripts.Render("~/bundles/jqueryTemplate")
     
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/huellitas")
     <script src="~/Scripts/views/huellitas.admin.ContenidoEditarView.js"></script>    
     <script src="~/Scripts/huellitas.admin.router.js"></script>
     <script src="~/Scripts/huellitas.admin.app.js"></script>
@@ -217,7 +217,7 @@
 
 
 
-    <script src="~/Scripts/huellitas.general.js"></script>
+    
     
     @*<!-- select or dropdown enhancer -->
     <script src="bower_components/chosen/chosen.jquery.min.js"></script>

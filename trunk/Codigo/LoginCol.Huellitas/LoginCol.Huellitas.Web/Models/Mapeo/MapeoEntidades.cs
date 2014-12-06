@@ -150,9 +150,12 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                         case TipoDatoCampo.Multiple:
                             if (obj.Campo.Opciones != null)
                             {
-                               model.ValorTexto = obj.Campo.Opciones
+                               var valor = obj.Campo.Opciones
                                      .Where(o => o.OpcionId.Equals(Convert.ToInt32(obj.Valor)))
-                                     .FirstOrDefault().Texto;
+                                     .FirstOrDefault();
+
+                                if(valor != null)
+                                    model.ValorTexto = valor.Texto;
                             }
 
                             break;

@@ -56,5 +56,10 @@ namespace LoginCol.Huellitas.Negocio
         {
             return datosParametrizacion.Obtener();
         }
+
+        public bool Actualizar(Parametrizacion modelo)
+        {
+            return datosParametrizacion.Actualizar(modelo);
+        }
     }
 }

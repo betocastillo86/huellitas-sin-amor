@@ -192,6 +192,7 @@
     <Compile Include="Controllers\GeneralesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuellitasController.cs" />
+    <Compile Include="Controllers\ParametrizacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -583,6 +584,7 @@
     <Content Include="Scripts\libs\waypoints.min.js" />
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
     <Content Include="Scripts\huellitas.admin.router.js" />
+    <Content Include="Scripts\models\huellitas.admin.Parametrizacion.js" />
     <Content Include="Scripts\models\huellitas.admin.UsuarioRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.ContenidoRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
@@ -614,7 +616,6 @@
     <Content Include="Scripts\views\huellitas.ImagenesContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
-    <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
     <Content Include="Scripts\views\huellitas.PerdidosView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
@@ -651,7 +652,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Listar.cshtml" />
     <Content Include="Views\Administracion\Contenido\_Listado.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Administracion\Index.cshtml" />
@@ -682,6 +682,7 @@
     <Content Include="Scripts\models\huellitas.ContenidoPerdido.js" />
     <Content Include="Scripts\views\huellitas.SubirArchivoView.js" />
     <Content Include="Views\Administracion\Parametrizacion.cshtml" />
+    <Content Include="Scripts\views\huellitas.admin.ParametrizacionView.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
