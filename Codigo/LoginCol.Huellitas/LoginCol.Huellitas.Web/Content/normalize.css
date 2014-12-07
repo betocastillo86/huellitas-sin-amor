@@ -3,31 +3,11 @@
 @font-face {font-family: 'icomoon';	src:url('../../Content/fonts/icomoon.eot?-i6leuh'); src:url('../../Content/fonts/icomoon.eot?#iefix-i6leuh') format('embedded-opentype'),  url('../../Content/fonts/icomoon.woff?-i6leuh') format('woff'),  url('../../Content/fonts/icomoon.ttf?-i6leuh') format('truetype'),  url('../../Content/fonts/icomoon.svg?-i6leuh#icomoon') format('svg'); font-weight: normal; font-style: normal;}
  [class^="icon-"], [class*=" icon-"] {
  font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
-.icon-add:before { content: "\e600";}
-.icon-usuario:before {content: "\e601";}
-.icon-alert:before {content: "\e602";}
-.icon-calendar:before {content: "\e603";}
-.icon-canClose:before {content: "\e604";}
-.icon-canOpen:before {content: "\e605";}
-.icon-carpeta:before {content: "\e606";}
-.icon-check:before {content: "\e607";}
-.icon-clip:before {content: "\e608";}
-.icon-editar:before {content: "\e609";}
-.icon-eliminar:before {content: "\e60a";}
-.icon-guardar:before {content: "\e60b";}
-.icon-image:before {content: "\e60c";}
-.icon-llave:before {content: "\e60d";}
-.icon-lupa:before {content: "\e60e";}
-.icon-mensaje:before {content: "\e60f";}
-.icon-negociar:before {content: "\e610";}
-.icon-mas:before {content: "\e611";}
-.icon-quitar:before {content: "\e612";}
-.icon-reasignar:before {content: "\e613";}
-.icon-recuerda:before {content: "\e614";}
-.icon-recuperar:before {content: "\e615";}
-.icon-reloj:before {content: "\e616";}
-.icon-favoritos:before {content: "\e617";}
-.icon-privado:before {content: "\e618";}
-.icon-publico:before {content: "\e619";}
-.icon-dedo1:before {content: "\e61a";}
+.icon-casa:before {content: "\e600";}
+.icon-cayuda:before {content: "\e601";}
+.icon-gato:before {content: "\e602";}
+.icon-huella:before {content: "\e603";}
+.icon-mperdida:before {content: "\e604";}
+.icon-perdida:before {content: "\e605";}
+.icon-perro:before {content: "\e606";}
 /*fin pack de iconos*/
