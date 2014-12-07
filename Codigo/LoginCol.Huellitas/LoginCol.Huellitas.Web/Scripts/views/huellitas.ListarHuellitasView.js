@@ -48,12 +48,9 @@ var ListarHuellitasView = Backbone.View.extend({
     {
         this.vistaResultados = new ResultadosHuellitasView();
         
-
         if (args) {
             if (args.cargar != undefined && args.cargar)
                 this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
-
-            
         }
         else {
             //por defecto carga los resultados cuando no viene el parametro
