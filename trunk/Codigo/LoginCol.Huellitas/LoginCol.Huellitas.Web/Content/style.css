@@ -1045,28 +1045,41 @@ footer .redes{
 	}
 .redes a{
 	width:40px;
-	height:40px;
+	height:30px;
 	border-radius:100%;
 	display:block;
 	float:left;
 	margin:0 10px;
+	padding: 7px 0 3px;
+	text-align: center;
+	font-size: 25px;
+	color: #FFF;
+	transition:ease all 0.4s;
 	}
-a.twt{
+.twt{
 	background:#87CFE0;
-	text-align:center;
 	}
-a.fb{
+.twt:hover, .twt:active{
+	background:#529AD9;	
+}
+.fb{
 	background:#6982B7;
-	text-align:center;
 	}
-a.youtube{
+.fb:hover, .fb:active{
+	background:#304A6F;
+}
+.youtube{
 	background:#FF8A8E;
-	text-align:center;
 	}
-a.blog{
-	background:#FFCE6F;
-	text-align:center;
+.youtube:hover, .youtube:active{
+	background: #EF525B;
+}
+.instagram{
+	background:#FBB000;
 	}
+.instagram:hover, .instagram:active{
+	background: #FFCE6F;
+}
 /*fin footer*/
 /* home funda */ 
 #funda_home {
