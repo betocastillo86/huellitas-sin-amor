@@ -230,7 +230,7 @@ namespace LoginCol.Huellitas.Datos
             {
                 using (var db = new Repositorio())
                 {
-                   campos = db.ValoresCampos
+                    campos = db.ValoresCampos
                                 .Include(_ => _.Campo)
                                 .Where(_ => _.ContenidoId.Equals(contenidoId)).ToList();
                 }

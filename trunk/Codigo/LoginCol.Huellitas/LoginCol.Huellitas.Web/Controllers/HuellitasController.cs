@@ -29,6 +29,47 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View(modelo);
         }
 
+
+        [HttpGet]
+        public ActionResult QuieroAdoptar(int id)
+        {
+            FormularioAdopcionModel formularioModelo = new FormularioAdopcionModel();
+            DatoTablaBasicaNegocio nDatoTablaBasica = new DatoTablaBasicaNegocio();
+
+            formularioModelo.ListaEstadoCivil = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.EstadoCivil);
+
+            //Cargamos el contenido en el modelo
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            formularioModelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
+
+            ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
+
+            if (hogarDePaso != null)
+                formularioModelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
+
+
+            return View(formularioModelo);
+        }
+
+
+        [HttpPost]
+        public ActionResult QuieroAdoptar(int id, FormularioAdopcionModel modelo)
+        {
+            
+            if (this.ModelState.IsValid)
+            {
+                FormularioAdopcionNegocio formularioAdopcionNegocio = new FormularioAdopcionNegocio();
+                FormularioAdopcion formularioDB = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
+                formularioDB.ContenidoId = id;
+
+                formularioAdopcionNegocio.Crear(formularioDB);
+
+            }
+
+            return View(modelo);
+        }
+
+
         [HttpGet]
         [SumarVisita]
         public ActionResult Detalle(int id)

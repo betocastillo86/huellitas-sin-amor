@@ -79,6 +79,9 @@ namespace LoginCol.Huellitas.Entidades
         [DefaultValue(false)]
         public bool Eliminado { get; set; }
 
+        public virtual List<FormularioAdopcion> FormularioAdoptantes { get; set; }
+         
+        
         public string UrlVideo { get; set; }
 
         public virtual List<UsuarioContenido> UsuariosRelacionados { get; set; }
