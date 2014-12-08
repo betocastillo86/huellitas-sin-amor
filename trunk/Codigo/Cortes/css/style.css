@@ -8,6 +8,7 @@ body {
 	background:url(../images/bkg_gris.png) repeat;
 }
 #back-top-wrapper{
+	color: #FFF;
 	bottom: 10px;
     overflow: hidden;
     position: fixed;
@@ -17,6 +18,9 @@ body {
 	height:50px;
 	background:#36F;
 	cursor:pointer;
+	font-size: 32px;
+	text-align: center;
+	border-radius:30px;
 	}
 img {
 	max-width: 100%;
@@ -327,8 +331,7 @@ textarea {
 /* Slide 1 */ 
 
 .slide_home {
-	background:url(../images/bkg_slide.jpg) no-repeat;
-	background-size:auto 100%;
+	background:url(../images/bkg_slide.jpg) no-repeat center / cover;
 	}
 /* Slide 2 */ 
 
@@ -384,6 +387,7 @@ textarea {
 	margin:20px;
 	}
 .btn{
+	cursor:pointer;
 	text-align:center;
 	text-transform:uppercase;
 	height:24px;
@@ -655,8 +659,8 @@ article .btn{
 	color:#FFF;
 	margin:0 0 20px;
 	}
-.cajaFunda mapa{
-	height:100%;
+.cajaFunda .mapa_funda{
+	height:348px;
 	}
 .cajaFunda article{
 	width:calc(100% - 40px);
@@ -674,7 +678,7 @@ article .btn{
 	background:#FFF center / cover no-repeat;
 	}
 article p.scroll{
-	overflow-y:scroll;
+	
 	height:80px;
 	margin:30px 0 10px;
 	}
@@ -688,8 +692,12 @@ article p.scroll{
 	}
 .galeria_perfil{
 	}
-.galeria_perfil img{
+.galeria_perfil .img{
 	width:100%;
+	max-height: 335px;
+	max-width: 491px;
+	background-size:cover;
+	background-position:center;
 	}
 .gale_mini{
 	margin:10px 0 0;
@@ -699,7 +707,7 @@ article p.scroll{
 .gale_mini li{
 	cursor:pointer;
 	width:80px;
-	background:#3366FF;
+	background:#3366FF center no-repeat;
 	height:80px;
 	float:left;
 	margin:0 20px 0 0;
@@ -874,6 +882,12 @@ li.comentario p{
 	line-height:normal;
 	padding:0 0 8px;
 	}
+.obliga{
+	color: #ff8a8d;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align:left;	
+}
 .mapa{
 	width:100%;
 	height:202px;
@@ -882,7 +896,7 @@ li.comentario p{
 	width:100%;
 	margin:10px 0;
 	}
-.historia p{
+.historia parrafo{
 	text-align:justify;
 	}
 .integrantes h2, .historia h2{
@@ -1036,32 +1050,46 @@ footer .redes{
 	}
 .redes a{
 	width:40px;
-	height:40px;
+	height:30px;
 	border-radius:100%;
 	display:block;
 	float:left;
 	margin:0 10px;
+	padding: 7px 0 3px;
+	text-align: center;
+	font-size: 25px;
+	color: #FFF;
+	transition:ease all 0.4s;
 	}
-a.twt{
+.twt{
 	background:#87CFE0;
-	text-align:center;
 	}
-a.fb{
+.twt:hover, .twt:active{
+	background:#529AD9;	
+}
+.fb{
 	background:#6982B7;
-	text-align:center;
 	}
-a.youtube{
+.fb:hover, .fb:active{
+	background:#304A6F;
+}
+.youtube{
 	background:#FF8A8E;
-	text-align:center;
 	}
-a.blog{
-	background:#FFCE6F;
-	text-align:center;
+.youtube:hover, .youtube:active{
+	background: #EF525B;
+}
+.instagram{
+	background:#FBB000;
 	}
+.instagram:hover, .instagram:active{
+	background: #FFCE6F;
+}
 /*fin footer*/
-/* Slide 3 */ 
-#slide3 {
+/* home funda */ 
+#funda_home {
 	background:url(../images/bkg_rosa.png) repeat;
+	padding: 50px 0;
 }
 /* contacto */
 #slide4 {
