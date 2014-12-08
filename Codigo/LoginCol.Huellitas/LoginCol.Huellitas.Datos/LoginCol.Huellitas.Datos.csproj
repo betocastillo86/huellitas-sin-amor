@@ -57,8 +57,10 @@
     <Compile Include="Configuracion\ComentarioConfig.cs" />
     <Compile Include="Configuracion\ContenidoConfig.cs" />
     <Compile Include="Configuracion\ContenidoRelacionadoConfig.cs" />
+    <Compile Include="Configuracion\DatoTablaBasicaConfig.cs" />
     <Compile Include="Configuracion\OpcionCampoConfig.cs" />
     <Compile Include="Configuracion\ParametrizacionConfig.cs" />
+    <Compile Include="Configuracion\TablaBasicaConfig.cs" />
     <Compile Include="Configuracion\TipoContenidoConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionContenidoConfig.cs" />
@@ -67,7 +69,41 @@
     <Compile Include="Configuracion\ValorCampoConfig.cs" />
     <Compile Include="Configuracion\ZonaGeograficaConfig.cs" />
     <Compile Include="ContenidoRepositorio.cs" />
-    <Compile Include="GeneradorLlaveUnica.cs" />
+    <Compile Include="DatoTablaBasicaRepositorio.cs" />
+    <Compile Include="FormularioAdopcionRepositorio.cs" />
+    <Compile Include="Migrations\201410252343047_FormularioAdopcion.cs" />
+    <Compile Include="Migrations\201410252343047_FormularioAdopcion.Designer.cs">
+      <DependentUpon>201410252343047_FormularioAdopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411120108287_FormularioAdopcion1.cs" />
+    <Compile Include="Migrations\201411120108287_FormularioAdopcion1.Designer.cs">
+      <DependentUpon>201411120108287_FormularioAdopcion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411120155134_PreguntasFormulario.cs" />
+    <Compile Include="Migrations\201411120155134_PreguntasFormulario.Designer.cs">
+      <DependentUpon>201411120155134_PreguntasFormulario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411180120017_EstadoCivil.cs" />
+    <Compile Include="Migrations\201411180120017_EstadoCivil.Designer.cs">
+      <DependentUpon>201411180120017_EstadoCivil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411190149499_TablasBasicas.cs" />
+    <Compile Include="Migrations\201411190149499_TablasBasicas.Designer.cs">
+      <DependentUpon>201411190149499_TablasBasicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411190218210_DatoTablaBasica.cs" />
+    <Compile Include="Migrations\201411190218210_DatoTablaBasica.Designer.cs">
+      <DependentUpon>201411190218210_DatoTablaBasica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260136225_PreguntasFormulario1.cs" />
+    <Compile Include="Migrations\201411260136225_PreguntasFormulario1.Designer.cs">
+      <DependentUpon>201411260136225_PreguntasFormulario1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412030242230_FormularioAdopcion2.cs" />
+    <Compile Include="Migrations\201412030242230_FormularioAdopcion2.Designer.cs">
+      <DependentUpon>201412030242230_FormularioAdopcion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.Designer.cs">
@@ -251,11 +287,35 @@
     <EmbeddedResource Include="Migrations\201410130227294_Configuraciones21.resx">
       <DependentUpon>201410130227294_Configuraciones21.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410252343047_FormularioAdopcion.resx">
+      <DependentUpon>201410252343047_FormularioAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411031935176_CampoVideo.resx">
       <DependentUpon>201411031935176_CampoVideo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411031946149_CampoVideo1.resx">
       <DependentUpon>201411031946149_CampoVideo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411120108287_FormularioAdopcion1.resx">
+      <DependentUpon>201411120108287_FormularioAdopcion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411120155134_PreguntasFormulario.resx">
+      <DependentUpon>201411120155134_PreguntasFormulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411180120017_EstadoCivil.resx">
+      <DependentUpon>201411180120017_EstadoCivil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411190149499_TablasBasicas.resx">
+      <DependentUpon>201411190149499_TablasBasicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411190218210_DatoTablaBasica.resx">
+      <DependentUpon>201411190218210_DatoTablaBasica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260136225_PreguntasFormulario1.resx">
+      <DependentUpon>201411260136225_PreguntasFormulario1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412030242230_FormularioAdopcion2.resx">
+      <DependentUpon>201412030242230_FormularioAdopcion2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411130332591_UsuarioContenido.resx">
       <DependentUpon>201411130332591_UsuarioContenido.cs</DependentUpon>

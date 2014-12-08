@@ -76,10 +76,17 @@ namespace LoginCol.Huellitas.Web
             #region detalle Contenido
 
             routes.MapRoute(
+                name: "AdoptarHuellita",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Huellitas", action = "QuieroAdoptar" },
+                constraints: new { controller = "Huellitas", action = "QuieroAdoptar", id = @"d\+" }
+            );
+            
+            routes.MapRoute(
                 name: "DetalleContenido",
                 url: "{controller}/{id}/{nombre}",
                 defaults: new { controller = "Huellitas", action = "Detalle", queryValues = UrlParameter.Optional },
-                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Detalle" }
+                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Detalle", id = @"d\+" }
             );
 
             #endregion

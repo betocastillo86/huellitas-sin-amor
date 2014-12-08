@@ -37,6 +37,12 @@ namespace LoginCol.Huellitas.Datos
 
         public DbSet<OpcionCampo> OpcionesCampos { get; set; }
 
+        public DbSet<FormularioAdopcion> FormulariosAdopciones { get; set; }
+
+        public DbSet<TablaBasica> TablasBasicas { get; set; }
+
+        public DbSet<DatoTablaBasica> DatosTablasBasicas { get; set; }
+
         public DbSet<TipoRelacion> TiposRelaciones { get; set; }
 
         public DbSet<UsuarioContenido> UsuariosContenidos { get; set; }
@@ -55,6 +61,8 @@ namespace LoginCol.Huellitas.Datos
             modelBuilder.Configurations.Add(new CampoTipoContenidoConfig());
             modelBuilder.Configurations.Add(new OpcionCampoConfig());
             modelBuilder.Configurations.Add(new ParametrizacionConfig());
+            modelBuilder.Configurations.Add(new TablaBasicaConfig());
+            modelBuilder.Configurations.Add(new DatoTablaBasicaConfig());
             modelBuilder.Configurations.Add(new TipoRelacionConfig());
             modelBuilder.Configurations.Add(new UsuarioContenidoConfig());
             

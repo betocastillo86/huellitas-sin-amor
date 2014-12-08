@@ -216,6 +216,7 @@
     <Compile Include="Models\ContenidoRelacionadoModel.cs" />
     <Compile Include="Models\DetalleFundacionModel.cs" />
     <Compile Include="Models\DetalleHuellitaModel.cs" />
+    <Compile Include="Models\FormularioAdopcionModel.cs" />
     <Compile Include="Models\ListarFundacionesModel.cs" />
     <Compile Include="Models\ListarHuellitasModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -683,6 +684,7 @@
     <Content Include="Scripts\views\huellitas.SubirArchivoView.js" />
     <Content Include="Views\Administracion\Parametrizacion.cshtml" />
     <Content Include="Scripts\views\huellitas.admin.ParametrizacionView.js" />
+    <Content Include="Views\Huellitas\QuieroAdoptar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

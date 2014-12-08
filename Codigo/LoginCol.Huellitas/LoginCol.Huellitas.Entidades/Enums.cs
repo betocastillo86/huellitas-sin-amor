@@ -32,6 +32,11 @@ namespace LoginCol.Huellitas.Entidades
         Original = 4
     }
 
+    public enum TablasBasicasEnum
+    { 
+        EstadoCivil = 1
+    }
+
     public enum TipoDatoCampo
     {
         Int = 1,

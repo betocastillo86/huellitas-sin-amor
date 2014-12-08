@@ -64,6 +64,8 @@
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />
     <Compile Include="ContenidoNegocio.cs" />
+    <Compile Include="DatoTablaBasicaNegocio.cs" />
+    <Compile Include="FormularioAdopcionNegocio.cs" />
     <Compile Include="Directorios\IRutasFisicas.cs" />
     <Compile Include="Directorios\RutaFisicaWeb.cs" />
     <Compile Include="HuellitaNegocio.cs" />

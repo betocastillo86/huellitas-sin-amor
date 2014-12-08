@@ -11,11 +11,17 @@ using System.Web.Script.Serialization;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
+    
+    
+    
     public class HomeController : Controller
     {
+
+        
         public ActionResult Index(string queryValues)
         {
-            
+
+
             return View();
         }
 
