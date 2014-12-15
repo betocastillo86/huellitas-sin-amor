@@ -16,6 +16,10 @@ namespace LoginCol.Huellitas.Entidades
         [MaxLength(50)]
         public string Nombre { get; set; }
 
+        [Required]
+        [MaxLength(130)]
+        public string DescripcionCorta { get; set; }
+
         public string Descripcion { get; set; }
 
         public int Visitas { get; set; }
@@ -83,6 +87,8 @@ namespace LoginCol.Huellitas.Entidades
          
         
         public string UrlVideo { get; set; }
+
+        public bool Destacado { get; set; }
 
         public virtual List<UsuarioContenido> UsuariosRelacionados { get; set; }
 

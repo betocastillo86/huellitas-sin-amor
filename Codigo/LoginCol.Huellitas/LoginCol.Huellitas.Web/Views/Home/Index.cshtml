@@ -1,31 +1,12 @@
-﻿<div id="divMainContentBackbone">
+﻿@{
+    ViewBag.TagDescripcion = LoginCol.Huellitas.Negocio.ParametrizacionNegocio.DescripcionHome;
+}
+<div id="divMainContentBackbone">
     <section class="slide slide_home" id="first" data-slide="1" data-stellar-background-ratio="0.5">
         <div id="cbp-fwslider" class="cbp-fwslider clearfix">
             <ul>
                 <li>
-                    <div class="container clearfix">
-                        <div class="grid_6 no-margin">
-                            <div style="background-image:url(images/galeria/img_01.jpg);" class="cajaCaso">
-                                <article class="c_tipo1">
-                                    <h3>LENON</h3>
-                                    <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
-                                    <p>Lorem ipsum dolor sit amet, consec tetuer adipiscing. Praesent vestibu lum molestie lacuiirhs. Aenean non ummy hendreriauris. Phasellllus. </p>
-                                    <a href="javascript:;" class="btn">CONOCE MÁS</a>
-                                </article>
-                            </div>
-                        </div>
-                        <div class="grid_6 no-margin">
-                            <div style="background-image:url(images/galeria/img_02.jpg);" class="cajaCaso">
-                                <article class="c_tipo2">
-                                    <h3>LENON</h3>
-                                    <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
-                                    <p>Lorem ipsum dolor sit amet, consec tetuer adipiscing. Praesent vestibu lum molestie lacuiirhs. Aenean non ummy hendreriauris. Phasellllus. </p>
-                                    <a href="javascript:;" class="btn">CONOCE MÁS</a>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
+                    @Html.Action("Destacados", "Huellitas")
                 </li>
                 <li>
                     <div class="container clearfix">
@@ -64,7 +45,7 @@
                     <h3>COMO AYUDAR</h3>
                     <p>Lorem ipsum dolor sit amet, consec tetuer adipiscing. Praesent vestibu lum molestie lacuiirhs. Aenean non ummy hendreriauris. Phasellllus.</p>
                 </div>
-                <a class="btn" huref="javascript:;">CONOCE MÁS</a>
+                <a class="btn" href="javascript:;">CONOCE MÁS</a>
             </div>
             <div class="grid_4 cajax3">
                 <div class="caja_icon"><span class="icon-mperdida"></span></div>
@@ -84,44 +65,15 @@
             </div>
         </div>
     </section>
-    <section id="funda_home" data-slide="3" data-stellar-background-ratio="0.5">
-        <div class="container clearfix conteFunda">
-            <h2>FUNDACIONES</h2>
-            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-            <ul>
-                <li class="grid_3" style="background:url(images/fundaciones/logo1.png) no-repeat center;"></li>
-                <li class="grid_3" style="background:url(images/fundaciones/logo1.png) no-repeat center;"></li>
-                <li class="grid_3" style="background:url(images/fundaciones/logo1.png) no-repeat center;"></li>
-                <li class="grid_3 omega" style="background:url(images/fundaciones/logo1.png) no-repeat center;"></li>
-                <br />
-            </ul>
-        </div>
-    </section>
+    @Html.Action("Fundaciones")
     <section class="slide" id="contacto">
         <div class="container clearfix conteConta">
             <div class="bannerDona grid_5">
-                <div class="tit">DONACIONES</div>
-                <div class="parraDona">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</div>
-                <a href="javascript:;" class="btn">LIMPIAR</a>
+                <div class="tit">APADRINA</div>
+                <div class="parraDona">Ayuda económicamente a que un perro o gato. Esto será ultizado para su comida y mantenimiento.</div>
+                <a class="btn" href="huellitas">VER MASCOTAS</a>
             </div>
-            <form class="grid_7 omega">
-                <h2>CONTACTANOS</h2>
-                <h3>LOREM IPSUM ES SIMPLEMENTE EL TEXTO.</h3>
-                <p>Lorem ipsum dolor sit amet, consec tetuer adipiscing. Praesent vestibu lum molestie lacuiirhs. Aenean non ummy hendreriauris. Phasellllus.</p>
-                <div class="grid_4">
-                    <input type="text" placeholder="NOMBRE:"/>
-                </div>
-                <div class="grid_4">
-                    <input type="text" placeholder="APELLIDOS:"/>
-                </div>
-                <div class="grid_4 omega">
-                    <input type="tel" placeholder="CELULAR:"/>
-                </div>
-                <br/>
-                <textarea placeholder="ESCRIBE TU COMENTARIO AQUÍ"></textarea>
-                <a href="javascript:;" class="btn">LIMPIAR</a>
-                <a href="javascript:;" class="btn">ENVIAR</a>
-            </form>
+            @Html.Partial("_Contacto")
         </div>
     </section>
     <section class="conte_nosotros slide" data-slide="2" data-stellar-background-ratio="0.5">
@@ -186,5 +138,6 @@
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/slide")
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_home")
 }

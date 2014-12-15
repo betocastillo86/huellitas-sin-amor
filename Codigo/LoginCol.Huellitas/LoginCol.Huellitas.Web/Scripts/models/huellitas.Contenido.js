@@ -15,7 +15,6 @@ var ContenidoCollection = Backbone.Collection.extend({
 
     cargarHuellitasPorFiltro: function (args)
     {
-
         var queryString = "";
         if (args != undefined)
             queryString = "/?"+$.param(args);

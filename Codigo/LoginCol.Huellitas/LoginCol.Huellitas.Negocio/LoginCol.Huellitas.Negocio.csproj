@@ -63,7 +63,9 @@
     <Compile Include="ArchivosTemporalesNegocio.cs" />
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />
+    <Compile Include="ContactoNegocio.cs" />
     <Compile Include="ContenidoNegocio.cs" />
+    <Compile Include="CorreoNegocio.cs" />
     <Compile Include="DatoTablaBasicaNegocio.cs" />
     <Compile Include="FormularioAdopcionNegocio.cs" />
     <Compile Include="Directorios\IRutasFisicas.cs" />

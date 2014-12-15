@@ -6,8 +6,13 @@ using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class PerdidosModel
+    public class PerdidosModel : BaseModel
     {
+
+        public PerdidosModel() : base("TituloPerdidos")
+        {
+
+        }
 
         [Required]
         public int TipoId { get; set; }

@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
-
+@section metatags
+{
+    <meta name="fragment" content="!" />
+}
 
 <div id="divListarHuellitas">
     <section id="first" class="conteFormCaso slide">
@@ -59,7 +59,7 @@
         </div>
     </section>
 
-     @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
+     @Html.Partial("_ResultadosBusqueda")
     
 </div>
 @section scripts{

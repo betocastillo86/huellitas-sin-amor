@@ -30,9 +30,7 @@
                     <span class="icon-add"></span>
                     Mascotas reportadas
                 </li>
-
-
-                <form id="formRegistrar" class="grid_9 omega" style="display:none" action="/home/perdidos" method="post" enctype="multipart/form-data">
+                <form id="formRegistrar" class="grid_9 omega" style="display: none" action="/home/perdidos" method="post" enctype="multipart/form-data">
                     <div class="conte_check grid_4">
                         <div class="tipoMasco">
                             <input class="check" type="radio" name="TipoId" checked="checked" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
@@ -47,8 +45,6 @@
                         @Html.EditorFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL" })
                     </div>
                     @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
-
-
                     <select id="ddlZonaDepartamento" class="grid_4">
                         <option>DEPARTAMENTO</option>
                     </select>
@@ -56,8 +52,8 @@
                         <option>CIUDAD</option>
                     </select>
 
-                    
-                    @Html.DropDownListFor(m => m.Zona, new SelectList((new string[]{"BARRIO"}).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id="ddlZonaBarrio" })
+
+                    @Html.DropDownListFor(m => m.Zona, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
 
                     @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
                     <div class="grid_4">
@@ -71,10 +67,9 @@
                     </div>
 
                     <div class="grid_4" id="divArchivoPerdido">
-                        
                     </div>
                     <input type="hidden" id="Imagen" />
-                    <div  class="btn color3" id="btnGuardar">GUARDAR</div>
+                    <div class="btn color3" id="btnGuardar">GUARDAR</div>
 
 
                 </form>
@@ -82,7 +77,6 @@
             </nav>
         </div>
     </section>
-
 </div>
 
 @Html.Partial("_FileUpload")
@@ -92,12 +86,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/backbonevalidation")
-
-    <script src="~/Scripts/views/huellitas.PerdidosView.js"></script>
-    <script src="~/Scripts/models/huellitas.ContenidoPerdido.js"></script>
-    
+    @Scripts.Render("~/bundles/backbone_perdidos")
     @Scripts.Render("~/bundles/backbone_zonasGeograficas")
+    @Scripts.Render("~/bundles/backbone_cargaArchivo")
 }
-
-
-<!--fin se busca-->

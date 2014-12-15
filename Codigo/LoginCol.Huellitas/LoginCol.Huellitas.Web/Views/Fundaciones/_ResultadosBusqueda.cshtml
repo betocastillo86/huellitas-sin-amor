@@ -11,11 +11,18 @@
     var nombreEstilo = 1;
 
     for (var i = 0; i < obj.length ; i++) {
+
     var contenido = obj[i];
 
     var imagenAdicional = _.first(contenido.Imagenes);
     if(imagenAdicional == undefined)
         imagenAdicional = contenido.ContenidoId;
+
+
+    var direccion = _.findWhere(contenido.Campos, { CampoNombre : "Direccion" });
+    var telefono = _.findWhere(contenido.Campos, { CampoNombre : "Teléfono" });
+    var encargado = _.findWhere(contenido.Campos, { CampoNombre : "Encargado" });
+    var celular = _.findWhere(contenido.Campos, { CampoNombre : "Celular" });
 
     %>
 
@@ -28,22 +35,22 @@
                 <h3><%=contenido.Nombre%></h3>
 
                 <ul>
-                    <li><%=contenido.ZonaGeograficaNombre %> / XXXXXXXXXXXXXX</li>
-                    <li>XXXXXXXXXXXXXXXXXX</li>
-                    <li>XXXXXXXXXXXX</li>
-                    <li>XXXXXXXXXXXXXXXXX</li>
+                    <li><%=contenido.ZonaGeograficaNombre %> / <%=direccion ? direccion.Valor : ''%></li>
+                    <li>Encargado: <%=encargado ? encargado.Valor : '-'%></li>
+                    <li>Telefono: <%=telefono ? telefono.Valor : '-'%></li>
+                    <li>Celular: <%=celular ? celular.Valor : '-'%></li>
                 </ul>
 
                 <p class="scroll demo-y">
                     <br />
-                    <%=contenido.Descripcion %>
+                    <%=contenido.DescripcionCorta %>
 
                 </p>
                 <a class="btn" href="/fundaciones/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
             </article>
             <div class="footerFunda">
-                <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/medium) no-repeat; "></div>
-                <div class="img" style="background: url(/img/<%=imagenAdicional%>/medium) no-repeat; "></div>
+                <div class="img" style="background: url(/img/<%=contenido.ContenidoId%>/big) no-repeat; "></div>
+                <div class="img" style="background: url(/img/<%=imagenAdicional%>/big) no-repeat; "></div>
 
             </div>
         </div>
@@ -62,7 +69,3 @@
     <div class="mas_scroll siguientePagina">Ver más</div>
     <% } %>
 </script>
-
-
-<script src="~/Scripts/views/huellitas.ResultadosHuellitasView.js"></script>
-<script src="~/Scripts/views/huellitas.MapaView.js"></script> 

@@ -12,8 +12,13 @@
         var html = $(this.elementoHtml);
         _.chain(attributes).keys().each(function (key) {
             
-            html.find(':input[name="' + key + '"]')
+            var obj = html.find(':input[name="' + key + '"]')
                 .val(attributes[key]);
+
+            if (obj.attr("type") == "checkbox")
+            {
+                obj.prop("checked", attributes[key]);
+            }
         });
     },
 

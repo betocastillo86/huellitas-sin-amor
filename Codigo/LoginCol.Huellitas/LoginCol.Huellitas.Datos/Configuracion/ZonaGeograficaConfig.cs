@@ -17,6 +17,7 @@ namespace LoginCol.Huellitas.Datos.Configuracion
 
             //HasOptional(z => z.ZonaGeograficaPadre).WithMany(z => zp.ZonasGeograficasHijo).HasForeignKey(zp => zp.ZonaGeograficaId).WillCascadeOnDelete(false);
             HasOptional(z => z.ZonaGeograficaPadre).WithMany().Map(c => c.MapKey("ZonaGeograficaPadreId"));
+
         }
     }
 }

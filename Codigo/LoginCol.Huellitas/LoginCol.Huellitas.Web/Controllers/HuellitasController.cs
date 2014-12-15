@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Infraestructure;
 using LoginCol.Huellitas.Web.Models;
 using System;
@@ -17,7 +18,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         public ActionResult Index()
         {
             CampoNegocio nCampo = new CampoNegocio();
-            ListarHuellitasModel modelo = new ListarHuellitasModel();
+            var modelo = new ListarHuellitasModel("TituloHuellitas");
             modelo.Colores = nCampo.Obtener(ParametrizacionNegocio.CampoColorId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             modelo.Tamanos = nCampo.Obtener(ParametrizacionNegocio.CampoTamanoId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
             modelo.Generos = nCampo.Obtener(ParametrizacionNegocio.CampoGeneroId).Opciones.Select(Mapper.Map<OpcionCampo, OpcionCampoModel>).ToList();
@@ -29,46 +30,77 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View(modelo);
         }
 
-
+        #region QuieroAdoptar
         [HttpGet]
         public ActionResult QuieroAdoptar(int id)
         {
-            FormularioAdopcionModel formularioModelo = new FormularioAdopcionModel();
+            FormularioAdopcionModel modelo = new FormularioAdopcionModel();
             DatoTablaBasicaNegocio nDatoTablaBasica = new DatoTablaBasicaNegocio();
 
-            formularioModelo.ListaEstadoCivil = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.EstadoCivil);
+            modelo.ListaEstadoCivil = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.EstadoCivil);
+            modelo.ListaOcupaciones = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.Ocupacion);
+            modelo.Preguntas = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.PreguntaAdopcion);
 
             //Cargamos el contenido en el modelo
             ContenidoNegocio nContenido = new ContenidoNegocio();
-            formularioModelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
+            modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
+
+            modelo.CargarTitulo("TituloAdopcion", modelo.Contenido.Nombre);
 
             ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
 
             if (hogarDePaso != null)
-                formularioModelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
+                modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
 
-
-            return View(formularioModelo);
+            modelo.Usuario = new UsuarioModel();
+            return View(modelo);
         }
 
 
         [HttpPost]
         public ActionResult QuieroAdoptar(int id, FormularioAdopcionModel modelo)
         {
-            
-            if (this.ModelState.IsValid)
+
+            var respuestas = new List<RespuestaAdopcion>();
+
+            foreach (var pregunta in Request.Form.AllKeys.Where(k => k.StartsWith("pregunta")))
             {
-                FormularioAdopcionNegocio formularioAdopcionNegocio = new FormularioAdopcionNegocio();
-                FormularioAdopcion formularioDB = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
-                formularioDB.ContenidoId = id;
-
-                formularioAdopcionNegocio.Crear(formularioDB);
-
+                respuestas.Add(new RespuestaAdopcion()
+                {
+                    PreguntaId = Convert.ToInt32(pregunta.Replace("pregunta", string.Empty)),
+                    Respuesta = Request.Form[pregunta]
+                });
             }
+
+
+            var formularioAdopcionNegocio = new FormularioAdopcionNegocio();
+
+            //Crea el formulario de adopción
+            var formulario = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
+            formulario.ContenidoId = id;
+            formulario.Respuestas = respuestas;
+
+            var respuesta = formularioAdopcionNegocio.Crear(formulario);
+
+            if (respuesta.OperacionExitosa)
+            {
+                modelo.Id = respuesta.Id;
+            }
+            else
+            {
+                modelo.OperacionExitosa = false;
+                modelo.MensajeError = respuesta.MensajeError;
+            }
+
+            //Cargamos el contenido en el modelo
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
 
             return View(modelo);
         }
 
+        #endregion
+        
 
         [HttpGet]
         [SumarVisita]
@@ -76,6 +108,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         {   
             ContenidoNegocio nContenido = new ContenidoNegocio();
             DetalleHuellitaModel modelo = Mapper.Map<Contenido, DetalleHuellitaModel>(nContenido.Obtener(id));
+            modelo.CargarTitulo("TituloDetalleHuellita", modelo.Nombre);
 
             ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
 
@@ -95,6 +128,19 @@ namespace LoginCol.Huellitas.Web.Controllers
             }
 
             return View(modelo);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Destacados()
+        {
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            var contenidos = nContenido.ObtenerDestacadosPorTipoPadre(TipoContenidoEnum.Animal)
+                .OrderBy(c => Guid.NewGuid())
+                .Take(2)
+                .Select(Mapper.Map<Contenido, ContenidoListadoModel>)
+                .ToList();
+            
+            return PartialView("_BannerDestacados", contenidos);
         }
 
 

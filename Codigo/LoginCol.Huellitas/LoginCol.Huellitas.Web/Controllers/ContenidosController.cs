@@ -51,7 +51,9 @@ namespace LoginCol.Huellitas.Web.Controllers
                 contenidosRelacionados.Add(new ContenidoRelacionado() { ContenidoId = filtro.fundacion, TipoRelacionContenidoId = (int)TipoRelacionEnum.Fundacion });
 
             //Realiza el filtro en negocio cargando los campos desde el querystring
-            List<Contenido> contenidos = nContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados)
+            List<Contenido> contenidos = nContenido
+                .FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados)
+                .OrderByDescending(c => c.Destacado)
                 .Skip(resultadosPorPagina*filtro.paginaActual)
                 .Take(resultadosPorPagina)
                 .ToList();

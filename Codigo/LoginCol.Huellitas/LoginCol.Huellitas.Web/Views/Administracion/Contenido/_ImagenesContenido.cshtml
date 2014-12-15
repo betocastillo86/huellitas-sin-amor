@@ -56,7 +56,9 @@
 
 <script type="text/template" id="templateFilaImagenContenido">
     <li class="thumbnail" id="image-<%= ContenidoRelacionadoId %>">
-        <a href="/img/<%= ContenidoHijo.ContenidoId %>/big" title="<%= ContenidoHijo.Nombre %>" style="background:url(/img/<%= ContenidoHijo.ContenidoId %>/mini)" class="cboxElement"><img alt="Sample Image 1" src="/img/<%= ContenidoHijo.ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px"></a>
+        <a href="/img/<%= ContenidoHijo.ContenidoId %>/big"  title="<%= ContenidoHijo.Nombre %>" style="background:url(/img/<%= ContenidoHijo.ContenidoId %>/mini)" class="cboxElement">
+        <img alt="Adopta una mascota:<%= ContenidoHijo.Nombre %>" title="<%= ContenidoHijo.Nombre %>" src="/img/<%= ContenidoHijo.ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px">
+        </a>
     </li>
 </script>
 

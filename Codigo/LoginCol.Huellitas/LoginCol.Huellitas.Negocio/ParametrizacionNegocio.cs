@@ -34,6 +34,16 @@ namespace LoginCol.Huellitas.Negocio
             return Convert.ToBoolean(datosParametrizacion.Obtener(llave));
         }
 
+        public List<Parametrizacion> Obtener()
+        {
+            return datosParametrizacion.Obtener();
+        }
+
+        public bool Actualizar(Parametrizacion modelo)
+        {
+            return datosParametrizacion.Actualizar(modelo);
+        }
+
         public static int TamanoMaximoCargaArchivos { get { return Int("TamanoMaximoCargaArchivos"); } }
 
         public static string ExtensionesImagenes { get { return String("ExtensionesImagenes"); } }
@@ -52,14 +62,18 @@ namespace LoginCol.Huellitas.Negocio
 
         public static int ComentariosPorPagina { get { return Int("ComentariosPorPagina"); } }
 
-        public List<Parametrizacion> Obtener()
-        {
-            return datosParametrizacion.Obtener();
-        }
+        public static string LlaveRouterVerTodos { get { return String("LlaveRouterVerTodos"); } }
 
-        public bool Actualizar(Parametrizacion modelo)
-        {
-            return datosParametrizacion.Actualizar(modelo);
-        }
+
+        public static string LlaveRouterQuieroAdoptar { get { return String("LlaveRouterQuieroAdoptar"); } }
+
+        public static string UrlSitio { get { return String("UrlSitio"); } }
+
+        public static string DestinatarioCorreosContacto { get { return String("DestinatarioCorreosContacto"); } }
+
+        public static string AsuntoContacto { get { return String("AsuntoContacto"); } }
+
+        public static string DescripcionHome { get { return String("DescripcionHome"); } }
+
     }
 }

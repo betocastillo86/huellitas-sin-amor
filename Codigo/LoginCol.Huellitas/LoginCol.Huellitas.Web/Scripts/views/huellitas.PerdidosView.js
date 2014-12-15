@@ -80,7 +80,6 @@
     },
     guardar : function()
     {
-        //Huellitas.removerErroresFormulario();
         this.model.guardar({ success: this.contenidoGuardado, invalid: this.datosInvalidos }, this);
     },
     contenidoGuardado : function(respuesta)

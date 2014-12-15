@@ -10,6 +10,7 @@
         "click #BtnCrearContenido": "crearContenido",
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
+        "change #Destacado" : "destacarContenido",
         "click #VerGaleriaContenido": "verGaleria",
         "click #BtnGuardarImagen": "guardarImagen",
         "change #fileInput": "validarContenidoArchivo",
@@ -224,6 +225,9 @@
                 if (input.name == "Activo")
                     input.value = input.value == "true";
 
+                if (input.name == "Destacado")
+                    input.value = input.value == "true";
+
                 values[input.name] = input.value;
             })
 
@@ -272,6 +276,9 @@
     activarContenido : function()
     {
         $("#Activo").val($("#Activo:checked").length > 0);
+    },
+    destacarContenido: function () {
+        $("#Destacado").val($("#Destacado:checked").length > 0);
     },
     verGaleria : function(){
         this.galeriaView.mostrar();

@@ -9,6 +9,11 @@ namespace LoginCol.Huellitas.Datos.Configuracion
         {
             ToTable("Usuario");
 
+            HasMany(u => u.FormulariosDeAdopcion)
+                .WithRequired(f => f.Usuario)
+                .HasForeignKey(f => f.UsuarioId)
+                .WillCascadeOnDelete(false);
+
             //HasKey(u => u.Correo);
 
             //HasMany(u => u.Contenidos).WithRequired(c => c.Usuario).HasForeignKey(c => c.UsuarioId);

@@ -5,8 +5,13 @@ using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class ListarHuellitasModel
+    public class ListarHuellitasModel : BaseModel
     {
+        public ListarHuellitasModel(string llaveTitulo) : base(llaveTitulo)
+        {
+
+        }
+        
         public List<OpcionCampoModel> Colores { get; set; }
 
         public List<OpcionCampoModel> Tamanos { get; set; }

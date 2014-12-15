@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ArchivosController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
     <Compile Include="Controllers\FundacionesController.cs" />
     <Compile Include="Controllers\GeneralesController.cs" />
@@ -208,8 +209,10 @@
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CampoModel.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
+    <Compile Include="Models\ContactoModel.cs" />
     <Compile Include="Models\ContenidoListadoModel.cs" />
     <Compile Include="Models\ContenidoModel.cs" />
     <Compile Include="Models\ContenidoBaseModel.cs" />
@@ -590,9 +593,11 @@
     <Content Include="Scripts\models\huellitas.admin.ContenidoRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
     <Content Include="Scripts\models\huellitas.admin.TipoRelacionContenido.js" />
+    <Content Include="Scripts\models\huellitas.Adopcion.js" />
     <Content Include="Scripts\models\huellitas.Archivo.js" />
     <Content Include="Scripts\models\huellitas.Campo.js" />
     <Content Include="Scripts\models\huellitas.Comentario.js" />
+    <Content Include="Scripts\models\huellitas.Contacto.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.js" />
@@ -608,11 +613,15 @@
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.UsuariosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
+    <Content Include="Scripts\views\huellitas.AdoptarView.js" />
     <Content Include="Scripts\views\huellitas.ComentariosView.js" />
+    <Content Include="Scripts\views\huellitas.ContactoView.js" />
     <Content Include="Scripts\views\huellitas.ContenidoRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.DetalleFundacionView.js" />
     <Content Include="Scripts\views\huellitas.DetalleHuellitaView.js" />
     <Content Include="Scripts\views\huellitas.FacebookShareView.js" />
+    <Content Include="Scripts\views\huellitas.HomeView.js" />
+    <Content Include="Scripts\views\huellitas.HuellasFundacionView.js" />
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ImagenesContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
@@ -684,7 +693,11 @@
     <Content Include="Scripts\views\huellitas.SubirArchivoView.js" />
     <Content Include="Views\Administracion\Parametrizacion.cshtml" />
     <Content Include="Scripts\views\huellitas.admin.ParametrizacionView.js" />
+    <Content Include="Views\Fundaciones\ContenidosRelacionados.cshtml" />
     <Content Include="Views\Huellitas\QuieroAdoptar.cshtml" />
+    <Content Include="Views\Shared\_Contacto.cshtml" />
+    <Content Include="Views\Home\Fundaciones.cshtml" />
+    <Content Include="Views\Huellitas\_BannerDestacados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,6 +26,10 @@
                             @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(model => model.DescripcionCorta)
+                            @Html.TextAreaFor(model => model.DescripcionCorta, new { @class = "form-control", maxlength  = 120 })
+                        </div>
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Descripcion)
                             @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control" })
                         </div>
@@ -66,6 +70,10 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Activo)
                             <input data-val="true" data-val-required="El campo Activo es obligatorio." id="Activo" name="Activo" type="checkbox" value="true" />
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Destacado)
+                            <input data-val="true" data-val-required="El campo Activo es obligatorio." id="Destacado" name="Destacado" type="checkbox" value="true" />
                         </div>
 
                         

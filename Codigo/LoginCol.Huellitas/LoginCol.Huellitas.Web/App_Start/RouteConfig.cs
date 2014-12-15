@@ -1,4 +1,5 @@
-﻿using LoginCol.Huellitas.Web.Infraestructure;
+﻿using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Web.Infraestructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,29 +65,62 @@ namespace LoginCol.Huellitas.Web
             //    constraints: new { controller = "(Home)", queryvalues = "(Index|huellitas)" }
             //);
 
-
+            routes.MapRoute(
+                name: "BuscadorContenidosHuellitas",
+                url: "sinhogar/buscar/{*queryValues}",
+                defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Huellitas)", action = "Index" }
+            );
 
             routes.MapRoute(
                 name: "BuscadorContenidos",
                 url: "{controller}/buscar/{*queryValues}",
-                defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },
-                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Index" }
+                defaults: new { controller = "Fundaciones", action = "Index", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Fundaciones)", action = "Index" }
             );
 
             #region detalle Contenido
 
-            routes.MapRoute(
-                name: "AdoptarHuellita",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Huellitas", action = "QuieroAdoptar" },
-                constraints: new { controller = "Huellitas", action = "QuieroAdoptar", id = @"d\+" }
-            );
+            //routes.MapRoute(
+            //    name: "AdoptarHuellita",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Huellitas", action = "QuieroAdoptar" },
+            //    constraints: new { controller = "Huellitas", action = "QuieroAdoptar", id = @"d\+" }
+            //);
             
+            routes.MapRoute(
+                name: "DetalleContenidoHuellitas",
+                url: "sinhogar/{id}/{nombre}",
+                defaults: new { controller = "Huellitas", action = "Detalle" },
+                constraints: new { controller = "(Huellitas)", action = "Detalle", id = @"\d+"}
+            );
+
             routes.MapRoute(
                 name: "DetalleContenido",
                 url: "{controller}/{id}/{nombre}",
-                defaults: new { controller = "Huellitas", action = "Detalle", queryValues = UrlParameter.Optional },
-                constraints: new { controller = "(Huellitas|Fundaciones)", action = "Detalle", id = @"d\+" }
+                defaults: new { controller = "Fundaciones", action = "Detalle" },
+                constraints: new { controller = "(Fundaciones)", action = "Detalle", id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                name: "MostrarContenidosRelacionados",
+                url: "{controller}/{id}/{nombre}/" + ParametrizacionNegocio.LlaveRouterVerTodos,
+                defaults: new { controller = "Fundaciones", action = "ContenidosRelacionados", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Fundaciones)", action = "ContenidosRelacionados", id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                name: "QuieroAdoptar",
+                url: "sinhogar/{id}/{nombre}/" + ParametrizacionNegocio.LlaveRouterQuieroAdoptar,
+                defaults: new { controller = "Huellitas", action = "QuieroAdoptar", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Huellitas)", action = "QuieroAdoptar", id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                name: "HomeHuellitas",
+                url: "sinhogar",
+                defaults: new { controller = "Huellitas", action = "Index" },
+                constraints: new { controller = "(Huellitas)", action = "Index" }
             );
 
             #endregion

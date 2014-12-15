@@ -25,16 +25,7 @@ namespace LoginCol.Huellitas.Negocio
         {
             UsuarioNegocio nUsuario = new UsuarioNegocio();
 
-            //Busca si hay usuarios registrados con ese correo
-            comentario.UsuarioId = nUsuario.ObtenerUsuarioPorCorreo(comentario.Usuario.Correo).UsuarioId;
-            
-            //Valida si el suuario que esta poniendo el comentario esta registrado o no
-            if (comentario.UsuarioId == 0)
-            {
-                //Si no existe lo crea
-                comentario.UsuarioId = nUsuario.CrearUsuarioDesdeCorreo(comentario.Usuario.Correo, comentario.Usuario.Nombres).UsuarioId;
-            }
-
+            comentario.UsuarioId = nUsuario.CrearUsuarioDesdeCorreo(comentario.Usuario.Correo, comentario.Usuario.Nombres).UsuarioId;
 
             if (comentario.UsuarioId > 0)
             {

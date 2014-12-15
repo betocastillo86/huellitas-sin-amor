@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archivos.cs" />
+    <Compile Include="EnvioCorreos.cs" />
     <Compile Include="Imagenes.cs" />
     <Compile Include="LogErrores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

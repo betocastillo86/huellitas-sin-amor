@@ -12,7 +12,7 @@ namespace LoginCol.Huellitas.Datos.Configuracion
     {
         public ParametrizacionConfig()
         {
-            ToTable("Parametrizacion");
+            ToTable("Parametrizacion"); 
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class ContenidoBaseModel
+    public class ContenidoBaseModel : BaseModel
     {
         public int ContenidoId { get; set; }
         
@@ -33,6 +33,11 @@ namespace LoginCol.Huellitas.Web.Models
 
         public bool Activo { get; set; }
 
+        public bool Destacado { get; set; }
+
         public string CorreoElectronico { get; set; }
+
+        [MaxLength(130)]
+        public string DescripcionCorta { get; set; }
     }
 }

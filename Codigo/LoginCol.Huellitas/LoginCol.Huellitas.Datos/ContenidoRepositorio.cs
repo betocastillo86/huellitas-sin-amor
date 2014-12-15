@@ -401,7 +401,7 @@ namespace LoginCol.Huellitas.Datos
         /// <param name="filtroBase">Filtros adicionales que van ligados al contenido</param>
         /// <returns>Listado de contenidos encontrados de acuerdo a la busqueda</returns>
         /// <param name="contenidosRelacionados">Contenidos relacionados por los que se debe filtrar. Propiedades: IDContenido  y TipoRelacion</param>
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros, List<ContenidoRelacionado> contenidosRelacionados)
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros = null, List<ContenidoRelacionado> contenidosRelacionados = null)
         {
             List<Contenido> lista = null;
             try
@@ -413,7 +413,7 @@ namespace LoginCol.Huellitas.Datos
                     List<int> contenidosPorFiltro = new List<int>();
                     
                     //Consulta los contenidos que posiblemente cumplen con el filtro de campos
-                    if (camposFiltros.Count > 0)
+                    if (camposFiltros != null && camposFiltros.Count > 0)
                     {
                         StringBuilder consulta = new StringBuilder();
                         consulta.AppendLine("SELECT ContenidoId FROM (");
@@ -473,16 +473,20 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.Campos.Select(v => v.Campo))
                         .Where(c => c.Activo);
 
-                    //Recorre todos los contenidos relacionados y realiza el filtro sobre ellos
-                    foreach (var relacionado in contenidosRelacionados)
+                    if (contenidosRelacionados != null)
                     {
-                        query = query
-                            .Where(c => c.ContenidosRelacionados
-                                .Where(cr => cr.ContenidoHijoId == relacionado.ContenidoId).Count() > 0);
+                        //Recorre todos los contenidos relacionados y realiza el filtro sobre ellos
+                        foreach (var relacionado in contenidosRelacionados)
+                        {
+                            query = query
+                                .Where(c => c.ContenidosRelacionados
+                                    .Where(cr => cr.ContenidoHijoId == relacionado.ContenidoId).Count() > 0);
+                        }
                     }
+                    
 
                     //Si no hay filtros seleccionados no realiza el filtro 
-                    if(camposFiltros.Count > 0)
+                    if(camposFiltros != null && camposFiltros.Count > 0)
                         query = query.Where(c => contenidosPorFiltro.Contains(c.ContenidoId)) ;
 
                     //Si es padre consulta por el tipo de contenido padre
@@ -491,12 +495,18 @@ namespace LoginCol.Huellitas.Datos
                     else
                         query = query.Where(c=> c.TipoContenidoId == idTipoContenido);
 
-                    //agrega los filtros base
-                    if(filtroBase.ZonaGeograficaId > 0)
-                        query = query.Where(c => c.ZonaGeograficaId == filtroBase.ZonaGeograficaId);
 
-                    if(filtroBase.ZonaGeografica!= null &&  filtroBase.ZonaGeografica.ZonaGeograficaPadre != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId > 0)
-                        query = query.Where(c => c.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId == filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId);
+                    if (filtroBase != null)
+                    {
+                        //agrega los filtros base
+                        if (filtroBase.ZonaGeograficaId > 0)
+                            query = query.Where(c => c.ZonaGeograficaId == filtroBase.ZonaGeograficaId);
+
+                        if (filtroBase.ZonaGeografica != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId > 0)
+                            query = query.Where(c => c.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId == filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId);
+                    }
+
+                    
 
                     
 

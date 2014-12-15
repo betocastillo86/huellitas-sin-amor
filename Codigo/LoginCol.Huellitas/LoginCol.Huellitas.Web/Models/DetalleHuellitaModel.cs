@@ -8,6 +8,8 @@ namespace LoginCol.Huellitas.Web.Models
 {
     public class DetalleHuellitaModel : ContenidoModel
     {
+        
+
         public ContenidoListadoModel HogarDePaso { get; set; }
 
         public UsuarioBaseModel AdoptantePadrino { get; set; }

@@ -33,8 +33,10 @@ namespace LoginCol.Huellitas.Entidades
     }
 
     public enum TablasBasicasEnum
-    { 
-        EstadoCivil = 1
+    {
+        EstadoCivil = 1,
+        Ocupacion = 2,
+        PreguntaAdopcion = 3    
     }
 
     public enum TipoDatoCampo

@@ -15,6 +15,7 @@ namespace System.Web.Mvc.Html
 {
     public static class HtmlHelperInputExtensions 
     {
+        
         //public static MvcHtmlString TextBoxForM<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper,  Expression<Func<TModel, TProperty>> expression)
         //{
         //    return htmlHelper.TextBoxFor(expression, new { @class = "form-control" });
@@ -74,6 +75,29 @@ namespace System.Web.Mvc.Html
                                 id,
                                 new SelectList(zonas, "ZonaGeograficaId", "Nombre", seleccionar), primeraOpcion, new { @class = estilo });
         }
+
+        //public static string PreguntaAdopcion(this HtmlHelper htmlHelper, int idPregunta, params string[] opciones)
+        //{
+        //    var nTablasBasicas = new DatoTablaBasicaNegocio();
+        //    var dato = nTablasBasicas.ObtenerDatoTablaBasica(idPregunta);
+
+        //    StringBuilder strHtml = new StringBuilder();
+        //    strHtml.Append("<div class='grid_12'>");
+
+        //    strHtml.AppendFormat("<br/> {0}", dato.Valor);
+
+
+        //    for (int i = 0; i < opciones.Length; i++)
+        //    {
+        //        string claseOmega = opciones.Length % 3 == 0 ? "omega" : string.Empty;
+
+        //        strHtml.AppendFormat("<div class='grid_3 {0}'>{1}</div>", claseOmega, opciones[i]);
+        //    }
+
+        //    strHtml.Append("</div>");
+
+        //    return strHtml.ToString();
+        //}
 
 
     }

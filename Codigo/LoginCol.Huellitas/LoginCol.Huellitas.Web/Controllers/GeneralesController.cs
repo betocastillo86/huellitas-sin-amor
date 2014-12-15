@@ -60,8 +60,8 @@ namespace LoginCol.Huellitas.Web.Controllers
             js.AppendFormat(", TipoContenidoFundaciones : {0}", Convert.ToInt32(TipoRelacionEnum.Fundacion));
             js.AppendFormat(", TipoRelacionAnimalesSimilares : {0}", Convert.ToInt32(TipoRelacionEnum.AnimalesSimilares));
             js.AppendFormat(", TipoRelacionFundacion : {0}", Convert.ToInt32(TipoRelacionEnum.Fundacion));
-            
-            
+            js.AppendFormat(", LlaveRouterVerTodos : '{0}'", ParametrizacionNegocio.LlaveRouterVerTodos);
+
             js.Append(" }");
             return JavaScript(js.ToString());
         }

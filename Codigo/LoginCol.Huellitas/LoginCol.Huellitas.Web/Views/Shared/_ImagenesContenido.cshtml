@@ -5,9 +5,8 @@
 
     <div class="grid_6">
         <div class="galeria_perfil">
-            @*<div class="img" style="background-image:url(/img/<%=obj.ContenidoId%>/medium;" id="imagenPrincipal"></div>*@
-            <img src="/img/<%=obj.ContenidoId%>/medium" id="imagenPrincipal" />
-            <iframe id="divPlayerVideo" width="420" height="315"
+            <img src="/img/<%=obj.ContenidoId%>/big" id="imagenPrincipal" width="489" height="332" alt="Adopta una mascota - <%=obj.Nombre%>" title="Adopta una mascota - <%=obj.Nombre%>" />
+            <iframe id="divPlayerVideo" width="491" height="333"
                     src="https://www.youtube.com/embed/<%=obj.UrlVideo%>" style="display:none"></iframe>
         </div>
         <ul class="gale_mini demo-x">
@@ -29,5 +28,4 @@
 
 
 </script>
-<script src="~/Scripts/models/huellitas.admin.Imagen.js"></script>
-<script src="~/Scripts/views/huellitas.ImagenesContenidoView.js"></script>
+

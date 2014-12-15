@@ -1,6 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section metatags
+{
+    <meta name="fragment" content="!" />
 }
 
 
@@ -26,14 +29,14 @@
     @Html.Partial("~/Views/Fundaciones/_ResultadosBusqueda.cshtml")
 </div>
 
-<script src="~/Scripts/views/huellitas.ListarFundacionesView.js"></script>
-
 
 @section scripts
 {
     @Scripts.Render("~/bundles/scroll")
     @Scripts.Render("~/bundles/backbone_contenido")
     @Scripts.Render("~/bundles/backbone_zonasGeograficas")
+    @Scripts.Render("~/bundles/backbone_lfundaciones")
+
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true">
     </script>
 }

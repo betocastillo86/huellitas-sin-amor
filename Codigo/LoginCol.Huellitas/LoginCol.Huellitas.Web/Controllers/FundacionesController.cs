@@ -34,10 +34,21 @@ namespace LoginCol.Huellitas.Web.Controllers
             ContenidoNegocio nContenido = new ContenidoNegocio();
             DetalleFundacionModel modelo = Mapper.Map<Contenido, DetalleFundacionModel>(nContenido.Obtener(id));
 
+            modelo.CargarTitulo("TituloDetalleFundacion", modelo.Nombre);
+
             if (modelo == null || !modelo.Activo)
                 return RedirectToAction("Index", "Fundaciones");
                 
 
+            return View(modelo);
+        }
+
+        [HttpGet]
+        public ActionResult ContenidosRelacionados(int id)
+        {
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            var modelo = Mapper.Map<Contenido, ContenidoBaseModel>(nContenido.Obtener(id));
+            modelo.CargarTitulo("TituloHuellitasDeFundacion", modelo.Nombre);
             return View(modelo);
         }
 

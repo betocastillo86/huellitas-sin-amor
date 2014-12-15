@@ -38,13 +38,37 @@ namespace LoginCol.Huellitas.Entidades
 
         public bool Activo { get; set; }
 
+        public string Direccion { get; set; }
+
+        public string Telefono { get; set; }
+
+        public string Celular { get; set; }
+
+        public Nullable<DateTime> FechaNacimiento { get; set; }
+
+        public virtual int Edad { get { return (int)((DateTime.Now - FechaNacimiento.Value).TotalDays / (double)365); } }
+
+        public Nullable<int> OcupacionId { get; set; }
+
+        public Nullable<int> EstadoCivilId { get; set; }
+
+        public Nullable<int> ZonaGeograficaId { get; set; }
+
+        public bool EsAdministrador { get; set; }
+
         public virtual List<Comentario> Comentarios { get; set; }
 
         public virtual List<Contenido> Contenidos { get; set; }
 
-        public bool EsAdministrador { get; set; }
-
         public virtual List<UsuarioContenido> ContenidosRelacionados { get; set; }
+
+        public virtual DatoTablaBasica EstadoCivil { get; set; }
+
+        public virtual DatoTablaBasica Ocupacion { get; set; }
+
+        public virtual List<FormularioAdopcion> FormulariosDeAdopcion { get; set; }
+
+        public virtual ZonaGeografica ZonaGeografica { get; set; }
 
 
     }

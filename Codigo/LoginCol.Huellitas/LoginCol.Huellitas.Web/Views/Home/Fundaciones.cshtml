@@ -1,0 +1,19 @@
+﻿@model List<LoginCol.Huellitas.Web.Models.ContenidoBaseModel>
+
+<section id="funda_home" data-slide="3" data-stellar-background-ratio="0.5">
+    <div class="container clearfix conteFunda">
+        <h2>FUNDACIONES</h2>
+        <p>Estas son algunas de las fundaciones que puedes encontrar con nosotros</p>
+        <ul>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var contenido = Model[i];
+                <a href="fundaciones/@contenido.ContenidoId/@contenido.NombreLink">
+                    <li class="grid_3 @(i > 0 && i%4==0 ? "omega" : string.Empty)" style="background: url(img/@(contenido.ContenidoId)/mini) no-repeat center;"></li>
+                </a>
+                
+            }
+            <br />
+        </ul>
+    </div>
+</section>

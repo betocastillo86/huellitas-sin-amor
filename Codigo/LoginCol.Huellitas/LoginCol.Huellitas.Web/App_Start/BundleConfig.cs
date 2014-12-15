@@ -26,7 +26,7 @@ namespace LoginCol.Huellitas.Web
                         "~/Scripts/libs/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/libs/jquery-ui-{version}.js"));
+                        "~/Scripts/libs/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/libs/jquery.unobtrusive*",
@@ -39,8 +39,8 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/slide").Include(
                 "~/Scripts/libs/jquery.cbpFWSlider.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/scroll").Include(
-               "~/Scripts/libs/jquery.mCustomScrollbar.js"));
+            bundles.Add(new ScriptBundle("~/bundles/scroll")
+                .Include("~/Scripts/libs/jquery.mCustomScrollbar.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -70,19 +70,20 @@ namespace LoginCol.Huellitas.Web
                 );
 
 
-            bundles.Add(new StyleBundle("~/bundles/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+            bundles.Add(new StyleBundle("~/bundles/cssjqueryui").Include(
+                        "~/Content/themes/base/jquery-ui.css"
+                        //"~/Content/themes/base/jquery.ui.resizable.css",
+                        //"~/Content/themes/base/jquery.ui.selectable.css",
+                        //"~/Content/themes/base/jquery.ui.accordion.css",
+                        //"~/Content/themes/base/jquery.ui.autocomplete.css",
+                        //"~/Content/themes/base/jquery.ui.button.css",
+                        //"~/Content/themes/base/jquery.ui.dialog.css",
+                        //"~/Content/themes/base/jquery.ui.slider.css",
+                        //"~/Content/themes/base/jquery.ui.tabs.css",
+                        //"~/Content/themes/base/jquery.ui.datepicker.css",
+                        //"~/Content/themes/base/jquery.ui.progressbar.css",
+                        //"~/Content/themes/base/jquery.ui.theme.css"
+                        ));
             #endregion
 
             #region Admin
@@ -157,12 +158,110 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/backbone_lhuellitas")
                 .Include("~/Scripts/views/huellitas.ListarHuellitasView.js")
                 .Include("~/Scripts/views/huellitas.ResultadosHuellitasView.js"));
+
+            //Vista de listar huellitas
+            bundles.Add(new ScriptBundle("~/bundles/backbone_lfundaciones")
+                .Include("~/Scripts/views/huellitas.MapaView.js")
+                .Include("~/Scripts/views/huellitas.ListarFundacionesView.js")
+                .Include("~/Scripts/views/huellitas.ResultadosHuellitasView.js")
+                );
+
+            //listado de contenidos con filtros
+            bundles.Add(new ScriptBundle("~/bundles/backbone_filtroContenidos")
+                .Include("~/Scripts/views/huellitas.ResultadosHuellitasView.js")
+                );
+
+            //Carga de archivos por ajax
+            bundles.Add(new ScriptBundle("~/bundles/backbone_cargaArchivo")
+                    .Include("~/Scripts/models/huellitas.Archivo.js")
+                    .Include("~/Scripts/views/huellitas.SubirArchivoView.js")
+                );
+
+            //listado de huellitas asociadas a una fundación
+            bundles.Add(new ScriptBundle("~/bundles/backbone_huellasFundacion")
+                .Include("~/Scripts/views/huellitas.HuellasFundacionView.js"));
+
+            //Huellitas perdidos
+            bundles.Add(new ScriptBundle("~/bundles/backbone_perdidos")
+                .Include("~/Scripts/views/huellitas.PerdidosView.js")
+                .Include("~/Scripts/models/huellitas.ContenidoPerdido.js")
+                );
+
+            bundles.Add(new ScriptBundle("~/bundles/backbone_home")
+                .Include("~/Scripts/models/huellitas.Contacto.js")
+                .Include("~/Scripts/views/huellitas.ContactoView.js")
+                .Include("~/Scripts/views/huellitas.HomeView.js")
+                .Include("~/Scripts/libs/jquery.cbpFWSlider.js")
+                );
+
+            //Contactanos
+            bundles.Add(new ScriptBundle("~/bundles/backbone_contacto")
+                .Include("~/Scripts/models/huellitas.Contacto.js")
+                .Include("~/Scripts/views/huellitas.ContactoView.js")
+                );
             
+            //Detalle de la huellita
+            bundles.Add(new ScriptBundle("~/bundles/backbone_detalleHuellita")
+                .Include("~/Scripts/views/huellitas.DetalleHuellitaView.js"));
+
+            //Detalle de la fundacion
+            bundles.Add(new ScriptBundle("~/bundles/backbone_detalleFundacion")
+                .Include("~/Scripts/views/huellitas.DetalleFundacionView.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/backbone_adoptar")
+                .Include("~/Scripts/views/huellitas.AdoptarView.js"));
+
+            //Vista del mapa de google
+            bundles.Add(new ScriptBundle("~/bundles/backbone_mapa")
+                .Include("~/Scripts/views/huellitas.MapaView.js"));
 
             
+
+            //Comentarios en los contenidos
+            bundles.Add(new ScriptBundle("~/bundles/backbone_comentarios")
+                .Include("~/Scripts/models/huellitas.Comentario.js")
+                .Include("~/Scripts/views/huellitas.ComentariosView.js"));
+            
+            //Contenidos relacionados
+            bundles.Add(new ScriptBundle("~/bundles/backbone_contRelacionados")
+                .Include("~/Scripts/models/huellitas.admin.ContenidoRelacionado.js")
+                .Include("~/Scripts/views/huellitas.ContenidoRelacionadoView.js"));
+
+            //Contenidos relacionados
+            bundles.Add(new ScriptBundle("~/bundles/backbone_redesSociales")
+                .Include("~/Scripts/views/huellitas.TwitterShareView.js")
+                .Include("~/Scripts/views/huellitas.FacebookShareView.js"));
+
+            //imagenes de los contenidos
+            bundles.Add(new ScriptBundle("~/bundles/backbone_imagenes")
+                .Include("~/Scripts/models/huellitas.admin.Imagen.js")
+                .Include("~/Scripts/views/huellitas.ImagenesContenidoView.js"));
+
+            //Principales scripts utilizados en el detalle de un contenido
+            bundles.Add(new ScriptBundle("~/bundles/backbone_contenidodetalle")
+                .Include("~/Scripts/models/huellitas.Comentario.js")
+                .Include("~/Scripts/views/huellitas.ComentariosView.js")
+                .Include("~/Scripts/models/huellitas.admin.ContenidoRelacionado.js")
+                .Include("~/Scripts/views/huellitas.ContenidoRelacionadoView.js")
+                .Include("~/Scripts/views/huellitas.TwitterShareView.js")
+                .Include("~/Scripts/views/huellitas.FacebookShareView.js")
+                .Include("~/Scripts/models/huellitas.admin.Imagen.js")
+                .Include("~/Scripts/views/huellitas.ImagenesContenidoView.js")
+                .Include("~/Scripts/libs/jquery.cbpFWSlider.js")
+                .Include("~/Scripts/libs/jquery.mCustomScrollbar.js")
+                .Include("~/Scripts/libs/backbone-validation.js")
+                .Include("~/Scripts/libs/backbone.stickit.js")
+                .Include("~/Scripts/libs/jquery-ui.js")
+                );
+
+
             #endregion
 
             BundleTable.EnableOptimizations = true;
+            #if DEBUG
+            BundleTable.EnableOptimizations = false;
+            #endif
+
 
         }
     }
