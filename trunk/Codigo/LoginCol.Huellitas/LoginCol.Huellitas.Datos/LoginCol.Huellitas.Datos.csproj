@@ -58,8 +58,10 @@
     <Compile Include="Configuracion\ContenidoConfig.cs" />
     <Compile Include="Configuracion\ContenidoRelacionadoConfig.cs" />
     <Compile Include="Configuracion\DatoTablaBasicaConfig.cs" />
+    <Compile Include="Configuracion\FormularioAdopcionConfig.cs" />
     <Compile Include="Configuracion\OpcionCampoConfig.cs" />
     <Compile Include="Configuracion\ParametrizacionConfig.cs" />
+    <Compile Include="Configuracion\RespuestaAdopcionConfig.cs" />
     <Compile Include="Configuracion\TablaBasicaConfig.cs" />
     <Compile Include="Configuracion\TipoContenidoConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionConfig.cs" />
@@ -102,6 +104,58 @@
     <Compile Include="Migrations\201412030242230_FormularioAdopcion2.cs" />
     <Compile Include="Migrations\201412030242230_FormularioAdopcion2.Designer.cs">
       <DependentUpon>201412030242230_FormularioAdopcion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081647029_Prueba.cs" />
+    <Compile Include="Migrations\201412081647029_Prueba.Designer.cs">
+      <DependentUpon>201412081647029_Prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081808066_ReorganizacionFormularioData.cs" />
+    <Compile Include="Migrations\201412081808066_ReorganizacionFormularioData.Designer.cs">
+      <DependentUpon>201412081808066_ReorganizacionFormularioData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081811203_ReorganizacionFormularioData2.cs" />
+    <Compile Include="Migrations\201412081811203_ReorganizacionFormularioData2.Designer.cs">
+      <DependentUpon>201412081811203_ReorganizacionFormularioData2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081817388_ReorganizacionFormularioData3.cs" />
+    <Compile Include="Migrations\201412081817388_ReorganizacionFormularioData3.Designer.cs">
+      <DependentUpon>201412081817388_ReorganizacionFormularioData3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081830264_ReorganizacionFormularioData4.cs" />
+    <Compile Include="Migrations\201412081830264_ReorganizacionFormularioData4.Designer.cs">
+      <DependentUpon>201412081830264_ReorganizacionFormularioData4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081944002_ZonaUsuario.cs" />
+    <Compile Include="Migrations\201412081944002_ZonaUsuario.Designer.cs">
+      <DependentUpon>201412081944002_ZonaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121701252_zonaGeograficaAdopcion.cs" />
+    <Compile Include="Migrations\201412121701252_zonaGeograficaAdopcion.Designer.cs">
+      <DependentUpon>201412121701252_zonaGeograficaAdopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121704052_zonaGeograficaAdopcion1.cs" />
+    <Compile Include="Migrations\201412121704052_zonaGeograficaAdopcion1.Designer.cs">
+      <DependentUpon>201412121704052_zonaGeograficaAdopcion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121722277_RespuestaPregunta.cs" />
+    <Compile Include="Migrations\201412121722277_RespuestaPregunta.Designer.cs">
+      <DependentUpon>201412121722277_RespuestaPregunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121750174_RespuestaPregunta1.cs" />
+    <Compile Include="Migrations\201412121750174_RespuestaPregunta1.Designer.cs">
+      <DependentUpon>201412121750174_RespuestaPregunta1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121807528_RespuestaPregunta2.cs" />
+    <Compile Include="Migrations\201412121807528_RespuestaPregunta2.Designer.cs">
+      <DependentUpon>201412121807528_RespuestaPregunta2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121820240_RespuestaPregunta3.cs" />
+    <Compile Include="Migrations\201412121820240_RespuestaPregunta3.Designer.cs">
+      <DependentUpon>201412121820240_RespuestaPregunta3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412121924474_DescripcionCorta.cs" />
+    <Compile Include="Migrations\201412121924474_DescripcionCorta.Designer.cs">
+      <DependentUpon>201412121924474_DescripcionCorta.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
@@ -204,6 +258,10 @@
     <Compile Include="Migrations\201411291450557_CamposActivos.cs" />
     <Compile Include="Migrations\201411291450557_CamposActivos.Designer.cs">
       <DependentUpon>201411291450557_CamposActivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412070030573_ContenidoDestacado.cs" />
+    <Compile Include="Migrations\201412070030573_ContenidoDestacado.Designer.cs">
+      <DependentUpon>201412070030573_ContenidoDestacado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ParametrizacionRepositorio.cs" />
@@ -328,6 +386,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411291450557_CamposActivos.resx">
       <DependentUpon>201411291450557_CamposActivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070030573_ContenidoDestacado.resx">
+      <DependentUpon>201412070030573_ContenidoDestacado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081647029_Prueba.resx">
+      <DependentUpon>201412081647029_Prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081808066_ReorganizacionFormularioData.resx">
+      <DependentUpon>201412081808066_ReorganizacionFormularioData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081811203_ReorganizacionFormularioData2.resx">
+      <DependentUpon>201412081811203_ReorganizacionFormularioData2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081817388_ReorganizacionFormularioData3.resx">
+      <DependentUpon>201412081817388_ReorganizacionFormularioData3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081830264_ReorganizacionFormularioData4.resx">
+      <DependentUpon>201412081830264_ReorganizacionFormularioData4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081944002_ZonaUsuario.resx">
+      <DependentUpon>201412081944002_ZonaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121701252_zonaGeograficaAdopcion.resx">
+      <DependentUpon>201412121701252_zonaGeograficaAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121704052_zonaGeograficaAdopcion1.resx">
+      <DependentUpon>201412121704052_zonaGeograficaAdopcion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121722277_RespuestaPregunta.resx">
+      <DependentUpon>201412121722277_RespuestaPregunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121750174_RespuestaPregunta1.resx">
+      <DependentUpon>201412121750174_RespuestaPregunta1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121807528_RespuestaPregunta2.resx">
+      <DependentUpon>201412121807528_RespuestaPregunta2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121820240_RespuestaPregunta3.resx">
+      <DependentUpon>201412121820240_RespuestaPregunta3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412121924474_DescripcionCorta.resx">
+      <DependentUpon>201412121924474_DescripcionCorta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

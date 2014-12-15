@@ -23,5 +23,11 @@ namespace LoginCol.Huellitas.Negocio
         {
             return _datosTablaBasica.Value.ObtenerPorTabla((int)TablaBasicaId);
         }
+
+        public DatoTablaBasica ObtenerDatoTablaBasica(int idDatoTablaBasica)
+        {
+            return _datosTablaBasica.Value.ObtenerDatoTablaBasica(idDatoTablaBasica);
+        }
+
     }
 }

@@ -45,6 +45,13 @@ namespace LoginCol.Huellitas.Negocio
             return _contenidos.Value.ObtenerPorTipoPadre(tipoContenido).ToList();
         }
 
+        public List<Contenido> ObtenerDestacadosPorTipoPadre(TipoContenidoEnum tipoContenido)
+        {
+            return _contenidos.Value.FiltrarContenidos((int)tipoContenido, true, null)
+                .Where(c => c.Destacado)
+                .ToList();
+        }
+
         public Contenido Obtener(int id)
         {
             Contenido contenido = _contenidos.Value.Obtener(id);
@@ -212,9 +219,9 @@ namespace LoginCol.Huellitas.Negocio
                 {
 
 
-                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 800, 800);
-                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 500, 500);
-                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 200, 200);
+                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 491, 333);
+                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 220, 220);
+                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 120, 120);
 
                     //Intenta guardar las imagenes
                     if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||

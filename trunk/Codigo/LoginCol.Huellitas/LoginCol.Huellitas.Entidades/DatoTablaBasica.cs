@@ -18,12 +18,18 @@ namespace LoginCol.Huellitas.Entidades
 
         public string ValorIngles { get; set; }
 
-        public int PadreId { get; set; }
+        public Nullable<int> PadreId { get; set; }
 
         public bool Activo { get; set; }
 
         public string CodigoExterno { get; set; }
 
         public string InformacionAdicional { get; set; }
+
+        public List<RespuestaAdopcion> Respuestas { get; set; }
+
+        public List<Usuario> Ocupaciones { get; set; }
+
+        public List<Usuario> EstadosCiviles { get; set; }
     }
 }

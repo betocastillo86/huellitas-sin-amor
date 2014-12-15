@@ -3,288 +3,152 @@
     ViewBag.Title = "QuieroAdoptar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="slide conte_perfil" id="first" data-slide="1">
-    <div class="container clearfix">
-        <h2 style="margin-bottom:20px;">PROCESO DE ADOPCIÓN</h2>
-        <div class="grid_4">
-            <div class="galeria_perfil">
-                <img src="/img/@Model.Contenido.ContenidoId/medium" />
+
+<div id="divAdopcion">
+    @using (Html.BeginForm())
+    {
+        <section class="slide conte_perfil" id="first" data-slide="1">
+            <div class="container clearfix">
+                <h2 style="margin-bottom: 20px;">PROCESO DE ADOPCIÓN</h2>
+                <div class="grid_4">
+                    <div class="galeria_perfil">
+                        <img src="/img/@Model.Contenido.ContenidoId/medium" alt="Adopta una mascota - @Model.Contenido.Nombre" title="Perros y gatos en adopción - @Model.Contenido.Nombre" />
+                    </div>
+                </div>
+                <div class="descri_mascota grid_4">
+                    <h2><span class="icon-alert"></span>@Model.Contenido.Nombre</h2>
+
+                    <div>GENERO: MASCULINO</div>
+                    <div>EDAD: @Html.ObtenerCampoDeContenido(Model.Contenido, "Edad") año(s)</div>
+                    <div>COLOR: @Html.ObtenerCampoDeContenido(Model.Contenido, "Color")</div>
+                    <div>LOCALIZACIÓN: @Model.Contenido.ZonaGeograficaNombre</div>
+                </div>
+
+                @if (Model.HogarDePaso != null)
+                { 
+                    <div class="conte_datos grid_4">
+                        <h2>HOGAR DE PASO: <b>@Model.HogarDePaso.Nombre</b></h2>
+                        <h3>CONTACTO: <span>@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</span></h3>
+                        <ul>
+                            <li>DIRECCIÓN:@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</li>
+                            <li>CORREO: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Correo")</li>
+                            <li>CEL: 320 3546789</li>
+                            <li>TEL:@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</li>
+                        </ul>
+                    </div>
+                }
             </div>
-        </div>
-        <div class="descri_mascota grid_4">
-            <h2><span class="icon-alert"></span>@Model.Contenido.Nombre</h2>
-            
-            <div>GENERO: MASCULINO</div>
-            <div>EDAD: @Html.ObtenerCampoDeContenido(Model.Contenido, "Edad") año(s)</div>
-            <div>COLOR: @Html.ObtenerCampoDeContenido(Model.Contenido, "Color")</div>
-            <div>LOCALIZACIÓN: @Model.Contenido.ZonaGeograficaNombre</div>
-        </div>
-        <div class="conte_datos grid_4">
-            <h2>HOGAR DE PASO: <b>@Model.HogarDePaso.Nombre</b></h2>
-            <h3>CONTACTO: <span>@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</span></h3>
-            <ul>
-                <li>DIRECCIÓN:@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</li>
-                <li>CORREO: @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Correo")</li>
-                <li>CEL: 320 3546789</li>
-                <li>TEL:@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Teléfono")</li>
-            </ul>
-        </div>
+        </section>
+
+        if (Model.Id == 0)
+        {
+            <section class="form_adopta slide">
+                <div class="container clearfix">
+                    <ol class="conte_pasos">
+                        <li class="active">Datos Personales</li>
+                        <li>paso 2</li>
+                        <li>paso 3</li>
+                        <li>paso 4</li>
+                        <br />
+                    </ol>
+                    <h2>DATOS PERSONALES</h2>
+                    <div id="paso1">
+                        <div class="grid_3">@Html.TextBoxFor(m => m.Usuario.Nombres, new { placeholder = "NOMBRES:" })</div>
+                        @Html.DropDownListFor(m => m.Usuario.ZonaGeograficaId, new SelectList(new List<string>()), "DEPARTAMENTO:", new { @class = "grid_3 ", id = "ddlZonaDepartamento" })
+                        <select id="ddlZonaCiudad" class="grid_3 ">
+                            <option>CIUDAD</option>
+                        </select>
+                        <div class="grid_3 omega">@Html.TextBoxFor(m => m.Usuario.Direccion, new { placeholder = "DIRECCIÓN:" })</div>
+
+                        <div class="grid_3">@Html.TextBoxFor(m => m.Usuario.Celular, new { placeholder = "CELULAR:" })</div>
+                        <div class="grid_3">@Html.TextBoxFor(m => m.Usuario.Correo, new { placeholder = "CORREO ELECTRONICO:" })</div>
+
+                        @Html.DropDownListFor(m => m.Usuario.OcupacionId, new SelectList(Model.ListaOcupaciones, "DatoTablaBasicaId", "Valor", Model.Usuario.OcupacionId), "OCUPACIÓN", new { @class = "grid_3 " })
+                        @Html.DropDownListFor(m => m.Usuario.EstadoCivilId, new SelectList(Model.ListaEstadoCivil, "DatoTablaBasicaId", "Valor", Model.Usuario.EstadoCivilId), "ESTADO CIVIL", new { @class = "grid_3 omega" })
+
+                        <div class="grid_3">@Html.TextBoxFor(m => m.MiembrosFamilia, new { placeholder = "MIEMBROS EN LA FAMILIA:" })</div>
+                        <div class="grid_3 omega">@Html.TextBoxFor(m => m.Usuario.FechaNacimiento, new { placeholder = "FECHA NACIMIENTO:" })</div>
+                        <br />
+
+
+                    </div>
+                    <div id="paso2" style="display: none" class="seccionPreguntas">
+                        @PreguntaAdopcion(13, "Guardia y Protección", "Compañia", "Otro")
+                        @PreguntaAdopcion(14, "Si", "No")
+                        @PreguntaAdopcion(15, "Si", "No")
+                        @PreguntaAdopcion(16, "Si", "No")
+                        @PreguntaAdopcion(17, "Si", "No")
+                    </div>
+
+                    <div id="paso3" style="display: none" class="seccionPreguntas">
+                        @PreguntaAdopcion(18, "Si", "No")
+                        @PreguntaAdopcion(19, "Si", "No")
+                        @PreguntaAdopcion(20, "Si", "No")
+                        @PreguntaAdopcion(21, "Apartamento", "Casa Pequeña", "Casa grande")
+                        @PreguntaAdopcion(22, "En la Ciudad", "Afueras de la ciudad", "En el campo")
+                    </div>
+
+                    <div id="paso4" style="display: none" class="seccionPreguntas">
+                        @PreguntaAdopcion(23, "Nada", "30 minutos", "Una hora", "Más de una hora")
+                        @PreguntaAdopcion(24, "Nunca", "2-4 horas", "4-7 horas", "Mas de 7 horas")
+                        @PreguntaAdopcion(25, "No", "A veces", "Con frecuencia", "Siempre")
+                        @PreguntaAdopcion(26, "No hay", "Más de 5 años", "De 6 a 11 años", "Mayor de 12 años")
+                        @PreguntaAdopcion(27, "Quieto, callado", "Moderado", "Vivaz", "Mucha energia")
+                        @PreguntaAdopcion(28, "Hasta $20.000 pesos", "Hasta $50.000 pesos", "Hasta $80.000 pesos", "Más de $100.000 pesos")
+                    </div>
+
+
+
+
+                    <a id="btnSiguiente" class="btn" href="javascript:;">Siguiente</a>
+                </div>
+
+            </section>
+        }
+        else
+        {
+            <section class="form_adopta slide">
+                <div class="container clearfix">
+                    <div class="seccionPreguntas">
+                        <div class='grid_12'>
+                            <h2>GRACIAS POR INICIAR EL PROCESO DE ADOPCIÓN DE <a href="sinhogar/@Model.Contenido.ContenidoId/@Model.Contenido.NombreLink">@Model.Contenido.Nombre</a>. Muy pronto nos comunicamremos contigo.</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+
+
+    }
+</div>
+@helper PreguntaAdopcion(int idPregunta, params string[] opciones)
+{
+    <div class='grid_12'>
+        <br />
+        @Model.Preguntas.FirstOrDefault(p => p.DatoTablaBasicaId == idPregunta).Valor
+
+
     </div>
-</section>
-<section class="form_adopta slide">
-    <div class="container clearfix">
-        <ol class="conte_pasos">
-            <li>paso 1</li>
-            <li class="active">paso 2</li>
-            <li>paso 3</li>
-            <li>paso 4</li>
-            <br />
-        </ol>
-        <h2>DATOS PERSONALES</h2>
-        <form>
-            <div class="grid_3">@Html.TextBoxFor(m => m.Nombre, new { placeholder ="NOMBRES:" })</div>
-            <div class="grid_3">@Html.TextBoxFor(m => m.Ocupacion, new { placeholder = "OCUPACIÓN:" })</div>
-            <div class="grid_3">@Html.TextBoxFor(m => m.Direccion, new { placeholder = "DIRECCIÓN:" })</div>
-            <div class="grid_3 omega"><input placeholder="CORREO:" type="text" /></div>
-            <div class="grid_3"><input placeholder="CELULAR:" type="text" /></div>
-            <select class="grid_3">
-                <option>ESTADO CIVIL:</option>
-            </select>
-            <select class="grid_3">
-                <option># MIEMBROS EN LA FAMILIA:</option>
-            </select>
-            <select class="grid_3 omega">
-                <option>EDADES:</option>
-            </select>
-            <a href="javascript:;" class="btn">anterior</a>
-            <a href="javascript:;" class="btn">siguiente</a>
-        </form>
+    <div class="preguntasFormulario">
+        @for (int i = 0; i < opciones.Length; i++)
+        {
+            var claseOmega = i % 3 == 0 ? "omega" : string.Empty;
+
+            <div class='grid_3 @claseOmega'>
+                <input type="radio" name="pregunta@(idPregunta)" value="@opciones[i]" />
+                <span>@opciones[i]</span>
+            </div>
+        }
     </div>
-</section>
-
-@using (Html.BeginForm()) { 
-
-
- 
-
-
-    <br/><br/><br/><br/><br/><br/><br/><br/>
-
-
-
-
-@Html.LabelFor(m => m.Edad)
-@Html.TextBoxFor(m => m.Edad)
-
-@Html.LabelFor(m => m.Ocupacion)
-@Html.TextBoxFor(m => m.Ocupacion)
-
-@Html.LabelFor(m => m.Ciudad)
-@Html.TextBoxFor(m => m.Ciudad)
-
-@Html.LabelFor(m => m.Direccion)
-@Html.TextBoxFor(m => m.Direccion)
-
-@Html.LabelFor(m => m.Telefono)
-@Html.TextBoxFor(m => m.Telefono)
-
-@Html.LabelFor(m => m.Celular)
-@Html.TextBoxFor(m => m.Celular)
-
-@Html.LabelFor(m => m.CorreoElectronico)
-@Html.TextBoxFor(m => m.CorreoElectronico)
-
-@Html.LabelFor(m => m.EstadoCivil)
-@Html.DropDownListFor(m => m.EstadoCivil, new SelectList(Model.ListaEstadoCivil, "DatoTablaBasicaId", "Valor", Model.EstadoCivil), "Seleccione un item")
-
-
-@Html.LabelFor(m => m.MiembrosFamilia)
-@Html.TextBoxFor(m => m.MiembrosFamilia)
-
-
-@Html.LabelFor(m => m.EdadesMiembrosFamilia)
-@Html.TextBoxFor(m => m.EdadesMiembrosFamilia)
-
-
-
-@Html.Label("1. Porqué quieres adoptar un perro/gato?") 
-    
-@Html.Label("Guardia y Protección")
-@Html.RadioButtonFor(m => m.RespuestaPregunta1, "Guardia y Protección")
-    
-   
-@Html.Label("Compañia")
-@Html.RadioButtonFor( m => m.RespuestaPregunta1,  "Compañia") 
-
-    
-@Html.Label("Otro")    
-@Html.RadioButtonFor(m => m.RespuestaPregunta1,  "Otro")
-
-    
-    
-@Html.Label("2.	Has tenido perro/gato antes?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta2, "Si")
-   @Html.Label("Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta2, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("3. Tienes otra mascota actualmente?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta3, "Si")
-   @Html.Label(" Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta3, "No")
-@Html.Label("No")
-
-
-@Html.Label("4. Tú o alguien de tu familia ha presentado alergias?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta4, "Si")
-    @Html.Label("si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta4, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("5. Tienes veterinario de confianza?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta5, "Si")
-    @Html.Label("Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta5, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("6. Toda la familia está de acuerdo con la adopción y las responsabilidades que esto implica?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta6, "Si")
-    @Html.Label("Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta6, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("7. Estás consciente de los gastos que implica tener una mascota?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta7, "Si")
-    @Html.Label("Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta7, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("8. Tienes con quien dejar al perro/gato cuando sales de vacaciones?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta8, "Si")
-    @Html.Label("Si")
-@Html.RadioButtonFor(m => m.RespuestaPregunta8, "No")
-@Html.Label("No")
-
-
-
-@Html.Label("9.	Qué tipo de vivienda tienes?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta9, "Apartamento")
-    @Html.Label("Apartamento")
-@Html.RadioButtonFor(m => m.RespuestaPregunta9, "Casa Pequeña")
-@Html.Label("Casa Pequeña")
-@Html.RadioButtonFor(m => m.RespuestaPregunta9, "Casa Grande")
-@Html.Label("Casa Grande")
-
-
-
-@Html.Label("10. En qué tipo de área vives? ");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta10, "En la Ciudad")
-    @Html.Label("En la Ciudad")
-@Html.RadioButtonFor(m => m.RespuestaPregunta10, "Afueras de la Ciudad")
-@Html.Label("Afueras de la Ciudad")
-@Html.RadioButtonFor(m => m.RespuestaPregunta10, "En el Campo")
-@Html.Label("En el Campo")
-
-
-
-@Html.Label("11. Cuánto ejercicio diario le puedes dar a tu perro?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta11, "Nada")
-    @Html.Label("Nada")
-@Html.RadioButtonFor(m => m.RespuestaPregunta11, "30 minutos")
-@Html.Label("30 minutos")
-@Html.RadioButtonFor(m => m.RespuestaPregunta11, "Una hora")
-@Html.Label("Una hora")
-@Html.RadioButtonFor(m => m.RespuestaPregunta11, "Más de una hora")
-@Html.Label("Más de una hora")
-
-
-
-@Html.Label("12. Por cuánto tiempo dejarás solo a tu perro al día?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta12, "Nunca")
-    @Html.Label("Nunca")
-@Html.RadioButtonFor(m => m.RespuestaPregunta12, "2-4 horas")
-@Html.Label("2-4 horas")
-@Html.RadioButtonFor(m => m.RespuestaPregunta12, "4-7 horas")
-@Html.Label("4-7 horas")
-@Html.RadioButtonFor(m => m.RespuestaPregunta12, "Más de 7 horas")
-@Html.Label("Más de 7 horas")
-
-
-
-@Html.Label("13. Hay gente anciana o discapacitada en tu casa?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta13, "No")
-    @Html.Label("No")
-@Html.RadioButtonFor(m => m.RespuestaPregunta13, "A veces")
-@Html.Label("A veces")
-@Html.RadioButtonFor(m => m.RespuestaPregunta13, "Con frecuencia")
-@Html.Label("Con frecuencia")
-@Html.RadioButtonFor(m => m.RespuestaPregunta13, "Siempre")
-@Html.Label("Siempre")
-
-
-
-@Html.Label("14. Cuál es la edad del niño más pequeño que vive o visita tu casa?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta14, "No hay")
-    @Html.Label("No hay")
-@Html.RadioButtonFor(m => m.RespuestaPregunta14, "Menos de 5 años")
-@Html.Label("Menos de 5 años")
-@Html.RadioButtonFor(m => m.RespuestaPregunta14, "6-11 años")
-    
-@Html.Label("6-11 años");
-@Html.RadioButtonFor(m => m.RespuestaPregunta14, "Más de 12 años")
-@Html.Label("Más de 12 años")
-
-
-
-@Html.Label("15. Qué tanta energía debe tener tu perro/gato?")
-    
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta15, "Quieto, callado")
-    @Html.Label("No hay")
-@Html.RadioButtonFor(m => m.RespuestaPregunta15, "Moderada")
-@Html.Label("Menos de 5 años")
-@Html.RadioButtonFor(m => m.RespuestaPregunta15, "Vivaz")
-@Html.Label("-11 años")
-@Html.RadioButtonFor(m => m.RespuestaPregunta15, "Mucha energía")
-@Html.Label("Más de 12 años")
-
-
-
-@Html.Label("16. Cuánto te gustaría gastar al mes para alimentar a tu perro?");
-
-@Html.RadioButtonFor(m => m.RespuestaPregunta16, "Hasta $20.000 pesos")    <span> Hasta $20.000 pesos </span>
-@Html.RadioButtonFor(m => m.RespuestaPregunta16, "Hasta $50.000 pesos") <span>Hasta $50.000 pesos</span> 
-@Html.RadioButtonFor(m => m.RespuestaPregunta16, "Hasta $80.000 pesos") <span>Hasta $80.000 pesos</span>
-@Html.RadioButtonFor(m => m.RespuestaPregunta16, "Más de $100.000 pesos") <span>Más de $100.000 pesos</span>
-
-
-    
-
-
-
-<input type=submit value='guardar'/>
-
+}
+@section css{
+    @Styles.Render("~/bundles/cssjqueryui")
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_zonasGeograficas")
+    @Scripts.Render("~/bundles/backbone_adoptar")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
 }

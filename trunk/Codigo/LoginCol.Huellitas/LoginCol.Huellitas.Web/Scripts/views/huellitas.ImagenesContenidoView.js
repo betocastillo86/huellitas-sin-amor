@@ -47,7 +47,7 @@
     {
         this.cerrarVideo();
         var idImagen = $(obj.target).attr("contenidoId");
-        this.$("#imagenPrincipal").attr("src", "/img/" + idImagen + "/medium");
+        this.$("#imagenPrincipal").attr("src", "/img/" + idImagen + "/big");
     },
     mostrarVideo: function () {
         $("#divPlayerVideo").show();

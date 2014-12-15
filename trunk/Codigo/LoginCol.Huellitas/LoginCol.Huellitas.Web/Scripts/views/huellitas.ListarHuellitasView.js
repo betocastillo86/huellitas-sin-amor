@@ -6,6 +6,28 @@ var ListarHuellitasView = Backbone.View.extend({
     events : {
         "click #btnBuscar": "filtrarContenidos"
     },
+    vistaResultados: undefined,
+
+    initialize: function (args) {
+        this.vistaResultados = new ResultadosHuellitasView();
+
+        if (args) {
+            if (args.cargar != undefined && args.cargar)
+                this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
+        }
+        else {
+            //por defecto carga los resultados cuando no viene el parametro
+            this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
+            args = {};
+        }
+
+        this.vistaZonas = new ZonasGeograficasView({ el: "#divListarHuellitas", idDepartamento: Huellitas.obtenerValorRutaBackboneInt(args.zonaPadre), idCiudad: Huellitas.obtenerValorRutaBackboneInt(args.zona) });
+
+        this.render();
+    },
+    render: function () {
+        return this;
+    },
     obtenerCampo: function(campo)
     {
         switch (campo) {
@@ -42,30 +64,7 @@ var ListarHuellitasView = Backbone.View.extend({
         }
     },
 
-    vistaResultados : undefined,
-
-    initialize: function (args)
-    {
-        this.vistaResultados = new ResultadosHuellitasView();
-        
-        if (args) {
-            if (args.cargar != undefined && args.cargar)
-                this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
-        }
-        else {
-            //por defecto carga los resultados cuando no viene el parametro
-            this.vistaResultados.cargarContenidos(this.obtenerFiltroSeleccionado());
-            args = {};
-        }
-
-        this.vistaZonas = new ZonasGeograficasView({ el: "#divListarHuellitas", idDepartamento: Huellitas.obtenerValorRutaBackboneInt(args.zonaPadre), idCiudad: Huellitas.obtenerValorRutaBackboneInt(args.zona) });
-
-        this.render();
-    },
-    render: function ()
-    {
-        return this;
-    },
+    
     obtenerFiltroSeleccionado : function()
     {
         var filtros = {
@@ -87,7 +86,7 @@ var ListarHuellitasView = Backbone.View.extend({
         
         var filtros = this.obtenerFiltroSeleccionado();
 
-        var url = "/huellitas/buscar";
+        var url = "/sinhogar/buscar";
         if (this.obtenerCampo("tipo").valor > 0)
             url += "/t" + this.obtenerCampo("tipo").valor + "_" + this.obtenerCampo("tipo").texto;
 

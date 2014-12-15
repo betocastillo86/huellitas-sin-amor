@@ -31,5 +31,17 @@ namespace LoginCol.Huellitas.Datos
 
 
 
+
+        public DatoTablaBasica ObtenerDatoTablaBasica(int idDatoTablaBasica)
+        {
+            DatoTablaBasica dato;
+            using (var db = new Repositorio())
+            {
+                dato = db.DatosTablasBasicas
+                    .FirstOrDefault(d => d.DatoTablaBasicaId == idDatoTablaBasica);
+            }
+
+            return dato ?? new DatoTablaBasica();
+        }
     }
 }

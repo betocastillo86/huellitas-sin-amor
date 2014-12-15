@@ -34,5 +34,7 @@ namespace LoginCol.Huellitas.Entidades
         //public virtual ZonaGeografica ZonaGeograficaPadre { get { return _ZonaGeograficaPadre ?? new ZonaGeografica(); } set { _ZonaGeograficaPadre = value; } }
         public virtual ZonaGeografica ZonaGeograficaPadre { get; set; }
 
+        
+
     }
 }

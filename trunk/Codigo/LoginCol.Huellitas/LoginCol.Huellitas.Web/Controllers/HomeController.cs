@@ -1,4 +1,5 @@
-﻿using LoginCol.Huellitas.Entidades;
+﻿using AutoMapper;
+using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
 using LoginCol.Huellitas.Web.Models;
 using System;
@@ -20,15 +21,9 @@ namespace LoginCol.Huellitas.Web.Controllers
         
         public ActionResult Index(string queryValues)
         {
-
-
-            return View();
+            return View(new BaseModel("TituloHome"));
         }
 
-        public ActionResult huellitas()
-        {
-            return View();
-        }
 
        // [HttpGet]
         
@@ -61,7 +56,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         #region Perdidos
         public ActionResult Perdidos()
         {
-            return View();
+            var modelo = new PerdidosModel();
+            return View(modelo);
         }
 
         [HttpPost]
@@ -72,19 +68,17 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
         #endregion
         
-
+        [ChildActionOnly]
+        public ActionResult Fundaciones()
+        {
+            ContenidoNegocio nContenido = new ContenidoNegocio();
+            var modelo = nContenido.ObtenerPorTipoPadre(TipoContenidoEnum.Fundacion)
+                .Select(Mapper.Map<Contenido, ContenidoBaseModel>)
+                .ToList();
+            
+            return PartialView(modelo);
+        }
         
-
-        //[HttpGet]
-        //public string Comprar()
-        //{
-        //    List<Contenido> lista = new List<Contenido>();
-        //    lista.Add(new Contenido() { Id = 1, Nombres = "A1", Descripcion = "D1" });
-        //    lista.Add(new Contenido() { Id = 2, Nombres = "A2", Descripcion = "D2" });
-        //    lista.Add(new Contenido() { Id = 3, Nombres = "A3", Descripcion = "D3" });
-
-        //    return new JavaScriptSerializer().Serialize(lista.ToArray()); 
-        //}
 
 
 

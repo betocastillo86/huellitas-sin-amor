@@ -54,5 +54,7 @@ namespace LoginCol.Huellitas.Web.Models
         public string UrlVideo { get; set; }
 
         public List<UsuarioModel> Usuarios { get; set; }
+
+        
     }
 }

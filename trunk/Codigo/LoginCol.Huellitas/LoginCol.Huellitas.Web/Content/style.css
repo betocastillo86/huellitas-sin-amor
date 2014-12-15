@@ -281,10 +281,15 @@ header{
 #logo {
 	text-align: center;
 	margin: 10px 0;
-	background:url(../images/logo.svg) no-repeat center;
+	/*background:url(../images/logo.svg) no-repeat center;*/
 	height:90px;
 	width:161px;
 }
+
+#logo img {
+    height:100%;
+}
+    
 #first{
 	margin:110px 0 0;
 	}
@@ -731,20 +736,26 @@ article p.scroll{
 	right:0;
 	color:#FFF;
 	font-size:16px;
+    width:212px;
 	}
 .compartir span{
 	display:block;
 	float:left;
 	padding:7px 0;
 	}
-.compartir a {
-    border-radius: 100%;
+.compartir a{
+	width:40px;
+	height:30px;
+	border-radius:100%;
 	display:block;
 	float:left;
-    height: 40px;
-    margin: 0 10px;
-    width: 40px;
-}
+	margin:0 10px;
+	padding: 7px 0 3px;
+	text-align: center;
+	font-size: 25px;
+	color: #FFF;
+	transition:ease all 0.4s;
+	}
 .conte_visitas{
 	position:absolute;
 	top:110px;
@@ -1464,4 +1475,49 @@ article p.scroll{
 	padding:50px 0;
 }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+input-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
 }

@@ -1,6 +1,6 @@
 ﻿@model LoginCol.Huellitas.Web.Models.DetalleFundacionModel
 @{
-    ViewBag.Title = string.Format("{0} - Fundaciones", Model.Nombre);
+    ViewBag.TagDescripcion = Model.DescripcionCorta;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="divDetalleContenido">
@@ -11,7 +11,7 @@
         <div class="container clearfix">
 
             <div id="divImagenesContenido"></div>
-            @Html.Partial("~/Views/Shared/_ImagenesContenido.cshtml")
+            @Html.Partial("_ImagenesContenido")
 
             <div class="descriPerfil grid_6 omega">
                 <div class="descri_mascota">
@@ -27,13 +27,14 @@
                     <span>COMPARTE EN:</span>
                     <b id="divFacebook"></b>
                     <b id="divTwitter"></b>
-                    @Html.Partial("~/Views/Shared/_CompartirRedesSociales.cshtml")
+                    @Html.Partial("_CompartirRedesSociales")
                 </div>
-                <div class="conte_visitas" style="top:185px;">
-                    <span class="icon-calendar"></span>@Model.Visitas
-                    <span class="icon-calendar"></span><div id="contarComentarios" style="display:inline-block">@Model.Comentarios</div>
+                <div class="conte_visitas">
+                    <span class="icon-view"></span>@Model.Visitas
+                    <span class="icon-comenta"></span>
+                    <div id="contarComentarios" style="display: inline-block">@Model.Comentarios</div>
                 </div>
-                <a class="btn" href="javascript:;" style=" width:160px; margin:11px 0;">PROGRAMAR VISITA</a>
+                @*<a class="btn" href="javascript:;" style=" width:160px; margin:11px 0;">PROGRAMAR VISITA</a>*@
                 <div class="mapa" id="mapaContenido"></div>
             </div>
             <div class="historia grid_12">
@@ -87,26 +88,21 @@
     </section>
 
     <div id="divPerrosRelacionados"></div>
-    @Html.Partial("~/Views/Shared/_ContenidosRelacionados.cshtml")
+    @Html.Partial("_ContenidosRelacionados")
 
     <div id="divComentarios"></div>
-    @Html.Partial("~/Views/Shared/_Comentarios.cshtml")
-
-
-
-
-    
-
+    @Html.Partial("_Comentarios")
 
 </div>
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/slide")
-    @Scripts.Render("~/bundles/scroll")
     @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_contenidodetalle")  
+    @Scripts.Render("~/bundles/backbone_detalleFundacion")
+      
 
-    <script src="~/Scripts/views/huellitas.DetalleFundacionView.js"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=@Html.Parametrizacion("MapsApiKey")&sensor=true"></script>
-    <script src="~/Scripts/views/huellitas.MapaView.js"></script>
+    @Scripts.Render("~/bundles/backbone_mapa")
+    
 }

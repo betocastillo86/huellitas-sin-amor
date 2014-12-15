@@ -11,7 +11,7 @@ namespace LoginCol.Huellitas.Datos
     public class FormularioAdopcionRepositorio
     {
 
-        public int AgregarFormularioAdopcion(FormularioAdopcion formularioAdopcion)
+        public int Crear(FormularioAdopcion formularioAdopcion)
         {
             try {
                 using (var db = new Repositorio())

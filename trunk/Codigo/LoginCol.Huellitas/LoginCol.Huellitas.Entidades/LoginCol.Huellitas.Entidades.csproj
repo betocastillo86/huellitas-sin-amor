@@ -54,6 +54,7 @@
     <Compile Include="OpcionCampo.cs" />
     <Compile Include="Parametrizacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespuestaAdopcion.cs" />
     <Compile Include="TablaBasica.cs" />
     <Compile Include="TipoContenido.cs" />
     <Compile Include="TipoRelacionContenido.cs" />

@@ -4,20 +4,23 @@
     routes: {
         "": "home",
         "/": "home",
-        "huellitas": "listarHuellitas",
-        "huellitas/": "listarHuellitas",
-        "huellitas/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)": "buscarHuellitas",
-        "huellitas/:id/:nombre": "detalleHuellita",
+        "sinhogar": "listarHuellitas",
+        "sinhogar/": "listarHuellitas",
+        "sinhogar/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)": "buscarHuellitas",
+        "sinhogar/:id/:nombre": "detalleHuellita",
+        "sinhogar/:id/:nombre/quiero-adoptar": "adoptarHuellita",
         "fundaciones" : "listarFundaciones",
         "fundaciones/": "listarFundaciones",
         "fundaciones/buscar(/z:zona)": "buscarFundaciones",
         "fundaciones/:id/:nombre": "detalleFundacion",
+        "fundaciones/:id/:nombre/ver-todos" : "huellasDeFundacion",
         "home/perdidos" : "inicioPerdidos"
     },
 
     home : function()
     {
-        $('#cbp-fwslider').cbpFWSlider();
+        var vistaHome = new HomeView();
+        this.vistaActual = vistaHome;
     },
 
     listarHuellitas: function ()
@@ -51,14 +54,24 @@
         vistaListarFundaciones.filtrarContenidosDesdeUrl(zona);
     },
     detalleHuellita: function (id, nombre)
-    {
+    {   
         var vistaDetalleContenido = new DetalleHuellitaView({ id: id });
         this.vistaActual = vistaDetalleContenido;
     },
+    adoptarHuellita : function(id, nombre)
+    {
+        var vistaAdoptar = new AdoptarView({ id: id });
+        this.vistaActual = vistaAdoptar;
+    },
     detalleFundacion: function (id, nombre)
     {
-        var vistaDetalleFundacion = new DetalleFundacionView({ id: id });
+        var vistaDetalleFundacion = new DetalleFundacionView({ id: id, nombre : nombre });
         this.vistaActual = vistaDetalleFundacion;
+    },
+    huellasDeFundacion : function(id)
+    {
+        var vistaHuellasFundacion = new HuellasFundacionView({ id : id });
+        this.vistaActual = vistaHuellasFundacion;
     },
     inicioPerdidos: function ()
     {
@@ -67,7 +80,7 @@
     },
     navegar: function (url, opt)
     {
-        this.navigate(url.replace(" ", "-"), opt);
+        this.navigate(url.replace(/ /g, "-"), opt);
     }
 });
 

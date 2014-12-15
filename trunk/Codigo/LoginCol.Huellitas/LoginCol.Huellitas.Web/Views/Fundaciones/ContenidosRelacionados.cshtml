@@ -1,0 +1,23 @@
+﻿@model LoginCol.Huellitas.Web.Models.ContenidoBaseModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="divHuellasRelacionadas">
+    <section id="first" class="conteFormCaso slide">
+        <div class="container clearfix">
+            <h2>NUESTRAS HUELLITAS</h2>
+            <h3>@Model.Nombre</h3>
+            <br />
+            <form>
+                <a class="btn" id="btnBuscar" href="./">Volver</a>
+            </form> 
+        </div>
+    </section>
+    @Html.Partial("~/Views/Huellitas/_ResultadosBusqueda.cshtml")
+</div>
+@section scripts{   
+    @Scripts.Render("~/bundles/backbone_filtroContenidos")
+    @Scripts.Render("~/bundles/backbone_contenido")
+    @Scripts.Render("~/bundles/backbone_filtroContenidos")
+    @Scripts.Render("~/bundles/backbone_huellasFundacion")
+}

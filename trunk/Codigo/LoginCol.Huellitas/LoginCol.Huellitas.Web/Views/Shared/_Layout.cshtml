@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model LoginCol.Huellitas.Web.Models.BaseModel
+<!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
@@ -8,7 +9,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
-    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.TagDescripcion">
+    
+    @RenderSection("metatags", required:false)
+    <title>@Model.Titulo</title>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     
     <style>
@@ -17,6 +21,8 @@
         }
     </style>
     @Styles.Render("~/bundles/cssfrontend")
+
+    @RenderSection("css", required:false)
 
     
     <!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -31,17 +37,22 @@
             <header id="top" role="banner">
                 <div class="block"> <a class="nav-btn" id="nav-open-btn" href="#nav"><span class="icon-menu"></span></a> </div>
                 <div class="container">
-                    <div id="logo"></div>
+                    <div id="logo">
+                        <a href="~/"><img src="~/images/logo.svg" alt="Huellitas sin Hogar" title="Huellitas sin hogar - Ayuda a adoptar mascotas" /></a>
+                    </div>
                 </div>
             </header>
             <nav id="nav" role="navigation">
                 <div class="block">
                     <ul class="navigation">
-                        <li data-slide="1" class="is-active"> <a href="javascript:;">Home</a> </li>
-                        <li data-slide="2"> <a href="/huellitas">Casos sin amor</a> </li>
-                        <li data-slide="2"> <a href="/fundaciones">Fundaciones</a> </li>
-                        <li data-slide="2"> <a href="/home/perdidos">Perdidos</a> </li>
-                        <li> <a href="javascript:;">Quienes somos</a> </li>
+                        <li class="is-active"> <a href="/">Inicio</a> </li>
+                        <li> <a href="/sinhogar">Casos sin amor</a> </li>
+                        <li> <a href="/fundaciones">Fundaciones</a> </li>
+                        <li> <a href="/home/perdidos">Perdidos</a> </li>
+                        @if (ViewContext.RouteData.Values["controller"].Equals("Home") && ViewContext.RouteData.Values["action"].Equals("Index"))
+                        { 
+                            <li data-slide="2"> <a href="javascript:;">Quienes somos</a> </li>
+                        }
                         <br />
                     </ul>
                     @*<div class="menuLogin">
@@ -69,7 +80,7 @@
         </div>
         <!--/#inner-wrap-->
     </div>
-    @*<script src="js/menu.js"></script>
+    @*
         <script type="text/javascript">
 
             var _gaq = _gaq || [];
@@ -90,17 +101,11 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/backbone")
     @Scripts.Render("~/bundles/menuEfecto")
-    
-    
-
     @Scripts.Render("~/bundles/backbone_router")
+
 
     @RenderSection("scripts", required: false)
 
-    @*<script src="~/Scripts/models/huellitas.Campo.js"></script>*@
     
-
-    
-
 </body>
 </html>

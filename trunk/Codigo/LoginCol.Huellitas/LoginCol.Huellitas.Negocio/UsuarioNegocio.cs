@@ -42,17 +42,26 @@ namespace LoginCol.Huellitas.Negocio
         /// <param name="correo">correo del usuario</param>
         /// <param name="nombre"></param>
         /// <returns></returns>
-        public Usuario CrearUsuarioDesdeCorreo(string correo, string nombre)
+        public Usuario CrearUsuarioDesdeCorreo(string correo, string nombre, string telefono = null)
         {
-            Usuario usuario = new Usuario();
-            usuario.Correo = correo;
-            usuario.Nombres = nombre;
-            usuario.Apellidos = ".";
-            usuario.EsAdministrador = false;
-            usuario.Clave = ".";
-            usuario.Activo = false;
-            usuario.UsuarioId = _usuarios.Value.CrearUsuario(usuario);
-            return usuario;
+            //Busca si hay usuarios registrados con ese correo
+            var usuario = ObtenerUsuarioPorCorreo(correo);
+
+            //Valida si el suuario que esta poniendo el comentario esta registrado o no
+            if (usuario.UsuarioId == 0)
+            {
+                usuario = new Usuario();
+                usuario.Correo = correo;
+                usuario.Nombres = nombre;
+                usuario.Telefono = telefono;
+                usuario.Apellidos = ".";
+                usuario.EsAdministrador = false;
+                usuario.Clave = ".";
+                usuario.Activo = false;
+                usuario.UsuarioId = _usuarios.Value.CrearUsuario(usuario);
+            }
+
+            return usuario;            
         }
 
         public List<Usuario> ObtenerUsuariosActivos(bool soloAdmin)

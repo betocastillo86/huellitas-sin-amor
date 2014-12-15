@@ -25,12 +25,12 @@
     %>
 
     <div class="grid_6 no-margin">
-        <div class="cajaCaso" style="background-image:url(/img/<%=contenido.ContenidoId%>/medium);">
+        <div class="cajaCaso" style="background-image:url(/img/<%=contenido.ContenidoId%>/big);">
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
-                <p><%= contenido.Descripcion.length > 120 ? contenido.Descripcion.substr(0,120)+ "..." :  contenido.Descripcion%> </p>
-                <a class="btn" href="/huellitas/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
+                <p><%= contenido.DescripcionCorta %></p>
+                <a class="btn" href="/sinhogar/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
             </article>
         </div>
     </div>

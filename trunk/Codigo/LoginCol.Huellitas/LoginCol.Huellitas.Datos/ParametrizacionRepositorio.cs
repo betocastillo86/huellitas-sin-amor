@@ -15,6 +15,7 @@ namespace LoginCol.Huellitas.Datos
 
             using (var db = new Repositorio())
             {
+                
                 valor = db.Parametrizaciones
                     .Where(p => p.Llave.Equals(llave))
                     .FirstOrDefault().Valor;

@@ -7,17 +7,26 @@
     removerErroresFormulario: function (ctx)
     {
         _.each(ctx.$(".invalid"), function (obj) {
-            $(obj).removeClass("invalid")
+            $(obj).removeClass("invalid");
+            var campo = $(obj).attr("id");
+            if(ctx.$("#" + campo + "Error"))
+                ctx.$("#" + campo + "Error").html("");
         });
     },
     marcarErroresFormulario: function (errores, ctx)
     {
+        this.removerErroresFormulario(ctx);
         _.each(errores, function (error, campo) {
             ctx.$("#" + campo).addClass("invalid");
             ctx.$("#" + campo + "Error").html(error);
         });
     },
-
+    limpiarFormulario : function(ctx, campos)
+    {
+        _.each(campos, function (campo) {
+            ctx.$("#" + campo).val("");
+        });
+    },
     cargarScroll: function () {
 
         $.mCustomScrollbar.defaults.theme = "light-2"; //set "light-2" as the default theme
