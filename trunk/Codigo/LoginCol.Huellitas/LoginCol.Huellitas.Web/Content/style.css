@@ -564,12 +564,14 @@ article h3{
 	font-weight:700;
 	color:#FFF;
 	line-height:1;
+	text-transform: uppercase;
 	}
 article h4{
 	font-size:14px;
 	font-weight:400;
 	color:#FFF;
 	line-height:2;
+	text-transform: uppercase;
 	}
 article p{
 	font-size:14px;
@@ -918,7 +920,7 @@ li.comentario p{
 	background:#6DBFF2;
 	}
 .caja_integra .img{
-	background:url(../images/img_beto.jpg) no-repeat center / cover #C60;
+	background:no-repeat center / cover #FFF;
 	width:100px;
 	min-height:100px;
 	height:100%;
@@ -1106,6 +1108,9 @@ footer .redes{
 	background:url(../images/bkg_azul.png) repeat;
 	color:#FFF;
 	padding:0;
+}
+.magContac{
+	margin-top: 20px;
 }
 /*fin contacto */
 /*se busca*/
