@@ -69,7 +69,7 @@
                 </div>
             }
 
-            <div id="divApadrinar" title="Apadrina a @Model.Nombre">
+            <div id="divApadrinar" >
                 <p>Para apadrinar a @Model.Nombre solo tienes que dejarnos tus datos y nos encargaremos de contactarte.</p>
                 <p>El valor mensual que se debe pagar por apadrinar a @Model.Nombre es: @Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")</p>
             </div>
@@ -92,4 +92,5 @@
 }
 @section css{
         @Styles.Render("~/bundles/cssjqueryui")
+
 }

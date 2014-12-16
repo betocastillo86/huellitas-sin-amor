@@ -239,6 +239,7 @@ namespace LoginCol.Huellitas.Web
 
             //Principales scripts utilizados en el detalle de un contenido
             bundles.Add(new ScriptBundle("~/bundles/backbone_contenidodetalle")
+                .Include("~/Scripts/libs/jquery-ui.js")
                 .Include("~/Scripts/models/huellitas.Comentario.js")
                 .Include("~/Scripts/views/huellitas.ComentariosView.js")
                 .Include("~/Scripts/models/huellitas.admin.ContenidoRelacionado.js")
@@ -251,7 +252,6 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/libs/jquery.mCustomScrollbar.js")
                 .Include("~/Scripts/libs/backbone-validation.js")
                 .Include("~/Scripts/libs/backbone.stickit.js")
-                .Include("~/Scripts/libs/jquery-ui.js")
                 );
 
 

@@ -53,8 +53,8 @@
         this.render();
     },
     apadrinar: function () {
-        debugger;
-        this.$("#divApadrinar").dialog('open');
+        
+        $("#divApadrinar").dialog('open');
     },
     sumarComentario : function(ultimoComentario)
     {

@@ -10,6 +10,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
     <meta name="description" content="@ViewBag.TagDescripcion">
+    <meta property="og:image" content="http://huellitas.social/images/logo.png" />
+    <link rel="image_src" href="http://huellitas.social/images/logo.png" />
     
     @RenderSection("metatags", required:false)
     <title>@Model.Titulo</title>
@@ -53,8 +55,9 @@
                         { 
                             <li data-slide="2"> <a href="javascript:;">Quienes somos</a> </li>
                         }
-                        <br />
+                       
                     </ul>
+                    <br />
                     @*<div class="menuLogin">
                         <a href="javascript:;" class="btn_login">INICIAR SESIÓN</a> <a href="javascript:;" class="btn_sesion">REGISTRARME</a>
                         <div class="btn_search"> <span class="icon-menu"></span> </div>
@@ -70,9 +73,9 @@
             
             <footer>
                 <div class="redes">
-                    <a href="javascript:;" class="fb icon-face"></a>
-                    <a href="javascript:;" class="youtube icon-youtube"></a>
-                    <a href="javascript:;" class="twt icon-twt"></a>
+                    <a href="https://www.facebook.com/pages/Huellitas-sin-hogar/728532287235658" class="fb icon-face" target="_blank" title="Facebook de Huellitas sin hogar"></a>
+                    <a href="https://www.youtube.com/channel/UCQdis_wkgbgreU9alDpwzNw" class="youtube icon-youtube" title="Canal de Youtube huellitas sin hogar" target="_blank"></a>
+                    <a href="https://twitter.com/hsinhogar" class="twt icon-twt" title="Twitter de huellitas sin hogar" target="_blank"></a>
                     <a href="javascript:;" class="instagram icon-insta"></a>
                     <br />
                 </div>
