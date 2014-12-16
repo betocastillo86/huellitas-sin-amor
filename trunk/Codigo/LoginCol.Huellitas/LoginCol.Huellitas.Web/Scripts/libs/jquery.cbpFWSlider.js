@@ -86,8 +86,8 @@
 			if( this.itemsCount > 1 ) {
 
 				// add navigation arrows (the previous arrow is not shown initially):
-				this.$navPrev = $( '<span class="cbp-fwprev">&lt;</span>' ).hide();
-				this.$navNext = $( '<span class="cbp-fwnext">&gt;</span>' );
+				this.$navPrev = $( '<span class="cbp-fwprev icon-prev"></span>' ).hide();
+				this.$navNext = $( '<span class="cbp-fwnext icon-next"></span>' );
 				$( '<nav/>' ).append( this.$navPrev, this.$navNext ).appendTo( this.$el );
 				// add navigation dots
 				var dots = '';
