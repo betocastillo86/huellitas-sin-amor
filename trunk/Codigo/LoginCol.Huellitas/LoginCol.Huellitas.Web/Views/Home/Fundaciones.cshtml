@@ -9,11 +9,10 @@
             {
                 var contenido = Model[i];
                 <a href="fundaciones/@contenido.ContenidoId/@contenido.NombreLink">
-                    <li class="grid_3 @(i > 0 && i%4==0 ? "omega" : string.Empty)" style="background: url(img/@(contenido.ContenidoId)/mini) no-repeat center;"></li>
+                    <li class="grid_3 @(i > 0 && i%4==0 ? "omega" : string.Empty)"><img src="images/fundaciones/logo@(contenido.ContenidoId).png"/></li>
                 </a>
-                
             }*@
-            <br />
+            <br/>
         </ul>
     </div>
 </section>
