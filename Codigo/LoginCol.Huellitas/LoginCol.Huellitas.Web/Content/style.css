@@ -39,7 +39,6 @@ p{
 	margin:0;
 	padding:8px 0;
 	line-height:140%;
-	font-size:14px;
 	}
 h2{
 	color:#FFF;
@@ -113,6 +112,15 @@ body {
   position: relative;
   margin: 0 auto;
   max-width:1200px;
+}
+.beta{
+	background: url(../images/img_beta.png) no-repeat center;
+	width: 106px;
+	height: 102px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 99999999;
 }
 
 .close-btn {
@@ -365,10 +373,12 @@ textarea {
 	color:#FFF;
 	font-size:110px;
 	line-height:1;
-	margin:20px;
+	margin:0 20px 20px;
+	padding: 20px 0 0;
 	}
 .cajax3 .parrafo{
 	margin:0 20px;
+	text-align: justify;
 	}
 .parrafo h3{
 	font-size:25px;
@@ -378,7 +388,6 @@ textarea {
 	}
 .parrafo p{
 	text-align:justify;
-	font-size:16px;
 	line-height:140%;
 	}
 .cajax3 a{
@@ -410,9 +419,12 @@ textarea {
 	padding:0;
 	}
 .conteFunda ul li{
-	height:80px;
+	height:auto;
 	cursor:pointer;
 	}
+.conteFunda ul li img{
+	width: 100%;
+}
 .conteConta{
 	}
 .conteConta .bannerDona{
@@ -429,6 +441,7 @@ textarea {
 	}
 .bannerDona .parraDona{
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-shadow:3px 3px 3px #3f77bf, -1px -3px 3px #3f77bf, -2px -4px 3px #3f77bf;
 	font-size:20px;
 	line-height:140%;
 	margin:0 20px 20px;
@@ -516,18 +529,19 @@ form .btn{
 		color:#FFF;
 		}
 	.caja_vision p{
-		font-size:14px !important;
 		text-align:justify;
 		padding:0;
 		}
 	.conte_nosotros{
-		background:url(../images/bkg_amarillo.png) repeat;
+		background:url(../images/bkg_amarilloCat.png) repeat;
+		text-align: justify;
 		}
 	.conte_nosotros .caja_integra{
 		background:#FFD37D;
 		}
 	.conte_nosotros .caja_integra .descri_integra h3{
 		color:#2D4568;
+		text-align: left;
 		}
 	/*fin quienes*/
 /*fin home*/
@@ -567,14 +581,12 @@ article h3{
 	text-transform: uppercase;
 	}
 article h4{
-	font-size:14px;
 	font-weight:400;
 	color:#FFF;
 	line-height:2;
 	text-transform: uppercase;
 	}
 article p{
-	font-size:14px;
 	white-space:normal;
 	color:#FFF;
 	}
@@ -650,7 +662,6 @@ article .btn{
 	width:360px;
 	}
 .text_funda ul li{
-	font-size:14px;
 	float:left;
 	width:50%;
 	}
@@ -718,7 +729,6 @@ article p.scroll{
 	position:relative;
 	}
 .descri_mascota{
-	font-size:14px;
 	color:#FFF;
 	}
 .descri_mascota h2{
@@ -778,7 +788,6 @@ article p.scroll{
 	margin:0 0 20px;
 	}
 .descriPerfil .parrafo p{
-	font-size:14px;
 	}
 .descriPerfil .btn{
 	background:#3F77BF;
@@ -814,7 +823,6 @@ article p.scroll{
 	width:50%;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#FFF;
-	font-size:14px;
 	}
 .conte_similar{
 	background:url(../images/bkg_gris.png) repeat;
@@ -1096,7 +1104,7 @@ footer .redes{
 /*fin footer*/
 /* home funda */ 
 #funda_home {
-	background:url(../images/bkg_rosa.png) repeat;
+	background:url(../images/bkg_rosa3.png) repeat;
 	padding: 50px 0;
 }
 /* contacto */
@@ -1314,6 +1322,9 @@ article p{
 }
 }
 @media screen and (max-width: 640px) {
+body{
+	font-size: 18px;
+	}
 .cajaCaso {
     min-height: 170px;
 }
@@ -1338,7 +1349,20 @@ article h4 {
 	}
 .cajax3{
 	margin:20px 0 0;
+	width: 100%;
 	}
+.cajax3 .caja_icon{
+	float: left;
+}
+.cajax3 .parrafo{
+	float: left;
+	margin: 20px 0 0;
+	width: calc(100% - 170px);
+}
+.cajax3 a{
+	clear: both;
+	margin-left: 150px;
+}
 .conte_fundaciones h3{
 	font-size:20px;
 	}
@@ -1351,7 +1375,6 @@ article h4 {
 	margin:20px 20px 0;
 	}
 .caja_vision p{
-	font-size:16px;
 	}
 .conte_vision .caja_vision{
 	float:none;
@@ -1385,6 +1408,9 @@ form input{
 .bannerDona{
 	display:none;
 	}
+.magContac{
+	width: 100%;
+}
 #contacto{
 	padding:50px 0;
 	}
@@ -1467,19 +1493,47 @@ article p.scroll{
 	margin:20px 0 0;
 	}
 }
+.caja_integra {
+    display: inline-block;
+    float: none;
+    margin:0 20px 10px 0;
+    width: calc(50% - 12px);
+}
 /* Mobile */
 @media screen and (max-width: 480px) {
 #logo {
 	width: 100%;
 	text-align: center;
-}
+	}
 .slide {
 	background-attachment: fixed;
 	width:100%;
 	position: relative;
 	padding:50px 0;
+	}
+.conteFunda ul li{
+	margin: 0 auto;
+	width: 235px;
+	}
+.cajax3{
+	padding: 0 0 20px;
 }
-
+.cajax3 .caja_icon{
+	float: none;
+}
+.cajax3 .parrafo{
+	float: none;
+	width: auto;
+	margin: 0 20px;
+}
+.cajax3 a{
+	margin: 20px 20px 0;
+}
+.caja_integra{
+	margin: 10px 0;
+	width: 100%;
+	display: block;
+	}
 }
 
 
