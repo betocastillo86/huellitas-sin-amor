@@ -81,9 +81,9 @@
 /*slider*/
 .cbp-fwslider {
 	position: relative;
-	margin: 0 0 10px;
+	margin: 0;
 	overflow: hidden;
-	padding: 40px 0 60px;
+	padding: 0 0 40px;
 }
 .cbp-fwslider ul {
 	margin: 0;
@@ -119,19 +119,20 @@
 	top: 50%;
 	width: 50px;
 	height: 50px;
-	background:#EF525B;
-	box-shadow: 0 0 0 2px #FFF;
-	color: #fff;
+	color: #EF525B;
+	text-shadow:-3px 0px #FFF, 3px 0px #FFF, 0px 3px #FFF, 0px -3px #FFF;
 	font-size: 50px;
 	text-align: center;
 	margin-top: -25px;
 	line-height:1;
 	cursor: pointer;
 	font-weight: normal;
+	transition:ease all 0.4s;
 }
 
 .cbp-fwslider nav span:hover {
-	background: #378fc3;
+	color: #378fc3;
+	text-shadow:-3px 0px #FFF, 3px 0px #FFF, 0px 3px #FFF, 0px -3px #FFF;
 }
 
 .cbp-fwslider nav span.cbp-fwnext {
