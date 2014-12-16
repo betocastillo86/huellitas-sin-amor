@@ -56,8 +56,8 @@ namespace LoginCol.Huellitas.Entidades
 
     public enum TipoRelacionUsuariosEnum
     { 
-        Adoptante,
-        Padrino
+        Adoptante = 1,
+        Padrino = 2
     }
 
     public static class EnumConverter

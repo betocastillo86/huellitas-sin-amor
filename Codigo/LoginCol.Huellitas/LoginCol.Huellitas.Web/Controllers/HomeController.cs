@@ -78,9 +78,16 @@ namespace LoginCol.Huellitas.Web.Controllers
             
             return PartialView(modelo);
         }
-        
 
 
+        #region Adoptar
+
+        public ActionResult Adoptar()
+        {
+            var modelo = new BaseModel("TituloPorqueAdoptar");
+            return View(modelo);
+        }
+        #endregion
 
 
 

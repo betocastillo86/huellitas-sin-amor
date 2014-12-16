@@ -23,6 +23,11 @@
         {
             this.tipo = args.tipo;
         }
+
+        
+
+        // Automatically re-render whenever the Collection is populated.
+        //this.collection.on("reset", this.render, this);
         
 
     },
@@ -41,6 +46,12 @@
         this.parametrosFiltro.paginaActual++;
 
         var listaContenidos = new ContenidoCollection();
+        var ctx = this;
+
+        listaContenidos.on("fetch", function () {
+            ctx.$el.append(Huellitas.cargador);
+        }, this);
+
         listaContenidos.on("sync", this.mostrarContenidos, this);
         listaContenidos.cargarHuellitasPorFiltro(this.parametrosFiltro);
         //this.render();
@@ -48,6 +59,8 @@
     mostrarContenidos : function(models)
     {
         var contenidos = models.toJSON();
+        //this.$el.html(this.$el.html().replace(Huellitas.cargador, ""));
+        this.$("#divLoading").remove();
         this.$el.append(this.template(contenidos));
         var ctx = this;
 

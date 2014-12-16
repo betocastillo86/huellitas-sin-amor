@@ -24,8 +24,8 @@
         this.vistaComentarios = new ComentariosView({ id: args.id, el: "#divComentarios" });
         this.vistaComentarios.on("comentarioAgregado", this.sumarComentario, this);
 
-        this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: 'http://www.huellitassinamor.com/' });
-        this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: 'http://www.huellitassinamor.com/', texto: 'Linda pagina de twitter' });
+        this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: document.URL });
+        this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: document.URL, texto: 'Quiero compartir la pagina de @hsinhogar en la que se encuentra está fundación' });
 
         
         this.vistaPerrosRelacionados = new ContenidoRelacionadoView({

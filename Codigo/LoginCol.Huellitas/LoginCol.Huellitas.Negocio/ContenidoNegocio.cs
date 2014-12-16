@@ -265,6 +265,7 @@ namespace LoginCol.Huellitas.Negocio
         { 
             contenido.TipoContenidoId = (int)TipoContenidoEnum.Imagen;
             contenido.ZonaGeograficaId = ParametrizacionNegocio.ZonaGeograficaPorDefecto;
+            contenido.DescripcionCorta = contenido.Descripcion;
             ResultadoOperacion respuesta = Crear(contenido, idUsuario);
 
             if (respuesta.OperacionExitosa)

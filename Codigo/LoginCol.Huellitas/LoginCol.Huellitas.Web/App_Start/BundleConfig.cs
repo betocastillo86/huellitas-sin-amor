@@ -177,6 +177,11 @@ namespace LoginCol.Huellitas.Web
                     .Include("~/Scripts/views/huellitas.SubirArchivoView.js")
                 );
 
+            //Informacion sobre adopciones
+            bundles.Add(new ScriptBundle("~/bundles/backbone_porqueAdoptar")
+                    .Include("~/Scripts/views/huellitas.InfoAdoptarView.js")
+                );
+
             //listado de huellitas asociadas a una fundación
             bundles.Add(new ScriptBundle("~/bundles/backbone_huellasFundacion")
                 .Include("~/Scripts/views/huellitas.HuellasFundacionView.js"));
