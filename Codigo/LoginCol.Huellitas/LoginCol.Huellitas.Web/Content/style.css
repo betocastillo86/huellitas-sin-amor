@@ -285,7 +285,7 @@ header{
 	height:90px;
 	width:161px;
 }
-
+#logo a{height: 100% !important; display: block;}
 #logo img {
     height:100%;
 }
