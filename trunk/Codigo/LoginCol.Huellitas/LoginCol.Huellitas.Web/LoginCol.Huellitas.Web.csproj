@@ -381,9 +381,13 @@
     <Content Include="Images\banner_dona.jpg" />
     <Content Include="Images\bkg_amarillo.png" />
     <Content Include="Images\bkg_azul.png" />
+    <Content Include="Images\bkg_azul2.png" />
     <Content Include="Images\bkg_cafe.png" />
     <Content Include="Images\bkg_gris.png" />
+    <Content Include="Images\bkg_rojo.png" />
     <Content Include="Images\bkg_rosa.png" />
+    <Content Include="Images\bkg_slide.jpg" />
+    <Content Include="Images\cargar.gif" />
     <Content Include="Images\decorative.png" />
     <Content Include="Images\dribbble.png" />
     <Content Include="Images\footprints.png" />
@@ -395,6 +399,9 @@
     <Content Include="Images\galeria\img_03.jpg" />
     <Content Include="Images\galeria\img_04.jpg" />
     <Content Include="Images\galeria\img_galeriaprueba.jpg" />
+    <Content Include="Images\header_busco.jpg" />
+    <Content Include="Images\img_adopta1.png" />
+    <Content Include="Images\img_beto.jpg" />
     <Content Include="Images\img_mapa.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo.svg" />
@@ -624,6 +631,7 @@
     <Content Include="Scripts\views\huellitas.HuellasFundacionView.js" />
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ImagenesContenidoView.js" />
+    <Content Include="Scripts\views\huellitas.InfoAdoptarView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
@@ -698,6 +706,8 @@
     <Content Include="Views\Shared\_Contacto.cshtml" />
     <Content Include="Views\Home\Fundaciones.cshtml" />
     <Content Include="Views\Huellitas\_BannerDestacados.cshtml" />
+    <Content Include="Views\Home\_InfoAdopta.cshtml" />
+    <Content Include="Views\Home\Adoptar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

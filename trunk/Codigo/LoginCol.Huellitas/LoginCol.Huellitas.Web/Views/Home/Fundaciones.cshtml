@@ -5,13 +5,13 @@
         <h2>FUNDACIONES</h2>
         <p>Estas son algunas de las fundaciones que puedes encontrar con nosotros</p>
         <ul>
-            @*@for (int i = 0; i < Model.Count; i++)
+            @for (int i = 0; i < Model.Count; i++)
             {
                 var contenido = Model[i];
                 <a href="fundaciones/@contenido.ContenidoId/@contenido.NombreLink">
                     <li class="grid_3 @(i > 0 && i%4==0 ? "omega" : string.Empty)"><img src="images/fundaciones/logo@(contenido.ContenidoId).png"/></li>
                 </a>
-            }*@
+            }
             <br/>
         </ul>
     </div>

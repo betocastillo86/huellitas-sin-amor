@@ -51,10 +51,11 @@
                         <li class="is-active"> <a href="/">Inicio</a> </li>
                         <li> <a href="/sinhogar">Casos sin amor</a> </li>
                         <li> <a href="/fundaciones">Fundaciones</a> </li>
-                        <li> <a href="/home/perdidos">Perdidos</a> </li>
+                        @*<li> <a href="/home/perdidos">Perdidos</a> </li>*@
+                        <li> <a href="/por-que-adoptar">¿Quieres Adoptar?</a> </li>
                         @if (ViewContext.RouteData.Values["controller"].Equals("Home") && ViewContext.RouteData.Values["action"].Equals("Index"))
                         { 
-                            <li data-slide="2"> <a href="javascript:;">Quienes somos</a> </li>
+                            <li data-slide="2"> <a href="javascript:;"> Quienes somos</a> </li>
                         }
                        
                     </ul>

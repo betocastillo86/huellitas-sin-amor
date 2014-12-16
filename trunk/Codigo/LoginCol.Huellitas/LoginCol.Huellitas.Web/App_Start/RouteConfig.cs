@@ -79,6 +79,13 @@ namespace LoginCol.Huellitas.Web
                 constraints: new { controller = "(Fundaciones)", action = "Index" }
             );
 
+            routes.MapRoute(
+                name: "InformacionAdopcion",
+                url: "por-que-adoptar",
+                defaults: new { controller = "Home", action = "Adoptar" },
+                constraints: new { controller = "(Home)", action = "Adoptar" }
+            );
+
             #region detalle Contenido
 
             //routes.MapRoute(

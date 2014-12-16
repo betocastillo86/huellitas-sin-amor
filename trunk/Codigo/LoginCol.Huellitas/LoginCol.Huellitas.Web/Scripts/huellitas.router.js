@@ -14,7 +14,8 @@
         "fundaciones/buscar(/z:zona)": "buscarFundaciones",
         "fundaciones/:id/:nombre": "detalleFundacion",
         "fundaciones/:id/:nombre/ver-todos" : "huellasDeFundacion",
-        "home/perdidos" : "inicioPerdidos"
+        "home/perdidos": "inicioPerdidos",
+        "por-que-adoptar": "porqueAdoptar"
     },
 
     home : function()
@@ -77,6 +78,12 @@
     {
         var vistaPerdidos = new PerdidosView();
         this.vistaActual = vistaPerdidos;
+    },
+
+    porqueAdoptar : function()
+    {
+        var vistaAdoptar = new InfoAdoptarView({ el: "#divInfoAdoptar" });
+        this.vistaActual = vistaAdoptar;
     },
     navegar: function (url, opt)
     {
