@@ -2,6 +2,7 @@
 using LoginCol.Huellitas.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,5 +76,7 @@ namespace LoginCol.Huellitas.Negocio
 
         public static string DescripcionHome { get { return String("DescripcionHome"); } }
 
+
+        public static bool ValidarAnalytics { get { return Convert.ToBoolean(ConfigurationManager.AppSettings["validarAnalytics"]); } }
     }
 }
