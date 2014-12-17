@@ -30,7 +30,7 @@
         this.vistaComentarios.on("comentarioAgregado", this.sumarComentario, this);
 
         this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: document.URL });
-        this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: document.URL, texto: 'Quiero compartir la pagina de @hsinhogar en la que se encuentra está fundación' });
+        this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: document.URL, texto: 'Quiero compartir la pagina de @hsinhogar en la que se encuentra esta mascota' });
         this.vistaPerrosRelacionados = new ContenidoRelacionadoView({ el: "#divPerrosRelacionados", id: this.contenidoId, tipoRelacion: Constantes.TipoRelacionAnimalesSimilares, titulo: "ANIMALES SIMILARES" });
         
         this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido", urlVideo: this.$("#UrlVideo").val() });

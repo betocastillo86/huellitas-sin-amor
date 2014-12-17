@@ -42,6 +42,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public string Titulo { get; set; }
 
+        public string ImagenCompartir { get; set; }
+
         //public string TagDescripcion { get; set; }
     }
 }
