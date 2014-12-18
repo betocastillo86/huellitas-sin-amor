@@ -22,15 +22,12 @@ img {
 	max-width: 100%;
 }
 a:link {
+	transition:ease all 0.4s;
 	color: #2F496E;
 	text-decoration: none;
 }
 a:hover {
 	color: #FAAF00;
-	text-decoration: none;
-}
-a:visited {
-	color: #f68f67;
 	text-decoration: none;
 }
 p{
@@ -294,6 +291,9 @@ header{
 	width:161px;
 }
 #logo a{height: 100% !important; display: block;}
+#logo span{
+	text-indent: -9999px;
+}
 #logo img {
     height:100%;
 }
@@ -581,6 +581,9 @@ article h3{
 	line-height:1;
 	text-transform: uppercase;
 	}
+article h3 a{
+	color: #FFF !important;	
+}
 article h4{
 	font-weight:400;
 	color:#FFF;
@@ -597,7 +600,6 @@ article .btn{
     width: 130px;
 	}
 .cajaCaso .prioridad{
-	display: none;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -823,9 +825,16 @@ article p.scroll{
 .conte_datos h2{
 	font-size:20px;
 	font-weight:400;
-	cursor:pointer;
+	text-transform: uppercase;
 	}
-.conte_datos h2 b{
+.conte_datos h2 a{
+	color: #FFF;
+	font-weight:700;
+	}
+.conte_datos h2 a:hover, .conte_datos h2 a:active{
+	color:#3f77bf;
+	}
+.conte_datos h2 a b{
 	font-weight:700;
 	}
 .conte_datos h3{
@@ -842,8 +851,6 @@ article p.scroll{
 	list-style:none;
 	}
 .conte_datos ul li{
-	float:left;
-	width:50%;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#FFF;
 	}
@@ -1063,6 +1070,9 @@ li.comentario p{
 		border-top: 20px solid transparent;
 		right:-12px;
 		}
+.seccionPreguntas{
+	color: #FFF;
+}
 /*fin adopta*/
 /*footer*/
 footer{
