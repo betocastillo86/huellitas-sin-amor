@@ -293,6 +293,8 @@ header{
 #logo a{height: 100% !important; display: block;}
 #logo span{
 	text-indent: -9999px;
+	display: block;
+	position: absolute;
 }
 #logo img {
     height:100%;
