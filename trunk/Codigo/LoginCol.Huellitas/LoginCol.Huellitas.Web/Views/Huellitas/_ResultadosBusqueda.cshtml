@@ -26,6 +26,7 @@
 
     <div class="grid_6 no-margin">
         <div class="cajaCaso" style="background-image:url(/img/<%=contenido.ContenidoId%>/big);">
+            <div class="prioridad">CASO PRIORITARIO</div>
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
@@ -39,7 +40,7 @@
     }
 
     if(obj.length == 0) { %>
-    <div>No se encontraron resultados con tu busqueda</div>
+    <div class="todoResul">No se encontraron resultados con tu busqueda</div>
     <% }
     else { %>
     <br />
