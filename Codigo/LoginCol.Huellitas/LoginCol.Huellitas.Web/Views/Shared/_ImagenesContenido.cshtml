@@ -10,7 +10,8 @@
                     src="https://www.youtube.com/embed/<%=obj.UrlVideo%>" style="display:none"></iframe>
         </div>
         <ul class="gale_mini demo-x">
-            <% if(obj.UrlVideo) { %>
+            <% 
+            if(obj.UrlVideo) { %>
             <li style="background-image: url(http://img.youtube.com/vi/<%=obj.UrlVideo%>/2.jpg)"  contenidoid="<%=obj.ContenidoId%>" id="btnVideo"></li>
             <% } %>
             <li style="background-image: url(/img/<%=obj.ContenidoId%>/mini)" class="imagenAdicional" contenidoid="<%=obj.ContenidoId%>"></li>

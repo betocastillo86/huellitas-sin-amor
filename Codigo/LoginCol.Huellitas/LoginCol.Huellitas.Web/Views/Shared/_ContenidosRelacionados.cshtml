@@ -6,26 +6,34 @@
                 <%
                 var contador = 0;
                 _.each(obj.Contenidos, function(contenido){
+                
+                
+                
+                var edad = _.findWhere(contenido.Campos, { CampoNombre : "Edad" });
 
-                if(contador == 0 || contador % 4 == 0){ %>
+                if(contador == 0 ){ %>
                 <li>
                     <div class="container clearfix">
                         <% } %>
                         <div class="grid_3 <%= contador > 0 && contador%3 == 0 ? ' omega' :'' %>">
                             <div style="background-image: url(/img/<%=contenido.ContenidoHijo.ContenidoId%>/medium);" class="cajaSimilar">
                                 <article class="c_tipo1">
-                                    <h3> <a href="/sinhogar/<%=contenido.ContenidoHijo.ContenidoId%>/<%=contenido.ContenidoHijo.NombreLink%>"><%=contenido.ContenidoHijo.Nombre%></a></h3>
-                                    <h4>EDAD: 1 AÑO - BULL DOG - BOGOTÁ</h4>
+                                    <h3> <a href="/sinhogar/<%=contenido.ContenidoHijo.ContenidoId%>/<%=contenido.ContenidoHijo.NombreLink%>" title="<%=contenido.ContenidoHijo.DescripcionCorta%>"><%=contenido.ContenidoHijo.Nombre%></a></h3>
+                                    
                                 </article>
                             </div>
                         </div>
                         <%
-
-                        if(contador== obj.Contenidos.length || (contador > 0 && contador % 3 == 0)){ %>
+                        
+                        
+                if(contador == 3){ 
+                    contador=0;
+                %>
                     </div>
                 </li>
                 <% }
-                contador++;
+                   else
+                    contador++;
                 }); %>
             </ul>
         </div>
