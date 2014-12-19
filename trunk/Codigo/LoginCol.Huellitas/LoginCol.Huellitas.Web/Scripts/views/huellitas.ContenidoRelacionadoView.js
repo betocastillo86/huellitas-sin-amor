@@ -2,6 +2,10 @@
 
     contenidoPadreId: 0,
 
+    events: {
+        "click .cajaSimilar" : "direccionarContenido"
+    },
+
     tipoRelacion: 0,
 
     template: _.template($("#templateContenidosRelacionados").html()),
@@ -35,14 +39,19 @@
         this.listaContenidos.on("sync", this.mostrarContenidos, this);
         this.listaContenidos.cargarContenidos(this.contenidoPadreId, this.tipoRelacion);
     },
-
+    direccionarContenido : function(obj)
+    {
+        document.location.href = $(obj.target).find('a').attr('href');
+    },
     mostrarContenidos : function()
     {
         this.render();
     },
     render: function ()
     {
-        this.$el.html(this.template(
+        if (this.listaContenidos.length > 0)
+        {
+            this.$el.html(this.template(
             {
                 Titulo: this.titulo,
                 Contenidos: this.listaContenidos.toJSON(),
@@ -50,7 +59,11 @@
                 LinkVerTodos: this.linkVerTodos
             }));
 
-        $('#cbp-fwslider').cbpFWSlider();
+            $('#cbp-fwslider').cbpFWSlider();
+        }
+
+
+        
         return this;
     }
 });

@@ -18,7 +18,7 @@
     {
         this.idContenido = args.id;
         this.vistaZonas = new ZonasGeograficasView({ el: this.el });
-        this.$("#Usuario_FechaNacimiento").datepicker();
+        this.$("#Usuario_FechaNacimiento").datepicker({ maxDate : '-18y', changeYear  : true});
         this.formulario = $(this.$("form")[0]);
     },
     siguiente: function (args)

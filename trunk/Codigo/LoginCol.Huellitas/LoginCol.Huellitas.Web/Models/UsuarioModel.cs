@@ -23,12 +23,15 @@ namespace LoginCol.Huellitas.Web.Models
         [EmailAddress]
         public string Correo { get; set; }
 
+        [MaxLength(100)]
         [Required]
         public string Direccion { get; set; }
         
+        [MaxLength(18)]
         [Required]
         public string Telefono { get; set; }
         
+        [MaxLength(18)]
         [Required]
         public string Celular { get; set; }
 

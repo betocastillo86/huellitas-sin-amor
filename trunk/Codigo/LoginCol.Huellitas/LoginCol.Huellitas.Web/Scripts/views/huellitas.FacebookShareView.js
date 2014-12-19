@@ -2,6 +2,10 @@
 
     tagName: 'div',
 
+    events: {
+            "click a" : "compartir"
+    },
+
     template: _.template($("#templateCompartirFacebook").html()),
 
     url : undefined,
@@ -10,6 +14,10 @@
     {
         this.url = args.url;
         this.render();
+    },
+    compartir : function()
+    {
+        window.open('https://www.facebook.com/sharer/sharer.php?u='+this.url, '_blank', 'width=550, height=400');
     },
     render: function ()
     {

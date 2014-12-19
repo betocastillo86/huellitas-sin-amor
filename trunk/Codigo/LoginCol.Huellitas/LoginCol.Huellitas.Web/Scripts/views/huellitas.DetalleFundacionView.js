@@ -19,7 +19,7 @@
 
     initialize: function (args) {
         this.contenidoId = args.id;
-        this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido" });
+        this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido", urlVideo: this.$("#UrlVideo").val() });
 
         this.vistaComentarios = new ComentariosView({ id: args.id, el: "#divComentarios" });
         this.vistaComentarios.on("comentarioAgregado", this.sumarComentario, this);
