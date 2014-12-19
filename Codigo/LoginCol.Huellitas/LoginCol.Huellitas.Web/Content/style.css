@@ -142,10 +142,10 @@ body {
   opacity: 1;
 }
 .nav-btn {
-	width:40px;
-	height:40px;
-	text-align:center;
-	font-size:30px;
+	width:60px;
+	height:60px;
+	text-align:left;
+	font-size:40px;
 	color:#2F496E;
 	display: block;
 	padding: 0;
@@ -293,7 +293,7 @@ header{
 #logo a{height: 100% !important; display: block;}
 #logo span{
 	text-indent: -9999px;
-	display: block;
+	display: none;
 	position: absolute;
 }
 #logo img {
@@ -330,6 +330,9 @@ textarea {
 	text-transform:uppercase;
 	cursor:pointer;
 	}
+.mas_scroll a{
+	color: #FFF;
+}
 /* General Slides */ 
 
 .slide {
@@ -1462,6 +1465,7 @@ form input{
 	}
 .conte_datos{
 	margin:20px 0;
+	clear: both;
 	}
 .gale_mini li{
 	height:65px;
@@ -1571,6 +1575,9 @@ article p.scroll{
 	}
 .conte_check{
 	clear: both;
+	}
+.cajaCaso .prioridad{
+	width: calc(100% - 185px);
 	}
 }
 
