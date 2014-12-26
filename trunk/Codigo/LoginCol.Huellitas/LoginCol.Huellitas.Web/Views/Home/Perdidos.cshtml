@@ -15,8 +15,9 @@
 <div id="divPerdidosGeneral">
     <section class="conteBusca slide">
         <div class="container clearfix conteConta">
-            <h3>LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT.</h3>
-            <p>Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio.</p>
+            <h3>¿BUSCAS O ENCONTRASTÉ UNA MASCOTA?</h3>
+            <p>Si estas buscando tu mascota o encontraste una en la calle que posiblemente pertece a una familia, Huellitas sin hogar te 
+            da una manera facil de encontrarla o registrarla, solo ingresa tus datos y nos estaremos comunicando contigo lo más pronto posible.</p>
             <nav class="nav_busca">
                 <li class="sel grid_3 addform" id="btnBusco">
                     <span class="icon-casa"></span>
@@ -31,48 +32,79 @@
                     Mascotas reportadas
                 </li>
                 <form id="formRegistrar" class="grid_9 omega" style="display: none" action="/home/perdidos" method="post" enctype="multipart/form-data">
-                    <div class="conte_check grid_4">
-                        <div class="tipoMasco">
-                            <input class="check" type="radio" name="TipoId" checked="checked" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
-                            <span class="icon-perro"></span>
+                    <div id="camposFormulario">
+                        <div class="conte_check grid_4">
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" checked="checked" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
+                                <span class="icon-perro"></span>
+                            </div>
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Gato)">
+                                <span class="icon-gato"></span>
+                            </div>
+
                         </div>
-                        <div class="tipoMasco">
-                            <input class="check" type="radio" name="TipoId" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Gato)">
-                            <span class="icon-gato"></span>
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.Nombre, new { placeholder = "NOMBRE DEL ANIMAL" })
+                            @Html.ErrorField("Nombre")
                         </div>
-                    </div>
-                    <div class="grid_4">
-                        @Html.EditorFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL" })
-                    </div>
-                    @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
-                    <select id="ddlZonaDepartamento" class="grid_4">
-                        <option>DEPARTAMENTO</option>
-                    </select>
-                    <select id="ddlZonaCiudad" class="grid_4">
-                        <option>CIUDAD</option>
-                    </select>
+
+                        @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
+                        @Html.ErrorField("Genero")
+                        <select id="ddlZonaDepartamento" class="grid_4">
+                            <option>DEPARTAMENTO</option>
+                        </select>
+                        <select id="ddlZonaCiudad" class="grid_4">
+                            <option>CIUDAD</option>
+                        </select>
 
 
-                    @Html.DropDownListFor(m => m.Zona, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
+                        @Html.DropDownListFor(m => m.ZonaGeograficaId, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
+                        @Html.ErrorField("ZonaGeograficaId")
 
-                    @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
-                    <div class="grid_4">
-                        @Html.TextBoxFor(m => m.ContactoNombre, new { placeholder = "NOMBRE DE CONTACTO" })
-                    </div>
-                    <div class="grid_4 omega">
-                        @Html.TextBoxFor(m => m.ContactoTelefono, new { placeholder = "TELEFONO DE CONTACTO" })
-                    </div>
-                    <div class="grid_4 ">
-                        @Html.TextBoxFor(m => m.ContactoCorreo, new { placeholder = "TELEFONO DE CONTACTO" })
-                    </div>
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL", valjs = "numero"})
+                            @Html.ErrorField("Edad")
+                        </div>
 
-                    <div class="grid_4" id="divArchivoPerdido">
-                    </div>
-                    <input type="hidden" id="Imagen" />
-                    <div class="btn color3" id="btnGuardar">GUARDAR</div>
+                        @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
+                        @Html.ErrorField("Color")
 
+                        <div class="grid_4 omega" id="divArchivoPerdido"></div>
+
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.ContactoNombre, new { placeholder = "NOMBRE DE CONTACTO" })
+                            @Html.ErrorField("ContactoNombre")
+                        </div>
+                        <div class="grid_4 ">
+                            @Html.TextBoxFor(m => m.ContactoTelefono, new { placeholder = "TELEFONO DE CONTACTO" })
+                            @Html.ErrorField("ContactoTelefono")
+                        </div>
+                        <div class="grid_4 omega">
+                            @Html.TextBoxFor(m => m.ContactoCorreo, new { placeholder = "CORREO DE CONTACTO" })
+                            @Html.ErrorField("ContactoCorreo")
+                        </div>
+                        <div class="grid_12 omega">
+                            @Html.TextAreaFor(m => m.Descripcion, new { placeholder = "BREVE DESCRIPCIÓN" })
+                            @Html.ErrorField("Descripcion")
+                        </div>
+
+
+
+                        @Html.ErrorField("Imagen")
+                        <input type="hidden" id="Imagen" />
+                        <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
+                    </div>
+                    
+                    <div id="divMensajeConfirmacion" style="display:none">
+                        <h2 id="msjBusco" style="display:none">Muchas gracias por dejar tus datos, esperamos tu mascota aparezca lo más pronto posible, de ser así nos comunicaremos inmediatamente contigo.</h2>
+                        <h2 id="msjEncuentro" style="display:none">Muchas gracias por dejar tus datos, que la familia de esta huellita lo encuentre lo más pronto posible. Si es por Huellitas sin Hogar te estaremos contactando para informarte lo que sucede.</h2>
+
+                        <a href="/" class="btn color3">VOLVER</a>
+                    </div>
 
                 </form>
+                
                 <br />
             </nav>
         </div>
@@ -81,10 +113,13 @@
 
 @Html.Partial("_FileUpload")
 
+@section css {
+    @Styles.Render("~/bundles/css")
+}
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-    @Styles.Render("~/bundles/css")
+    
     @Scripts.Render("~/bundles/backbonevalidation")
     @Scripts.Render("~/bundles/backbone_perdidos")
     @Scripts.Render("~/bundles/backbone_zonasGeograficas")

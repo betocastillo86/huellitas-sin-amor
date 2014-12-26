@@ -11,7 +11,7 @@ namespace LoginCol.Huellitas.Negocio
 {
     public class ArchivosTemporalesNegocio : NegocioBase
     {
-        private string CarpetaTemporal { get { return "TempFiles"; } }
+        private string CarpetaTemporal { get { return Path.Combine(this.RutaServidor, "TempFiles"); } }
         
         public ArchivosTemporalesNegocio()
         {
@@ -32,7 +32,7 @@ namespace LoginCol.Huellitas.Negocio
         { 
             string nuevaLLave = Guid.NewGuid().ToString();
 
-            string ruta = System.IO.Path.Combine(this.RutaServidor, this.CarpetaTemporal, string.Concat(nuevaLLave, extension));
+            string ruta = System.IO.Path.Combine(this.CarpetaTemporal, string.Concat(nuevaLLave, extension));
 
             //Si el archivo ya existe se intenta crear uno nuevo
             if (!File.Exists(ruta))
@@ -56,6 +56,28 @@ namespace LoginCol.Huellitas.Negocio
             {
                 return GuardarArchivoTemporal(archivo, extension);
             }
+        }
+
+        /// <summary>
+        /// Retorna los bytes de un archivo que se ha guardado temporalmente
+        /// </summary>
+        /// <param name="llave"></param>
+        /// <returns></returns>
+        public byte[] ObtenerArchivoTemporal(string llave)
+        {
+           var rutaArchivo = System.IO.Directory.GetFiles(this.CarpetaTemporal).FirstOrDefault(a => a.Contains(llave));
+           return System.IO.File.ReadAllBytes(rutaArchivo);
+        }
+
+        public void EliminarArchivoTemporal(string llave)
+        {
+            var rutaArchivo = System.IO.Directory.GetFiles(this.CarpetaTemporal).FirstOrDefault(a => a.Contains(llave));
+            System.IO.File.Delete(rutaArchivo);
+        }
+
+        public static string ObtenerPathArchivo(IRutasFisicas rutasFisicas, string archivo)
+        {
+            return string.Format("{0}/{1}/{2}", rutasFisicas.ObtenerRutaFisica(), archivo);
         }
     }
 }

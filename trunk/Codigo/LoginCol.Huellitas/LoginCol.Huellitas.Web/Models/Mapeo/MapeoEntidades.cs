@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Negocio;
 using LoginCol.Huellitas.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -105,13 +106,30 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             #endregion
 
 
+            #region Perdidos
+            Mapper.CreateMap<PerdidosModel, Contenido>()
+                .AfterMap(PerdidosModelToContenido);
+
+            #endregion
 
 
 
 
 
 
+        }
 
+        private static void PerdidosModelToContenido(PerdidosModel modelo, Contenido obj)
+        {
+            obj.Email = modelo.ContactoCorreo;
+            obj.Campos = new List<ValorCampo>();
+            obj.Campos.Add(new ValorCampo(){ CampoId = ParametrizacionNegocio.CampoEdadId, Valor = modelo.Edad.ToString() });
+            obj.Campos.Add(new ValorCampo(){ CampoId = ParametrizacionNegocio.CampoGeneroId, Valor = modelo.Genero.ToString() });
+            obj.Campos.Add(new ValorCampo(){ CampoId = ParametrizacionNegocio.CampoColorId, Valor = modelo.Color.ToString() });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoNombreId, Valor = modelo.ContactoNombre });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoTelefonoId, Valor = modelo.ContactoTelefono });
+            if(!string.IsNullOrEmpty(modelo.ContactoCorreo))
+                obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoCorreoId, Valor = modelo.ContactoCorreo });  
         }
 
         private static void ComentarioModelToComentario(ComentarioModel model, Comentario obj)

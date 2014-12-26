@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginCol.Huellitas.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,25 +14,38 @@ namespace LoginCol.Huellitas.Web.Models
         {
 
         }
-
-        [Required]
-        public int TipoId { get; set; }
-        [Required]
-        public int BarrioId { get; set; }
-        [Required]
-        public int Edad { get; set; }
-        [Required]
-        public int Genero { get; set; }
-        [Required]
-        public int Color { get; set; }
-        [Required]
-        public string ContactoNombre { get; set; }
-        [Required]
-        public string ContactoTelefono { get; set; }
-        [Required]
-        public string ContactoCorreo { get; set; }
         
-        [Required]
-        public int Zona { get; set; }
+        
+        public string Nombre { get; set; }
+
+        
+        public int Tipo { get; set; }
+        
+        
+        public int Edad { get; set; }
+        
+        public int Genero { get; set; }
+        
+        public int Color { get; set; }
+        
+        public string ContactoNombre { get; set; }
+        
+        public string ContactoTelefono { get; set; }
+        
+        public string ContactoCorreo { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public string Imagen { get; set; }
+
+        /// <summary>
+        /// Para esta sección solo aplican dos tipos de contenidos:
+        /// AnimalesPerdidos
+        /// AnimalesEncontrados
+        /// </summary>
+        public TipoContenidoEnum TipoContenidoId { get; set; }
+
+        
+        public int ZonaGeograficaId { get; set; }
     }
 }

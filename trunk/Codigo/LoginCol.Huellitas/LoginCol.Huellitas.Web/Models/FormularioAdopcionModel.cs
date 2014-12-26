@@ -23,7 +23,6 @@ namespace LoginCol.Huellitas.Web.Models
 
         [Required]
         [Range(1,10)]
-        //[MaxLength(2)]
         [Display(Description="Miembros de la familia")]
         public int? MiembrosFamilia { get; set; }
 

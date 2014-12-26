@@ -132,7 +132,17 @@ namespace LoginCol.Huellitas.Web
 
             #endregion
 
-            
+            #region Perdidos
+            routes.MapRoute(
+                name: "PerdidosHome",
+                url: "perros-gatos-perdidos/{*queryValues}",
+                defaults: new { controller = "Home", action = "Perdidos", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Home)", action = "Perdidos" }
+            );
+
+            #endregion
+
+
 
 
             routes.MapRoute(

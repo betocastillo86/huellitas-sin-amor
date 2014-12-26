@@ -49,7 +49,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             modelo.Campos.RemoveAll(c => string.IsNullOrEmpty(c.Valor));
             Contenido contenido = Mapper.Map<ContenidoModel, Contenido>(modelo);
-
+        
 
 
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
