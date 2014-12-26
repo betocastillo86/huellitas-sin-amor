@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace LoginCol.Huellitas.Entidades
 {
-    public enum TipoContenidoEnum
+    public enum TipoContenidoEnum : int
     { 
         Imagen = 1,
         Animal = 2,
         Fundacion = 3,
         Perro = 4,
-        Gato = 5
+        Gato = 5,
+        AnimalesPerdidos = 8,
+        AnimalesEncontrados = 9
     }
 
     public enum TipoRelacionEnum

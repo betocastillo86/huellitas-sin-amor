@@ -194,6 +194,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuellitasController.cs" />
     <Compile Include="Controllers\ParametrizacionController.cs" />
+    <Compile Include="Controllers\PerdidosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -380,12 +381,16 @@
     <Content Include="Images\Admin\uploadify-cancel.png" />
     <Content Include="Images\banner_dona.jpg" />
     <Content Include="Images\bkg_amarillo.png" />
+    <Content Include="Images\bkg_amarilloCat.png" />
     <Content Include="Images\bkg_azul.png" />
     <Content Include="Images\bkg_azul2.png" />
     <Content Include="Images\bkg_cafe.png" />
     <Content Include="Images\bkg_gris.png" />
     <Content Include="Images\bkg_rojo.png" />
     <Content Include="Images\bkg_rosa.png" />
+    <Content Include="Images\bkg_rosa2.png" />
+    <Content Include="Images\bkg_rosa3.png" />
+    <Content Include="Images\bkg_rosaCat.png" />
     <Content Include="Images\bkg_slide.jpg" />
     <Content Include="Images\cargar.gif" />
     <Content Include="Images\decorative.png" />
@@ -400,8 +405,12 @@
     <Content Include="Images\galeria\img_galeriaprueba.jpg" />
     <Content Include="Images\header_busco.jpg" />
     <Content Include="Images\img_adopta1.png" />
+    <Content Include="Images\img_beta.png" />
     <Content Include="Images\img_beto.jpg" />
+    <Content Include="Images\img_erica.jpg" />
+    <Content Include="Images\img_julian.jpg" />
     <Content Include="Images\img_mapa.jpg" />
+    <Content Include="Images\img_marce.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo.svg" />
     <Content Include="Images\sunglasses.png" />

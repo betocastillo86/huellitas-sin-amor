@@ -59,6 +59,12 @@ namespace LoginCol.Huellitas.Negocio
 
         public static int CampoEdadId { get { return Int("CampoEdadId"); } }
 
+        public static int CampoContactoNombreId { get { return Int("CampoContactoNombreId"); } }
+
+        public static int CampoContactoCorreoId { get { return Int("CampoContactoCorreoId"); } }
+
+        public static int CampoContactoTelefonoId { get { return Int("CampoContactoTelefonoId"); } }
+
         public static int CampoRecomendadoParaId { get { return Int("CampoRecomendadoParaId"); } }
 
         public static int ComentariosPorPagina { get { return Int("ComentariosPorPagina"); } }
@@ -78,5 +84,7 @@ namespace LoginCol.Huellitas.Negocio
 
 
         public static bool ValidarAnalytics { get { return Convert.ToBoolean(ConfigurationManager.AppSettings["validarAnalytics"]); } }
+
+        public static int UsuarioPorDefecto { get { return Int("UsuarioPorDefecto"); } }
     }
 }

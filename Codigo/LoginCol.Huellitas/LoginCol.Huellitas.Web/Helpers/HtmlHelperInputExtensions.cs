@@ -76,6 +76,15 @@ namespace System.Web.Mvc.Html
                                 new SelectList(zonas, "ZonaGeograficaId", "Nombre", seleccionar), primeraOpcion, new { @class = estilo });
         }
 
+        //public static string ErrorFieldFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression) {
+        //    string a = string.Format("<span id='{0}'></span>", expression.Name);
+        //    return string.Empty;
+        //}
+        public static MvcHtmlString ErrorField(this HtmlHelper htmlHelper, string campo)
+        {
+            return new MvcHtmlString(string.Format("<span id='{0}Error'></span>", campo));
+        }
+
         //public static string PreguntaAdopcion(this HtmlHelper htmlHelper, int idPregunta, params string[] opciones)
         //{
         //    var nTablasBasicas = new DatoTablaBasicaNegocio();

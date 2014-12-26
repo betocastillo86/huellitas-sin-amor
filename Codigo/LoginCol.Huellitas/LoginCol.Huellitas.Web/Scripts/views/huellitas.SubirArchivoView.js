@@ -24,7 +24,9 @@
 
 	mensajeErrorTamano: "El tamano no es valido. ",
 
-	mensajeErrorExtension : "La extensión no es valida",
+	mensajeErrorExtension: "La extensión no es valida",
+
+    extension : undefined, 
 
 	attributes: 
 	{
@@ -117,6 +119,8 @@
 			return false;
 		}
 		else {
+		    var regexNombre = Constantes.ExtensionesImagenes.exec(obj.val());
+		    this.extension = regexNombre[regexNombre.length - 1];
 			return true;
 		}
 	},

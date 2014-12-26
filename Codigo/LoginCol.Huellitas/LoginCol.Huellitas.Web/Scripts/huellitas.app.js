@@ -6,12 +6,16 @@
     },
     removerErroresFormulario: function (ctx)
     {
+        
         _.each(ctx.$(".invalid"), function (obj) {
             $(obj).removeClass("invalid");
-            var campo = $(obj).attr("id");
-            if(ctx.$("#" + campo + "Error"))
-                ctx.$("#" + campo + "Error").html("");
         });
+
+        _.each(ctx.$("span[id*='Error']"), function (obj) {
+            //ctx.$("#" + campo + "Error").html("");
+            $(obj).html("");
+        });
+
     },
     marcarErroresFormulario: function (errores, ctx)
     {
@@ -65,10 +69,24 @@
     {
         return variable == undefined ? 0 : parseInt(variable.split("_")[0]);
     },
+    soloNumeros : function(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    },
 
     cargador: "<div align=center id='divLoading'><img src='/images/cargar.gif'></div>"
 
 };
+
+
+var App_Router;
+
+$(document).on("ready", function () {
+    App_Router = new HuellitasRouter();
+    Backbone.history.start({ pushState: true });
+});
 
 _.each(["Model", "Collection"], function (name) {
     // Cache Backbone constructor.

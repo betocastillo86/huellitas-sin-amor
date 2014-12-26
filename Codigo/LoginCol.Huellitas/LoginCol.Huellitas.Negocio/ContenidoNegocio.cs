@@ -123,7 +123,7 @@ namespace LoginCol.Huellitas.Negocio
            return respuesta;
         }
 
-        public ResultadoOperacion Crear(Contenido contenido, int idUsuario)
+        public ResultadoOperacion Crear(Contenido contenido, int idUsuario, string imagen = null)
         {
             ResultadoOperacion respuesta = new ResultadoOperacion();
             contenido.UsuarioId = idUsuario;
@@ -131,11 +131,31 @@ namespace LoginCol.Huellitas.Negocio
             respuesta.Id = _contenidos.Value.Crear(contenido);
             respuesta.OperacionExitosa = respuesta.Id > 0;
 
-            if (!respuesta.OperacionExitosa)
+            if (respuesta.OperacionExitosa)
+            {
+                //Valida si tiene imagen para ser cargada
+                if(!string.IsNullOrEmpty(imagen))
+                {
+                    ArchivosTemporalesNegocio nArchivosTemporales = new ArchivosTemporalesNegocio();
+
+                    //Guarda el archivo fisico redimensionado desde el temporal
+                    respuesta = GuardarImagen(contenido.ContenidoId, nArchivosTemporales.ObtenerArchivoTemporal(imagen));
+
+                    //Elimina el archivo temporal despues de ser guardado
+                    if (respuesta.OperacionExitosa)
+                        nArchivosTemporales.EliminarArchivoTemporal(imagen);
+                    else
+                        respuesta.MensajeError = "No fue posible guardar la imagen";
+                }
+                
+            }
+            else
                 respuesta.MensajeError = "No fue posible crear el contenido";
             
             return respuesta;
         }
+
+
 
         public List<ContenidoRelacionado> ObtenerImagenes(int idContenido)
         {

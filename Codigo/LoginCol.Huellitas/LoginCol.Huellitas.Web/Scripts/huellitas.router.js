@@ -14,7 +14,7 @@
         "fundaciones/buscar(/z:zona)": "buscarFundaciones",
         "fundaciones/:id/:nombre": "detalleFundacion",
         "fundaciones/:id/:nombre/ver-todos" : "huellasDeFundacion",
-        "home/perdidos": "inicioPerdidos",
+        "perros-gatos-perdidos(/:opcion)": "inicioPerdidos",
         "por-que-adoptar": "porqueAdoptar"
     },
 
@@ -74,8 +74,9 @@
         var vistaHuellasFundacion = new HuellasFundacionView({ id : id });
         this.vistaActual = vistaHuellasFundacion;
     },
-    inicioPerdidos: function ()
+    inicioPerdidos: function (opcion)
     {
+        debugger;
         var vistaPerdidos = new PerdidosView();
         this.vistaActual = vistaPerdidos;
     },
@@ -92,9 +93,3 @@
 });
 
 
-var App_Router;
-
-$(document).on("ready", function () {
-    App_Router = new HuellitasRouter();
-    Backbone.history.start({ pushState: true });
-});
