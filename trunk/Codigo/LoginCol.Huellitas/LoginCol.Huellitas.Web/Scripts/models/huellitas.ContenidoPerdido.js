@@ -63,12 +63,14 @@
 	},
 	guardar: function (args, ctx)
 	{
+	    var resultValidation = this.validate();
+
 	    if (this.isValid()) {
 	        this.once("sync", args.success, ctx);
 	        this.save();
 	    }
 	    else {
-	        args.invalid(this.validate(), ctx);
+	        args.invalid(resultValidation, ctx);
 	    }
 	}
 });

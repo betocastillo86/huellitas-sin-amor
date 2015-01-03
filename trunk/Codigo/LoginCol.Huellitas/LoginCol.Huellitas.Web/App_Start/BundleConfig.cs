@@ -188,7 +188,9 @@ namespace LoginCol.Huellitas.Web
 
             //Huellitas perdidos
             bundles.Add(new ScriptBundle("~/bundles/backbone_perdidos")
+                .Include("~/Scripts/models/huellitas.Contenido.js")
                 .Include("~/Scripts/views/huellitas.PerdidosView.js")
+                .Include("~/Scripts/views/huellitas.ListaPerdidosView.js")
                 .Include("~/Scripts/models/huellitas.ContenidoPerdido.js")
                 );
 

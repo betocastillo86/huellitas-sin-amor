@@ -123,6 +123,23 @@ namespace LoginCol.Huellitas.Negocio
            return respuesta;
         }
 
+        /// <summary>
+        /// Crea un contenido de tipo perdido
+        /// </summary>
+        /// <param name="contenido">datos basicos del contenido</param>
+        /// <param name="idUsuario">id usuario que crea el contenido</param>
+        /// <param name="imagen">ruta de la imagen temporal relacionada al contenido</param>
+        /// <param name="idTipoPerdido">id del tipo de animal que se pierde, Perro o gato</param>
+        /// <returns></returns>
+        public ResultadoOperacion CrearPerdido(Contenido contenido, int idUsuario, string imagen, int idTipoPerdido)
+        {
+            if(contenido.Campos == null)
+                contenido.Campos = new List<ValorCampo>();
+
+            contenido.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoTipoPerdido, Valor = idTipoPerdido.ToString() });
+            return Crear(contenido, idUsuario, imagen);
+        }
+
         public ResultadoOperacion Crear(Contenido contenido, int idUsuario, string imagen = null)
         {
             ResultadoOperacion respuesta = new ResultadoOperacion();
@@ -316,7 +333,6 @@ namespace LoginCol.Huellitas.Negocio
             ContenidoRepositorio rContenido = new ContenidoRepositorio();
             return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros, contenidosRelacionados);
         }
-
 
 
         public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)

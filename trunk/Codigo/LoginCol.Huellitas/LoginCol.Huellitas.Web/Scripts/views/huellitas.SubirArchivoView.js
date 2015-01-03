@@ -13,7 +13,9 @@
 
 	name: undefined,
 
-    model : undefined,
+	model : undefined,
+
+    tamanoArchivo : 0,
 
 	//Todas las extensiones validas
 	extensionesPermitidas: /./,
@@ -26,7 +28,19 @@
 
 	mensajeErrorExtension: "La extensión no es valida",
 
-    extension : undefined, 
+	extension: undefined,
+
+	mostrarCargando: true,
+
+	htmlCargando: "<div class='barraCargador' style='background-color:red;width:{width};height:20px'></div>",
+
+    timeoutCargador : undefined,
+
+    //INICIO Controles Vista
+
+    cargador : undefined,
+
+    //FIN Controles Vista
 
 	attributes: 
 	{
@@ -35,7 +49,9 @@
 	initialize: function (args)
 	{
 		//Carga el nombre del control
-		this.name = args.name;
+	    this.name = args.name;
+
+	    
 
 		if (args.id)
 			this.$el.attr('id', args.id);
@@ -86,11 +102,7 @@
 		}
 		else {
 			if (this.autoCarga) {
-			    this.model = new ArchivoModel();
-			    this.model.on("archivo-guardado", this.archivoGuardado, this);
-			    this.model.on("archivo-eliminado", this.archivoEliminado, this);
-			    this.model.set({ Archivo: elemento[0].files[0] });
-			    this.model.guardar();
+			    this.cargarArchivo(elemento);
 			}
 			else {
                 
@@ -98,20 +110,62 @@
 		}
 		
 	},
+	cargarArchivo: function (elemento) {
+	    this.model = new ArchivoModel();
+	    this.model.on("archivo-guardado", this.archivoGuardado, this);
+	    this.model.on("archivo-eliminado", this.archivoEliminado, this);
+	    this.model.set({ Archivo: elemento[0].files[0] });
+	    this.model.guardar();
+	    this.mostrarCargador();
+	},
+    //INICIO Cargador
+	mostrarCargador : function(){
+	    ctx = this;
+	    this.$("#inputArchivo").hide();
+	    this.cargador.show();
+	    this.cargador.html(this.htmlCargando.replace('{width}', '0%'));
+	    this.timeoutCargador = setInterval(function () { ctx.actualizarCargador(ctx); }, 1000);
+	},
+	actualizarCargador: function (ctx) {
+        //La tasa es de 50kb por segundo
+	    var kbPorSegundo = 50;
+        //Tasa que debe incrementar en porcentaje dependiendo del tamaño del archivo
+	    var tasaIncremento = kbPorSegundo * 100 / (ctx.tamanoArchivo / 1000);
+        //Tamaño actual del div cargado
+	    var tamanoActual = (100 * parseInt(ctx.cargador.find('.barraCargador').css('width'))) / parseInt(ctx.cargador.width());
+	    if (tamanoActual > 100)
+	        tamanoActual = 0;
+
+	    tamanoActual += tasaIncremento;
+        //reemplaza el valor
+	    //this.cargador.find('.barraCargador').html(ctx.htmlCargando.replace('{width}', tamanoActual + '%'));
+	    ctx.cargador.find('.barraCargador').css('width', tamanoActual + '%');
+	},
+	ocultarCargador: function()
+	{
+	    this.cargador.hide();
+	    this.cargador.css('width', '0%');
+	    clearInterval(this.timeoutCargador);
+	},
+    //FIN Cargador
 	render: function ()
 	{
 		this.$el.html(this.template({name : this.name}));
-
+		this.cargador = this.$(".cargandoArchivo");
 		return this;
 	},
 	validarTamano : function (obj) {
 
-		if (obj[0].files[0].size > this.tamanoMaximo) {
-			obj[0].files[0] = null;
-    		return false;
-		}
-		else
-			return true;
+	    if (obj[0].files[0].size > this.tamanoMaximo) {
+	        obj[0].files[0] = null;
+	        return false;
+	    }
+	    else
+	    {
+	        this.tamanoArchivo = obj[0].files[0].size;
+	        return true;
+	    }
+			
 	},
 	validarExtension : function(obj)
 	{
@@ -128,13 +182,17 @@
 	{
 	    if (respuesta.OperacionExitosa) {
 	        this.$("#inputArchivo").hide();
+	        this.$(".cargandoArchivo").hide();
 	        this.$("#divNombreArchivo").show();
 	        this.$("#divNombreArchivo a").html(this.model.get("NombreArchivo"));
 	        this.trigger("archivo-guardado", this.model);
 	    }
 	    else {
+	        this.$("#inputArchivo").show();
 	        alert("Error guardando el archivo");
 	    }
+
+	    this.ocultarCargador();
 	},
 	eliminarArchivo: function ()
 	{

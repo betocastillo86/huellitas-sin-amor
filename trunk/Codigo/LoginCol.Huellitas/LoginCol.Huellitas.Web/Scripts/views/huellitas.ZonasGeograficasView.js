@@ -44,12 +44,12 @@
         if (args.idBarrio)
             this.idBarrio = args.idBarrio;
 
-        this.ddlDepartamento = $("#ddlZonaDepartamento");
-        this.ddlCiudad = $("#ddlZonaCiudad");
+        this.ddlDepartamento = this.$("#ddlZonaDepartamento");
+        this.ddlCiudad = this.$("#ddlZonaCiudad");
 
         if (this.activarBarrios)
         {
-            this.ddlBarrio = $("#ddlZonaBarrio");
+            this.ddlBarrio = this.$("#ddlZonaBarrio");
         }
 
         this.zonasGeograficasCollection = new ZonaGeograficaCollection();

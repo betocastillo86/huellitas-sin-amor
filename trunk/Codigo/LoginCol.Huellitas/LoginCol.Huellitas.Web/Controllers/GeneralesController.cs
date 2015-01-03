@@ -63,6 +63,9 @@ namespace LoginCol.Huellitas.Web.Controllers
             js.AppendFormat(", LlaveRouterVerTodos : '{0}'", ParametrizacionNegocio.LlaveRouterVerTodos);
             js.AppendFormat(", TipoAnimalesPerdidos : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesPerdidos));
             js.AppendFormat(", TipoAnimalesEncontrados : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesEncontrados));
+            js.AppendFormat(", TipoAnimalesPerdidosPadre : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesPerdidosPadre));
+
+            
             js.Append(" }");
             return JavaScript(js.ToString());
         }

@@ -128,6 +128,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             obj.Campos.Add(new ValorCampo(){ CampoId = ParametrizacionNegocio.CampoColorId, Valor = modelo.Color.ToString() });
             obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoNombreId, Valor = modelo.ContactoNombre });
             obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoTelefonoId, Valor = modelo.ContactoTelefono });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoTipoPerdido, Valor = modelo.Tipo.ToString() });
             if(!string.IsNullOrEmpty(modelo.ContactoCorreo))
                 obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoCorreoId, Valor = modelo.ContactoCorreo });  
         }

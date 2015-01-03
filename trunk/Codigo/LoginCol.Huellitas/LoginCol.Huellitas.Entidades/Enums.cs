@@ -14,7 +14,8 @@ namespace LoginCol.Huellitas.Entidades
         Fundacion = 3,
         Perro = 4,
         Gato = 5,
-        AnimalesPerdidos = 8,
+        AnimalesPerdidosPadre = 8,
+        AnimalesPerdidos = 10,
         AnimalesEncontrados = 9
     }
 
