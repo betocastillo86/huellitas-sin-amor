@@ -76,7 +76,6 @@
     },
     inicioPerdidos: function (opcion)
     {
-        debugger;
         var vistaPerdidos = new PerdidosView();
         this.vistaActual = vistaPerdidos;
     },

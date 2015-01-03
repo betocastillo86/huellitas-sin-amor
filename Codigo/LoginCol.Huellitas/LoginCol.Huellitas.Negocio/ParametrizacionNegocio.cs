@@ -69,6 +69,9 @@ namespace LoginCol.Huellitas.Negocio
 
         public static int ComentariosPorPagina { get { return Int("ComentariosPorPagina"); } }
 
+
+        public static int CampoTipoPerdido { get { return Int("CampoTipoPerdido"); } }
+
         public static string LlaveRouterVerTodos { get { return String("LlaveRouterVerTodos"); } }
 
 

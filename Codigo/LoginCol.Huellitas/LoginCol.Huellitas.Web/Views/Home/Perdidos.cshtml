@@ -16,8 +16,10 @@
     <section class="conteBusca slide">
         <div class="container clearfix conteConta">
             <h3>¿BUSCAS O ENCONTRASTÉ UNA MASCOTA?</h3>
-            <p>Si estas buscando tu mascota o encontraste una en la calle que posiblemente pertece a una familia, Huellitas sin hogar te 
-            da una manera facil de encontrarla o registrarla, solo ingresa tus datos y nos estaremos comunicando contigo lo más pronto posible.</p>
+            <p>
+                Si estas buscando tu mascota o encontraste una en la calle que posiblemente pertece a una familia, Huellitas sin hogar te
+                da una manera facil de encontrarla o registrarla, solo ingresa tus datos y nos estaremos comunicando contigo lo más pronto posible.
+            </p>
             <nav class="nav_busca">
                 <li class="sel grid_3 addform" id="btnBusco">
                     <span class="icon-casa"></span>
@@ -63,7 +65,7 @@
                         @Html.ErrorField("ZonaGeograficaId")
 
                         <div class="grid_4">
-                            @Html.TextBoxFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL", valjs = "numero"})
+                            @Html.TextBoxFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL", valjs = "numero" })
                             @Html.ErrorField("Edad")
                         </div>
 
@@ -95,7 +97,7 @@
                         <input type="hidden" id="Imagen" />
                         <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
                     </div>
-                    
+
                     <div id="divMensajeConfirmacion" style="display:none">
                         <h2 id="msjBusco" style="display:none">Muchas gracias por dejar tus datos, esperamos tu mascota aparezca lo más pronto posible, de ser así nos comunicaremos inmediatamente contigo.</h2>
                         <h2 id="msjEncuentro" style="display:none">Muchas gracias por dejar tus datos, que la familia de esta huellita lo encuentre lo más pronto posible. Si es por Huellitas sin Hogar te estaremos contactando para informarte lo que sucede.</h2>
@@ -104,11 +106,55 @@
                     </div>
 
                 </form>
-                
+
+
+                <form id="formFiltro" class="grid_9 omega" style="display: none">
+                    <div id="camposFormulario">
+                        <div class="conte_check grid_4">
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" checked="checked" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
+                                <span class="icon-perro"></span>
+                            </div>
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Gato)">
+                                <span class="icon-gato"></span>
+                            </div>
+
+                        </div>
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.Nombre, new { placeholder = "NOMBRE DEL ANIMAL" })
+                            @Html.ErrorField("Nombre")
+                        </div>
+
+                        @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
+                        @Html.ErrorField("Genero")
+                        <select id="ddlZonaDepartamento" class="grid_4">
+                            <option>DEPARTAMENTO</option>
+                        </select>
+                        <select id="ddlZonaCiudad" class="grid_4">
+                            <option>CIUDAD</option>
+                        </select>
+
+
+                        @Html.DropDownListFor(m => m.ZonaGeograficaId, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
+                        @Html.ErrorField("ZonaGeograficaId")
+
+                        @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
+                        @Html.ErrorField("Color")
+
+                        <a href="javascript:void(0);" class="btn color3" id="btnFiltrar">FILTRAR</a>
+                    </div>
+                </form>
                 <br />
             </nav>
         </div>
     </section>
+    
+    <div id="divVistaListado">
+        @Html.Partial("~/Views/Home/_ListadoPerdidos.cshtml")
+    </div>
+    
+
 </div>
 
 @Html.Partial("_FileUpload")
@@ -119,7 +165,7 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-    
+
     @Scripts.Render("~/bundles/backbonevalidation")
     @Scripts.Render("~/bundles/backbone_perdidos")
     @Scripts.Render("~/bundles/backbone_zonasGeograficas")

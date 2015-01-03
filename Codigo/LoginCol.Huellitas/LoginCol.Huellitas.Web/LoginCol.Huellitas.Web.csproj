@@ -640,6 +640,7 @@
     <Content Include="Scripts\views\huellitas.ImagenContenidoView.js" />
     <Content Include="Scripts\views\huellitas.ImagenesContenidoView.js" />
     <Content Include="Scripts\views\huellitas.InfoAdoptarView.js" />
+    <Content Include="Scripts\views\huellitas.ListaPerdidosView.js" />
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
@@ -716,6 +717,7 @@
     <Content Include="Views\Huellitas\_BannerDestacados.cshtml" />
     <Content Include="Views\Home\_InfoAdopta.cshtml" />
     <Content Include="Views\Home\Adoptar.cshtml" />
+    <Content Include="Views\Home\_ListadoPerdidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -44,6 +44,9 @@ namespace LoginCol.Huellitas.Web.Controllers
             if (filtro.zona > 0)
                 filtroBase.ZonaGeograficaId = filtro.zona;
 
+            if (!string.IsNullOrEmpty(filtro.nombre))
+                filtroBase.Nombre = filtro.nombre;
+
             int resultadosPorPagina = 8;
 
             var contenidosRelacionados = new List<ContenidoRelacionado>();
@@ -70,6 +73,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         public int color { get; set; }
         public int tamano { get; set; }
         public int edad { get; set; }
+        public int tipoPerdido { get; set; }
+        
 
         public string recomendado { get; set; }
 
@@ -83,6 +88,9 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         public int fundacion { get; set; }
 
+
+        public string nombre { get; set; }
+
         public List<FiltroContenido> ObtenerValorCampo()
         {
             List<FiltroContenido> filtros = new List<FiltroContenido>();
@@ -95,6 +103,9 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             if (tamano > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoTamanoId, Valor = tamano.ToString() });
+
+            if (tipoPerdido > 0)
+                filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoTipoPerdido, Valor = tipoPerdido.ToString() });
 
             if (!string.IsNullOrEmpty(recomendado))
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoRecomendadoParaId, Valor = recomendado , TipoFiltro = TipoFiltroContenidoEnum.MultipleOpcion});

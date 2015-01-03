@@ -17,9 +17,15 @@ var ContenidoCollection = Backbone.Collection.extend({
     {
         var queryString = "";
         if (args != undefined)
-            queryString = "/?"+$.param(args);
+            queryString = "/?" + $.param(args);
 
-        this.url = "/api/contenidos/tip-" + Constantes.TipoContenidoAnimales + "/true/"+ queryString;
+        if (!args.tipoFiltroBase)
+            args.tipoFiltroBase = Constantes.TipoContenidoAnimales;
+
+        if(args.esTipoPadre == undefined)
+            args.esTipoPadre = true;
+
+        this.url = "/api/contenidos/tip-" + args.tipoFiltroBase + "/" + args.esTipoPadre + "/" + queryString;
         this.fetch();
         return this;
     }

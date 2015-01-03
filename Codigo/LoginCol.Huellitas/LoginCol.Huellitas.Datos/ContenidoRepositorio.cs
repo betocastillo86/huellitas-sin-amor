@@ -504,6 +504,9 @@ namespace LoginCol.Huellitas.Datos
 
                         if (filtroBase.ZonaGeografica != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre != null && filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId > 0)
                             query = query.Where(c => c.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId == filtroBase.ZonaGeografica.ZonaGeograficaPadre.ZonaGeograficaId);
+
+                        if (!string.IsNullOrEmpty(filtroBase.Nombre))
+                            query = query.Where(c => c.Nombre.Contains(filtroBase.Nombre));
                     }
 
                     
@@ -523,6 +526,23 @@ namespace LoginCol.Huellitas.Datos
             }
 
             return lista == null ? new List<Contenido>() : lista;
+        }
+
+
+        public List<Contenido> FiltrarContenidosSp()
+        {
+            using (var db = new Repositorio())
+            {
+                var x = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this)
+                    .ObjectContext
+                    .CreateQuery<Contenido>("spObtenerContenidos", new List<System.Data.Entity.Core.Objects.ObjectParameter>().ToArray());
+                
+                
+                //var x = db.Database.SqlQuery<Contenido>("spObtenerContenidos", new List<object>().ToArray());
+                string a = "";
+            }
+
+            return null;
         }
 
         /// <summary>
