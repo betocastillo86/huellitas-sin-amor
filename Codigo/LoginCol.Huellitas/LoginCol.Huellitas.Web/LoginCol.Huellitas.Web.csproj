@@ -273,6 +273,9 @@
     <Content Include="Content\Admin\noty_theme_default.css" />
     <Content Include="Content\Admin\responsive-tables.css" />
     <Content Include="Content\Admin\uploadify.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\columnas_scrollbar_slider.css" />
     <Content Include="Content\grid.css" />
     <Content Include="Content\menu_styles.css" />
     <Content Include="Content\normalize.css" />
@@ -357,6 +360,11 @@
     <None Include="Properties\PublishProfiles\RutaLocal.pubxml" />
     <None Include="Properties\PublishProfiles\Web Deply Godaddy.pubxml" />
     <None Include="Scripts\libs\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
     <Content Include="Images\Admin\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="Images\Admin\ajax-loaders\ajax-loader-2.gif" />
     <Content Include="Images\Admin\ajax-loaders\ajax-loader-3.gif" />
@@ -398,6 +406,10 @@
     <Content Include="Images\footprints.png" />
     <Content Include="Images\fundaciones\01.jpg" />
     <Content Include="Images\fundaciones\02.jpg" />
+    <Content Include="Images\fundaciones\logo13023.png" />
+    <Content Include="Images\fundaciones\logo13025.png" />
+    <Content Include="Images\fundaciones\logo7016.png" />
+    <Content Include="Images\fundaciones\logo8016.png" />
     <Content Include="Images\galeria\img_01.jpg" />
     <Content Include="Images\galeria\img_02.jpg" />
     <Content Include="Images\galeria\img_03.jpg" />
