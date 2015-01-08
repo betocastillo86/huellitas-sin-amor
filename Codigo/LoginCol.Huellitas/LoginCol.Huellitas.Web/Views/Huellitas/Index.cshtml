@@ -37,13 +37,21 @@
                 @Html.DropDownList("ddlTamano", new SelectList(Model.Tamanos, "OpcionId", "Texto"), "TAMAÑO", new { @class = "grid_2 omega" })
                 @Html.DropDownList("ddlFundacion", new SelectList(Model.Fundaciones, "ContenidoId", "Nombre"), "FUNDACION", new { @class = "grid_2" })
 
-                <select id="ddlEdad" class="grid_2 ">
+                <div class="grid_2">
+                    @Html.TextBox("Nombre", string.Empty, new { placeholder = "NOMBRE:"})
+                </div>
+                    
+                
+
+
+                <select id="ddlEdad" class="grid_2  ">
                     <option>EDAD</option>
                     <option value="1">De 0 a 1</option>
                     <option value="2">De 1 a 3</option>
                     <option value="3">De 3 a 5</option>
                     <option value="4">Más de 5 (Te lo agradecerá)</option>
                 </select>
+                <br />
                 @{
                     var i = 0;
                     foreach (var opcion in Model.RecomendadoPara)
@@ -56,7 +64,9 @@
                         i++;
                     }
                 }
-               
+
+                
+              
                 <br />
                 <div class="btn" id="btnBuscar">BUSCAR</div>
             </form>

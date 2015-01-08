@@ -34,7 +34,8 @@
         "click #btnReportadas": "cargarFormularioFiltro",
         "click [name='rbTipo']": "cambioTipo",
         "click #btnGuardar": "guardar",
-        "click #btnFiltrar": "filtrarPerdidos"
+        "click #btnFiltrar": "filtrarPerdidos",
+        "click .volver" : 'mostrarInicio'
     },
 
     bindings: {
@@ -145,6 +146,12 @@
     },
     datosInvalidos: function (errores, ctx) {
         Huellitas.marcarErroresFormulario(errores, ctx);
+    },
+    mostrarInicio: function () {
+        $(".nav_busca li")
+            .show()
+            .addClass('sel');
+        $(".nav_busca form").hide();
     },
     obtenerCampo: function (campo) {
         

@@ -6,6 +6,10 @@
     {
         var campoEncontrado = _.findWhere(this.get("Campos"), { CampoNombre: campo });
         return campoEncontrado != undefined ? campoEncontrado.Valor : "";
+    },
+    obtenerPorId: function (id) {
+        this.fetch({ data: $.param({ id: id }) });
+        return this;
     }
 });
 

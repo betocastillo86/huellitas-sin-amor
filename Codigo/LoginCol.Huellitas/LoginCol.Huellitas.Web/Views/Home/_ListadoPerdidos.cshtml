@@ -4,6 +4,7 @@
     </div>
 </section>
 <div id="paginadorHuellitas"></div>
+<div id="modalDetalleContenido"></div>
 
 <script id="templateResultadosBusqueda" type="text/template">
     <%
@@ -32,7 +33,7 @@
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
                 <p><%= contenido.Descripcion %></p>
-                <a class="btn" href="/sinhogar/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
+                <a class="btn" href="javascript:void(0)" cid="<%=contenido.ContenidoId%>">CONOCE MÁS</a>
             </article>
         </div>
     </div>
@@ -47,4 +48,10 @@
     <br />
     <div class="mas_scroll siguientePagina">Ver más</div>
     <% } %>
+</script>
+
+<script id="templateDetallePerdido" type="text/template">
+    <img src="/img/<%=ContenidoId%>/medium" />
+    Nombre: <%=Nombre%> </br>
+    Descripcion <%=Descripcion%> </br>
 </script>

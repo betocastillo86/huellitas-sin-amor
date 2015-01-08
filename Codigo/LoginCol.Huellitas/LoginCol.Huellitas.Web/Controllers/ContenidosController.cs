@@ -54,14 +54,63 @@ namespace LoginCol.Huellitas.Web.Controllers
                 contenidosRelacionados.Add(new ContenidoRelacionado() { ContenidoId = filtro.fundacion, TipoRelacionContenidoId = (int)TipoRelacionEnum.Fundacion });
 
             //Realiza el filtro en negocio cargando los campos desde el querystring
-            List<Contenido> contenidos = nContenido
-                .FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados)
-                .OrderByDescending(c => c.Destacado)
+            var contenidosSinOrden = nContenido
+                .FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados).AsQueryable();
+                
+            switch (filtro.orden)
+	        {
+		        //Ordena por los mas nuevos
+                case 1:
+                    contenidosSinOrden = contenidosSinOrden.OrderByDescending(c => c.FechaCreacion);
+                    break;
+                //Ordena por los mas viejos
+                case 2:
+                    contenidosSinOrden = contenidosSinOrden.OrderBy(c => c.FechaCreacion);
+                    break;
+                //Ordena por los mas visitados
+                case 3:
+                    contenidosSinOrden = contenidosSinOrden.OrderByDescending(c => c.Visitas);
+                    break;
+                //Ordena por los mas jovenes
+                case 4:
+                    contenidosSinOrden = contenidosSinOrden
+                        .OrderBy(c => c.Campos
+                            .Where(v => v.CampoId == ParametrizacionNegocio.CampoEdadId)
+                            .Select(v => Convert.ToInt32(v.Valor))
+                            .FirstOrDefault());
+                    break;
+                //Ordena por los mas viejos
+                case 5:
+                    contenidosSinOrden = contenidosSinOrden
+                        .OrderByDescending(c => c.Campos
+                            .Where(v => v.CampoId == ParametrizacionNegocio.CampoEdadId)
+                            .Select(v => Convert.ToInt32(v.Valor))
+                            .FirstOrDefault());
+                    break;
+                //El orden por defecto es por los prioritarios y por fecha de creacion
+                case 0:
+                default:
+                    contenidosSinOrden = contenidosSinOrden
+                        .OrderByDescending(c => c.FechaCreacion)
+                        .OrderByDescending(c => c.Destacado);
+                    break;
+	        }
+            
+
+            List<Contenido> contenidos = contenidosSinOrden
                 .Skip(resultadosPorPagina*filtro.paginaActual)
                 .Take(resultadosPorPagina)
                 .ToList();
 
+
             return contenidos.Select(Mapper.Map<Contenido, ContenidoListadoModel>).ToList();
+        }
+
+
+        public ContenidoModel Get([FromUri] int id)
+        {
+            var nContenido = new ContenidoNegocio();
+            return Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
         }
 
     }
@@ -90,6 +139,8 @@ namespace LoginCol.Huellitas.Web.Controllers
 
 
         public string nombre { get; set; }
+
+        public int orden { get; set; }
 
         public List<FiltroContenido> ObtenerValorCampo()
         {
