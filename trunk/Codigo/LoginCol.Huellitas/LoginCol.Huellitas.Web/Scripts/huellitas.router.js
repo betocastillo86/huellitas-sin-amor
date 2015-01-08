@@ -6,7 +6,7 @@
         "/": "home",
         "sinhogar": "listarHuellitas",
         "sinhogar/": "listarHuellitas",
-        "sinhogar/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)": "buscarHuellitas",
+        "sinhogar/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)(/n_:nombre)(/o:orden)": "buscarHuellitas",
         "sinhogar/:id/:nombre": "detalleHuellita",
         "sinhogar/:id/:nombre/quiero-adoptar": "adoptarHuellita",
         "fundaciones" : "listarFundaciones",
@@ -31,7 +31,7 @@
         this.vistaActual = vistaListarAnimales;
     },
 
-    buscarHuellitas: function (tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre)
+    buscarHuellitas: function (tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre, nombre, orden)
     {
         var vistaListarAnimales = undefined;
         if (this.vistaActual == undefined)
@@ -41,7 +41,7 @@
             this.vistaActual = vistaListarAnimales;
         }
 
-        this.vistaActual.filtrarContenidosDesdeUrl(tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre);
+        this.vistaActual.filtrarContenidosDesdeUrl(tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre, nombre, orden);
     },
     listarFundaciones: function ()
     {

@@ -6,10 +6,14 @@ var ListarHuellitasView = Backbone.View.extend({
     events : {
         "click #btnBuscar": "filtrarContenidos"
     },
+
+    ordenarPor: 0,
+
     vistaResultados: undefined,
 
     initialize: function (args) {
         this.vistaResultados = new ResultadosHuellitasView();
+        this.vistaResultados.on("ordenar", this.cambiarOrden, this);
 
         if (args) {
             if (args.cargar != undefined && args.cargar)
@@ -36,7 +40,10 @@ var ListarHuellitasView = Backbone.View.extend({
                 return { valor : (tipo == undefined ? 0 : parseInt(tipo)), texto : ""};
             case "genero":
                 var campo = this.$("#ddlGenero :selected");
-                return { valor: parseInt(campo.val()) , texto: campo.text() };
+                return { valor: parseInt(campo.val()), texto: campo.text() };
+            case "nombre":
+                var campo = this.$("#Nombre");
+                return { valor: campo.val(), texto: campo.val() };
             case "color":
                 var campo = this.$("#ddlColor :selected");
                 return { valor: parseInt(campo.val()), texto: campo.text() };
@@ -77,9 +84,16 @@ var ListarHuellitasView = Backbone.View.extend({
             fundacion: this.obtenerCampo("fundacion").valor,
             zonaPadre: this.obtenerCampo("zonaPadre").valor,
             zona: this.obtenerCampo("zona").valor,
+            nombre: this.obtenerCampo("nombre").valor,
+            orden: this.ordenarPor,
             paginaActual: -1
         };
         return filtros;
+    },
+    cambiarOrden : function(nuevoOrden)
+    {
+        this.ordenarPor = parseInt(nuevoOrden);
+        this.filtrarContenidos();
     },
     filtrarContenidos: function ()
     {
@@ -111,8 +125,14 @@ var ListarHuellitasView = Backbone.View.extend({
         if (this.obtenerCampo("fundacion").valor > 0)
             url += "/f" + this.obtenerCampo("fundacion").valor + "_" + this.obtenerCampo("fundacion").texto;
 
+        if (this.obtenerCampo("nombre").valor)
+            url += "/n_" + this.obtenerCampo("nombre").valor;
+
         if (this.obtenerCampo("recomendadoPara").valor != "")
             url += "/rp" + this.obtenerCampo("recomendadoPara").valor + "_" + this.obtenerCampo("recomendadoPara").texto;
+
+        if (this.ordenarPor > 0)
+            url += "/o" + this.ordenarPor;
         
         App_Router.navegar(url, { trigger: false });
 
@@ -120,7 +140,7 @@ var ListarHuellitasView = Backbone.View.extend({
         this.vistaResultados.cargarContenidos(filtros);
     },
     
-    filtrarContenidosDesdeUrl: function (tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre)
+    filtrarContenidosDesdeUrl: function (tipo, genero, color, tamano, edad, recomendado, fundacion, zona, zonaPadre, nombre, orden)
     {
         
         var filtros = {
@@ -133,6 +153,8 @@ var ListarHuellitasView = Backbone.View.extend({
             zonaPadre: zonaPadre == undefined ? 0 : parseInt(zonaPadre.split("_")[0]),
             fundacion: fundacion == undefined ? 0 : parseInt(fundacion.split("_")[0]),
             recomendado: recomendado == undefined ? "" : recomendado.split("_")[0],
+            nombre: nombre,
+            orden: orden,
             paginaActual:-1
         };
 
@@ -148,6 +170,8 @@ var ListarHuellitasView = Backbone.View.extend({
             this.$("#ddlEdad").val(filtros.edad);
         if (filtros.fundacion > 0)
             this.$("#ddlFundacion").val(filtros.fundacion);
+
+        this.$("#Nombre").val(filtros.nombre);
 
         if (filtros.recomendado != "")
         {

@@ -2,7 +2,8 @@
     el: "#divResultadosBusqueda",
 
     events: {
-        "click .siguientePagina" : "siguientePagina"
+        "click .siguientePagina": "siguientePagina",
+        "change #ddlOrden" : "ordenar"
     },
 
     tipo : "h" , // f: Fundaciones h:Huellitas default:h
@@ -12,6 +13,8 @@
     parametrosFiltro : undefined,
 
     template: _.template($("#templateResultadosBusqueda").html()),
+
+    ordenadoPor: undefined,
 
     vistaMapa : undefined,
 
@@ -23,13 +26,15 @@
         {
             this.tipo = args.tipo;
         }
-
-        
-
-        // Automatically re-render whenever the Collection is populated.
-        //this.collection.on("reset", this.render, this);
-        
-
+    },
+    ordenar : function()
+    {
+        if (this.$("#ddlOrden").val() != "") {
+            this.ordenadoPor = this.$("#ddlOrden").val();
+            this.trigger("ordenar", this.ordenadoPor);
+        }
+        else
+            return false;
     },
     render: function ()
     {
@@ -42,6 +47,12 @@
         //Si los argumentos de filtro no vienen toma los anteriores
         if (args != undefined)
             this.parametrosFiltro = args;
+
+        if (args.orden > 0)
+        {
+            this.$("#ddlOrden").val(args.orden);
+            this.ordenadoPor = args.orden;
+        }
 
         this.parametrosFiltro.paginaActual++;
 
@@ -61,7 +72,7 @@
         var contenidos = models.toJSON();
         //this.$el.html(this.$el.html().replace(Huellitas.cargador, ""));
         this.$("#divLoading").remove();
-        this.$el.append(this.template(contenidos));
+        this.$(".listadoContenidos").append(this.template(contenidos));
         var ctx = this;
 
         _.each(models, function (element, index, list) {
@@ -90,6 +101,6 @@
     },
     limpiarResultados: function ()
     {
-        this.$el.empty();
+        this.$(".listadoContenidos").empty();
     }
 });

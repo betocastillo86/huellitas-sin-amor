@@ -10,6 +10,11 @@
         <section class="slide conte_perfil" id="first" data-slide="1">
             <div class="container clearfix">
                 <h2 style="margin-bottom: 20px;">PROCESO DE ADOPCIÓN</h2>
+                <div class="grid_12">
+                    A continuación encontrarás un formulario con el cual buscamos medir que tan apto eres para adoptar una mascota con nosotros. Este es el primer paso en el proceso de adopción, si lo pasas nos estaremos comunicando directamente contigo. *
+                    <div style="font-size:9px">*El llenar el formulario o ser contactado no garantiza la adopción del animal</div>
+                    
+                </div>
                 <div class="grid_4">
                     <div class="galeria_perfil">
                         <img src="/img/@Model.Contenido.ContenidoId/medium" alt="Adopta una mascota - @Model.Contenido.Nombre" title="Perros y gatos en adopción - @Model.Contenido.Nombre" />
@@ -25,7 +30,7 @@
                 </div>
 
                 @if (Model.HogarDePaso != null)
-                { 
+                {
                     <div class="conte_datos grid_4">
                         <h2>HOGAR DE PASO: <b>@Model.HogarDePaso.Nombre</b></h2>
                         <h3>CONTACTO: <span>@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</span></h3>

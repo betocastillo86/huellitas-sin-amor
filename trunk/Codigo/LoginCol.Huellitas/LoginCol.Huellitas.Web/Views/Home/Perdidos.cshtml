@@ -96,6 +96,7 @@
                         @Html.ErrorField("Imagen")
                         <input type="hidden" id="Imagen" />
                         <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
+                        <a href="javascript:void(0);" class="volver btn color3">VOLVER</a>
                     </div>
 
                     <div id="divMensajeConfirmacion" style="display:none">
@@ -143,6 +144,7 @@
                         @Html.ErrorField("Color")
 
                         <a href="javascript:void(0);" class="btn color3" id="btnFiltrar">FILTRAR</a>
+                        <a href="javascript:void(0);" class="volver btn color3" >VOLVER</a>
                     </div>
                 </form>
                 <br />
@@ -161,6 +163,8 @@
 
 @section css {
     @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/cssjqueryui")
+
 }
 @section scripts
 {
@@ -170,4 +174,5 @@
     @Scripts.Render("~/bundles/backbone_perdidos")
     @Scripts.Render("~/bundles/backbone_zonasGeograficas")
     @Scripts.Render("~/bundles/backbone_cargaArchivo")
+    @Scripts.Render("~/bundles/jqueryui")
 }
