@@ -50,7 +50,7 @@
 
     mostrarDetalle: function (model) {
         this.$("#modalDetalleContenido").html(this.templateDetalle(model.toJSON()));
-        this.$("#modalDetalleContenido").dialog();
+        this.$("#modalDetalleContenido").dialog({modal : true});
     }
 
     

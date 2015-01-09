@@ -32,7 +32,7 @@
 
 	mostrarCargando: true,
 
-	htmlCargando: "<div class='barraCargador' style='background-color:red;width:{width};height:20px'></div>",
+	htmlCargando: "<div class='barraCargador' style='background-color:red;width:{width}'></div>",
 
     timeoutCargador : undefined,
 
@@ -121,7 +121,6 @@
     //INICIO Cargador
 	mostrarCargador : function(){
 	    ctx = this;
-	    this.$("#inputArchivo").hide();
 	    this.cargador.show();
 	    this.cargador.html(this.htmlCargando.replace('{width}', '0%'));
 	    this.timeoutCargador = setInterval(function () { ctx.actualizarCargador(ctx); }, 1000);
@@ -138,7 +137,6 @@
 
 	    tamanoActual += tasaIncremento;
         //reemplaza el valor
-	    //this.cargador.find('.barraCargador').html(ctx.htmlCargando.replace('{width}', tamanoActual + '%'));
 	    ctx.cargador.find('.barraCargador').css('width', tamanoActual + '%');
 	},
 	ocultarCargador: function()
@@ -150,7 +148,8 @@
     //FIN Cargador
 	render: function ()
 	{
-		this.$el.html(this.template({name : this.name}));
+	    this.$("#inputArchivo").hide();
+	    this.$el.html(this.template({ name: this.name }));
 		this.cargador = this.$(".cargandoArchivo");
 		return this;
 	},
@@ -181,14 +180,14 @@
 	archivoGuardado: function (respuesta)
 	{
 	    if (respuesta.OperacionExitosa) {
-	        this.$("#inputArchivo").hide();
-	        this.$(".cargandoArchivo").hide();
-	        this.$("#divNombreArchivo").show();
-	        this.$("#divNombreArchivo a").html(this.model.get("NombreArchivo"));
+	        //this.$("#inputArchivo").hide();
+	        this.$(".file input[type='text']").val(this.model.get("NombreArchivo"));
 	        this.trigger("archivo-guardado", this.model);
 	    }
 	    else {
-	        this.$("#inputArchivo").show();
+	        //sthis.$("#inputArchivo").show();
+	        this.$(".file .btn_upload").hide();
+	        this.$(".file input[type='text']").hide();
 	        alert("Error guardando el archivo");
 	    }
 

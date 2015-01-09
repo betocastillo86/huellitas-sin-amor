@@ -485,6 +485,50 @@ form input{
 	font-weight:300;
 	width:calc(100% - 20px);
 	}
+form .file{
+    position:relative;
+    box-sizing:border-box;
+	}
+.file input{
+	font-family: 'Oswald', sans-serif;
+	display:block;
+	border:none;
+	padding:5px 10px;
+	color:#304A6F;
+	text-align:left;
+	font-size:16px;
+	font-weight:300;
+	width:calc(100% - 65px);
+    float:left;
+	}
+.file .barraCargador {
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:99;
+}
+.file input.upload{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    cursor:pointer;
+    padding:0;
+    margin:0;
+    }
+.btn_upload {
+    background:#3F77BF;
+    color:#FFF;
+    float:left;
+    font-size:15px;
+    width:35px;
+    padding:6px 0;
+    text-align:center;
+    margin:0 0 0 10px;
+    }
 form select{
 	font-family: 'Oswald', sans-serif;
 	display:block;
@@ -620,6 +664,17 @@ article .btn{
 	background: linear-gradient(to bottom,  rgba(48,74,111,0) 0%,rgba(48,74,111,1) 99%,rgba(48,74,111,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00304a6f', endColorstr='#304a6f',GradientType=0 ); /* IE6-9 */
 }
+.prioridad .star {
+    background:url(../images/img_star.png) no-repeat;
+    width:25px;
+    height:25px;
+    float:left;
+    }
+.prioridad span {
+    display:block;
+    float:left;
+    padding:2px 0px 0px 5px;
+     }
 .todoResul{
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#2C4567;
@@ -995,6 +1050,7 @@ li.comentario p{
 	width:100%;
 	}
 .slideAdopta .descriAdopta{
+    padding:45px 0 0;
 	}
 .descriAdopta h4{
 	font-size:20px;
@@ -1207,6 +1263,13 @@ footer .redes{
 	}
 /*fin se busca*/
 
+.ui-widget-content {
+    z-index:99999999 !important;
+}
+.ui-widget-overlay{
+    z-index:9999999 !important;
+}
+
 /* Tablet */
 @media screen and (max-width: 1024px) {
 #logo {
@@ -1357,7 +1420,10 @@ article p{
 #first {
     margin: 0;
     padding-top: 140px;
-}
+    }
+.slideAdopta .descriAdopta {
+    padding:0;
+    }
 }
 @media screen and (max-width: 640px) {
 body{
@@ -1443,6 +1509,12 @@ form select{
 form input{
 	margin:10px 0 !important;
 	}
+.file input {
+    margin:0 !important;
+    }
+.file input.upload {
+    margin:0 !important;
+    }
 .bannerDona{
 	display:none;
 	}
@@ -1576,11 +1648,16 @@ article p.scroll{
 .conte_check{
 	clear: both;
 	}
-.cajaCaso .prioridad{
-	width: calc(100% - 185px);
-	}
+    .cajaCaso .prioridad {
+        width: calc(100% - 185px);
+    }
+.prioridad .star {
+    display:none;
+    }
+.prioridad span {
+    padding:5px 0 0;
+     }
 }
-
 
 
 
