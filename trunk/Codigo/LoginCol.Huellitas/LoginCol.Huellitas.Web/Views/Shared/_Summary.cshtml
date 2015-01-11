@@ -1,0 +1,13 @@
+﻿<div id="divSummary" title="Campos faltantes"></div>
+<script id="templateSummary" type="text/template">
+    <%=mensaje%><br />
+    <ul>
+    <% 
+        _.each(errores, function(element, index){
+            %>
+                <li><%=element%></li>
+            <%
+        })
+    %>
+    </ul>
+</script>

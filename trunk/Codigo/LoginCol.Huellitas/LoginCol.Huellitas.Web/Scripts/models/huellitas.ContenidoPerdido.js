@@ -15,7 +15,7 @@
 	validation: {
 	    Nombre: {
 	        required: true,
-            msg: "*"
+            msg: "Ingrese el nombre. Si no lo conoce ingrese N/A"
 	    },
 		Tipo: {
 			required: true

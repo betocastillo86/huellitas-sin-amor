@@ -48,11 +48,9 @@
                         </div>
                         <div class="grid_4">
                             @Html.TextBoxFor(m => m.Nombre, new { placeholder = "NOMBRE DEL ANIMAL" })
-                            @Html.ErrorField("Nombre")
                         </div>
 
                         @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
-                        @Html.ErrorField("Genero")
                         <select id="ddlZonaDepartamento" class="grid_4">
                             <option>DEPARTAMENTO</option>
                         </select>
@@ -62,38 +60,28 @@
 
 
                         @Html.DropDownListFor(m => m.ZonaGeograficaId, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
-                        @Html.ErrorField("ZonaGeograficaId")
 
                         <div class="grid_4">
                             @Html.TextBoxFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL", valjs = "numero" })
-                            @Html.ErrorField("Edad")
                         </div>
 
                         @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
-                        @Html.ErrorField("Color")
 
                         <div class="grid_4 omega" id="divArchivoPerdido"></div>
 
                         <div class="grid_4">
                             @Html.TextBoxFor(m => m.ContactoNombre, new { placeholder = "NOMBRE DE CONTACTO" })
-                            @Html.ErrorField("ContactoNombre")
                         </div>
                         <div class="grid_4 ">
                             @Html.TextBoxFor(m => m.ContactoTelefono, new { placeholder = "TELEFONO DE CONTACTO" })
-                            @Html.ErrorField("ContactoTelefono")
                         </div>
                         <div class="grid_4 omega">
                             @Html.TextBoxFor(m => m.ContactoCorreo, new { placeholder = "CORREO DE CONTACTO" })
-                            @Html.ErrorField("ContactoCorreo")
                         </div>
                         <div class="grid_12 omega">
                             @Html.TextAreaFor(m => m.Descripcion, new { placeholder = "BREVE DESCRIPCIÓN" })
-                            @Html.ErrorField("Descripcion")
                         </div>
 
-
-
-                        @Html.ErrorField("Imagen")
                         <input type="hidden" id="Imagen" />
                         <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
                         <a href="javascript:void(0);" class="volver btn color3">VOLVER</a>
@@ -124,11 +112,9 @@
                         </div>
                         <div class="grid_4">
                             @Html.TextBoxFor(m => m.Nombre, new { placeholder = "NOMBRE DEL ANIMAL" })
-                            @Html.ErrorField("Nombre")
                         </div>
 
                         @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
-                        @Html.ErrorField("Genero")
                         <select id="ddlZonaDepartamento" class="grid_4">
                             <option>DEPARTAMENTO</option>
                         </select>
@@ -138,10 +124,8 @@
 
 
                         @Html.DropDownListFor(m => m.ZonaGeograficaId, new SelectList((new string[] { "BARRIO" }).ToList()), new { @class = "grid_4 omega", placeholder = "BARRIO", id = "ddlZonaBarrio" })
-                        @Html.ErrorField("ZonaGeograficaId")
 
                         @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
-                        @Html.ErrorField("Color")
 
                         <a href="javascript:void(0);" class="btn color3" id="btnFiltrar">FILTRAR</a>
                         <a href="javascript:void(0);" class="volver btn color3" >VOLVER</a>
@@ -160,6 +144,7 @@
 </div>
 
 @Html.Partial("_FileUpload")
+@Html.Partial("_Summary")
 
 @section css {
     @Styles.Render("~/bundles/css")
