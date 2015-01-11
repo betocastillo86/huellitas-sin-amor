@@ -116,11 +116,63 @@ namespace LoginCol.Huellitas.Negocio
             return string.Concat(this.RutaServidor, rutaImagen);
         }
 
-        public ResultadoOperacion Actualizar(Contenido contenido)
+
+        public ResultadoOperacion Crear(Contenido contenido, int idUsuario, string imagen = null)
         {
-           ResultadoOperacion respuesta = new ResultadoOperacion();
-           respuesta.OperacionExitosa = _contenidos.Value.Actualizar(contenido);
-           return respuesta;
+            ResultadoOperacion respuesta = new ResultadoOperacion();
+            contenido.UsuarioId = idUsuario;
+
+            respuesta.Id = _contenidos.Value.Crear(contenido);
+            respuesta.OperacionExitosa = respuesta.Id > 0;
+
+            if (respuesta.OperacionExitosa)
+            {
+                respuesta = ValidarCargaImagenTemporal(contenido.ContenidoId, imagen, ref respuesta);
+            }
+            else
+                respuesta.MensajeError = "No fue posible crear el contenido";
+
+            return respuesta;
+        }
+
+
+        public ResultadoOperacion Actualizar(Contenido contenido, string imagen = null)
+        {
+            ResultadoOperacion respuesta = new ResultadoOperacion();
+            respuesta.OperacionExitosa = _contenidos.Value.Actualizar(contenido);
+
+            //actualiza la imagen si es necesario
+            respuesta = ValidarCargaImagenTemporal(contenido.ContenidoId, imagen, ref respuesta);
+
+
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Realiza las validaciones si debe o no cargar la imagen desde una ruta temporal. Aplica para creacion y actualizacion del contenido
+        /// </summary>
+        /// <param name="contenido"></param>
+        /// <param name="imagen"></param>
+        /// <param name="respuesta"></param>
+        /// <returns></returns>
+        public ResultadoOperacion ValidarCargaImagenTemporal(int idContenido, string imagen, ref ResultadoOperacion respuesta)
+        {
+            //Valida si tiene imagen para ser cargada
+            if (!string.IsNullOrEmpty(imagen))
+            {
+                ArchivosTemporalesNegocio nArchivosTemporales = new ArchivosTemporalesNegocio();
+
+                //Guarda el archivo fisico redimensionado desde el temporal
+                respuesta = GuardarImagen(idContenido, nArchivosTemporales.ObtenerArchivoTemporal(imagen));
+
+                //Elimina el archivo temporal despues de ser guardado
+                if (respuesta.OperacionExitosa)
+                    nArchivosTemporales.EliminarArchivoTemporal(imagen);
+                else
+                    respuesta.MensajeError = "No fue posible guardar la imagen";
+            }
+
+            return respuesta;
         }
 
         /// <summary>
@@ -140,53 +192,38 @@ namespace LoginCol.Huellitas.Negocio
             return Crear(contenido, idUsuario, imagen);
         }
 
-        public ResultadoOperacion Crear(Contenido contenido, int idUsuario, string imagen = null)
-        {
-            ResultadoOperacion respuesta = new ResultadoOperacion();
-            contenido.UsuarioId = idUsuario;
-            
-            respuesta.Id = _contenidos.Value.Crear(contenido);
-            respuesta.OperacionExitosa = respuesta.Id > 0;
-
-            if (respuesta.OperacionExitosa)
-            {
-                //Valida si tiene imagen para ser cargada
-                if(!string.IsNullOrEmpty(imagen))
-                {
-                    ArchivosTemporalesNegocio nArchivosTemporales = new ArchivosTemporalesNegocio();
-
-                    //Guarda el archivo fisico redimensionado desde el temporal
-                    respuesta = GuardarImagen(contenido.ContenidoId, nArchivosTemporales.ObtenerArchivoTemporal(imagen));
-
-                    //Elimina el archivo temporal despues de ser guardado
-                    if (respuesta.OperacionExitosa)
-                        nArchivosTemporales.EliminarArchivoTemporal(imagen);
-                    else
-                        respuesta.MensajeError = "No fue posible guardar la imagen";
-                }
-                
-            }
-            else
-                respuesta.MensajeError = "No fue posible crear el contenido";
-            
-            return respuesta;
-        }
 
 
+        #region Contenidos Relacionados
 
         public List<ContenidoRelacionado> ObtenerImagenes(int idContenido)
         {
             return ObtenerContenidosRelacionados(idContenido, (int)TipoRelacionEnum.Imagen);
         }
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int idTipoRelacion)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int? idTipoRelacion)
         {
             return ObtenerContenidosRelacionados(idContenido, idTipoRelacion, false);
         }
+
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)
+        {
+            return ObtenerContenidosRelacionados(id, (int)tipoRelacionEnum, cargarCampos);
+        }
+
+
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int? idTipoRelacion, bool cargarCampos)
+        {
+            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion, cargarCampos);
+        }
+
+
         public ContenidoRelacionado ObtenerContenidoRelacionado(int idContenido, int idContenidoHijo, int idTipoRelacion)
         {
             return _contenidos.Value.ObtenerContenidoRelacionado(idContenido, idContenidoHijo, idTipoRelacion);
         }
+
+        #endregion
 
         public bool Eliminar(int idContenido)
         {
@@ -335,15 +372,7 @@ namespace LoginCol.Huellitas.Negocio
         }
 
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)
-        {
-            return ObtenerContenidosRelacionados(id, (int) tipoRelacionEnum, cargarCampos);
-        }
-
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int idTipoRelacion, bool cargarCampos)
-        {
-            return _contenidos.Value.ObtenerContenidosRelacionados(idContenido, idTipoRelacion, cargarCampos);
-        }
+       
 
 
         /// <summary>
