@@ -11,7 +11,7 @@
             <div id="divImagenesContenido"></div>
             @Html.Partial("_ImagenesContenido")
 
-
+            @Html.HiddenFor(m => m.Nombre)
             <div class="descriPerfil grid_6 omega">
                 <div class="descri_mascota">
                     <h2><span class="icon-perro"></span>@Html.DisplayFor(m => m.Nombre)</h2>
@@ -38,7 +38,11 @@
                     <p>@Html.DisplayFor(m => m.Descripcion)</p>
                 </div>
                 <a class="btn left" href="@(Model.NombreLink)/@LoginCol.Huellitas.Negocio.ParametrizacionNegocio.LlaveRouterQuieroAdoptar">ADOPTAME</a>
-                @*<a class="btn left" id="btnApadrinar" href="javascript:;">APADRINAME</a>*@
+                @if (Model.AdoptantePadrino == null)
+                {
+                    <a class="btn left" id="btnApadrinar" href="javascript:;">APADRINAME</a>
+                }
+                
             </div>
 
 
@@ -69,9 +73,12 @@
                 </div>
             }
 
-            <div id="divApadrinar" >
-                <p>Para apadrinar a @Model.Nombre solo tienes que dejarnos tus datos y nos encargaremos de contactarte.</p>
-                <p>El valor mensual que se debe pagar por apadrinar a @Model.Nombre es: @Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")</p>
+            <div id="divApadrinar" style="display:none" >
+                Para apadrinar a @Model.Nombre solo tienes que dejarnos tus datos y nos encargaremos de contactarte.
+                El valor mensual que se debe pagar por apadrinar a @Model.Nombre es: @Html.ObtenerCampoDeContenido(Model, "Donacion Mensual") 
+                <iframe id="divPlayerVideo" width="491" height="333"
+                        src="https://www.youtube.com/embed/u3dzUKzA20k" ></iframe>
+                <div style="font-size:9px">* Video tomado de <a href="https://www.youtube.com/channel/UC2KjtHkcxugWx9f_Rs0-Beg" target="_blank">Refugio chiclayo</a> </div>
             </div>
         </div>
     </section>

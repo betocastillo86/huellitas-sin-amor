@@ -23,8 +23,6 @@
     {
         this.contenidoId = args.id;
 
-        
-        
 
         this.vistaComentarios = new ComentariosView({ id: args.id, el: "#divComentarios" });
         this.vistaComentarios.on("comentarioAgregado", this.sumarComentario, this);
@@ -36,25 +34,16 @@
         this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido", urlVideo: this.$("#UrlVideo").val() });
         
 
-        $("#divApadrinar").dialog({
-            autoOpen: false,
-            show: {
-                effect: "blind",
-                duration: 1000
-            },
-            hide: {
-                effect: "explode",
-                duration: 1000
-            }
-        });
-
-
         //this.vistaVideo = new VideoView({ el: "#divVideo", urlVideo: this.$("#UrlVideo").val() });
         this.render();
     },
     apadrinar: function () {
-        
-        $("#divApadrinar").dialog('open');
+        this.$("#divApadrinar").dialog({
+            modal: true,
+            width: 527,
+            height: 500,
+            title: '¿Quieres apadrinar a '+$('#Nombre').val()+'?'
+        });
     },
     sumarComentario : function(ultimoComentario)
     {
