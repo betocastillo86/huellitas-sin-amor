@@ -20,7 +20,8 @@
         "admin/fundaciones/listar": "listarFundaciones",
         "admin/fundaciones/editar/:id": "editarFundacion",
         "admin/fundaciones/crear": "crearFundacion",
-        "admin/parametrizacion" : "listarParametrizacion"
+        "admin/parametrizacion": "listarParametrizacion",
+        "admin/usuariosexternos": "listarUsuariosExternos"
     },
     initialize : function(options)
     {
@@ -79,6 +80,12 @@
         this.vistaActual = new ParametrizacionView();
     },
     //Fin Fundaciones
+    //Inicio UsuariosExternos
+    listarUsuariosExternos: function () {
+        //debugger;
+        this.vistaActual = new UsuarioExternoView();
+    },
+    //Fin UusariosExternos
     desactivarVistaActual: function ()
     {
         if (this.vistaActual != undefined)
@@ -88,8 +95,10 @@
 
 
 var App_Router;
+var App_Huellitas;
 
 $(document).on("ready", function () {
     App_Router = new AdminRouter();
+    App_Huellitas = new AppHuellitas();
     Backbone.history.start({ pushState: true });
 });

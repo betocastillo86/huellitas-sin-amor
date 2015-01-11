@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201412121924474_DescripcionCorta.Designer.cs">
       <DependentUpon>201412121924474_DescripcionCorta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501061624491_Imagen50Length1.cs" />
+    <Compile Include="Migrations\201501061624491_Imagen50Length1.Designer.cs">
+      <DependentUpon>201501061624491_Imagen50Length1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -428,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412121924474_DescripcionCorta.resx">
       <DependentUpon>201412121924474_DescripcionCorta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501061624491_Imagen50Length1.resx">
+      <DependentUpon>201501061624491_Imagen50Length1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

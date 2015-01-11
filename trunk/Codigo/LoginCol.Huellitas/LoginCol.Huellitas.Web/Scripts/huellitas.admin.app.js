@@ -2,11 +2,45 @@
 
     elementoHtml: undefined,
 
-    initialize : function(args)
-    {
-        this.elementoHtml = args.el;
+    parametrizacionDataTableMin : {
+        'paging': true,
+        'pageLength': 5,
+        'language':
+            {
+                'search': 'Buscar por nombre: '
+            },
+        'sPaginationType': 'bootstrap'
     },
 
+    initialize : function(args)
+    {
+        if(args)
+            this.elementoHtml = args.el;
+    },
+    marcarErroresFormulario: function (errores, ctx) {
+        this.removerErroresFormulario(ctx);
+        _.each(errores, function (error, campo) {
+            ctx.$("#" + campo).addClass("invalid");
+            ctx.$("#" + campo + "Error").html(error);
+        });
+    },
+    removerErroresFormulario: function (ctx) {
+
+        _.each(ctx.$(".invalid"), function (obj) {
+            $(obj).removeClass("invalid");
+        });
+
+        _.each(ctx.$("span[id*='Error']"), function (obj) {
+            //ctx.$("#" + campo + "Error").html("");
+            $(obj).html("");
+        });
+
+    },
+    limpiarFormulario: function (ctx, campos) {
+        _.each(campos, function (campo) {
+            ctx.$("#" + campo).val("");
+        });
+    },
     deserializarFormulario: function (attributes) {
 
         var html = $(this.elementoHtml);
@@ -96,3 +130,4 @@
         });
     }
 });
+

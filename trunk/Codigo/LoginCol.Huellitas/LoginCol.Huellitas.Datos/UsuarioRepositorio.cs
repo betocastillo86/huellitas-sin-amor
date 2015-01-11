@@ -80,5 +80,32 @@ namespace LoginCol.Huellitas.Datos
 
             return usuarios ?? new List<Usuario>();
         }
+
+        /// <summary>
+        /// Retorna el listado de usuarios de acuerdo al filtro enviado
+        /// </summary>
+        /// <param name="activos"></param>
+        /// <param name="administradores"></param>
+        /// <param name="filtro"></param>
+        /// <returns></returns>
+        public List<Usuario> ObtenerUsuarios(bool? activos, bool? administradores, Usuario filtro)
+        {
+            List<Usuario> usuarios;
+
+            using (var db = new Repositorio())
+            {
+                var query = db.Usuarios.AsQueryable();
+
+                if(activos.HasValue)
+                    query = query.Where(u => u.Activo == activos.Value);
+
+                if(administradores.HasValue)
+                    query = query.Where(u => u.EsAdministrador == administradores.Value);
+
+                usuarios = query.ToList();
+            }
+
+            return usuarios ?? new List<Usuario>();
+        }
     }
 }

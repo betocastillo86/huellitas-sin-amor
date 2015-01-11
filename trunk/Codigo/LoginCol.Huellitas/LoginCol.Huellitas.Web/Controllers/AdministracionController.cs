@@ -1,4 +1,5 @@
-﻿using LoginCol.Huellitas.Entidades;
+﻿using AutoMapper;
+using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
 using LoginCol.Huellitas.Web.Infraestructure;
 using LoginCol.Huellitas.Web.Models;
@@ -93,7 +94,23 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View(new ParametrizacionNegocio().Obtener());
         }
         #endregion
-        
+
+        #region UsuariosExternos
+
+        public ActionResult UsuariosExternos()
+        {
+            var modelo = new ListarUsuariosExternosModel();
+
+            //consulta todos los usuarios externos activos
+            UsuarioNegocio nUsuario = new UsuarioNegocio();
+            modelo.Usuarios = nUsuario.ObtenerUsuarios(null, false, null)
+                .Select(Mapper.Map<Usuario, UsuarioModel>)
+                .ToList();
+
+            return View(modelo);
+        }
+
+        #endregion
 
         public ActionResult Salir()
         {
@@ -108,6 +125,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 1, Nombre = "Animales", Vinculo = "/admin/animales/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 3, Nombre = "Parametrizacion", Vinculo = "/admin/parametrizacion" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Usuarios Externos", Vinculo = "/admin/usuariosexternos" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
 

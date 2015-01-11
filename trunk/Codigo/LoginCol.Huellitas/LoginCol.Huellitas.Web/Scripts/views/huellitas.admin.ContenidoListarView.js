@@ -56,7 +56,8 @@ var ContenidoListarView = Backbone.View.extend({
     },
 	
     crearContenido : function(){
-        App_Router.navigate("/admin/"+this.modulo+"/crear", {trigger: true});
+        //App_Router.navigate("/admin/" + this.modulo + "/crear", { trigger: true });
+        document.location.href = "/admin/" + this.modulo + "/crear";
     },
     //Desactiva la vista despues
     desactivar: function () {

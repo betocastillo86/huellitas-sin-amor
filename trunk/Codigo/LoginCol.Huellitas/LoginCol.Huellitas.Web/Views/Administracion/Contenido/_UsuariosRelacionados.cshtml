@@ -67,13 +67,20 @@
                                 @Html.DropDownList("Relacionados_TipoRelacionContenido", new SelectList(Model.TiposRelacionUsuario, "TipoRelacionId", "Nombre"), "-", new { @class = "form-control", name="Relacionados_TipoRelacionContenido" })
                             </div>
                             <div class="form-group" >
-                                @Html.Label("Usuarios")
-                                @Html.DropDownList("Relacionados_Usuario", new SelectList(Model.Usuarios, "UsuarioId", "NombreCompleto"), "-", new { @class = "form-control", name = "Relacionados_Usuario" })
-                            </div>
 
-                            <div class="btn btn-success" id="BtnGuardarContenidoRelacionado">
-                                <i class="glyphicon glyphicon-plus"></i>
-                                Guardar
+                                                <table id="tableUsuariosARelacionar" width="100%">
+                                                    <thead style="display:none">
+                                                        
+                                                        <tr>
+                                                            <th>Nombre</th>
+                                                            <th>Opción</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                  
+                                                </table>
                             </div>
 
 
@@ -109,6 +116,23 @@
     </div>
 </script>
 
+<script type="text/template" id="templateTrUsuarioAAgregar">
+    <% 
+        _.each(obj, function(element, index){
+    %>
+        <tr>
+            <td><h6><%= element.NombreCompleto %></h6></td>
+            <td>
+                <div class="btn btn-success" id="AgregarContenidoRelacionado_<%= element.UsuarioId %>" uid="<%=element.UsuarioId%>">
+                    <i class="glyphicon glyphicon-add"></i>
+                    Agregar
+                </div>
+            </td>
+        </tr>
+    <%
+        })
+    %>
+</script>
 
 <script src="~/Scripts/models/huellitas.admin.UsuarioRelacionado.js"></script>
 <script src="~/Scripts/views/huellitas.admin.UsuariosRelacionadosView.js"></script>

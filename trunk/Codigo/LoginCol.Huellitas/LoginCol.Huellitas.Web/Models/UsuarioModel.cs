@@ -9,13 +9,13 @@ namespace LoginCol.Huellitas.Web.Models
 {
     public class UsuarioModel : UsuarioBaseModel
     {
-        [Required]
-        public int OcupacionId { get; set; }
+        [NullableRequired]
+        public int? OcupacionId { get; set; }
         
         public string OcupacionValor { get; set; }
-        
-        [Required]
-        public int EstadoCivilId { get; set; }
+
+        [NullableRequired]
+        public int? EstadoCivilId { get; set; }
 
         public string EstadoCivilValor { get; set; }
 
@@ -36,6 +36,11 @@ namespace LoginCol.Huellitas.Web.Models
         public string Celular { get; set; }
 
         [Required]
+        public string Clave { get; set; }
+
+        [NullableRequired]
         public DateTime? FechaNacimiento { get; set; }
+
+        public DateTime FechaRegistro { get; set; }
     }
 }

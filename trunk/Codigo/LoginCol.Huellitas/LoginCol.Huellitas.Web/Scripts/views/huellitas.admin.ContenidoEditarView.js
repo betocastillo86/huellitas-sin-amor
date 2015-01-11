@@ -11,11 +11,7 @@
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
         "change #Destacado" : "destacarContenido",
-        "click #VerGaleriaContenido": "verGaleria",
-        "click #BtnGuardarImagen": "guardarImagen",
-        "change #fileInput": "validarContenidoArchivo",
-        
-
+        "click #VerGaleriaContenido": "verGaleria"
     },
 
     template: _.template($("#templateEditarContenidoBase").html()),
@@ -29,6 +25,8 @@
     app: undefined,
 
     galeriaView: undefined,
+
+    vistaSubirArchivo : undefined,
 
     //permite controlar las redirecciones 
     modulo : undefined,
@@ -46,8 +44,6 @@
 
         this.zonasGeograficas = new ZonaGeograficaCollection();
         this.zonasGeograficas.on("add", this.mostrarCiudades, this);
-
-
 
         this.model = new ContenidoModel();
         this.model.on("sync", this.mostrarContenido, this);
@@ -73,11 +69,6 @@
             this.mostrarContenido();
         }
     },
-
-    validarContenidoArchivo : function()
-    {
-        return this.app.validarContenidoArchivoGeneral("fileInput");
-    },
     mostrarContenido: function ()
     {
         var contenidoJson = this.model.toJSON();
@@ -95,7 +86,8 @@
 
         this.cargarCiudades();
 
-        
+        this.vistaSubirArchivo = new SubirArchivoView({ name: "archivo", el: "#divArchivoContenidoCargado", extensionesPermitidas: Constantes.ExtensionesImagenes, tamanoMaximo: Constantes.TamanoMaximoCargaArchivos });
+        this.vistaSubirArchivo.on("archivo-guardado", this.imagenGuardada, this);
 
         this.$el.show();
         this.app.cargarFuncionesFormularioPersiana();
@@ -194,17 +186,6 @@
             if (guardarCampo)
             {
                 camposAdicionales.push({ CampoId: idCampo, Valor: element.val() });
-
-                ////busca en el listado ya adicionado si ese campo ya existe para sumarle un valor
-                //var campoEncontrado = _.findWhere(camposAdicionales, { CampoId: idCampo })
-                ////Si el campo no está lo agrega
-                //if (campoEncontrado == undefined) {
-                //    camposAdicionales.push({ CampoId: idCampo, Valor: element.val() });
-                //}
-                //else {
-                //    //Si el campo ya existe le adiciona una de las opciones
-                //    campoEncontrado.Valor = campoEncontrado.Valor + "," + element.val();
-                //}
             }
             
 
@@ -255,10 +236,6 @@
     activarFuncionesEdicion : function(id)
     {
         if (id > 0) {
-            $("#divImagenPrincipal").show();
-            $("#VerGaleriaContenido").show();
-            
-
             this.app.consola("Galeria de Contenido creada");
             this.galeriaView = new GaleriaContenidoView({ id: id });
 
@@ -268,10 +245,7 @@
             this.app.consola("Vista Usuarios Relacionados creada");
             this.contenidosRelacionadosView = new UsuariosRelacionadosView({ id: id, idTipoContenido: this.model.get('TipoContenidoId') });
         }
-        else {
-            $("#divImagenPrincipal").hide();
-            $("#VerGaleriaContenido").hide();
-        }
+        
     },
     activarContenido : function()
     {
@@ -286,41 +260,19 @@
 
     //Desactiva la vista despues
     desactivar: function () {
-        //debugger;
-        
-        App_Router.navigate("admin/"+this.modulo+"/listar", { trigger: true });
-        $("#imgPrincipalContenido").empty();
-        if(this.contenidosRelacionadosView != undefined) this.contenidosRelacionadosView.desactivar();
-        this.$el.hide();
-        this.undelegateEvents();
-        //this.remove();
+        document.location.href = "/admin/" + this.modulo + "/listar";
     },
 
     //INICIO Guardar Imagenes
-    guardarImagen : function()
-    {
-        
-        if ($("#fileInput")[0].files.length == 1) {
-            var imagen = new ImagenModel();
-            this.listenTo(imagen,"imagen-guardada-ok", this.imagenGuardarOk);
-            this.listenTo(imagen,"imagen-guardada-error", this.imagenGuardarError);
-            imagen.set({ ContenidoId: this.model.get("ContenidoId") });
-            this.app.consola("Antes de guardar imagen");
-            imagen.guardarEnDisco($("#fileInput"));
+    imagenGuardada: function (respuesta) {
+        if (respuesta.get("ArchivoId")) {
+            this.model.set({ Imagen: respuesta.get("ArchivoId") });
+            this.$("#ArchivoId").val(respuesta.get("ArchivoId"));
+            //this.$("#Imagen").val(respuesta.get("ArchivoId"));
         }
         else {
-            $("#fileInput").addClass("field-validation-error");
+            App_Router.alertaView.mostrar("Error guardando la imagen", "Error");
         }
-        
-    },
-    imagenGuardarOk : function()
-    {
-        App_Router.alertaView.mostrar("Imagen guardada correctamente");
-        this.cargarImagenPrincipal();
-    },
-    imagenGuardarError : function()
-    {
-        App_Router.alertaView.mostrar("Error guardando la imagen", "Error");
     }
     //FIN GuardarImagenes
 

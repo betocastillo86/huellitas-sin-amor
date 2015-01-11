@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminUsuarioRelacionadoController.cs" />
+    <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\ArchivosController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
@@ -206,8 +207,10 @@
     <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Infraestructure\NullableRequiredAttribute.cs" />
     <Compile Include="Infraestructure\SumarVisitaAttribute.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
+    <Compile Include="Models\Admin\ListarUsuariosExternosModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -616,6 +619,7 @@
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
     <Content Include="Scripts\huellitas.admin.router.js" />
     <Content Include="Scripts\models\huellitas.admin.Parametrizacion.js" />
+    <Content Include="Scripts\models\huellitas.admin.Usuario.js" />
     <Content Include="Scripts\models\huellitas.admin.UsuarioRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.ContenidoRelacionado.js" />
     <Content Include="Scripts\models\huellitas.admin.Imagen.js" />
@@ -634,10 +638,13 @@
     <Content Include="Scripts\libs\TrafficCop.min.gz.js" />
     <Content Include="Scripts\libs\TrafficCop.min.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
+    <Content Include="Scripts\views\huellitas.admin.AgregarContenidoRelacionadoView.js" />
+    <Content Include="Scripts\views\huellitas.admin.AgregarUsuarioRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AlertHtmlView.js" />
     <Content Include="Scripts\views\huellitas.admin.AlertView.js" />
     <Content Include="Scripts\views\huellitas.admin.AnimalEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidoEditarView.js" />
+    <Content Include="Scripts\views\huellitas.admin.UsuarioExternoView.js" />
     <Content Include="Scripts\views\huellitas.admin.UsuariosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.AdoptarView.js" />
@@ -730,6 +737,7 @@
     <Content Include="Views\Home\_InfoAdopta.cshtml" />
     <Content Include="Views\Home\Adoptar.cshtml" />
     <Content Include="Views\Home\_ListadoPerdidos.cshtml" />
+    <Content Include="Views\Administracion\UsuariosExternos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

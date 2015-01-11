@@ -113,12 +113,11 @@
             <div class="box-content">
                 <div class="form-group" id="divImagenPrincipal">
                     @Html.LabelFor(model => model.Imagen)
-
-                    <input id="fileInput" type="file" name="fileInput">
-                    <div class="btn btn-default" id="BtnGuardarImagen">
-                        Guardar Imagen
+                    <div id="divArchivoContenidoCargado">
                     </div>
-                    <p class="help-block">.jpg</p>
+                    <input id="ArchivoId" type="hidden" />
+
+                    <p class="help-block">Solo archivos .jpg</p>
                     <div id="imgPrincipalContenido"></div>
                 </div>
 
@@ -138,3 +137,4 @@
 
 
 
+@Html.Partial("_FileUpload")
