@@ -22,7 +22,9 @@
 
     vistaArchivo: undefined,
 
-    vistaResultados : undefined,
+    vistaResultados: undefined,
+
+    vistaSummary : undefined,
 
     tipoContenido: undefined,
     //FIN CONTROLES DE LA VISTA
@@ -61,6 +63,7 @@
         this.formRegistrar = this.$("#formRegistrar");
         this.formFiltro = this.$("#formFiltro");
 
+        this.vistaSummary = new SummaryView();
 
         this.vistaArchivo = new SubirArchivoView({ name: "archivo", el: "#divArchivoPerdido", extensionesPermitidas: Constantes.ExtensionesImagenes, tamanoMaximo: Constantes.TamanoMaximoCargaArchivos });
         this.vistaArchivo.on("archivo-guardado", this.imagenGuardada, this);
@@ -145,6 +148,7 @@
             this.$("#msjEncuentro").show();
     },
     datosInvalidos: function (errores, ctx) {
+        ctx.vistaSummary.mostrar(errores);
         Huellitas.marcarErroresFormulario(errores, ctx);
     },
     mostrarInicio: function () {

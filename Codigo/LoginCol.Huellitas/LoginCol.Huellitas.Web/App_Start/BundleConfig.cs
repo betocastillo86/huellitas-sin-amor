@@ -192,6 +192,7 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/views/huellitas.PerdidosView.js")
                 .Include("~/Scripts/views/huellitas.ListaPerdidosView.js")
                 .Include("~/Scripts/models/huellitas.ContenidoPerdido.js")
+                .Include("~/Scripts/views/huellitas.SummaryView.js")
                 );
 
             bundles.Add(new ScriptBundle("~/bundles/backbone_home")
@@ -238,6 +239,10 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/backbone_redesSociales")
                 .Include("~/Scripts/views/huellitas.TwitterShareView.js")
                 .Include("~/Scripts/views/huellitas.FacebookShareView.js"));
+
+            //Summary Errores
+            bundles.Add(new ScriptBundle("~/bundles/backbone_summary")
+                .Include("~/Scripts/views/huellitas.SummaryView.js"));
 
             //imagenes de los contenidos
             bundles.Add(new ScriptBundle("~/bundles/backbone_imagenes")
