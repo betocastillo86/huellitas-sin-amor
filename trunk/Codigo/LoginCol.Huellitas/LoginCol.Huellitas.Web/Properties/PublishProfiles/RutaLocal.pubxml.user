@@ -118,34 +118,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:09</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Datos.dll">
-      <publishTime>01/06/2015 21:28:23</publishTime>
+      <publishTime>01/11/2015 10:36:48</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Datos.pdb">
-      <publishTime>01/06/2015 21:28:23</publishTime>
+      <publishTime>01/11/2015 10:36:48</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Entidades.dll">
-      <publishTime>01/02/2015 10:01:17</publishTime>
+      <publishTime>01/11/2015 10:36:15</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Entidades.pdb">
-      <publishTime>01/02/2015 10:01:17</publishTime>
+      <publishTime>01/11/2015 10:36:15</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Negocio.dll">
-      <publishTime>01/06/2015 21:28:26</publishTime>
+      <publishTime>01/11/2015 10:44:11</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Negocio.pdb">
-      <publishTime>01/06/2015 21:28:26</publishTime>
+      <publishTime>01/11/2015 10:44:11</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Utilidades.dll">
-      <publishTime>01/02/2015 10:01:20</publishTime>
+      <publishTime>01/11/2015 10:36:47</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Utilidades.pdb">
-      <publishTime>01/02/2015 10:01:20</publishTime>
+      <publishTime>01/11/2015 10:36:47</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.dll">
-      <publishTime>01/07/2015 21:20:40</publishTime>
+      <publishTime>01/11/2015 11:37:04</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.pdb">
-      <publishTime>01/07/2015 21:20:40</publishTime>
+      <publishTime>01/11/2015 11:37:04</publishTime>
     </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
       <publishTime>10/05/2014 18:34:14</publishTime>
@@ -829,10 +829,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2014 20:53:02</publishTime>
     </File>
     <File Include="Scripts/huellitas.admin.app.js">
-      <publishTime>12/06/2014 19:52:44</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/huellitas.admin.router.js">
-      <publishTime>12/06/2014 11:04:42</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/huellitas.app.js">
       <publishTime>12/25/2014 13:06:04</publishTime>
@@ -1425,8 +1425,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/models/huellitas.admin.TipoRelacionContenido.js">
       <publishTime>10/07/2014 21:42:25</publishTime>
     </File>
+    <File Include="Scripts/models/huellitas.admin.Usuario.js">
+      <publishTime>01/11/2015 10:48:43</publishTime>
+    </File>
     <File Include="Scripts/models/huellitas.admin.UsuarioRelacionado.js">
-      <publishTime>11/22/2014 13:14:42</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/models/huellitas.Adopcion.js">
       <publishTime>12/10/2014 16:36:39</publishTime>
@@ -1447,7 +1450,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/07/2015 21:16:37</publishTime>
     </File>
     <File Include="Scripts/models/huellitas.ContenidoPerdido.js">
-      <publishTime>01/07/2015 21:14:15</publishTime>
+      <publishTime>01/11/2015 11:42:57</publishTime>
     </File>
     <File Include="Scripts/models/huellitas.TipoContenido.js">
       <publishTime>10/14/2014 21:05:22</publishTime>
@@ -1457,6 +1460,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/views/huellitas.admin.AdminView.js">
       <publishTime>10/05/2014 18:34:00</publishTime>
+    </File>
+    <File Include="Scripts/views/huellitas.admin.AgregarContenidoRelacionadoView.js">
+      <publishTime>01/11/2015 10:48:43</publishTime>
+    </File>
+    <File Include="Scripts/views/huellitas.admin.AgregarUsuarioRelacionadoView.js">
+      <publishTime>01/11/2015 10:48:43</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.admin.AlertHtmlView.js">
       <publishTime>10/05/2014 18:34:00</publishTime>
@@ -1468,13 +1477,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:00</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.admin.ContenidoEditarView.js">
-      <publishTime>12/06/2014 19:44:04</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.admin.ContenidoListarView.js">
-      <publishTime>10/23/2014 19:43:29</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.admin.ContenidosRelacionadosView.js">
-      <publishTime>10/07/2014 22:53:58</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.admin.GaleriaContenidoView.js">
       <publishTime>11/02/2014 22:22:19</publishTime>
@@ -1482,8 +1491,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/views/huellitas.admin.ParametrizacionView.js">
       <publishTime>12/05/2014 11:12:18</publishTime>
     </File>
+    <File Include="Scripts/views/huellitas.admin.UsuarioExternoView.js">
+      <publishTime>01/11/2015 10:48:43</publishTime>
+    </File>
     <File Include="Scripts/views/huellitas.admin.UsuariosRelacionadosView.js">
-      <publishTime>11/22/2014 13:20:07</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.AdoptarView.js">
       <publishTime>12/18/2014 23:17:54</publishTime>
@@ -1537,13 +1549,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2014 11:54:06</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.PerdidosView.js">
-      <publishTime>01/07/2015 20:56:28</publishTime>
+      <publishTime>01/11/2015 11:39:56</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.ResultadosHuellitasView.js">
       <publishTime>01/07/2015 20:45:30</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.SubirArchivoView.js">
       <publishTime>01/08/2015 20:53:10</publishTime>
+    </File>
+    <File Include="Scripts/views/huellitas.SummaryView.js">
+      <publishTime>01/11/2015 11:50:13</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.TwitterShareView.js">
       <publishTime>12/18/2014 21:56:03</publishTime>
@@ -1555,25 +1570,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/14/2014 21:25:32</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/Index.cshtml">
-      <publishTime>10/12/2014 09:16:23</publishTime>
+      <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_CampoAdicional.cshtml">
       <publishTime>11/22/2014 15:24:09</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_ContenidosRelacionados.cshtml">
-      <publishTime>12/16/2014 17:14:38</publishTime>
+      <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_Editar.cshtml">
-      <publishTime>12/12/2014 14:31:30</publishTime>
+      <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_ImagenesContenido.cshtml">
       <publishTime>12/13/2014 12:13:01</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_Listado.cshtml">
-      <publishTime>10/11/2014 12:34:54</publishTime>
+      <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_UsuariosRelacionados.cshtml">
-      <publishTime>11/22/2014 15:21:05</publishTime>
+      <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Index.cshtml">
       <publishTime>10/12/2014 21:28:40</publishTime>
@@ -1606,7 +1621,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Views/Home/Perdidos.cshtml">
-      <publishTime>01/08/2015 08:43:45</publishTime>
+      <publishTime>01/11/2015 11:45:53</publishTime>
     </File>
     <File Include="Views/Home/_InfoAdopta.cshtml">
       <publishTime>01/08/2015 11:24:04</publishTime>
@@ -1651,16 +1666,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 21:06:54</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/27/2014 09:56:01</publishTime>
+      <publishTime>01/11/2015 11:16:14</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutAdmin.cshtml">
-      <publishTime>12/06/2014 11:04:43</publishTime>
+      <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Views/Shared/_ModalAlertAdmin.cshtml">
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Views/Shared/_ModalHtmlAdmin.cshtml">
       <publishTime>10/05/2014 18:34:06</publishTime>
+    </File>
+    <File Include="Views/Shared/_Summary.cshtml">
+      <publishTime>01/11/2015 11:48:34</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/05/2014 18:34:06</publishTime>
@@ -1669,7 +1687,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/02/2015 14:24:55</publishTime>
+      <publishTime>01/11/2015 11:52:29</publishTime>
     </File>
   </ItemGroup>
 </Project>
