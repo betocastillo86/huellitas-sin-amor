@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminUsuarioRelacionadoController.cs" />
+    <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\ArchivosController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
