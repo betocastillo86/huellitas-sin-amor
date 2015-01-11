@@ -15,11 +15,12 @@
                 </div>
                 <div class="box-content">
                     <div class="form-group">
-                        @Html.Label("Filtar")
+                        @Html.Label("Filtrar por tipo")
                         @Html.DropDownList("TipoRelacionContenido", new SelectList(Model.TiposRelacionContenido, "TipoRelacionContenidoId", "Nombre"), "-", new { @class = "form-control" })
+                        <br />
                         <div class="btn btn-success" id="BtnMostrarAgregarTipoContenido">
                             <i class="glyphicon glyphicon-plus"></i>
-                            Agregar Relación
+                            Agregar Contenido Relacionado
                         </div>
                     </div>
                     <div class="row" align="center">
@@ -29,7 +30,7 @@
                                     <h2>Contenidos Relacionados</h2>
                                 </div>
                                 <div class="box-content" id="divFilasContenidosRelacionados">
-
+                                    Seleccione el tipo de contenido para filtrar
                                 </div>
                             </div>
                         </div>
@@ -61,27 +62,43 @@
                     <div class="box-inner">
 
                         <div class="box-content">
-
+                            <div class="form-group">
+                                    Para agregar un contenido relacionado, seleccione el tipo de relación y después seleccione el contenido que desea relacionar.
+                            </div>
                             <div class="form-group">
                                 @Html.Label("Tipo de Relación")
                                 <select id="Relacionados_TipoRelacionContenido" name="Relacionados_TipoRelacionContenido" class="form-control"></select>
                             </div>
-                            <div class="form-group" style="display:none">
-                                @Html.Label("Tipo de Contenido")
-                                <select id="Relacionados_TiposContenido" name="Relacionados_TiposContenido" class="form-control">
-                                    <option>Seleccione</option>
-                                </select>
-                            </div>
                             <div class="form-group">
                                 @Html.Label("Seleccione el contenido que desea relacionar")
-                                <select id="Relacionados_Contenidos" name="Relacionados_Contenidos" class="form-control">
-                                    <option></option>
-                                </select>
-                            </div>
-
-                            <div class="btn btn-success" id="BtnGuardarContenidoRelacionado">
-                                <i class="glyphicon glyphicon-plus"></i>
-                                Guardar
+                                
+                                <div class="row" align="center">
+                                    <div class="box col-md-12">
+                                        <div class="box-inner">
+                                            <div data-original-title="" class="box-header well">
+                                                <h2>Contenidos a Relacionar</h2>
+                                            </div>
+                                            <div style="overflow-x:hidden; overflow-y:auto; max-height:200px;">
+                                                <table id="tableContenidosARelacionar" width="100%">
+                                                    <thead style="display:none">
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Nombre</th>
+                                                            <th>Tipo</th>
+                                                            <th>Opción</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    
+                                                    </tbody>
+                                                  
+                                                </table>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -107,15 +124,31 @@
 <script type="text/template" id="templateTrContenidoRelacionado">
     <div class="row" id="trContenidoRelacionado_<%= ContenidoRelacionadoId %>">
         <div class="col-md-1"><h6><%= ContenidoHijo.ContenidoId %></h6></div>
-        <div class="col-md-4"><h6><%= ContenidoHijo.Nombre %></h6></div>
-        <div class="col-md-4"><h6><%= ContenidoHijo.TipoContenidoNombre %></h6></div>
-        <div class="col-md-1">
-            <div class="btn btn-success" id="EliminarContenidoRelacionado_<%= ContenidoRelacionadoId %>">
+        <div class="col-md-3"><h6><%= ContenidoHijo.Nombre %></h6></div>
+        <div class="col-md-3"><h6><%= ContenidoHijo.TipoContenidoNombre %></h6></div>
+        <div class="col-md-3">
+            <div class="btn btn-danger" id="EliminarContenidoRelacionado_<%= ContenidoRelacionadoId %>">
                 <i class="glyphicon glyphicon-remove"></i>
                 Borrar
             </div>
         </div>
     </div>
 </script>
+
+<script type="text/template" id="templateTrContenidoAAgregar">
+    
+    <tr>
+            <td><h6><%= ContenidoId %></h6></td>
+            <td><h6><%= Nombre %></h6></td>
+            <td><h6><%= TipoContenidoNombre %></h6></td>
+            <td>
+                <div class="btn btn-success" id="AgregarContenidoRelacionado_<%= ContenidoId %>">
+                    <i class="glyphicon glyphicon-add"></i>
+                    Agregar
+                </div>
+            </td>
+        </tr>
+</script>
+
 <script src="~/Scripts/models/huellitas.admin.ContenidoRelacionado.js"></script>
 <script src="~/Scripts/views/huellitas.admin.ContenidosRelacionadosView.js"></script>

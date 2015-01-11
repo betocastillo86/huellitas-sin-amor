@@ -286,7 +286,7 @@ namespace LoginCol.Huellitas.Datos
             }
         }
 
-        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int tipoRelacion, bool cargarCampos)
+        public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int? tipoRelacion, bool cargarCampos)
         {
             try
             {
@@ -302,7 +302,11 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.ContenidoHijo.ZonaGeografica)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
-                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && c.TipoRelacionContenidoId == tipoRelacion && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);
+
+
+                    if (tipoRelacion.HasValue)
+                        query = query.Where(c => c.TipoRelacionContenidoId == tipoRelacion.Value);
                     
                     if(cargarCampos)
                         query = query
@@ -578,6 +582,9 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
                         .Where(c => c.ContenidoId == idContenido);
+
+                    if (idTipoRelacion > 0)
+                        query = query.Where(c => c.TipoRelacionId == idTipoRelacion);
 
 
                     listaRelacionados = query.ToList();

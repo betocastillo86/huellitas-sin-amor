@@ -18,9 +18,9 @@ namespace LoginCol.Huellitas.Web.Controllers
         public List<ContenidoRelacionadoModel> Get(int idContenido, int idTipoContenido)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            return contenidoNegocio.ObtenerContenidosRelacionados(idContenido, idTipoContenido)
-                .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
-                .ToList();
+            return contenidoNegocio.ObtenerContenidosRelacionados(idContenido, idTipoContenido == 0 ? (int?)null : idTipoContenido)
+            .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
+            .ToList();
         }
 
         [HttpPost]

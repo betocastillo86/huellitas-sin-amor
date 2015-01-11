@@ -19,8 +19,8 @@ namespace LoginCol.Huellitas.Web.Models
         public string Apellidos { get; set; }
 
         public string NombreCompleto { get { return string.Format("{0} {1}", Nombres, Apellidos); } }
-        
-        [Required]
-        public int ZonaGeograficaId { get; set; }
+
+        [NullableRequired]
+        public int? ZonaGeograficaId { get; set; }
     }
 }

@@ -68,5 +68,35 @@ namespace LoginCol.Huellitas.Negocio
         {
             return _usuarios.Value.ObtenerUsuariosActivos(soloAdmin);
         }
+
+        public List<Usuario> ObtenerUsuarios(bool? activos, bool? administradores, Usuario filtro)
+        {
+            return _usuarios.Value.ObtenerUsuarios(activos, administradores, filtro);
+        }
+
+        public ResultadoOperacion Crear(Usuario usuario)
+        {
+            var respuesta = new ResultadoOperacion();
+
+            try
+            {
+                //Si la clave no existe pone una por defecto
+                if (string.IsNullOrEmpty(usuario.Clave))
+                    usuario.Clave = "***";
+
+                usuario.Clave = Utilidades.Seguridad.MD5(usuario.Clave);
+
+                respuesta.Id = _usuarios.Value.CrearUsuario(usuario);
+                respuesta.OperacionExitosa = respuesta.Id > 0;
+            }
+            catch (Exception e)
+            {
+                respuesta.OperacionExitosa = false;
+                respuesta.MensajeError = e.ToString();
+                LogErrores.RegistrarError(e);
+            }
+
+            return respuesta;
+        }
     }
 }

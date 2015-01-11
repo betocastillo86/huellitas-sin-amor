@@ -19,7 +19,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         public int Compartidos { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(50)]
         [Display(Name = "Imagen principal", Description = "Imagen principal")]
         public string Imagen { get; set; }
 

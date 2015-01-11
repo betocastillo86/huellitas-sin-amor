@@ -21,5 +21,6 @@ var UsuarioRelacionadoCollection = Backbone.Collection.extend({
     cargarContenidos: function (idContenido, idTipoRelacion) {
         this.url = "/api/adminusuariorelacionado/cid-" + idContenido + "/" + idTipoRelacion;
         this.fetch();
+        return this;
     }
 });

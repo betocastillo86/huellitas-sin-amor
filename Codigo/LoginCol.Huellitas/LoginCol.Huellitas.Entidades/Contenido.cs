@@ -44,7 +44,7 @@ namespace LoginCol.Huellitas.Entidades
 
         public int Compartidos { get; set; }
         
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string Imagen { get; set; }
 
         #region Contacto
