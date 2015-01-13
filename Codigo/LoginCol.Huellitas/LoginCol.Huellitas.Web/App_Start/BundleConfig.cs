@@ -192,7 +192,9 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/views/huellitas.PerdidosView.js")
                 .Include("~/Scripts/views/huellitas.ListaPerdidosView.js")
                 .Include("~/Scripts/models/huellitas.ContenidoPerdido.js")
+                .Include("~/Scripts/views/huellitas.DetallePerdidoView.js")
                 .Include("~/Scripts/views/huellitas.SummaryView.js")
+                .Include("~/Scripts/models/huellitas.Contacto.js")
                 );
 
             bundles.Add(new ScriptBundle("~/bundles/backbone_home")

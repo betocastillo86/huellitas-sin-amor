@@ -228,7 +228,6 @@ namespace LoginCol.Huellitas.Negocio
         public bool Eliminar(int idContenido)
         {
             return _contenidos.Value.Eliminar(idContenido);
-
         }
 
         public bool EliminarContenidoRelacionado(int idContenidoRelacionado)

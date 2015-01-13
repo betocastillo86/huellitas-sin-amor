@@ -8,6 +8,7 @@ using System.Linq;
 using LoginCol.Huellitas.Web.Models;
 using System.Collections.Generic;
 using System;
+using LoginCol.Huellitas.Utilidades;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
@@ -111,6 +112,19 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             var nContenido = new ContenidoNegocio();
             return Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
+        }
+        
+        [HttpDelete]
+        public ResultadoOperacion Delete(int id)
+        {
+            var nContenido = new ContenidoNegocio();
+            if (nContenido.Eliminar(id))
+            {
+                return new ResultadoOperacion(true);
+            }
+            else {
+                return new ResultadoOperacion(false) { MensajeError = "Ocurrió un error guardando, intente de nuevo" };
+            }
         }
 
     }

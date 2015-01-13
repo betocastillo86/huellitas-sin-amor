@@ -14,7 +14,8 @@ namespace LoginCol.Huellitas.Web.Models
         {
 
         }
-        
+
+        public int ContenidoId { get; set; }
         
         public string Nombre { get; set; }
 

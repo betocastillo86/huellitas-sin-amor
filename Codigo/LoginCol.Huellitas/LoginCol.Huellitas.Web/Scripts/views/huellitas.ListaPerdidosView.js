@@ -7,7 +7,9 @@
 
     opcionesFiltro: undefined,
 
-    templateDetalle : undefined,
+    templateDetalle: undefined,
+
+    vistaDetalle : undefined,
 
     events: {
         'click .cajaCaso .btn' : 'cargarDetalle'
@@ -22,6 +24,8 @@
 
         this.models = new ContenidoCollection();
         this.models.on("sync", this.mostrarContenidos, this);
+
+        this.vistaDetalle = new DetallePerdidoView({ el: '#modalDetalleContenido' });
     },
 
     cargarContenidos: function (opcionesFiltro) {
@@ -42,16 +46,7 @@
 
     cargarDetalle: function (obj)
     {
-        var idContenido = parseInt($(obj.target).attr('cid'));
-        var contenidoModel = new ContenidoModel();
-        contenidoModel.on('sync', this.mostrarDetalle, this);
-        contenidoModel.obtenerPorId(idContenido);
-    },
-
-    mostrarDetalle: function (model) {
-        this.$("#modalDetalleContenido").html(this.templateDetalle(model.toJSON()));
-        this.$("#modalDetalleContenido").dialog({ modal: true, title : '¿Lo has visto en algún lado?' });
+        this.vistaDetalle.cargar(parseInt($(obj.target).attr('cid')));
     }
 
-    
 });
