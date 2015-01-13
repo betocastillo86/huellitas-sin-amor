@@ -235,10 +235,10 @@ body {
   left:10px;
 }
 .navigation{
-	width:57%;
+	width:67%;
 	float: left;
 	list-style: none;
-	margin:0 0 0 17%;
+	margin:0 0 0 23%;
 	padding:0;
 }
 .menuLogin{
@@ -507,6 +507,7 @@ form .file{
     top:0;
     left:0;
     z-index:99;
+    background: #EF525B;
 }
 .file input.upload{
     position:absolute;
