@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150112_2</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150112_4</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -142,7 +142,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2015 10:36:47</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.dll">
-      <publishTime>01/12/2015 20:35:18</publishTime>
+      <publishTime>01/12/2015 21:36:29</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.pdb">
       <publishTime>01/11/2015 11:37:04</publishTime>
@@ -841,7 +841,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2014 23:02:57</publishTime>
     </File>
     <File Include="Scripts/huellitas.router.js">
-      <publishTime>01/06/2015 21:46:42</publishTime>
+      <publishTime>01/12/2015 21:28:27</publishTime>
     </File>
     <File Include="Scripts/huellitas.templateManager.js">
       <publishTime>10/13/2014 20:43:59</publishTime>
@@ -1498,7 +1498,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2015 10:35:19</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.AdoptarView.js">
-      <publishTime>12/18/2014 23:17:54</publishTime>
+      <publishTime>01/12/2015 21:59:06</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.BaseView.js">
       <publishTime>10/14/2014 20:49:51</publishTime>
@@ -1516,10 +1516,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 21:06:46</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.DetalleHuellitaView.js">
-      <publishTime>01/08/2015 22:27:42</publishTime>
+      <publishTime>01/12/2015 21:43:43</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.DetallePerdidoView.js">
-      <publishTime>01/12/2015 20:32:56</publishTime>
+      <publishTime>01/12/2015 22:07:44</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.FacebookShareView.js">
       <publishTime>12/18/2014 21:47:01</publishTime>
@@ -1540,7 +1540,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/15/2014 20:19:54</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.ListaPerdidosView.js">
-      <publishTime>01/12/2015 18:29:28</publishTime>
+      <publishTime>01/12/2015 22:03:12</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.ListarFundacionesView.js">
       <publishTime>12/08/2014 12:01:50</publishTime>
@@ -1552,7 +1552,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2014 11:54:06</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.PerdidosView.js">
-      <publishTime>01/11/2015 11:39:56</publishTime>
+      <publishTime>01/12/2015 21:29:58</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.ResultadosHuellitasView.js">
       <publishTime>01/07/2015 20:45:30</publishTime>
@@ -1615,7 +1615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/07/2015 20:45:15</publishTime>
     </File>
     <File Include="Views/Home/Adoptar.cshtml">
-      <publishTime>12/15/2014 20:25:59</publishTime>
+      <publishTime>01/12/2015 21:44:59</publishTime>
     </File>
     <File Include="Views/Home/Fundaciones.cshtml">
       <publishTime>12/16/2014 18:51:47</publishTime>
@@ -1627,22 +1627,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Views/Home/Perdidos.cshtml">
-      <publishTime>01/11/2015 12:13:32</publishTime>
+      <publishTime>01/12/2015 21:42:39</publishTime>
     </File>
     <File Include="Views/Home/_InfoAdopta.cshtml">
       <publishTime>01/08/2015 11:24:04</publishTime>
     </File>
     <File Include="Views/Home/_ListadoPerdidos.cshtml">
-      <publishTime>01/12/2015 20:31:48</publishTime>
+      <publishTime>01/12/2015 21:04:42</publishTime>
     </File>
     <File Include="Views/Huellitas/Detalle.cshtml">
-      <publishTime>01/08/2015 22:32:28</publishTime>
+      <publishTime>01/12/2015 21:40:44</publishTime>
     </File>
     <File Include="Views/Huellitas/Index.cshtml">
       <publishTime>01/06/2015 21:07:23</publishTime>
     </File>
     <File Include="Views/Huellitas/QuieroAdoptar.cshtml">
-      <publishTime>01/07/2015 21:09:09</publishTime>
+      <publishTime>01/12/2015 21:59:28</publishTime>
     </File>
     <File Include="Views/Huellitas/_BannerDestacados.cshtml">
       <publishTime>01/08/2015 12:02:32</publishTime>

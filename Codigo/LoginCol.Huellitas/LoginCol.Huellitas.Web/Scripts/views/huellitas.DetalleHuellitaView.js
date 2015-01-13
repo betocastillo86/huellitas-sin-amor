@@ -33,15 +33,12 @@
         
         this.vistaImagenes = new ImagenesContenidoView({ id: args.id, el: "#divImagenesContenido", urlVideo: this.$("#UrlVideo").val() });
         
-
-        //this.vistaVideo = new VideoView({ el: "#divVideo", urlVideo: this.$("#UrlVideo").val() });
         this.render();
     },
     apadrinar: function () {
         this.$("#divApadrinar").dialog({
             modal: true,
-            width: 527,
-            height: 500,
+
             title: '¿Quieres apadrinar a '+$('#Nombre').val()+'?'
         });
     },

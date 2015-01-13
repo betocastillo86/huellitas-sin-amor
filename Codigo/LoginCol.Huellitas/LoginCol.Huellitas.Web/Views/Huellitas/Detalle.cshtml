@@ -1,6 +1,7 @@
 ﻿@model LoginCol.Huellitas.Web.Models.DetalleHuellitaModel
 @{
     ViewBag.TagDescripcion = Model.DescripcionCorta;
+    
 }
 
 <div id="divDetalleContenido">
@@ -74,11 +75,34 @@
             }
 
             <div id="divApadrinar" style="display:none" >
-                Para apadrinar a @Model.Nombre solo tienes que dejarnos tus datos y nos encargaremos de contactarte.
-                El valor mensual que se debe pagar por apadrinar a @Model.Nombre es: @Html.ObtenerCampoDeContenido(Model, "Donacion Mensual") 
-                <iframe id="divPlayerVideo" width="491" height="333"
+
+
+
+                Apadrinar a <b>@Model.Nombre</b>  consiste en ofrecer un aporte voluntario que cubrirá los
+
+                gastos necesarios para que tenga una buena calidad de vida hasta el momento
+
+                en que sea adoptado(a). Como padrino de <b>@Model.Nombre</b> también puedes aportar
+
+                visitándolo(a) y haciendo actividades con el (ella) lo cual contribuye a su
+
+                socialización y facilita su futura adopción. <br /><br />
+
+                Por ser de tamaño @Html.ObtenerCampoDeContenido(Model, "Tamaño") Luna requiere de un valor de @Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")  para su
+
+                manutención mensual. Si quieres apadrinar a <b>@Model.Nombre</b> ingresa tus datos para
+
+                contactarte. Como padrino recibirás información y fotos actualizadas de <b>@Model.Nombre</b>.<br />
+
+
+
+
+
+
+
+                @*<iframe id="divPlayerVideo" width="491" height="333"
                         src="https://www.youtube.com/embed/u3dzUKzA20k" ></iframe>
-                <div style="font-size:9px">* Video tomado de <a href="https://www.youtube.com/channel/UC2KjtHkcxugWx9f_Rs0-Beg" target="_blank">Refugio chiclayo</a> </div>
+                <div style="font-size:9px">* Video tomado de <a href="https://www.youtube.com/channel/UC2KjtHkcxugWx9f_Rs0-Beg" target="_blank">Refugio chiclayo</a> </div>*@
             </div>
         </div>
     </section>

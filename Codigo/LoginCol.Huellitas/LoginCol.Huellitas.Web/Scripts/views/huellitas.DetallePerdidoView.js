@@ -35,13 +35,14 @@
 		this.idContenido = idContenido;
 		this.modelContenido.once('sync', this.mostrarDetalle, this);
 		this.modelContenido.obtenerPorId(this.idContenido);
+		App_Router.navegar('/perros-gatos-perdidos/' + idContenido, { trigger: false });
 	},
 	mostrarDetalle: function (model) {
 	    
 	    this.model = new ContactoModel();
 	    
 		this.$el.html(this.template(model.toJSON()));
-		this.$el.dialog({ modal: true, title: '¿Lo has visto en algún lado?' });
+		this.$el.dialog({ modal: true, title: '¿Lo has visto en algún lado?', beforeClose : this.cerrar });
 		this.ocultarFormulario();
 
 		this.stickit();
@@ -102,7 +103,9 @@
         ctx.vistaSummary.mostrar(errores);
     },
 	cerrar: function () {
-		this.$el.dialog('close');
+	    if(this.$el)
+	        this.$el.dialog('close');
+	    App_Router.navegar('/perros-gatos-perdidos' , { trigger: false });
 	},
 	render: function () {
 	    

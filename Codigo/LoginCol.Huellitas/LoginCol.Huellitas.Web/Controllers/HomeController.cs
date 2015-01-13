@@ -54,9 +54,14 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         #region Perdidos
-        public ActionResult Perdidos()
+
+
+        public ActionResult Perdidos(int? id)
         {
             var modelo = new PerdidosModel();
+            if (id.HasValue)
+                modelo.ContenidoId = id.Value;
+
             return View(modelo);
         }
 

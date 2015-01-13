@@ -11,15 +11,20 @@
     pasoActual : 1,
 
     events: {
-        "click #btnSiguiente" : "siguiente"
+        "click #btnSiguiente": "siguiente",
+        "click #btnCerrarCondiciones": 'cerrarCondiciones'
     },
 
     initialize: function (args)
     {
         this.idContenido = args.id;
         this.vistaZonas = new ZonasGeograficasView({ el: this.el });
-        this.$("#Usuario_FechaNacimiento").datepicker({ maxDate : '-18y', changeYear  : true});
+        this.$("#Usuario_FechaNacimiento").datepicker({ maxDate: '-18y', changeYear: true });
+        
         this.formulario = $(this.$("form")[0]);
+
+        this.$("#divInfoAdopcion").dialog({ modal: true });
+        
     },
     siguiente: function (args)
     {
@@ -73,6 +78,10 @@
 
         this.$("#btnSiguiente").html(this.pasoActual != 4 ? "SIGUIENTE" : "FINALIZAR");
 
+    },
+    cerrarCondiciones: function ()
+    {
+        this.$("#divInfoAdopcion").dialog('close');
     }
 
 });
