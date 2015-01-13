@@ -24,7 +24,9 @@
 
     vistaResultados: undefined,
 
-    vistaSummary : undefined,
+    vistaSummary: undefined,
+
+    vistaDetalleDefecto : undefined,
 
     tipoContenido: undefined,
     //FIN CONTROLES DE LA VISTA
@@ -56,7 +58,7 @@
 
 
 
-    initialize: function () {
+    initialize: function (args) {
         this.btnBusco = this.$("#btnBusco");
         this.btnEncuentro = this.$("#btnEncuentro");
         this.btnReportadas = this.$("#btnReportadas");
@@ -64,6 +66,16 @@
         this.formFiltro = this.$("#formFiltro");
 
         this.vistaSummary = new SummaryView();
+
+        if (args)
+        {
+            if (args.id)
+            {
+                this.vistaDetalleDefecto = new DetallePerdidoView({ el: '#modalDetalleContenido' })
+                this.vistaDetalleDefecto.cargar(args.id);
+            }
+        }
+        
 
         this.vistaArchivo = new SubirArchivoView({ name: "archivo", el: "#divArchivoPerdido", extensionesPermitidas: Constantes.ExtensionesImagenes, tamanoMaximo: Constantes.TamanoMaximoCargaArchivos });
         this.vistaArchivo.on("archivo-guardado", this.imagenGuardada, this);

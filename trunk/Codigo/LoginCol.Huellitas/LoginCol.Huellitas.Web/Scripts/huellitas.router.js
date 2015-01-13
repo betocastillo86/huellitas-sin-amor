@@ -14,7 +14,7 @@
         "fundaciones/buscar(/z:zona)": "buscarFundaciones",
         "fundaciones/:id/:nombre": "detalleFundacion",
         "fundaciones/:id/:nombre/ver-todos" : "huellasDeFundacion",
-        "perros-gatos-perdidos(/:opcion)": "inicioPerdidos",
+        "perros-gatos-perdidos(/:id)": "inicioPerdidos",
         "por-que-adoptar": "porqueAdoptar"
     },
 
@@ -74,9 +74,9 @@
         var vistaHuellasFundacion = new HuellasFundacionView({ id : id });
         this.vistaActual = vistaHuellasFundacion;
     },
-    inicioPerdidos: function (opcion)
+    inicioPerdidos: function (id)
     {
-        var vistaPerdidos = new PerdidosView();
+        var vistaPerdidos = new PerdidosView({ id : id});
         this.vistaActual = vistaPerdidos;
     },
 

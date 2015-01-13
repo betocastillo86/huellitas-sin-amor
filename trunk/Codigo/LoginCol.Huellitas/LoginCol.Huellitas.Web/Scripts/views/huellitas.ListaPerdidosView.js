@@ -46,7 +46,9 @@
 
     cargarDetalle: function (obj)
     {
-        this.vistaDetalle.cargar(parseInt($(obj.target).attr('cid')));
+        var idContenido = parseInt($(obj.target).attr('cid'));
+        this.vistaDetalle.cargar(idContenido);
+        
     }
 
 });

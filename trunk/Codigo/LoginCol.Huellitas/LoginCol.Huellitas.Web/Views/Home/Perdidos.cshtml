@@ -2,6 +2,11 @@
 @{
     ViewBag.TagDescripcion = "Huellitas sin hogar tiene una plataforma para tí en la cual podrás ingresar los datos de mascotas perdidas al rededor del pais. También si estas buscando tu perro o gato perdido, lo podrás encontrar acá.";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Model.ContenidoId > 0)
+    {
+        Model.ImagenCompartir = string.Format("/img/{0}/big", Model.ContenidoId);
+    }
+        
 }
 
 <section id="first" class="seBusca slide">
@@ -15,21 +20,38 @@
 <div id="divPerdidosGeneral">
     <section class="conteBusca slide">
         <div class="container clearfix conteConta">
-            <h3>¿BUSCAS O ENCONTRASTÉ UNA MASCOTA?</h3>
+            <h3>¿BUSCAS O ENCONTRASTÉ UNA MASCOTA PERDIDA?</h3>
             <p>
-                Si estas buscando tu mascota o encontraste una en la calle que posiblemente pertece a una familia, Huellitas sin hogar te
-                da una manera facil de encontrarla o registrarla, solo ingresa tus datos y nos estaremos comunicando contigo lo más pronto posible.
+                Este espacio está enfocado a todas las personas que necesiten encontrar su mascota
+
+                extraviada y a aquellos que hayan encontrado una mascota perdida. El objetivo es agilizar
+
+                el proceso de búsqueda a través del trabajo en red lo que muchas veces logra un final
+
+                feliz. Registra los datos solicitados según el caso para que Huellitas sin Hogar publique la
+
+                información. <br /><br />
+
+                Es importante recordar el cuidado que debemos tener con nuestras mascotas para evitar
+
+                que este tipo de situaciones se presenten. Medidas fundamentales como no dejarlos
+
+                sueltos y solos en la calle, colocar collar y placa marcada con los datos del dueño,
+
+                implantar  chips de identificación, verificar que la puerta de la casa no quede abierta, etc.,
+
+                contribuirán a que hayan menos animalitos extraviados.
             </p>
             <nav class="nav_busca">
-                <li class="sel grid_3 addform" id="btnBusco">
+                <li class="sel grid_3 addform" id="btnBusco" title="Si tu mascota se perdió, dejanos tus datos y nos comunicaremos contigo">
                     <span class="icon-casa"></span>
                     BUSCO MI MASCOTA
                 </li>
-                <li class="sel grid_3 addform" id="btnEncuentro">
+                <li class="sel grid_3 addform" id="btnEncuentro" title="Si encontraste una huellita y no sabes de quién es, deja sus datos y apenas sepamos algo nos comunicaremos contigo">
                     <span class="icon-perdida"></span>
                     ENCONTRE UNA MAScota
                 </li>
-                <li class="sel grid_3 reportadas" id="btnReportadas">
+                <li class="sel grid_3 reportadas" id="btnReportadas" title="Busca las huellitas que han encontrado otros, depronto la tuya está entre ellas">
                     <span class="icon-galeria"></span>
                     Mascotas reportadas
                 </li>
