@@ -32,7 +32,7 @@
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
-                <p><%= contenido.Descripcion %></p>
+                <p><%=  contenido.Descripcion.length > 110 ? contenido.Descripcion.substring(0,110) + '...' : contenido.Descripcion %>  </p>
                 <a class="btn" href="javascript:void(0)" cid="<%=contenido.ContenidoId%>">CONOCE MÁS</a>
             </article>
         </div>
