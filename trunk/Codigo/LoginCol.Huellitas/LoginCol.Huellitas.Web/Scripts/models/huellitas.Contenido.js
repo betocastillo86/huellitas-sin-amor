@@ -10,6 +10,12 @@
     obtenerPorId: function (id) {
         this.fetch({ data: $.param({ id: id }) });
         return this;
+    },
+    eliminar: function ()
+    {
+        this.url = '/api/contenidos/' + this.get('ContenidoId');
+        this.destroy({wait : true});
+        this.url = '/api/contenidos';
     }
 });
 

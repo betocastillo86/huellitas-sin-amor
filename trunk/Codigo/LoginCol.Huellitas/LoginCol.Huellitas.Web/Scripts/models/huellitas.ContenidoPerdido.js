@@ -72,5 +72,9 @@
 	    else {
 	        args.invalid(resultValidation, ctx);
 	    }
+	},
+	eliminar: function (id) {
+	    this.set({ContenidoId : id })
+	    this.destroy({wait : true});
 	}
 });

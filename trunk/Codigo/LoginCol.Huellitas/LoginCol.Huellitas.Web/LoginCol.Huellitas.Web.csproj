@@ -745,6 +745,8 @@
     <Content Include="Views\Home\Adoptar.cshtml" />
     <Content Include="Views\Home\_ListadoPerdidos.cshtml" />
     <Content Include="Views\Shared\_Summary.cshtml" />
+    <Content Include="Views\Administracion\UsuariosExternos.cshtml" />
+    <Content Include="Scripts\views\huellitas.DetallePerdidoView.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

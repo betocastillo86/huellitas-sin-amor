@@ -475,7 +475,7 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c=> c.ZonaGeografica)
                         .Include(c => c.ContenidosRelacionados)
                         .Include(c => c.Campos.Select(v => v.Campo))
-                        .Where(c => c.Activo);
+                        .Where(c => c.Activo && !c.Eliminado);
 
                     if (contenidosRelacionados != null)
                     {

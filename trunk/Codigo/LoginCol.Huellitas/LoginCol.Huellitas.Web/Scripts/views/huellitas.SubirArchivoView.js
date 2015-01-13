@@ -186,8 +186,8 @@
 	    }
 	    else {
 	        //sthis.$("#inputArchivo").show();
-	        this.$(".file .btn_upload").hide();
-	        this.$(".file input[type='text']").hide();
+	        //this.$(".file .btn_upload").hide();
+	        //this.$(".file input[type='text']").hide();
 	        alert("Error guardando el archivo");
 	    }
 
