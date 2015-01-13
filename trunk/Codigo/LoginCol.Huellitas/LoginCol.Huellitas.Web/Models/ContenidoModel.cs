@@ -30,6 +30,8 @@ namespace LoginCol.Huellitas.Web.Models
         
         public int ZonaGeograficaZonaGeograficaPadreZonaGeograficaId { get; set; }
 
+        public string ZonaGeograficaZonaGeograficaPadreNombre { get; set; }
+
         //public string Direccion { get; set; }
 
         //public string Telefono { get; set; }

@@ -39,6 +39,7 @@
 	mostrarDetalle: function (model) {
 	    
 	    this.model = new ContactoModel();
+	    
 		this.$el.html(this.template(model.toJSON()));
 		this.$el.dialog({ modal: true, title: '¿Lo has visto en algún lado?' });
 		this.ocultarFormulario();
