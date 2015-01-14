@@ -54,5 +54,8 @@ namespace LoginCol.Huellitas.Web.Controllers
             ResultadoOperacion respuesta = contenidoNegocio.Crear(contenido, SessionModel.Usuario.UsuarioId, modelo.Imagen);
             return respuesta;
         }
+
+        private void BorrarPrueba()
+        { }
     }
 }

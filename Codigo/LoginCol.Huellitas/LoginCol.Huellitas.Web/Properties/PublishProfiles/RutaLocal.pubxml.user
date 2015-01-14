@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150112_4</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150112_5</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -142,7 +142,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2015 10:36:47</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.dll">
-      <publishTime>01/12/2015 21:36:29</publishTime>
+      <publishTime>01/13/2015 21:28:57</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.pdb">
       <publishTime>01/11/2015 11:37:04</publishTime>
@@ -1627,7 +1627,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Views/Home/Perdidos.cshtml">
-      <publishTime>01/12/2015 21:42:39</publishTime>
+      <publishTime>01/12/2015 22:21:15</publishTime>
     </File>
     <File Include="Views/Home/_InfoAdopta.cshtml">
       <publishTime>01/08/2015 11:24:04</publishTime>
@@ -1636,13 +1636,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2015 21:04:42</publishTime>
     </File>
     <File Include="Views/Huellitas/Detalle.cshtml">
-      <publishTime>01/12/2015 21:40:44</publishTime>
+      <publishTime>01/12/2015 22:26:24</publishTime>
     </File>
     <File Include="Views/Huellitas/Index.cshtml">
       <publishTime>01/06/2015 21:07:23</publishTime>
     </File>
     <File Include="Views/Huellitas/QuieroAdoptar.cshtml">
-      <publishTime>01/12/2015 21:59:28</publishTime>
+      <publishTime>01/12/2015 22:25:14</publishTime>
     </File>
     <File Include="Views/Huellitas/_BannerDestacados.cshtml">
       <publishTime>01/08/2015 12:02:32</publishTime>
