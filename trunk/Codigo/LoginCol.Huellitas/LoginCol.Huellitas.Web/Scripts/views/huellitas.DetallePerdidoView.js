@@ -67,6 +67,8 @@
 	},
 	mostrarFormulario: function () {
 	    this.$("#datosPersona").show();
+	    this.$("#btnConocido").hide();
+	    this.$("#btnEncontrado").hide();
 	},
 	encontrado : function()	{
 		if (confirm('Después de registrar como encontrado esta huellita será borrado de nuestra base de datos. ¿Estás seguro que lo encontraste?'))

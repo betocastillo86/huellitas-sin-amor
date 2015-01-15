@@ -1,4 +1,4 @@
-﻿var ListaPerdidosView =  Backbone.View.extend({
+﻿var ListaPerdidosView = Backbone.View.extend({
 
 
     template: _.template(this.$("#templateResultadosBusqueda").html()),
@@ -9,10 +9,11 @@
 
     templateDetalle: undefined,
 
-    vistaDetalle : undefined,
+    vistaDetalle: undefined,
 
     events: {
-        'click .cajaCaso .btn' : 'cargarDetalle'
+        'click .cajaCaso .btn': 'cargarDetalle',
+        "click .siguientePagina": "siguientePagina"
     },
 
     initialize: function (args) {
@@ -32,23 +33,34 @@
 
 
         if (opcionesFiltro)
+        {
+            opcionesFiltro.tipoFiltroBase = Constantes.TipoAnimalesPerdidosPadre;
             this.opcionesFiltro = opcionesFiltro;
+        }
+            
 
-        opcionesFiltro.tipoFiltroBase = Constantes.TipoAnimalesPerdidosPadre;
+        this.opcionesFiltro.paginaActual++;
 
-        this.models.cargarHuellitasPorFiltro(opcionesFiltro);
+        this.models.cargarHuellitasPorFiltro(this.opcionesFiltro);
+
 
     },
 
     mostrarContenidos: function (models) {
-        this.$("#divResultadosBusqueda").html(this.template(models.toJSON()));
+        this.$("#divResultadosBusqueda").append(this.template(models.toJSON()));
     },
 
-    cargarDetalle: function (obj)
-    {
+
+    siguientePagina: function (obj) {
+        //Quita el botón que lanza el evento
+        $(obj.currentTarget).remove();
+        this.cargarContenidos();
+    },
+
+    cargarDetalle: function (obj) {
         var idContenido = parseInt($(obj.target).attr('cid'));
         this.vistaDetalle.cargar(idContenido);
-        
+
     }
 
 });
