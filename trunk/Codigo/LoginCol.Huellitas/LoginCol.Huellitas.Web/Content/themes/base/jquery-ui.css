@@ -479,7 +479,7 @@ button.ui-button::-moz-focus-inner {
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding:3px;
+	padding:3px 0;
 	outline: 0;
 }
 .ui-dialog .ui-dialog-titlebar {
@@ -498,7 +498,7 @@ button.ui-button::-moz-focus-inner {
 	text-overflow: ellipsis;
 }
 .ui-dialog .ui-dialog-titlebar-close {
-	margin:0 calc(50% - 32px);
+	margin:0 48%;
 	top: 10px;
 	padding: 1px;
 	width: 35px;
@@ -512,6 +512,7 @@ button.ui-button::-moz-focus-inner {
 	padding: .5em 1em;
 	background: none;
 	overflow: auto;
+	margin: 0 auto;
 }
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: left;
@@ -834,7 +835,6 @@ body .ui-tooltip {
 ----------------------------------*/
 .ui-widget {
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size: 12px;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -849,7 +849,7 @@ body .ui-tooltip {
 .ui-widget-content {
 	background: url(/../images/bkg_gris.png) repeat;
 	color: #2C4566;
-	width:calc(100% - 6px) !important;
+	width:100% !important;
 	left: 0 !important;
 }
 .ui-widget-content a {

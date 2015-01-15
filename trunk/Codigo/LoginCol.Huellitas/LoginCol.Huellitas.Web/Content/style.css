@@ -410,6 +410,7 @@ textarea {
 	margin-right:10px;
 	font-size:16px;
 	font-weight:700;
+	cursor: pointer;
 	}
 .conteFunda{
 	}
@@ -1270,6 +1271,27 @@ footer .redes{
 .ui-widget-overlay{
     z-index:9999999 !important;
 }
+/*modal*/
+#divSummary{
+	max-width:500px;
+	font-size: 12px;
+	}
+.conteModal{
+	max-width: 1000px;
+	margin: 0 auto;
+	}
+.conteModal .descri_perdida{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px !important;
+	text-transform: uppercase;
+	}
+.conteModal .btn{
+	background: none repeat scroll 0 0 #ef525b;
+    color: #fff;
+    float: left;
+    width: 130px;
+}
+/*fin modal*/
 
 /* Tablet */
 @media screen and (max-width: 1024px) {

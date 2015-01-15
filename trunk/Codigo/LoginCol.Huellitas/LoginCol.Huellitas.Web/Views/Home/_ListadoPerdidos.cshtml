@@ -51,19 +51,30 @@
 </script>
 
 <script id="templateDetallePerdido" type="text/template">
-    <img src="/img/<%=ContenidoId%>/medium" />
-    Nombre: <%=Nombre%> </br>
-    Descripcion <%=Descripcion%> </br>
-    Zona Geográfica : <%= ZonaGeograficaZonaGeograficaPadreNombre %>, <%= ZonaGeograficaNombre %>
-    <div id="datosPersona" >
-        Ingresa por favor tus datos y nos estaremos contactando lo más pronto posible. 
-        <input type="text" id="Nombres" placeholder="NOMBRES" />
-        <input type="text" id="Telefono" placeholder="TELÉFONO DE CONTACTO" />
-        <input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRONICO" />
-        <input type="text" id="Comentario" placeholder="OBSERVACIONES" />
-        <a id="btnEnviar" class="btn">Enviar</a>
+    <div class="conteModal">
+        <div class="grid_6">
+            <img src="/img/<%=ContenidoId%>/big" />
+        </div>
+        <div class="grid_6 omega">
+            <div class="descri_perdida">
+                Nombre: <%=Nombre%><br/>
+                Zona Geográfica : <%= ZonaGeograficaZonaGeograficaPadreNombre %>, <%= ZonaGeograficaNombre %><br/>
+            </div>
+            <div class="parrafo">
+                <p class="color1_text"><%=Descripcion%></p>
+            </div>
+            <form id="datosPersona" style="margin:10px 0;">
+                Ingresa por favor tus datos y nos estaremos contactando lo más pronto posible.<br/><br/>
+                <div class="grid_6"><input type="text" id="Nombres" placeholder="NOMBRES" /></div>
+                <div class="grid_6 omega"><input type="text" id="Telefono" placeholder="TELÉFONO DE CONTACTO" /></div>
+                <div class="grid_6"><input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRONICO" /></div>
+                <div class="grid_6 omega"><input type="text" id="Comentario" placeholder="OBSERVACIONES" /></div>
+                <a id="btnEnviar" class="btn">Enviar</a>
+                <br/>
+            </form>
+            <a id="btnConocido" class="btn">!Lo conozco!</a>
+            <a id="btnEncontrado" class="btn">Apareció :)</a>
+            <br/>
+        </div>
     </div>
-    <a id="btnConocido" class="btn">!Lo conozco!</a>
-    <a id="btnEncontrado" class="btn">Apareció :)</a>
-
 </script>
