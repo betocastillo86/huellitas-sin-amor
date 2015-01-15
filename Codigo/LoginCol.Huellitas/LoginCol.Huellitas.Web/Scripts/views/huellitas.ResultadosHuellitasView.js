@@ -46,13 +46,15 @@
     {
         //Si los argumentos de filtro no vienen toma los anteriores
         if (args != undefined)
+        {
             this.parametrosFiltro = args;
 
-        if (args.orden > 0)
-        {
-            this.$("#ddlOrden").val(args.orden);
-            this.ordenadoPor = args.orden;
+            if (args.orden > 0) {
+                this.$("#ddlOrden").val(args.orden);
+                this.ordenadoPor = args.orden;
+            }
         }
+            
 
         this.parametrosFiltro.paginaActual++;
 

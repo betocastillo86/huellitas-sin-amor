@@ -66,6 +66,7 @@ var ListarFundacionesView = Backbone.View.extend({
 	    var filtro = {
 	        zona: this.obtenerCampo("zona").valor,
 	        tipoPadre: Constantes.TipoContenidoFundaciones,
+            orden : 0,
 	        paginaActual: -1
 	    };
 		return filtro;
