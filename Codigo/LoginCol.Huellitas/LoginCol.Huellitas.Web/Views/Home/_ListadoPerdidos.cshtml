@@ -1,5 +1,11 @@
 ﻿<section class="conteGaleria slide">
     <div class="container clearfix">
+        <select id="ddlOrden" class="grid_2">
+            <option>ORDENAR POR:</option>
+            <option value="1">Más Nuevos</option>
+            <option value="2">Más Antiguos</option>
+        </select>
+        <br />
         <div id="divResultadosBusqueda"></div>
     </div>
 </section>
@@ -57,7 +63,13 @@
         </div>
         <div class="grid_6 omega">
             <div class="descri_perdida">
+                <div class="compartir">
+                    <div id="divFacebook"></div>
+                    <div id="divTwitter"></div>
+                </div>
                 Nombre: <%=Nombre%><br/>
+                Edad: <%=Huellitas.obtenerValorCampo("Edad", Campos)%><br />
+                Raza: <%=Huellitas.obtenerValorCampo("Raza", Campos)%><br />
                 Zona Geográfica : <%= ZonaGeograficaZonaGeograficaPadreNombre %>, <%= ZonaGeograficaNombre %><br/>
             </div>
             <div class="parrafo">
@@ -65,6 +77,7 @@
             </div>
             <form id="datosPersona" style="margin:10px 0;">
                 Ingresa por favor tus datos y nos estaremos contactando lo más pronto posible.<br/><br/>
+                
                 <div class="grid_6"><input type="text" id="Nombres" placeholder="NOMBRES" /></div>
                 <div class="grid_6 omega"><input type="text" id="Telefono" placeholder="TELÉFONO DE CONTACTO" /></div>
                 <div class="grid_6"><input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRONICO" /></div>
@@ -78,3 +91,4 @@
         </div>
     </div>
 </script>
+@Html.Partial("_CompartirRedesSociales")

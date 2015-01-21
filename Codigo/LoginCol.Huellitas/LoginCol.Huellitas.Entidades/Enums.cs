@@ -39,7 +39,9 @@ namespace LoginCol.Huellitas.Entidades
     {
         EstadoCivil = 1,
         Ocupacion = 2,
-        PreguntaAdopcion = 3    
+        PreguntaAdopcion = 3,
+        RazasPerros = 4,
+        RazasGatos = 5
     }
 
     public enum TipoDatoCampo
@@ -53,7 +55,9 @@ namespace LoginCol.Huellitas.Entidades
         [Description("Consulta SQl que trae clave y valor para relacionar")]
         ConsultaSql = 5,
         [Description("Multiples valores posibles para el campo")]
-        Multiple = 6
+        Multiple = 6,
+        [Description("Se relaciona con datos tablas basicas")]
+        TablaBasica = 7
 
     }
 

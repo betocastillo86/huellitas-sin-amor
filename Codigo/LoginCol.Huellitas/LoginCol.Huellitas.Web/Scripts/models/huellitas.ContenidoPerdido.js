@@ -15,50 +15,59 @@
 	validation: {
 	    Nombre: {
 	        required: true,
-            msg: "Ingrese el nombre. Si no lo conoce ingrese N/A"
+            msg: "Ingresa el nombre. Si no lo conoce ingrese N/A"
 	    },
 		Tipo: {
-			required: true
+		    required: true,
+            msg : "Selecciona el tipo de animal"
 		},
 		Edad: {
 			required: true,
-			msg: "Ingrese la edad aproximada",
+			msg: "Ingresa la edad aproximada",
 		    //pattern: /^1?[0-9]{1}$/
             range: [1,20]
 		},
 		Genero: {
 		    required: true,
-		    msg: "Ingrese el genero de la mascota"
+		    msg: "Selecciona el genero de la mascota"
 		},
 		Color: {
 		    required: true,
-		    msg: "Ingrese el color"
+		    msg: "Selecciona el color"
 		},
 		ZonaGeograficaId: {
 		    required: true,
             pattern: "number",
-		    msg: "Ingrese la zona"
+            msg: "Selecciona la zona"
 		},
 		ContactoNombre: {
 		    required: true,
-		    msg: "Ingrese su nombre"
+		    msg: "Ingresa tu nombre o el del contacto"
 		},
 		ContactoTelefono: {
 		    required: true,
-		    msg: "Ingrese número telefónico"
+		    msg: "Ingresa un número telefónico"
 		},
 		ContactoCorreo: {
 			required: false,
 			pattern: "email",
-			msg: "Ingrese su correo electrónico"
+			msg: "Ingresa tu correo electrónico"
 		},
 		Imagen: {
 		    required: true,
-            msg : "Una imagen para conocer más"
+            msg : "Selecciona una imagen preferiblemente en formato horizontal"
+		},
+		Imagen2: {
+		    required: false
+		},
+		Raza :{
+		    required: true,
+		    pattern: "number",
+		    msg : "Selecciona la raza del animal"
 		},
 		Descripcion: {
 		    required: true,
-            msg : "Ingrese una breve descripción"
+            msg : "Ingresa una breve descripción"
 		}
 	},
 	guardar: function (args, ctx)

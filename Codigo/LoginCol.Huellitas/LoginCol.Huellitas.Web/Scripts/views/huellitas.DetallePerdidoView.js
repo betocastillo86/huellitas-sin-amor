@@ -7,13 +7,19 @@
 
 	modelContenido: undefined,
 
-    vistaSummary : undefined,
+	vistaSummary: undefined,
+
+
+	vistaFacebookShare: undefined,
+
+	vistaTwitterShare: undefined,
 
 	bindings: {
 	    "#CorreoElectronico": "CorreoElectronico",
 	    "#Nombres": "Nombres",
 	    "#Telefono": "Telefono",
-	    "#Comentario": "Comentario"
+	    "#Comentario": "Comentario",
+	    "click [name='rbTipo']": "cambioTipo",
 	},
 
 	events: {
@@ -26,6 +32,9 @@
 	    
 	    this.modelContenido = new ContenidoModel();
 	    this.vistaSummary = new SummaryView();
+
+
+	    
 		
 	    this.modelContenido.on('destroy', this.eliminado, this);
 	},
@@ -42,7 +51,12 @@
 	    this.model = new ContactoModel();
 	    
 		this.$el.html(this.template(model.toJSON()));
-		this.$el.dialog({ modal: true, title: '¿Lo has visto en algún lado?', beforeClose : this.cerrar });
+		this.$el.dialog({ modal: true, title: '¿Lo has visto en algún lado?', beforeClose: this.cerrar });
+		
+		this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: document.URL });
+		this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: document.URL, texto: 'Esta huellita esta perdida, pueden reportarla si la han visto en @hsinhogar' });
+
+
 		this.ocultarFormulario();
 
 		this.stickit();

@@ -39,6 +39,10 @@ namespace LoginCol.Huellitas.Web.Models
 
         public string Imagen { get; set; }
 
+        public string Imagen2 { get; set; }
+
+        public int Raza { get; set; }
+
         /// <summary>
         /// Para esta sección solo aplican dos tipos de contenidos:
         /// AnimalesPerdidos

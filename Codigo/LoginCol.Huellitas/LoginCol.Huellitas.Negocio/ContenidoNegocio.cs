@@ -123,11 +123,13 @@ namespace LoginCol.Huellitas.Negocio
             contenido.UsuarioId = idUsuario;
 
             respuesta.Id = _contenidos.Value.Crear(contenido);
+            int idCreado = respuesta.Id;
             respuesta.OperacionExitosa = respuesta.Id > 0;
 
             if (respuesta.OperacionExitosa)
             {
                 respuesta = ValidarCargaImagenTemporal(contenido.ContenidoId, imagen, ref respuesta);
+                respuesta.Id = idCreado;
             }
             else
                 respuesta.MensajeError = "No fue posible crear el contenido";
@@ -328,18 +330,20 @@ namespace LoginCol.Huellitas.Negocio
             
         }
 
+
         /// <summary>
         /// Crea el contenido de tipo imagen y lo relaciona
         /// </summary>
         /// <param name="idContenidoPadre"></param>
         /// <param name="contenido"></param>
         /// <returns></returns>
-        public ResultadoOperacion AgregarImagen(int idContenidoPadre, Contenido contenido, int idUsuario)
+        public ResultadoOperacion AgregarImagen(int idContenidoPadre, Contenido contenido, int idUsuario, string imagen = null)
         { 
             contenido.TipoContenidoId = (int)TipoContenidoEnum.Imagen;
             contenido.ZonaGeograficaId = ParametrizacionNegocio.ZonaGeograficaPorDefecto;
             contenido.DescripcionCorta = contenido.Descripcion;
-            ResultadoOperacion respuesta = Crear(contenido, idUsuario);
+            contenido.Email = "general@general.com";
+            ResultadoOperacion respuesta = Crear(contenido, idUsuario, imagen);
 
             if (respuesta.OperacionExitosa)
             {

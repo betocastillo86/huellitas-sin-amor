@@ -124,7 +124,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             if (hogarDePaso != null)
             {
                 modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
-                modelo.HogarDePaso.CorreoElectronico = hogarDePaso.ContenidoHijo.Email;
+                //modelo.HogarDePaso.Email = hogarDePaso.ContenidoHijo.Email;
             }
 
             modelo.ImagenCompartir = string.Format("/img/{0}/big", modelo.ContenidoId);

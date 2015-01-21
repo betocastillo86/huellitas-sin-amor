@@ -50,7 +50,7 @@
             @if (Model.HogarDePaso != null)
             {
                 <div class="grid_6 conte_datos">
-                    <h2>HOGAR DE PASO: <a href="/fundaciones/@Model.HogarDePaso.ContenidoId/@Model.HogarDePaso.Nombre"><b>@Model.HogarDePaso.Nombre</b></a></h2>
+                    <h2><a href="/fundaciones/@Model.HogarDePaso.ContenidoId/@Model.HogarDePaso.NombreLink">HOGAR DE PASO: <b>@Model.HogarDePaso.Nombre</b></a></h2>
                     <h3>CONTACTO: <span>@Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Encargado")</span></h3>
                     <ul>
                         <li>@Model.HogarDePaso.ZonaGeograficaNombre / @Html.ObtenerCampoDeContenido(Model.HogarDePaso, "Direccion")</li>
