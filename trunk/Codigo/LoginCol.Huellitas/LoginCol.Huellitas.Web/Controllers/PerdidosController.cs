@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Negocio.Directorios;
 using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Models;
 using System;
@@ -41,6 +42,12 @@ namespace LoginCol.Huellitas.Web.Controllers
                     //agrega los campso adicionales
 
                     respuesta = nContenido.Crear(contenido, ParametrizacionNegocio.UsuarioPorDefecto, modelo.Imagen);
+
+                    //Despues de guardar el contenido agrega las imagenes adicionales
+                    if (!string.IsNullOrEmpty(modelo.Imagen2) && respuesta.OperacionExitosa)
+                    {
+                        nContenido.AgregarImagen(respuesta.Id, new Contenido() { Nombre = contenido.Nombre, Descripcion = contenido.Nombre }, ParametrizacionNegocio.UsuarioPorDefecto, modelo.Imagen2);
+                    }
                 }
                 catch (Exception e)
                 {

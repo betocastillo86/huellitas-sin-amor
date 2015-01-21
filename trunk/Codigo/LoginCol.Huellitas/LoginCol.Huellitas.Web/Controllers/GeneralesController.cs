@@ -64,6 +64,10 @@ namespace LoginCol.Huellitas.Web.Controllers
             js.AppendFormat(", TipoAnimalesPerdidos : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesPerdidos));
             js.AppendFormat(", TipoAnimalesEncontrados : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesEncontrados));
             js.AppendFormat(", TipoAnimalesPerdidosPadre : {0}", Convert.ToInt32(TipoContenidoEnum.AnimalesPerdidosPadre));
+            js.AppendFormat(", RazasPerros : {0}", Convert.ToInt32(TablasBasicasEnum.RazasPerros));
+            js.AppendFormat(", RazasGatos : {0}", Convert.ToInt32(TablasBasicasEnum.RazasGatos));
+            js.AppendFormat(", TipoPerro : {0}", Convert.ToInt32(TipoContenidoEnum.Perro));
+            js.AppendFormat(", CampoRazaId : {0}", ParametrizacionNegocio.CampoRaza);
 
             
             js.Append(" }");

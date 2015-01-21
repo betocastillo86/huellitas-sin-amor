@@ -20,8 +20,10 @@ namespace LoginCol.Huellitas.Datos
                 using (Repositorio db = new Repositorio())
                 {
                     lista = db.ZonasGeograficas.Where(_ =>
+                                            _.Activo &&
                                             (filtro.ZonaGeograficaId == 0 || _.ZonaGeograficaId == filtro.ZonaGeograficaId) &&
-                                            (filtro.ZonaGeograficaPadre.ZonaGeograficaId == 0 || _.ZonaGeograficaPadre.ZonaGeograficaId == filtro.ZonaGeograficaPadre.ZonaGeograficaId)).ToList();
+                                            (filtro.ZonaGeograficaPadre.ZonaGeograficaId == 0 || _.ZonaGeograficaPadre.ZonaGeograficaId == filtro.ZonaGeograficaPadre.ZonaGeograficaId))
+                                            .ToList();
                 }
             }
             catch (Exception e)

@@ -35,6 +35,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public bool Destacado { get; set; }
 
+        public string Email { get; set; }
+        
         public string CorreoElectronico { get; set; }
 
         [MaxLength(130)]

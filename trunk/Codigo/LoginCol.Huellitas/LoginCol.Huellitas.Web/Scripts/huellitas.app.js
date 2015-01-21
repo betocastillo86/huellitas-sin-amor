@@ -69,6 +69,34 @@
     {
         return variable == undefined ? 0 : parseInt(variable.split("_")[0]);
     },
+    //De un listado de campos de un contenido, retorna el valor
+    obtenerValorCampo : function(nombreCampo, campos)
+    {
+        var valor;
+
+        if (nombreCampo == "Edad")
+        {
+            var edad = _.findWhere(campos, { CampoId: Constantes.CampoEdadId });
+            if (edad == undefined)
+                edad = "";
+            else if (edad.Valor == 0)
+                edad = "Menos de un año";
+            else if (edad.Valor == 1)
+                edad = "1 año";
+            else
+                edad = edad.Valor + " años";
+
+            valor = edad;
+        }
+        else if (nombreCampo == "Raza")
+        {
+            var raza = _.findWhere(campos, { CampoId: Constantes.CampoRazaId })
+            valor = raza == undefined ? "" : raza.ValorTexto;
+        }
+
+        return valor;
+    },
+
     soloNumeros : function(evt){
         var charCode = (evt.which) ? evt.which : event.keyCode
         if (charCode > 31 && (charCode < 48 || charCode > 57))

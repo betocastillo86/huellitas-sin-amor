@@ -511,6 +511,9 @@ namespace LoginCol.Huellitas.Datos
 
                         if (!string.IsNullOrEmpty(filtroBase.Nombre))
                             query = query.Where(c => c.Nombre.Contains(filtroBase.Nombre));
+
+                        if(filtroBase.FechaCreacion != DateTime.MinValue)
+                            query = query.Where(c => c.FechaCreacion >= filtroBase.FechaCreacion);
                     }
 
                     

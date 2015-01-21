@@ -196,6 +196,7 @@
     <Compile Include="Controllers\HuellitasController.cs" />
     <Compile Include="Controllers\ParametrizacionController.cs" />
     <Compile Include="Controllers\PerdidosController.cs" />
+    <Compile Include="Controllers\TablasBasicasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -636,6 +637,7 @@
     <Content Include="Scripts\models\huellitas.Comentario.js" />
     <Content Include="Scripts\models\huellitas.Contacto.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
+    <Content Include="Scripts\models\huellitas.TablaBasica.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.min.gz.js" />

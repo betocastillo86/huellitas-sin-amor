@@ -60,17 +60,17 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             var modelo = new PerdidosModel();
             if (id.HasValue)
+            { 
+                ContenidoNegocio nContenido = new ContenidoNegocio();
+                modelo.Descripcion = nContenido.Obtener(id.Value).Descripcion;
                 modelo.ContenidoId = id.Value;
-
+            }
+                
+            ViewBag.TagDescripcion = id.HasValue ? modelo.Descripcion : ParametrizacionNegocio.DescripcionPerdidos;
             return View(modelo);
         }
 
-        [HttpPost]
-        public ActionResult Perdidos(PerdidosModel modelo)
-        {
-            
-            return View();
-        }
+        
         #endregion
         
         [ChildActionOnly]

@@ -129,8 +129,10 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoNombreId, Valor = modelo.ContactoNombre });
             obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoTelefonoId, Valor = modelo.ContactoTelefono });
             obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoTipoPerdido, Valor = modelo.Tipo.ToString() });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoRaza, Valor = modelo.Raza.ToString() });
             if(!string.IsNullOrEmpty(modelo.ContactoCorreo))
                 obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoCorreoId, Valor = modelo.ContactoCorreo });  
+
         }
 
         private static void ComentarioModelToComentario(ComentarioModel model, Comentario obj)
@@ -178,6 +180,15 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
                                     model.ValorTexto = valor.Texto;
                             }
 
+                            break;
+                        case TipoDatoCampo.TablaBasica:
+                            int valorInt = 0;
+
+                            if (int.TryParse(obj.Valor, out valorInt))
+                            {
+                                var valorTablaBasica = new DatoTablaBasicaNegocio().ObtenerDatoTablaBasica(valorInt);
+                                model.ValorTexto = valorTablaBasica != null ? valorTablaBasica.Valor : string.Empty;
+                            }
                             break;
                         default:
                             break;

@@ -72,6 +72,8 @@ namespace LoginCol.Huellitas.Negocio
 
         public static int CampoTipoPerdido { get { return Int("CampoTipoPerdido"); } }
 
+        public static int CampoRaza { get { return Int("CampoRaza"); } }
+
         public static string LlaveRouterVerTodos { get { return String("LlaveRouterVerTodos"); } }
 
 
@@ -89,5 +91,7 @@ namespace LoginCol.Huellitas.Negocio
         public static bool ValidarAnalytics { get { return Convert.ToBoolean(ConfigurationManager.AppSettings["validarAnalytics"]); } }
 
         public static int UsuarioPorDefecto { get { return Int("UsuarioPorDefecto"); } }
+
+        public static string DescripcionPerdidos { get { return String("DescripcionPerdidos"); } }
     }
 }

@@ -39,8 +39,9 @@ namespace LoginCol.Huellitas.Web.Controllers
             {
                 filtroBase.ZonaGeografica = new ZonaGeografica(filtro.zonaPadre);
             }
-                
-                
+
+            if (filtro.fechaDesde != DateTime.MinValue)
+                filtroBase.FechaCreacion = filtro.fechaDesde;
 
             if (filtro.zona > 0)
                 filtroBase.ZonaGeograficaId = filtro.zona;
@@ -137,6 +138,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         public int tamano { get; set; }
         public int edad { get; set; }
         public int tipoPerdido { get; set; }
+        public int raza { get; set; }
         
 
         public string recomendado { get; set; }
@@ -151,6 +153,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         public int fundacion { get; set; }
 
+        public DateTime fechaDesde { get; set; }
 
         public string nombre { get; set; }
 
@@ -165,6 +168,9 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             if (color > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoColorId, Valor = color.ToString() });
+
+            if (raza > 0)
+                filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoRaza, Valor = raza.ToString() });
 
             if (tamano > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoTamanoId, Valor = tamano.ToString() });
