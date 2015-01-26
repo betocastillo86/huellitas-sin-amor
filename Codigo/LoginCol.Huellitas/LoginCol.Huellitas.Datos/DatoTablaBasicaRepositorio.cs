@@ -18,7 +18,10 @@ namespace LoginCol.Huellitas.Datos
             {
                 using (Repositorio db = new Repositorio())
                 {
-                    lista = db.DatosTablasBasicas.Where(m => m.TablaBasicaId == tablaBasicaId).ToList();
+                    lista = db.DatosTablasBasicas
+                        .Where(m => m.TablaBasicaId == tablaBasicaId)
+                        .OrderBy(m => m.Valor)
+                        .ToList();
                 }
             }
             catch (Exception e)

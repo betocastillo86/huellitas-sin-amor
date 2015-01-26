@@ -18,7 +18,7 @@ namespace System.Web.Mvc.Html
             return SelectExtensions
                 .DropDownList(htmlHelper,
                                 nombreCampo,
-                                new SelectList(objCampo.Opciones, "OpcionId", "Texto", seleccionar), primeraOpcion, new { @class = estilo });
+                                new SelectList(objCampo.Opciones.OrderBy(o => o.Texto), "OpcionId", "Texto", seleccionar), primeraOpcion, new { @class = estilo });
         }
     }
 }

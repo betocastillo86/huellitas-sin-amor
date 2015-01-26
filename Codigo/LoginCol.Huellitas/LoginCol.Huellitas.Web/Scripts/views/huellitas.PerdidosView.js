@@ -20,6 +20,10 @@
 
     btnReportadas: undefined,
 
+    btnGuardar: undefined,
+
+    btnVolverFormulario: undefined,
+
     ddlRaza : undefined,
 
     formRegistrar: undefined,
@@ -77,6 +81,8 @@
         this.btnReportadas = this.$("#btnReportadas");
         this.formRegistrar = this.$("#formRegistrar");
         this.formFiltro = this.$("#formFiltro");
+        this.btnGuardar = this.$("#btnGuardar");
+        this.btnVolverFormulario = this.$("#btnVolverFormulario");
 
         this.$("#FechaRegistro").datepicker({maxDate : 0});
 
@@ -180,6 +186,16 @@
 
         ddl.show();
     },
+    ocultarBotonesAlGuardar : function()
+    {
+        this.btnGuardar.hide();
+        this.btnVolverFormulario.hide();
+    },
+    mostrarBotonesAlGuardar : function()
+    {
+        this.btnGuardar.show();
+        this.btnVolverFormulario.show();
+    },
     ocultarPestanas: function () {
         this.btnBusco.hide();
         this.btnEncuentro.hide();
@@ -198,9 +214,11 @@
         }
     },
     guardar: function () {
+        this.ocultarBotonesAlGuardar();
         this.model.set({ ZonaGeograficaId: this.$("#ddlZonaBarrio").val() });
         this.model.set({ Raza: this.$("#formRegistrar #ddlRaza").val() });
         this.model.guardar({ success: this.contenidoGuardado, invalid: this.datosInvalidos }, this);
+        
     },
     filtrarPerdidos: function () {
         if (!this.vistaResultados)
@@ -220,6 +238,8 @@
         else {
             alert(respuesta.toJSON().MensajeError);
         }
+
+        ctx.mostrarBotonesAlGuardar();
     },
     mostrarConfirmacion: function () {
         this.$("#camposFormulario").hide();
@@ -232,6 +252,7 @@
     datosInvalidos: function (errores, ctx) {
         ctx.vistaSummary.mostrar(errores);
         Huellitas.marcarErroresFormulario(errores, ctx);
+        ctx.mostrarBotonesAlGuardar();
     },
     mostrarInicio: function () {
         $(".nav_busca li")
