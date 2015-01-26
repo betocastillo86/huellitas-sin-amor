@@ -112,6 +112,31 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         #endregion
 
+        #region Perdidos
+
+        Lazy<FormularioAdopcionNegocio> _nFormulario = new Lazy<FormularioAdopcionNegocio>();
+        FormularioAdopcionNegocio nFormulario { get { return _nFormulario.Value; } }
+        public ActionResult AdopcionesListar()
+        {
+
+            var modelo = new ListarFormularioAdopcionModel();
+            modelo.Formularios =  nFormulario.Obtener()
+                .Select(Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>)
+                .ToList();
+            return View(modelo);
+        }
+
+        public ActionResult AdopcionesDetalle(int id)
+        {
+            var formulario = nFormulario.Obtener(id);
+            var modelo = Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>(formulario);
+            
+            return View(modelo);
+        }
+
+
+        #endregion
+
         public ActionResult Salir()
         {
             Autenticacion.CerrarSesion();
@@ -126,6 +151,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 3, Nombre = "Parametrizacion", Vinculo = "/admin/parametrizacion" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Usuarios Externos", Vinculo = "/admin/usuariosexternos" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Adopciones", Vinculo = "/admin/adopcioneslistar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }
 

@@ -29,13 +29,17 @@ namespace LoginCol.Huellitas.Negocio
         public ResultadoOperacion Crear(FormularioAdopcion formularioAdopcion)
         {
             var respuesta = new ResultadoOperacion(true);
-            var usuario = nUsuarios.CrearUsuarioDesdeCorreo(formularioAdopcion.Usuario.Correo, formularioAdopcion.Usuario.Nombres, formularioAdopcion.Usuario.Telefono);
+            
+            //var usuario = nUsuarios.Crear(formularioAdopcion.Usuario.Correo, formularioAdopcion.Usuario.Nombres, formularioAdopcion.Usuario.Telefono);
+            nUsuarios.Crear(formularioAdopcion.Usuario);
 
-            if (usuario.UsuarioId > 0)
+
+            if (formularioAdopcion.Usuario.UsuarioId > 0)
             {
+                
+                formularioAdopcion.UsuarioId = formularioAdopcion.Usuario.UsuarioId;
                 formularioAdopcion.Usuario = null;
                 formularioAdopcion.Contenido = null;
-                formularioAdopcion.UsuarioId = usuario.UsuarioId;
 
                 respuesta.Id = nFormularioAdopcion.Crear(formularioAdopcion);
                 respuesta.OperacionExitosa = respuesta.Id > 0;
@@ -55,6 +59,35 @@ namespace LoginCol.Huellitas.Negocio
             return respuesta; 
             
            
+        }
+
+        public List<FormularioAdopcion> Obtener()
+        {
+            try
+            {
+                return nFormularioAdopcion.Obtener(null);
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+
+                return new List<FormularioAdopcion>();
+            }
+        }
+
+        public FormularioAdopcion Obtener(int idFormulario)
+        {
+            try
+            {
+                return nFormularioAdopcion.Obtener(idFormulario)
+                    .FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                LogErrores.RegistrarError(e);
+
+                return new FormularioAdopcion();
+            }
         }
     }
 }

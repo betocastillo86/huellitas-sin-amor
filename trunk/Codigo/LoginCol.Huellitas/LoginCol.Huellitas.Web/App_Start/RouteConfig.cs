@@ -25,19 +25,22 @@ namespace LoginCol.Huellitas.Web
 
             #region Admin
 
+            //routes.MapRoute(name: "Admin",
+            //    url: "Admin/{action}",
+            //    defaults: new { controller = "Administracion", action = "AdopcionesDetalle" },
+            //    constraints: new { action = "(AdopcionesDetalle)" });
+
             routes.MapRoute(name: "AdministracionIndex",
-                url: "Admin/{action}",
-                defaults: new { controller = "Administracion", action = "Index" },
+                url: "Admin/{action}/{id}",
+                defaults: new { controller = "Administracion", action = "Index", id = UrlParameter.Optional },
                 constraints: new { action = @"\b(?:(?!Submodulos)\w)+\b" });
 
             routes.MapRoute(name: "AdministracionSubmodulos",
                 url: "Admin/{*queryValues}",
                 defaults: new { controller = "Administracion", action = "Submodulos" },
                 constraints: new { action = "(Submodulos)", queryValues = ".+" });
+
             
-            routes.MapRoute(name: "Admin",
-                url: "Admin/{controller}/{action}",
-                defaults: new { controller = "Animales", action = "Index" });
 
 
             #endregion
