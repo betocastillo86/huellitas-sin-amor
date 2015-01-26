@@ -79,6 +79,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             var formulario = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
             formulario.ContenidoId = id;
             formulario.Respuestas = respuestas;
+            formulario.Usuario.Apellidos = ".";
 
             var respuesta = formularioAdopcionNegocio.Crear(formulario);
 

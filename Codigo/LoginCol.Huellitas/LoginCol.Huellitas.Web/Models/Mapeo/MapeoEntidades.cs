@@ -93,6 +93,7 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             #region FormularioAdopcion
             Mapper.CreateMap<FormularioAdopcionModel, FormularioAdopcion>();
+            Mapper.CreateMap<FormularioAdopcion, FormularioAdopcionModel>();
             #endregion
             #region Usuarios
             AutoMapper.Mapper.CreateMap<Usuario, UsuarioModel>();

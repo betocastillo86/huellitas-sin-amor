@@ -26,10 +26,10 @@ namespace LoginCol.Huellitas.Entidades
 
         public string InformacionAdicional { get; set; }
 
-        public List<RespuestaAdopcion> Respuestas { get; set; }
+        public virtual List<RespuestaAdopcion> Respuestas { get; set; }
 
-        public List<Usuario> Ocupaciones { get; set; }
+        public virtual List<Usuario> Ocupaciones { get; set; }
 
-        public List<Usuario> EstadosCiviles { get; set; }
+        public virtual List<Usuario> EstadosCiviles { get; set; }
     }
 }

@@ -15,11 +15,15 @@ namespace LoginCol.Huellitas.Web.Models
             Contenido = new ContenidoModel();
         }
 
+        public int FormularioAdopcionId { get; set; }
+
         public ContenidoListadoModel HogarDePaso { get; set; }
 
         public ContenidoModel Contenido { get; set; }
 
         public UsuarioModel Usuario { get; set; }
+
+        public DateTime FechaCreacion { get; set; }
 
         [Required]
         [Range(1,10)]

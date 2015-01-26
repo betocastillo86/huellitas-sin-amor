@@ -19,6 +19,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public string EstadoCivilValor { get; set; }
 
+        public string NumeroDocumento { get; set; }
+
         [Required]
         [EmailAddress]
         public string Correo { get; set; }

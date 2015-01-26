@@ -210,7 +210,9 @@
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Infraestructure\NullableRequiredAttribute.cs" />
     <Compile Include="Infraestructure\SumarVisitaAttribute.cs" />
+    <Compile Include="Models\Admin\FormularioAdopcionModel.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
+    <Compile Include="Models\Admin\ListarFormularioAdopcion.cs" />
     <Compile Include="Models\Admin\ListarUsuariosExternosModel.cs" />
     <Compile Include="Models\Admin\OpcionMenu.cs" />
     <Compile Include="Models\AnimalModel.cs" />
@@ -749,6 +751,8 @@
     <Content Include="Views\Shared\_Summary.cshtml" />
     <Content Include="Views\Administracion\UsuariosExternos.cshtml" />
     <Content Include="Scripts\views\huellitas.DetallePerdidoView.js" />
+    <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
+    <Content Include="Views\Administracion\AdopcionesDetalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
