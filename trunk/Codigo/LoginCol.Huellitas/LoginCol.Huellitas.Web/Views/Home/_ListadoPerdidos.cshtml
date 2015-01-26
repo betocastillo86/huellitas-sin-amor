@@ -58,8 +58,9 @@
 
 <script id="templateDetallePerdido" type="text/template">
     <div class="conteModal">
-        <div class="grid_6">
-            <img src="/img/<%=ContenidoId%>/big" />
+        <div class="">
+            <div id="divImagenesContenido"></div>
+            @*<img src="/img/<%=ContenidoId%>/big" />*@
         </div>
         <div class="grid_6 omega">
             <div class="descri_perdida">
@@ -92,3 +93,6 @@
     </div>
 </script>
 @Html.Partial("_CompartirRedesSociales")
+
+
+@Html.Partial("_ImagenesContenido")

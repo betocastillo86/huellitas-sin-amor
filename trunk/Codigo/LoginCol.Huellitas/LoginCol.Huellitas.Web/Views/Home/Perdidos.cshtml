@@ -117,12 +117,12 @@
 
                         <input type="hidden" id="Imagen" />
                         <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
-                        <a href="javascript:void(0);" class="volver btn color3">VOLVER</a>
+                        <a href="javascript:void(0);" class="volver btn color3" id="btnVolverFormulario">VOLVER</a>
                     </div>
 
                     <div id="divMensajeConfirmacion" style="display:none">
                         <h2 id="msjBusco" style="display:none">Muchas gracias por dejar tus datos, esperamos tu mascota aparezca lo más pronto posible, de ser así nos comunicaremos inmediatamente contigo.</h2>
-                        <h2 id="msjEncuentro" style="display:none">Muchas gracias por dejar tus datos, que la familia de esta huellita lo encuentre lo más pronto posible. Si es por Huellitas sin Hogar te estaremos contactando para informarte lo que sucede.</h2>
+                        <h2 id="msjEncuentro" style="display:none">Muchas gracias por dejar tus datos, que la familia de esta huellita lo encuentre lo más pronto posible. Si sabemos algo te estaremos contactando para informarte lo que sucede.</h2>
 
                         <a href="javascript:void(0);" class="volver btn color3">VOLVER</a>
                     </div>
@@ -200,5 +200,7 @@
     @Scripts.Render("~/bundles/backbone_cargaArchivo")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/backbone_redesSociales")
+    @Scripts.Render("~/bundles/backbone_imagenes")
+
 
 }

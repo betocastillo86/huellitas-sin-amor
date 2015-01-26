@@ -250,7 +250,8 @@ namespace LoginCol.Huellitas.Web
             //imagenes de los contenidos
             bundles.Add(new ScriptBundle("~/bundles/backbone_imagenes")
                 .Include("~/Scripts/models/huellitas.admin.Imagen.js")
-                .Include("~/Scripts/views/huellitas.ImagenesContenidoView.js"));
+                .Include("~/Scripts/views/huellitas.ImagenesContenidoView.js")
+                .Include("~/Scripts/libs/jquery.mCustomScrollbar.js"));
 
             //Principales scripts utilizados en el detalle de un contenido
             bundles.Add(new ScriptBundle("~/bundles/backbone_contenidodetalle")

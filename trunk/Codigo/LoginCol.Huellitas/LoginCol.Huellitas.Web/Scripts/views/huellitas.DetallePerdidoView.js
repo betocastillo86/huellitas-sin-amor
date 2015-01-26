@@ -9,6 +9,8 @@
 
 	vistaSummary: undefined,
 
+    vistaImagenes : undefined,
+
 
 	vistaFacebookShare: undefined,
 
@@ -33,15 +35,15 @@
 	    this.modelContenido = new ContenidoModel();
 	    this.vistaSummary = new SummaryView();
 
-
 	    
-		
+
 	    this.modelContenido.on('destroy', this.eliminado, this);
 	},
 
 	cargar: function (idContenido)
 	{
-		this.idContenido = idContenido;
+	    this.idContenido = idContenido;
+	    
 		this.modelContenido.once('sync', this.mostrarDetalle, this);
 		this.modelContenido.obtenerPorId(this.idContenido);
 		App_Router.navegar('/perros-gatos-perdidos/' + idContenido, { trigger: false });
@@ -56,6 +58,7 @@
 		this.vistaFacebookShare = new FacebookShareView({ el: "#divFacebook", url: document.URL });
 		this.vistaTwitterShare = new TwitterShareView({ el: "#divTwitter", url: document.URL, texto: 'Esta huellita esta perdida, pueden reportarla si la han visto en @hsinhogar' });
 
+		this.vistaImagenes = new ImagenesContenidoView({ id: this.idContenido, el: "#divImagenesContenido" });
 
 		this.ocultarFormulario();
 
