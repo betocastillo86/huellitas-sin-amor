@@ -40,7 +40,12 @@ namespace LoginCol.Huellitas.Web.Controllers
             //actualiza los campos con el id del contenido
             contenido.Campos.Each(_ => _.ContenidoId = id);
 
-            ResultadoOperacion respuesta = contenidoNegocio.Actualizar(contenido, modelo.Imagen);
+            
+            //Se borra la imagen para eviar que guarde el dato en BD
+            string tempImg = modelo.Imagen;
+            modelo.Imagen = null;
+
+            ResultadoOperacion respuesta = contenidoNegocio.Actualizar(contenido, tempImg);
             return respuesta;
         }
 
@@ -49,9 +54,13 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             modelo.Campos.RemoveAll(c => string.IsNullOrEmpty(c.Valor));
             Contenido contenido = Mapper.Map<ContenidoModel, Contenido>(modelo);
-        
+
+            //Se borra la imagen para eviar que guarde el dato en BD
+            string tempImg = modelo.Imagen;
+            modelo.Imagen = null;
+
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            ResultadoOperacion respuesta = contenidoNegocio.Crear(contenido, SessionModel.Usuario.UsuarioId, modelo.Imagen);
+            ResultadoOperacion respuesta = contenidoNegocio.Crear(contenido, SessionModel.Usuario.UsuarioId, tempImg);
             return respuesta;
         }
 

@@ -30,16 +30,23 @@ namespace LoginCol.Huellitas.Web
             //    defaults: new { controller = "Administracion", action = "AdopcionesDetalle" },
             //    constraints: new { action = "(AdopcionesDetalle)" });
 
+            
+
             routes.MapRoute(name: "AdministracionIndex",
-                url: "Admin/{action}/{id}",
-                defaults: new { controller = "Administracion", action = "Index", id = UrlParameter.Optional },
+                url: "Admin/{action}",
+                defaults: new { controller = "Administracion", action = "Index" },
                 constraints: new { action = @"\b(?:(?!Submodulos)\w)+\b" });
+
+            routes.MapRoute(name: "AdministracionIndexId",
+                url: "Admin/{action}/{id}",
+                defaults: new { controller = "Administracion", action = "Index" },
+                constraints: new { action = @"\b(?:(?!Submodulos)\w)+\b", id = @"\d+" });
+
 
             routes.MapRoute(name: "AdministracionSubmodulos",
                 url: "Admin/{*queryValues}",
                 defaults: new { controller = "Administracion", action = "Submodulos" },
                 constraints: new { action = "(Submodulos)", queryValues = ".+" });
-
             
 
 

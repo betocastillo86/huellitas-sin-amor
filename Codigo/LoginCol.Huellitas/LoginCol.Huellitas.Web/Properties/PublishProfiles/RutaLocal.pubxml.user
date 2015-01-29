@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150119</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Publicaciones\Huellitas\20150128</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -118,19 +118,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:09</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Datos.dll">
-      <publishTime>01/18/2015 21:43:09</publishTime>
+      <publishTime>01/25/2015 22:17:49</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Datos.pdb">
       <publishTime>01/11/2015 10:36:48</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Entidades.dll">
-      <publishTime>01/18/2015 21:42:59</publishTime>
+      <publishTime>01/25/2015 22:17:45</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Entidades.pdb">
       <publishTime>01/11/2015 10:36:15</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Negocio.dll">
-      <publishTime>01/18/2015 21:43:12</publishTime>
+      <publishTime>01/25/2015 22:17:55</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Negocio.pdb">
       <publishTime>01/11/2015 10:44:11</publishTime>
@@ -142,7 +142,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2015 10:36:47</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.dll">
-      <publishTime>01/19/2015 21:15:59</publishTime>
+      <publishTime>01/28/2015 22:54:59</publishTime>
     </File>
     <File Include="bin/LoginCol.Huellitas.Web.pdb">
       <publishTime>01/11/2015 11:37:04</publishTime>
@@ -1519,10 +1519,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 21:06:46</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.DetalleHuellitaView.js">
-      <publishTime>01/12/2015 21:43:43</publishTime>
+      <publishTime>01/25/2015 09:06:39</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.DetallePerdidoView.js">
-      <publishTime>01/17/2015 21:23:32</publishTime>
+      <publishTime>01/25/2015 09:14:42</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.FacebookShareView.js">
       <publishTime>12/18/2014 21:47:01</publishTime>
@@ -1555,7 +1555,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2014 11:54:06</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.PerdidosView.js">
-      <publishTime>01/18/2015 21:17:55</publishTime>
+      <publishTime>01/25/2015 08:53:23</publishTime>
     </File>
     <File Include="Scripts/views/huellitas.ResultadosHuellitasView.js">
       <publishTime>01/14/2015 21:38:40</publishTime>
@@ -1575,6 +1575,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="templates/huellitas-listar.html">
       <publishTime>10/14/2014 21:25:32</publishTime>
     </File>
+    <File Include="Views/Administracion/AdopcionesDetalle.cshtml">
+      <publishTime>01/25/2015 22:36:33</publishTime>
+    </File>
+    <File Include="Views/Administracion/AdopcionesListar.cshtml">
+      <publishTime>01/25/2015 21:11:23</publishTime>
+    </File>
     <File Include="Views/Administracion/Contenido/Index.cshtml">
       <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
@@ -1588,7 +1594,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2015 10:35:20</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_ImagenesContenido.cshtml">
-      <publishTime>12/13/2014 12:13:01</publishTime>
+      <publishTime>01/25/2015 09:12:09</publishTime>
     </File>
     <File Include="Views/Administracion/Contenido/_Listado.cshtml">
       <publishTime>01/11/2015 10:35:20</publishTime>
@@ -1609,7 +1615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/14/2014 21:40:16</publishTime>
     </File>
     <File Include="Views/Fundaciones/Detalle.cshtml">
-      <publishTime>01/19/2015 21:14:35</publishTime>
+      <publishTime>01/28/2015 22:35:48</publishTime>
     </File>
     <File Include="Views/Fundaciones/Index.cshtml">
       <publishTime>12/17/2014 00:02:13</publishTime>
@@ -1630,16 +1636,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2014 18:34:06</publishTime>
     </File>
     <File Include="Views/Home/Perdidos.cshtml">
-      <publishTime>01/18/2015 21:18:31</publishTime>
+      <publishTime>01/25/2015 09:05:56</publishTime>
     </File>
     <File Include="Views/Home/_InfoAdopta.cshtml">
       <publishTime>01/08/2015 11:24:04</publishTime>
     </File>
     <File Include="Views/Home/_ListadoPerdidos.cshtml">
-      <publishTime>01/18/2015 20:15:24</publishTime>
+      <publishTime>01/25/2015 20:09:49</publishTime>
     </File>
     <File Include="Views/Huellitas/Detalle.cshtml">
-      <publishTime>01/12/2015 22:26:24</publishTime>
+      <publishTime>01/25/2015 09:06:12</publishTime>
     </File>
     <File Include="Views/Huellitas/Index.cshtml">
       <publishTime>01/06/2015 21:07:23</publishTime>
