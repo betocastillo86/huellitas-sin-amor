@@ -35,14 +35,33 @@ namespace LoginCol.Huellitas.Negocio
             return Convert.ToBoolean(datosParametrizacion.Obtener(llave));
         }
 
+        public bool ExisteLlave(string llave)
+        {
+            return datosParametrizacion.ExisteLLave(llave);
+        }
+
         public List<Parametrizacion> Obtener()
         {
             return datosParametrizacion.Obtener();
         }
 
-        public bool Actualizar(Parametrizacion modelo)
+        /// <summary>
+        /// Actualiza el valor de una variable de parametrización
+        /// dependiendo de los parametros de entrada, puede crear el registro si no existe
+        /// </summary>
+        /// <param name="modelo">Valores de la llave de parametrización. Nombre y valor</param>
+        /// <param name="crearSiNoExiste">Si no llegase a existir la llave que intenta actualizar, se debe crear</param>
+        /// <returns>true: Si los datos fueron actualizados false: si no se actualiza nada</returns>
+        public bool Actualizar(Parametrizacion modelo, bool crearSiNoExiste = false)
         {
-            return datosParametrizacion.Actualizar(modelo);
+            //Si está activo el crear al no existir y si la llave efectivamente no existe, la crea
+            //de lo contrario intenta actualizarla
+            if (crearSiNoExiste && !ExisteLlave(modelo.Llave))
+            {
+                return datosParametrizacion.Crear(modelo);
+            }
+            else
+                return datosParametrizacion.Actualizar(modelo);
         }
 
         public static int TamanoMaximoCargaArchivos { get { return Int("TamanoMaximoCargaArchivos"); } }

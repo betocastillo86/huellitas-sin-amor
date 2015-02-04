@@ -42,6 +42,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public List<DatoTablaBasica> Preguntas { get; set; }
 
+        public bool OcultarAdvertencia { get; set; }
+
 
     }
 }

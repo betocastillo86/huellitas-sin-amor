@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Web.Infraestructure;
 using LoginCol.Huellitas.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
 
         [HttpGet]
+        [SumarVisita]
         public ActionResult Detalle(int id)
         {
             ContenidoNegocio nContenido = new ContenidoNegocio();

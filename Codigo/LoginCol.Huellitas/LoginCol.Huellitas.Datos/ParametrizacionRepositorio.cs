@@ -24,6 +24,21 @@ namespace LoginCol.Huellitas.Datos
             return valor;
         }
 
+        public bool ExisteLLave(string llave)
+        {
+            bool existe = false;
+
+            using (var db = new Repositorio())
+            {
+
+                existe = db.Parametrizaciones
+                    .Where(p => p.Llave.Equals(llave))
+                    .FirstOrDefault() != null;
+            }
+
+            return existe;
+        }
+
         public List<Entidades.Parametrizacion> Obtener()
         {
             List<Parametrizacion> lista;
@@ -50,6 +65,24 @@ namespace LoginCol.Huellitas.Datos
                 respuesta = db.SaveChanges() > 0;
             }
 
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Crea una varibale de parametrizacion en la tabla Parametrizacion
+        /// </summary>
+        /// <param name="modelo"></param>
+        /// <returns></returns>
+        public bool Crear(Parametrizacion modelo)
+        {
+            bool respuesta = false;
+            using (var db = new Repositorio())
+            {
+                db.Parametrizaciones
+                    .Add(modelo);
+
+                respuesta = db.SaveChanges() > 0;
+            }
             return respuesta;
         }
     }

@@ -201,20 +201,11 @@
             this.model = this.app.serializarFormulario(this.model);
             this.model.set("Campos", this.obtenerCamposAdicionales());
 
-            var values = {};
-            _.each($('#form1').serializeArray(), function (input) {
-                if (input.name == "Activo")
-                    input.value = input.value == "true";
-
-                if (input.name == "Destacado")
-                    input.value = input.value == "true";
-
-                values[input.name] = input.value;
-            })
+            this.model.set('Activo', this.$("#Activo:checked").length > 0);
+            this.model.set('Destacado', this.$("#Destacado:checked").length > 0);
 
             this.model.on("sync", this.contenidoGuardado, this);
             this.model.save();
-            
         }
         else {
             App_Router.alertaView.mostrar("Revisar los campos obligatorios");
