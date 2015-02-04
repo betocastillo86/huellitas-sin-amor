@@ -9,3 +9,13 @@
 
 @Html.Partial("~/Views/Administracion/Contenido/_Editar.cshtml", Model.Contenido)
 
+@section scripts
+{
+    <script src="~/Scripts/views/huellitas.admin.ContenidoEditarView.js"></script>    
+    <script src="~/Scripts/models/huellitas.admin.TipoRelacionContenido.js"></script>
+    <script src="~/Scripts/views/huellitas.ImagenContenidoView.js"></script>    
+    <script src="~/Scripts/views/huellitas.admin.AgregarContenidoRelacionadoView.js"></script>
+    <script src="~/Scripts/views/huellitas.admin.AgregarUsuarioRelacionadoView.js"></script>
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_cargaArchivo")    
+}

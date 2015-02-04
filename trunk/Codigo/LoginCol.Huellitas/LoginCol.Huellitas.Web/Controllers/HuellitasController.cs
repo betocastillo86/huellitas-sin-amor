@@ -72,7 +72,6 @@ namespace LoginCol.Huellitas.Web.Controllers
                 });
             }
 
-
             var formularioAdopcionNegocio = new FormularioAdopcionNegocio();
 
             //Crea el formulario de adopción

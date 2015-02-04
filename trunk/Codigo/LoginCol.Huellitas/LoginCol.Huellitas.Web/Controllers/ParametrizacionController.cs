@@ -15,7 +15,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         public bool Put(Parametrizacion modelo)
         {
             var nParametrizacion = new ParametrizacionNegocio();
-            return nParametrizacion.Actualizar(modelo);
+            return nParametrizacion.Actualizar(modelo, true);
         }
     }
 }

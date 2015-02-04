@@ -35,7 +35,6 @@ namespace LoginCol.Huellitas.Web.Models
         //public string Direccion { get; set; }
 
         //public string Telefono { get; set; }
-        [Required(ErrorMessage = "El correo electrónico es obligatorio")]
         [Display(Name = "Correo electrónico", Description = "Correo electrónico")]
         [EmailAddress]
         public string Email { get; set; }

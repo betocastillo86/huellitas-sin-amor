@@ -57,7 +57,8 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             //Realiza el filtro en negocio cargando los campos desde el querystring
             var contenidosSinOrden = nContenido
-                .FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados).AsQueryable();
+                .FiltrarContenidos(idTipoContenido, esPadre, filtroBase, filtro.ObtenerValorCampo(), contenidosRelacionados)
+                .AsQueryable();
                 
             switch (filtro.orden)
 	        {
