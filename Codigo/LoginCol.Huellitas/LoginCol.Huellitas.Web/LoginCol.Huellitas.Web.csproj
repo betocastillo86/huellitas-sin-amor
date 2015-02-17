@@ -285,6 +285,8 @@
     <Content Include="Content\grid.css" />
     <Content Include="Content\menu_styles.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\PlantillasCorreo\AdopcionAprobada.txt" />
+    <Content Include="Content\PlantillasCorreo\SolicitudAdopcion.txt" />
     <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -360,9 +362,9 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Images\.DS_Store" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\RutaLocal.pubxml" />
     <None Include="Properties\PublishProfiles\Web Deply Godaddy.pubxml" />
     <None Include="Scripts\libs\jquery-1.8.2.intellisense.js" />
@@ -437,6 +439,14 @@
     <Content Include="Images\img_star.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo.svg" />
+    <Content Include="Images\Mail\btn.jpg" />
+    <Content Include="Images\Mail\fb.jpg" />
+    <Content Include="Images\Mail\img_1.jpg" />
+    <Content Include="Images\Mail\img_2.jpg" />
+    <Content Include="Images\Mail\insta.jpg" />
+    <Content Include="Images\Mail\logo.jpg" />
+    <Content Include="Images\Mail\twt.jpg" />
+    <Content Include="Images\Mail\ytb.jpg" />
     <Content Include="Images\sunglasses.png" />
     <Content Include="Images\twitter.png" />
     <Content Include="Scripts\huellitas.admin.app.js" />

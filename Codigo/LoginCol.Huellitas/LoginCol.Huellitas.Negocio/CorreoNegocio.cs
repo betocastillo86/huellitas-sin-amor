@@ -1,7 +1,9 @@
-﻿using LoginCol.Huellitas.Negocio.Directorios;
+﻿using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Negocio.Directorios;
 using LoginCol.Huellitas.Utilidades;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,11 +47,6 @@ namespace LoginCol.Huellitas.Negocio
                 return EnviarCorreo(asunto, destinatario, plantilla, null, null, rutasFisicas, parametros);
             }
 
-
-            //public static bool EnviarCorreo(string asunto, string destinatario, PlantillasCorreo plantilla,  params string[] parametros)
-            //{
-            //    return EnviarCorreo(asunto, destinatario, plantilla,mensaje, null, parametros);
-            //}
 
             public static bool EnviarCorreo(string asunto, string destinatario, PlantillasCorreo plantilla, List<string> adjuntos,  IRutasFisicas rutasFisicas = null, params string[] parametros)
             {
@@ -135,7 +132,7 @@ namespace LoginCol.Huellitas.Negocio
                     objCorreo.ConPlantilla = true;
                     objCorreo.EsHtml = true;
                     string nombrePlantilla = string.Concat(plantilla.ToString(), ".txt");
-                    objCorreo.RutaPlantilla = System.IO.Path.Combine(rutasFisicas.ObtenerRutaFisica() + "Plantillas", nombrePlantilla);
+                    objCorreo.RutaPlantilla = System.IO.Path.Combine(rutasFisicas.ObtenerRutaFisica() , "Content", "PlantillasCorreo", nombrePlantilla);
                     objCorreo.UrlSitio = ParametrizacionNegocio.UrlSitio;
                 }
 
@@ -145,12 +142,77 @@ namespace LoginCol.Huellitas.Negocio
             }
 
 
+            public static bool EnviarCorreoAdopcion(int idFormulario, PlantillasCorreo plantilla)
+            {
+                var parametros = new List<string>();
+
+                var nAdopciones = new FormularioAdopcionNegocio();
+                var formulario = nAdopciones.Obtener(idFormulario);
+
+                //el primer parametro siempre es el nombre
+                parametros.Add(formulario.Contenido.Nombre);
+                //el segundo siempre es el nombre de la persona
+                parametros.Add(formulario.Usuario.Nombres);
+
+                string asunto = string.Empty;
+                
+                switch (plantilla)
+                {
+                    case PlantillasCorreo.SolicitudAdopcion:
+                        asunto = string.Format(ParametrizacionNegocio.AsuntoAdopcion, formulario.Contenido.Nombre);  
+                        //el tercero siempre es el link
+                        parametros.Add(string.Format("{0}/{1}", formulario.Contenido.ContenidoId, formulario.Contenido.NombreLink));
+                        break;
+                    case PlantillasCorreo.AdopcionAprobada:
+                        asunto = string.Format(ParametrizacionNegocio.AsuntoAdopcionAceptada, formulario.Contenido.Nombre); 
+                        parametros.Add(string.Format("{0}/{1}", formulario.Contenido.ContenidoId, formulario.Contenido.NombreLink));
+
+                        //Carga los datos de la fundacion de BD
+                        var fundacion = new ContenidoNegocio().ObtenerFundacion(formulario.Contenido.ContenidoId);
+                        string nombreFundacion = "Huellitas sin Hogar";
+                        string linkFundacion = string.Empty;
+                        //Si no tiene fundación la fundación por defecto es huellitas sin hogar
+                        if(fundacion == null)
+                        {
+                            nombreFundacion = fundacion.Nombre;
+                            linkFundacion = string.Format("fundaciones/{0}", fundacion.NombreLink);
+                        }
+                        parametros.Add(nombreFundacion);
+                        parametros.Add(linkFundacion);
+                        parametros.Add(formulario.FechaCreacion.ToShortTimeString());
+                        break;
+                    case PlantillasCorreo.AdopcionRechazada:
+                        asunto = ParametrizacionNegocio.AsuntoAdopcionRechazada;
+                        break;
+                    case PlantillasCorreo.AdopcionPrevia:
+                        parametros.Add(string.Format("{0}/{1}", formulario.Contenido.ContenidoId, formulario.Contenido.NombreLink));
+                        asunto = ParametrizacionNegocio.AsuntoAdopcionEspera;
+                        break;
+                    default:
+                        break;
+                }
+
+                return EnviarCorreo(asunto, string.Format("{0},{1}", formulario.Usuario.Correo, ParametrizacionNegocio.DestinatarioCorreosContacto), plantilla, parametros: parametros.ToArray());
+            }
+
+
         }
 
-
+        /// <summary>
+        /// Posibles plantillas para enviar los correos
+        /// </summary>
         public enum PlantillasCorreo
         {
-            Ninguna
+            [Description("No usa plantilla")]
+            Ninguna,
+            [Description("Respuesta automática por adopción")]
+            SolicitudAdopcion,
+            [Description("Solicitud de adopción aprobada")]
+            AdopcionAprobada,
+            [Description("No fue aprobada la solicitud de adopción")]
+            AdopcionRechazada,
+            [Description("Ya fue adoptado por otra persona")]
+            AdopcionPrevia
         }
 
     

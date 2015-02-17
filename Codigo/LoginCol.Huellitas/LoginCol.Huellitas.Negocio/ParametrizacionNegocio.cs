@@ -112,5 +112,13 @@ namespace LoginCol.Huellitas.Negocio
         public static int UsuarioPorDefecto { get { return Int("UsuarioPorDefecto"); } }
 
         public static string DescripcionPerdidos { get { return String("DescripcionPerdidos"); } }
+
+        public static string AsuntoAdopcion { get { return String("AsuntoAdopcion"); } }
+
+        public static string AsuntoAdopcionAceptada { get { return String("AsuntoAdopcionAceptada"); } }
+
+        public static string AsuntoAdopcionRechazada { get { return String("AsuntoAdopcionRechazada"); } }
+
+        public static string AsuntoAdopcionEspera { get { return String("AsuntoAdopcionEspera"); } }
     }
 }

@@ -46,6 +46,11 @@ namespace LoginCol.Huellitas.Negocio
 
                 if (!respuesta.OperacionExitosa)
                     respuesta.MensajeError = "No fue posible crear el formulario";
+                else
+                {
+                    //Después de generar la adopción envia el correo de confirmación
+                    CorreoNegocio.EnviarCorreoAdopcion(respuesta.Id, PlantillasCorreo.SolicitudAdopcion);
+                }
 
                 return respuesta;
             }
