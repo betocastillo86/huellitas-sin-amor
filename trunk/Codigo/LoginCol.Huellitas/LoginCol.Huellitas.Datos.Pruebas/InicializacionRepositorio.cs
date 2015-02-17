@@ -28,6 +28,7 @@ namespace LoginCol.Huellitas.Datos.Pruebas
             CargarUsuarios();
             CargarContenidoIncial();
             CargarCampos();
+            CargarParametrizacion();
         }
 
         private void CargarCampos()
@@ -113,6 +114,45 @@ namespace LoginCol.Huellitas.Datos.Pruebas
                 db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 5, Nombre = "Gato" });
                 db.TiposContenidos.Add(new TipoContenido() { TipoContenidoId = 6, Nombre = "Pajaro" });
                 db.SaveChanges();
+            }
+        }
+
+        public void CargarParametrizacion()
+        {
+            using (var db = new Repositorio())
+            {
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "AsuntoContacto", Valor = "Contacto Huellitas pagina" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoColorId", Valor = "1" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoContactoCorreoId", Valor = "23" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoContactoNombreId", Valor = "21" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoContactoTelefonoId", Valor = "22" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoEdadId", Valor = "4" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoGeneroId", Valor = "6" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoRaza", Valor = "25" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoRecomendadoParaId", Valor = "8" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoTamanoId", Valor = "3" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "CampoTipoPerdido", Valor = "24" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "ComentariosPorPagina", Valor = "5" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "DescripcionHome", Valor = "Huellitas sin Hogar es un sitio web sin animo de lucro en el cual puedes buscar una mascota y adoptarla completamente gratis. " });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "DescripcionPerdidos", Valor = "Huellitas sin hogar tiene una plataforma para tí en la cual podrás ingresar los datos de mascotas perdidas al rededor de Colombia. También si estas buscando tu perro o gato perdido, lo podrás encontrar acá ya sea Bogotá, Cali, Medellin, Barranquilla o cualquier ciudad." });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "DestinatarioCorreosContacto", Valor = "gabriel.castillo86@gmail.com" });
+                //db.Parametrizaciones.Add(new Parametrizacion() { Llave = "ExtensionesImagenes", Valor = "/^.*\.(jpg|JPG)$/" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "LlaveRouterQuieroAdoptar", Valor = "quiero-adoptar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "LlaveRouterVerTodos", Valor = "ver-todos" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "MapsApiKey", Valor = "AIzaSyA81Cbp8FVDItLNrbaU0yNJU_bB94a1Jgo" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TamanoMaximoCargaArchivos", Valor = "10000000" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloAdopcion", Valor = "Quiero adoptar a {0}  - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloDetalleFundacion", Valor = "{0} - Descubre lo que hay detras de este centro de adopción - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloDetalleHuellita", Valor = "{0} - No hay que comprar un perro o un gato, dale la oportunidad a {0} - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloFundaciones", Valor = "Busca la fundación más cercana a tí y adopta un perro o un gato - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloHome", Valor = "Adopta una mascota y dale amor toda la vida - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloHuellitas", Valor = "Encuentra mascotas desde cachorros hasta adultos y adoptalos - Huellitas sin Hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloHuellitasDeFundacion", Valor = "{0} tiene los siguientes perros o gatos para dar en adopción" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloPerdidos", Valor = "Encuentra o reporta mascotas perdidas - Huellitas sin hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "TituloPorqueAdoptar", Valor = "¿Por qué debes adoptar una mascota? - Huellitas sin hogar" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "UrlSitio", Valor = "http://localhost:37624/" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "UsuarioPorDefecto", Valor = "1" });
+                db.Parametrizaciones.Add(new Parametrizacion() { Llave = "ZonaGeograficaPorDefecto", Valor = "1" });
             }
         }
 

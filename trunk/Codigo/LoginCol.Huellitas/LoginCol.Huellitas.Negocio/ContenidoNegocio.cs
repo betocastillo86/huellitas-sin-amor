@@ -225,6 +225,19 @@ namespace LoginCol.Huellitas.Negocio
             return _contenidos.Value.ObtenerContenidoRelacionado(idContenido, idContenidoHijo, idTipoRelacion);
         }
 
+        /// <summary>
+        /// Retorna la fundación asignada a un contenido. Si no tiene retorna null
+        /// </summary>
+        /// <param name="idContenido">id del contenido que se busca la relacion</param>
+        /// <returns>Objeto tipo ContenidoRelacionado</returns>
+        public Contenido ObtenerFundacion(int idContenido)
+        {
+            var fundacion = ObtenerContenidosRelacionados(idContenido, Convert.ToInt32(TipoRelacionEnum.Fundacion)).FirstOrDefault();
+            return fundacion == null ? null : fundacion.ContenidoHijo;
+        }
+
+
+
         #endregion
 
         public bool Eliminar(int idContenido)

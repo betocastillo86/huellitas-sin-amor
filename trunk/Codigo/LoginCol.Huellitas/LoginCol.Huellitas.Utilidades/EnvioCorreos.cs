@@ -37,7 +37,14 @@ namespace LoginCol.Huellitas.Utilidades
             {
                 MailMessage objCorreo = new MailMessage();
 
-                objCorreo.To.Add(new MailAddress(Para));
+
+                string[] para = Para.Split(new char[] { ',' });
+
+                foreach (var destino in para)
+                {
+                    objCorreo.To.Add(new MailAddress(destino));
+                }
+                
                 objCorreo.Subject = Asunto;
                 objCorreo.IsBodyHtml = EsHtml;
 
