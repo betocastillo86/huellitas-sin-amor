@@ -81,9 +81,13 @@ br{
 .color10_text{color:#FF8A8E !important;}
 
 .color1 .btn{background:#FBB000;}
+.color1 .btn:hover, .color1 .btn:active{background:#FFCE6F;}
 .color2 .btn{background:#304A6F;}
+.color2 .btn:hover, .color2 .btn:active{background:#6DBFF2;}
 .color3 .btn{background:#EF525B;}
+.color3 .btn:hover, .color3 .btn:active{background:#3F77BF;}
 .color4 .btn{background:#529AD9;}
+.color4 .btn:hover, .color4 .btn:active{background:#FF8A8E;}
 /*fin colores*/
 /*menu*/
 @-ms-viewport {
@@ -329,7 +333,9 @@ textarea {
     width: 130px;
 	text-transform:uppercase;
 	cursor:pointer;
+	transition:all ease 0.5s;
 	}
+.mas_scroll:hover, .mas_scroll:active{background:#FF8A8E;}
 .mas_scroll a{
 	color: #FFF;
 }
@@ -346,7 +352,45 @@ textarea {
 
 .slide_home {
 	background:url(../images/bkg_slide.jpg) no-repeat center / cover;
+	padding: 0;
 	}
+.slide_home .cbp-fwslider{
+	padding: 0 !important;
+}
+	/*banner wanda*/
+	.banner_wanda{
+		background: url(../images/banner_wanda.jpg) no-repeat center / cover;
+		width: 100%;
+		height: 200px;
+		padding: 115px 0 35px;
+	}
+	.banner_wanda .texto{
+		width: 460px;
+		margin:0 0 0 40%;
+		text-align: center;
+	}
+	.texto h2{
+		color: #EE525A;
+		font-size: 43px;
+		font-weight: 700;
+	}
+	.texto h3{
+		color: #FFF;
+		font-size: 60px;
+		border-bottom: 3px solid #FFF;
+		font-weight: 400;
+		line-height: 1;
+		text-shadow:0px 0px 15px #2b490b;
+		padding: 0 0 10px;
+	}
+	.texto a {
+    background: none repeat scroll 0 0 #ef525b;
+    color: #fff;
+    margin:20px auto 0;
+    width: 130px;
+	}
+	.texto a:hover, .texto a:active{background:#FF8A8E;}
+	/*fin banner wanda*/
 /* Slide 2 */ 
 
 #slide2 {
@@ -401,6 +445,7 @@ textarea {
 	color:#FFF;
 	margin:20px;
 	}
+.cajax3 a:hover, .cajax3 a:active{background:#FF8A8E;}
 .btn{
 	text-align:center;
 	text-transform:uppercase;
@@ -411,6 +456,7 @@ textarea {
 	font-size:16px;
 	font-weight:700;
 	cursor: pointer;
+	transition:ease all 0.5s;
 	}
 .conteFunda{
 	}
@@ -558,6 +604,7 @@ form .btn{
     color: #fff;
     width: 130px;
 	}
+form .btn:hover, form .btn:active{background:#FF8A8E;}
 	/*quienes*/
 	.conte_vision{
 		}
@@ -706,24 +753,28 @@ article .btn{
 .c_tipo1 .btn{
 	background:#FBB000;
 	}
+.c_tipo1 .btn:hover, .c_tipo1 .btn:active{background:#FFCE6F;}
 .c_tipo2{
 	background: rgba(234, 84, 89, 0.9);
 	}
 .c_tipo2 .btn{
 	background:#529AD9;
 	}
+.c_tipo2 .btn:hover, .c_tipo2 .btn:active{background:#6DBFF2;}
 .c_tipo3{
 	background: rgba(250, 177, 0, 0.9);
 	}
 .c_tipo3 .btn{
 	background:#304A6F;
 	}
+.c_tipo3 .btn:hover, .c_tipo3 .btn:active{background:#3F77BF;}
 .c_tipo4{
 	background: rgba(86, 153, 222, 0.9);
 	}
 .c_tipo4 .btn{
 	background:#EF525B;
 	}
+.c_tipo4 .btn:hover, .c_tipo4 .btn:active{background:#FF8A8E;}
 /*fin casos*/
 /*fundaciones*/
 .conte_fundaciones{
@@ -852,7 +903,7 @@ article p.scroll{
 	padding: 7px 0 3px;
 	text-align: center;
 	font-size: 25px;
-	color: #FFF;
+	color: #FFF !important;
 	transition:ease all 0.4s;
 	}
 .conte_visitas{
@@ -881,6 +932,7 @@ article p.scroll{
     color: #fff;
     width: 130px;
 	}
+.descriPerfil .btn:hover, .descriPerfil .btn:active{background: #6DBFF2;}
 .conte_datos{
 	margin:20px 0 0;
 	}
@@ -929,13 +981,13 @@ article p.scroll{
     font-weight: 400;
     line-height: 1;
 }
-.conte_similar .cajaSimilar{
-	background-size:auto 100%;
+.cajaSimilar{
+	background:center / cover no-repeat;
     min-height: 195px;
     width: 100%;
 	position:relative;
 	cursor:pointer;
-	overflow:hidden
+	overflow:hidden;
 	}
 .cajaSimilar article {
 	width:calc(100% - 20px);
@@ -969,6 +1021,7 @@ article p.scroll{
     color: #fff;
     width: 130px;
 	}
+.conte_comentarios .btn:hover, .conte_comentarios .btn:active{background: #FF8A8E;}
 .conte_comentarios ul{
 	padding:10px 0 0;
 	margin:0;
@@ -1442,7 +1495,7 @@ article p{
 /*fin menu_styles*/
 #first {
     margin: 0;
-    padding-top: 140px;
+    padding-top: 110px;
     }
 .slideAdopta .descriAdopta {
     padding:0;
@@ -1680,6 +1733,28 @@ article p.scroll{
 .prioridad span {
     padding:5px 0 0;
      }
+    .slide_home{
+    	padding: 0;
+    }
+     /*banner wanda*/
+	.banner_wanda{
+		background: url(../images/banner_wanda_peque.jpg) no-repeat center / cover;
+		width: 100%;
+		height: 230px;
+		padding: 30px 0 180px;
+	}
+	.banner_wanda .texto{
+		width: 90%;
+		margin:0 auto;
+	}
+	.texto h2{
+		font-size: 30px;
+	}
+	.texto h3{
+		font-size: 43px;
+		text-shadow:none;
+	}
+	/*fin banner wanda*/
 }
 
 

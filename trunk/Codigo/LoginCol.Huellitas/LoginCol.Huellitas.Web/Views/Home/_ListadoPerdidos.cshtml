@@ -28,13 +28,12 @@
     edad = "1 año";
     else
     edad = edad.Valor + " años";
+
+
     %>
 
-    <div class="grid_6 no-margin">
-        <div class="cajaCaso" style="background-image:url(/img/<%=contenido.ContenidoId%>/big);">
-
-
-
+    <div class="grid_3 <%= i > 0 && i%3 == 0 ? ' omega' :'' %>">
+        <div class="cajaSimilar" style="background-image:url(/img/<%=contenido.ContenidoId%>/big);">
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
@@ -45,6 +44,8 @@
     </div>
     <%
     nombreEstilo = nombreEstilo == 4 ? 1 : nombreEstilo+1;
+
+
     }
 
     if(obj.length == 0) { %>
@@ -58,37 +59,39 @@
 
 <script id="templateDetallePerdido" type="text/template">
     <div class="conteModal">
-        <div class="">
-            <div id="divImagenesContenido"></div>
-            @*<img src="/img/<%=ContenidoId%>/big" />*@
-        </div>
-        <div class="grid_6 omega">
-            <div class="descri_perdida">
-                <div class="compartir">
+        <div class="container">
+            <div class="grid_6">
+                <img src="/img/<%=ContenidoId%>/big" />
+            </div>
+            <div class="grid_6 omega" style="position:relative;">
+                <div class="compartir" style="width:130px;">
                     <div id="divFacebook"></div>
                     <div id="divTwitter"></div>
+                    <br/>
                 </div>
-                Nombre: <%=Nombre%><br/>
-                Edad: <%=Huellitas.obtenerValorCampo("Edad", Campos)%><br />
-                Raza: <%=Huellitas.obtenerValorCampo("Raza", Campos)%><br />
-                Zona Geográfica : <%= ZonaGeograficaZonaGeograficaPadreNombre %>, <%= ZonaGeograficaNombre %><br/>
-            </div>
-            <div class="parrafo">
-                <p class="color1_text"><%=Descripcion%></p>
-            </div>
-            <form id="datosPersona" style="margin:10px 0;">
-                Ingresa por favor tus datos y nos estaremos contactando lo más pronto posible.<br/><br/>
-                
-                <div class="grid_6"><input type="text" id="Nombres" placeholder="NOMBRES" /></div>
-                <div class="grid_6 omega"><input type="text" id="Telefono" placeholder="TELÉFONO DE CONTACTO" /></div>
-                <div class="grid_6"><input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRONICO" /></div>
-                <div class="grid_6 omega"><input type="text" id="Comentario" placeholder="OBSERVACIONES" /></div>
-                <a id="btnEnviar" class="btn">Enviar</a>
+                <div class="descri_perdida">
+                    Nombre: <%=Nombre%><br/>
+                    Edad: <%=Huellitas.obtenerValorCampo("Edad", Campos)%><br />
+                    Raza: <%=Huellitas.obtenerValorCampo("Raza", Campos)%><br />
+                    Zona Geográfica : <%= ZonaGeograficaZonaGeograficaPadreNombre %>, <%= ZonaGeograficaNombre %><br/>
+                </div>
+                <div class="parrafo">
+                    <p class="color1_text"><%=Descripcion%></p>
+                </div>
+                <form id="datosPersona" style="margin:10px 0;">
+                    Ingresa por favor tus datos y nos estaremos contactando lo más pronto posible.<br/><br/>
+                    
+                    <div class="grid_6"><input type="text" id="Nombres" placeholder="NOMBRES" /></div>
+                    <div class="grid_6 omega"><input type="text" id="Telefono" placeholder="TELÉFONO DE CONTACTO" /></div>
+                    <div class="grid_6"><input type="text" id="CorreoElectronico" placeholder="CORREO ELECTRONICO" /></div>
+                    <div class="grid_6 omega"><input type="text" id="Comentario" placeholder="OBSERVACIONES" /></div>
+                    <a id="btnEnviar" class="btn">Enviar</a>
+                    <br/>
+                </form>
+                <a id="btnConocido" class="btn">!Lo conozco!</a>
+                <a id="btnEncontrado" class="btn">Apareció :)</a>
                 <br/>
-            </form>
-            <a id="btnConocido" class="btn">!Lo conozco!</a>
-            <a id="btnEncontrado" class="btn">Apareció :)</a>
-            <br/>
+            </div>
         </div>
     </div>
 </script>
