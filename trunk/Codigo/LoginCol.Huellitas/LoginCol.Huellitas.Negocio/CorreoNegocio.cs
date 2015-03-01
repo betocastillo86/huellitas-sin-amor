@@ -141,8 +141,14 @@ namespace LoginCol.Huellitas.Negocio
                 return objCorreo.Enviar();
             }
 
-
-            public static bool EnviarCorreoAdopcion(int idFormulario, PlantillasCorreo plantilla)
+        /// <summary>
+        /// Envia los diferentes correos de adopción, desde que se solicita hasta la respuesta por parte nuestra
+        /// </summary>
+        /// <param name="idFormulario">id del formulario que se desea responder</param>
+        /// <param name="plantilla">plantilla que se desea enviar</param>
+        /// <param name="informacionAdicional">informacion Adicional de las plantillas</param>
+        /// <returns></returns>
+            public static bool EnviarCorreoAdopcion(int idFormulario, PlantillasCorreo plantilla, string informacionAdicional = null)
             {
                 var parametros = new List<string>();
 
@@ -154,8 +160,21 @@ namespace LoginCol.Huellitas.Negocio
                 //el segundo siempre es el nombre de la persona
                 parametros.Add(formulario.Usuario.Nombres);
 
+
+                //Carga los datos de la fundacion de BD
+                var fundacion = new ContenidoNegocio().ObtenerFundacion(formulario.Contenido.ContenidoId);
+                string nombreFundacion = "Huellitas sin Hogar";
+                string linkFundacion = string.Empty;
+                //Si no tiene fundación la fundación por defecto es huellitas sin hogar
+                if (fundacion != null)
+                {
+                    nombreFundacion = fundacion.Nombre;
+                    linkFundacion = string.Format("fundaciones/{0}/{1}", fundacion.ContenidoId, fundacion.NombreLink);
+                }
+
                 string asunto = string.Empty;
                 
+                //Agrega los parametros requeridos para cada correo
                 switch (plantilla)
                 {
                     case PlantillasCorreo.SolicitudAdopcion:
@@ -166,27 +185,22 @@ namespace LoginCol.Huellitas.Negocio
                     case PlantillasCorreo.AdopcionAprobada:
                         asunto = string.Format(ParametrizacionNegocio.AsuntoAdopcionAceptada, formulario.Contenido.Nombre); 
                         parametros.Add(string.Format("{0}/{1}", formulario.Contenido.ContenidoId, formulario.Contenido.NombreLink));
-
-                        //Carga los datos de la fundacion de BD
-                        var fundacion = new ContenidoNegocio().ObtenerFundacion(formulario.Contenido.ContenidoId);
-                        string nombreFundacion = "Huellitas sin Hogar";
-                        string linkFundacion = string.Empty;
-                        //Si no tiene fundación la fundación por defecto es huellitas sin hogar
-                        if(fundacion == null)
-                        {
-                            nombreFundacion = fundacion.Nombre;
-                            linkFundacion = string.Format("fundaciones/{0}", fundacion.NombreLink);
-                        }
                         parametros.Add(nombreFundacion);
                         parametros.Add(linkFundacion);
-                        parametros.Add(formulario.FechaCreacion.ToShortTimeString());
+                        parametros.Add(formulario.FechaCreacion.ToShortDateString());
+                        parametros.Add(informacionAdicional ?? string.Empty);
                         break;
                     case PlantillasCorreo.AdopcionRechazada:
                         asunto = ParametrizacionNegocio.AsuntoAdopcionRechazada;
+                        parametros.Add(nombreFundacion);
+                        parametros.Add(linkFundacion);
+                        parametros.Add(informacionAdicional ?? string.Empty);
                         break;
                     case PlantillasCorreo.AdopcionPrevia:
-                        parametros.Add(string.Format("{0}/{1}", formulario.Contenido.ContenidoId, formulario.Contenido.NombreLink));
                         asunto = ParametrizacionNegocio.AsuntoAdopcionEspera;
+                        parametros.Add(nombreFundacion);
+                        parametros.Add(linkFundacion);
+                        parametros.Add(informacionAdicional ?? string.Empty);
                         break;
                     default:
                         break;

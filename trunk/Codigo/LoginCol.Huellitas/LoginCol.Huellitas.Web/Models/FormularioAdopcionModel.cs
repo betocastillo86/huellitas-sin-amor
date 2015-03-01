@@ -1,4 +1,5 @@
 ﻿using LoginCol.Huellitas.Entidades;
+using LoginCol.Huellitas.Web.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,15 +8,13 @@ using System.Web;
 
 namespace LoginCol.Huellitas.Web.Models
 {
-    public class FormularioAdopcionModel  : BaseModel
+    public class FormularioAdopcionModel  : FormularioAdopcionModelBase
     {
 
         public FormularioAdopcionModel()
         {
             Contenido = new ContenidoModel();
         }
-
-        public int FormularioAdopcionId { get; set; }
 
         public ContenidoListadoModel HogarDePaso { get; set; }
 
@@ -28,7 +27,7 @@ namespace LoginCol.Huellitas.Web.Models
         [Required]
         [Range(1,10)]
         [Display(Description="Miembros de la familia")]
-        public int? MiembrosFamilia { get; set; }
+        public int MiembrosFamilia { get; set; }
 
         [Required]
         [Display(Description = "Edades")]

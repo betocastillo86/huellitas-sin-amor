@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,12 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual Usuario Usuario { get; set; }
 
+        [MaxLength(3000)]
+        public string InformacionAdicionalCorreo { get; set; }
 
+        [MaxLength(3000)]
+        public string Observaciones { get; set; }
+
+        public EstadoFormularioAdopcion Estado { get; set; }
     }
 }

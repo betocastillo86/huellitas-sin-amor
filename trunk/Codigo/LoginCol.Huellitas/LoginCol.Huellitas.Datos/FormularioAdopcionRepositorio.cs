@@ -42,7 +42,8 @@ namespace LoginCol.Huellitas.Datos
             {
                 var query = db.FormulariosAdopciones
                     .Include(f => f.Contenido)
-                    .Include(f => f.Usuario);
+                    .Include(f => f.Usuario)
+                    .Include(f => f.Usuario.ZonaGeografica);
 
                 if (idFormulario.HasValue)
                 {
@@ -61,5 +62,33 @@ namespace LoginCol.Huellitas.Datos
         }
 
 
+        /// <summary>
+        /// Actualiza los datos de un formulario de adopción, principalmente Información adicional, Observaciones y Estado
+        /// </summary>
+        /// <param name="idFormulario">Id del formulario a actualizar</param>
+        /// <param name="estado"> estado nuevo del formulario</param>
+        /// <param name="informacionCorreo">Información adicional del correo</param>
+        /// <param name="observaciones">Observaciones internas de la adopción</param>
+        /// <returns>true: si la operación fue exitosa</returns>
+        public bool Actualizar(int idFormulario, string observaciones, string informacionCorreo, EstadoFormularioAdopcion? estado)
+        {
+            bool respuesta = false;
+            using (var db = new Repositorio())
+            {
+                var formulario = db.FormulariosAdopciones
+                    .FirstOrDefault(f => f.FormularioAdopcionId == idFormulario);
+                
+                if (formulario != null)
+                {
+                    formulario.Observaciones = observaciones ?? formulario.Observaciones;
+                    formulario.InformacionAdicionalCorreo = informacionCorreo ?? formulario.InformacionAdicionalCorreo;
+                    formulario.Estado = estado ?? formulario.Estado;
+                    ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(formulario, EntityState.Modified);
+                    respuesta = db.SaveChanges() > 0;
+                }
+
+            }
+            return respuesta;
+        }
     }
 }

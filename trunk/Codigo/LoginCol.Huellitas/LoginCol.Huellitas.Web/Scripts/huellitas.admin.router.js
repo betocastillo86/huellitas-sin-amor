@@ -21,13 +21,13 @@
         "admin/fundaciones/editar/:id": "editarFundacion",
         "admin/fundaciones/crear": "crearFundacion",
         "admin/parametrizacion": "listarParametrizacion",
-        "admin/usuariosexternos": "listarUsuariosExternos"
+        "admin/usuariosexternos": "listarUsuariosExternos",
+        "admin/adopcionesdetalle/:id": "editarAdopcion",
+        "admin/adopcioneslistar": "listarAdopciones"
     },
     initialize : function(options)
     {
         this.alertaView = new AlertView();
-
-        
     },
     //Inicio Animales
     listarAnimales:function()
@@ -79,7 +79,17 @@
     {
         this.vistaActual = new ParametrizacionView();
     },
+   
     //Fin Fundaciones
+    //InicioAdopciones
+    editarAdopcion: function (id) {
+        this.vistaActual = new AdopcionEditarView({ id: id });
+    },
+    listarAdopciones : function()
+    {
+        this.vistaActual = new AdopcionListarView();
+    },
+    //FinFundaciones
     //Inicio UsuariosExternos
     listarUsuariosExternos: function () {
         //debugger;

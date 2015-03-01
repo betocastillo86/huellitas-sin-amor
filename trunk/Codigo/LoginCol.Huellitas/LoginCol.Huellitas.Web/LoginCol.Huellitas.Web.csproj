@@ -179,6 +179,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminAdopcionesController.cs" />
     <Compile Include="Controllers\AdminContenidoRelacionadoController.cs" />
     <Compile Include="Controllers\AdminContenidosController.cs" />
     <Compile Include="Controllers\AdminImagenesController.cs" />
@@ -285,6 +286,8 @@
     <Content Include="Content\grid.css" />
     <Content Include="Content\menu_styles.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\PlantillasCorreo\AdopcionPrevia.txt" />
+    <Content Include="Content\PlantillasCorreo\AdopcionRechazada.txt" />
     <Content Include="Content\PlantillasCorreo\AdopcionAprobada.txt" />
     <Content Include="Content\PlantillasCorreo\SolicitudAdopcion.txt" />
     <Content Include="Content\slider.css" />
@@ -637,6 +640,7 @@
     <Content Include="Scripts\libs\waypoints.min.js" />
     <Content Include="Scripts\models\huellitas.admin.Contenido.js" />
     <Content Include="Scripts\huellitas.admin.router.js" />
+    <Content Include="Scripts\models\huellitas.admin.FormularioAdopcion.js" />
     <Content Include="Scripts\models\huellitas.admin.Parametrizacion.js" />
     <Content Include="Scripts\models\huellitas.admin.Usuario.js" />
     <Content Include="Scripts\models\huellitas.admin.UsuarioRelacionado.js" />
@@ -658,6 +662,7 @@
     <Content Include="Scripts\libs\TrafficCop.min.gz.js" />
     <Content Include="Scripts\libs\TrafficCop.min.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
+    <Content Include="Scripts\views\huellitas.admin.AdopcionEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarContenidoRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarUsuarioRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AlertHtmlView.js" />
@@ -763,6 +768,7 @@
     <Content Include="Scripts\views\huellitas.DetallePerdidoView.js" />
     <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
     <Content Include="Views\Administracion\AdopcionesDetalle.cshtml" />
+    <Content Include="Scripts\views\huellitas.admin.AdopcionListarView.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
