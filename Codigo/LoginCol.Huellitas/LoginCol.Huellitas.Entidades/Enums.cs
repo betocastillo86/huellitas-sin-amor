@@ -67,6 +67,18 @@ namespace LoginCol.Huellitas.Entidades
         Padrino = 2
     }
 
+    public enum EstadoFormularioAdopcion : short
+    {
+        [Description("Solicitudes sin Revisar")]
+        SinRevisar = 0,
+        [Description("Solicitudes de Adopciones que son aprobadas")]
+        Aprobado = 1,
+        [Description("Solicitud de adopción rechazadas")]
+        Rechazado = 2,
+        [Description("Solicitud de adopción que son rechazadas por adopciones previas")]
+        AdoptadoPreviamente = 3
+    }
+
     public static class EnumConverter
     { 
 
@@ -84,6 +96,9 @@ namespace LoginCol.Huellitas.Entidades
                     return TamanoImagenEnum.Pequeno;
 	        }
         }
+
+
+        
     }
 
     

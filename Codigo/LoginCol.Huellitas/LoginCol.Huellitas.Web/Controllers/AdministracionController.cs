@@ -112,7 +112,7 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         #endregion
 
-        #region Perdidos
+        #region Formularios Adopciones
 
         Lazy<FormularioAdopcionNegocio> _nFormulario = new Lazy<FormularioAdopcionNegocio>();
         FormularioAdopcionNegocio nFormulario { get { return _nFormulario.Value; } }
@@ -122,6 +122,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             var modelo = new ListarFormularioAdopcionModel();
             modelo.Formularios =  nFormulario.Obtener()
                 .Select(Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>)
+                .OrderByDescending(f => f.FechaCreacion)
                 .ToList();
             return View(modelo);
         }
@@ -133,7 +134,6 @@ namespace LoginCol.Huellitas.Web.Controllers
             
             return View(modelo);
         }
-
 
         #endregion
 

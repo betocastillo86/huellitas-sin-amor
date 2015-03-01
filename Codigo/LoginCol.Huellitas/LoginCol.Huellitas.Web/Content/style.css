@@ -342,7 +342,8 @@ textarea {
 /* General Slides */ 
 
 .slide {
-	background-attachment: fixed !important;
+    /*-webkit-background-attachment: relative !important;*/
+    background-attachment: relative !important;
 	width:100%;
 	height:auto;
 	position: relative;

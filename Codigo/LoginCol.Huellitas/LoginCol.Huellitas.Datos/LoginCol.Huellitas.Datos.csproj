@@ -161,6 +161,14 @@
     <Compile Include="Migrations\201501061624491_Imagen50Length1.Designer.cs">
       <DependentUpon>201501061624491_Imagen50Length1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502221952215_CamposNuevosFormulariosAdopcion.cs" />
+    <Compile Include="Migrations\201502221952215_CamposNuevosFormulariosAdopcion.Designer.cs">
+      <DependentUpon>201502221952215_CamposNuevosFormulariosAdopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502222002263_EstadoFormularioAdopcion.cs" />
+    <Compile Include="Migrations\201502222002263_EstadoFormularioAdopcion.Designer.cs">
+      <DependentUpon>201502222002263_EstadoFormularioAdopcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -436,6 +444,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501061624491_Imagen50Length1.resx">
       <DependentUpon>201501061624491_Imagen50Length1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502221952215_CamposNuevosFormulariosAdopcion.resx">
+      <DependentUpon>201502221952215_CamposNuevosFormulariosAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502222002263_EstadoFormularioAdopcion.resx">
+      <DependentUpon>201502222002263_EstadoFormularioAdopcion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

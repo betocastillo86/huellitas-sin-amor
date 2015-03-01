@@ -23,13 +23,21 @@
                 <br/>
 				
                 <p>Hola {1},</p>
-                <p>te escribimos para comunicarte que la fundación <a href="http://huellitas.social/{4}"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">{3}</a> ha validado y aprobado el formulario de pre-adopción que llenaste el día {5} solicitando a <a href="http://huellitas.social/sinhogar/{2}" style="font-weight:bold; text-decoration:underline; color:#FF8A8E;" >{0}</a>.</p>
-				<p>El paso que sigue es dirigirte a la fundación o concretar una cita ya sea por medio de nosotros o comunicandote directamente con <a href="http://huellitas.social/fundaciones/{4}"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">ellos</a> para que conozcas a {0}.</p>
-				<p>Esperamos que tu nuevo(a) mejor amigo(a) te guste y le des el amor que merece.</p>
-				<p>Por favor confirmanos la recepción del correo.</p>
-				<p>IMPORTANTE: Este correo no asegura la adopción de la huellita que escogiste, solo te deja un paso más cerca</p>
 
-				<p>{6}</p>
+
+
+
+
+				<p>te escribimos para comunicarte que la fundación <a href="http://huellitas.social/{3}"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">{2}</a> nos ha informado que ya hay un proceso de adopción bastante adelantado para {0} y por esa razón tu solicitud ha sido archivada.</p>
+
+			    <p>No obstante, te invitamos a visitar nuestra pagina y buscar otra huellita a la que creas le puedes darle todo tu amor, apenas la encuentres envianos el formulario y te daremos la respuesta lo más pronto posible.</p>
+
+				<p> 
+				<a href="http://huellitas.social/sinhogar"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">http://huellitas.social/sinhogar</a>
+				</p>
+
+
+				<p>{4}</p>
 				
 
                 <p>Muchas gracias por apoyar a las huellitas sin hogar.</p>

@@ -22,5 +22,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         [NullableRequired]
         public int? ZonaGeograficaId { get; set; }
+
+        public string ZonaGeograficaNombre { get; set; }
     }
 }

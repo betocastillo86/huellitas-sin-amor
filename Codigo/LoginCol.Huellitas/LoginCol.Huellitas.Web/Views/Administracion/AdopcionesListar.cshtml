@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="row" id="divParametrizacion">
+<div class="row" id="divAdopcionesListar">
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
@@ -36,10 +36,14 @@
                         {
                             <tr>
                                 <td class="center">@formulario.Contenido.Nombre</td>
-                                <td class="center">@formulario.Usuario.NombreCompleto</td>
-                                <td class="center">@formulario.FechaCreacion</td>
+                                <td class="center">@formulario.Usuario.NombreCompleto @CargarEstiloLabel(formulario.Estado)</td>
                                 <td class="center">
-                                    <a class="btn btn-info" href="/admin/AdopcionesDetalle/@formulario.FormularioAdopcionId">
+                                    
+                                    @formulario.FechaCreacion
+                                    
+                                </td>
+                                <td class="center">
+                                    <a class="btn btn-info" href="/admin/adopcionesdetalle/@formulario.FormularioAdopcionId">
                                         <i class="glyphicon glyphicon-edit icon-white"></i>
                                         Ver
                                     </a>
@@ -56,8 +60,35 @@
     </div>
     <!--/span-->
 </div>
+@helper CargarEstiloLabel(LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion estado) {
+    switch (estado)
+    {
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.SinRevisar:
+            <span class="label-default label">
+                Sin Revisar
+            </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.Aprobado:
+        <span class="label-success label label-default">
+            Aprobado
+        </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.Rechazado:
+        <span class="label-default label label-danger">
+            Rechazado
+        </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.AdoptadoPreviamente:
 
+        <span class="label-warning label label-default">
+            Adoptado
+        </span>
+            break;
+        default:
+            break;
+    }
+}
 @section scripts
 {
-    
+   <script src="~/Scripts/views/huellitas.admin.AdopcionListarView.js"></script>
 }
