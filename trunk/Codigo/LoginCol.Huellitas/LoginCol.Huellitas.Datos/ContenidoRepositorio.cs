@@ -302,7 +302,8 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.ContenidoHijo.ZonaGeografica)
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
-                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);
+                        .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) 
+                            && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado );
 
 
                     if (tipoRelacion.HasValue)

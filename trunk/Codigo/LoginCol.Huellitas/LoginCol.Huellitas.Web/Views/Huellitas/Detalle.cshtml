@@ -9,13 +9,14 @@
     <section id="first" class="conte_perfil slide">
         <div class="container clearfix">
             @Html.HiddenFor(m => m.UrlVideo)
+            @Html.HiddenFor(m => m.Activo)
             <div id="divImagenesContenido"></div>
             @Html.Partial("_ImagenesContenido")
 
             @Html.HiddenFor(m => m.Nombre)
             <div class="descriPerfil grid_6 omega">
                 <div class="descri_mascota">
-                    <h2><span class="icon-perro"></span>@Html.DisplayFor(m => m.Nombre)</h2>
+                    <h2><span class="icon-@(Model.TipoContenidoId == Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro) ? "perro" : "gato")"></span>@Html.DisplayFor(m => m.Nombre)</h2>
                     <div>TAMAÑO: @Html.ObtenerCampoDeContenido(Model, "Tamaño")</div>
                     <div>GENERO: @Html.ObtenerCampoDeContenido(Model, "Genero")</div>
                     <div>EDAD: @Html.ObtenerCampoDeContenido(Model, "Edad") AÑO(S)</div>
@@ -38,11 +39,23 @@
                 <div class="parrafo demo-y">
                     <p>@Html.DisplayFor(m => m.Descripcion)</p>
                 </div>
-                <a class="btn left" href="@(Model.NombreLink)/@LoginCol.Huellitas.Negocio.ParametrizacionNegocio.LlaveRouterQuieroAdoptar">ADOPTAME</a>
-                @if (Model.AdoptantePadrino == null)
-                {
-                    <a class="btn left" id="btnApadrinar" href="javascript:;">APADRINAME</a>
+
+                @if (Model.Activo)
+                { 
+                    <a class="btn left" href="@(Model.NombreLink)/@LoginCol.Huellitas.Negocio.ParametrizacionNegocio.LlaveRouterQuieroAdoptar">ADOPTAME</a>
+                    
+                    if (Model.AdoptantePadrino == null)
+                    {
+                        <a class="btn left" id="btnApadrinar" href="javascript:;">APADRINAME</a>
+                    }
                 }
+                else
+                { 
+                    <a class="btn left">YA FUE ADOPTADO</a>
+                }
+
+
+                
                 
             </div>
 

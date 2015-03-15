@@ -12,7 +12,9 @@
 
     contenidoId: 0,
 
-    urlVideo : undefined,
+    urlVideo: undefined,
+
+    activo : undefined,
 
     template : _.template($("#templateImagenesContenido").html()),
 
@@ -23,6 +25,11 @@
         
         if (args.urlVideo)
             this.urlVideo = args.urlVideo;
+
+        if (args.activo != undefined)
+            this.activo = args.activo;
+        else
+            this.activo = true;
 
         this.listaImagenes = new ImagenCollection({ idContenido : args.id});
         this.cargarImagenes();
@@ -36,7 +43,7 @@
     mostrarImagenes: function ()
     {
         //carga un objeto para ser enviado al template
-        var contenido = { ContenidoId: this.contenidoId, Imagenes: this.listaImagenes.toJSON(), UrlVideo : this.urlVideo };
+        var contenido = { ContenidoId: this.contenidoId, Imagenes: this.listaImagenes.toJSON(), UrlVideo : this.urlVideo, Activo : this.activo };
         this.$el.html(this.template(contenido));
         
         Huellitas.cargarScroll();
