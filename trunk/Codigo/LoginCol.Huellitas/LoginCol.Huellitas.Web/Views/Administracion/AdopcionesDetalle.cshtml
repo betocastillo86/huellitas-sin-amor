@@ -48,6 +48,10 @@
                     @Html.DisplayFor(m => m.Usuario.Direccion)
                 </div>
                 <div class="form-group">
+                    @Html.Label("Barrio")
+                    @Html.DisplayFor(m => m.Barrio)
+                </div>
+                <div class="form-group">
                     @Html.Label("Telefono")
                     @Html.DisplayFor(m => m.Usuario.Telefono)
                 </div>
@@ -56,8 +60,12 @@
                     @Html.DisplayFor(m => m.Usuario.Celular)
                 </div>
                 <div class="form-group">
-                    @Html.Label("FechaNacimiento")
+                    @Html.Label("Fecha de Nacimiento")
                     @Html.DisplayFor(m => m.Usuario.FechaNacimiento)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Miembros en la familia")
+                    @Html.DisplayFor(m => m.MiembrosFamilia)
                 </div>
             </form>
         </div>

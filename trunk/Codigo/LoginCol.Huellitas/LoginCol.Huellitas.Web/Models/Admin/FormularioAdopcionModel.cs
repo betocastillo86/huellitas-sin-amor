@@ -21,6 +21,9 @@ namespace LoginCol.Huellitas.Web.Models.Admin
 
         public EstadoFormularioAdopcion Estado { get; set; }
 
+        [Required]
+        public string Barrio { get; set; }
+
         public bool EnviarRespuesta { get; set; }
     }
 }
