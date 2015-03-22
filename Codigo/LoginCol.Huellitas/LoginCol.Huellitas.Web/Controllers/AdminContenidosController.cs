@@ -18,7 +18,9 @@ namespace LoginCol.Huellitas.Web.Controllers
         public List<ContenidoBaseModel> Get(int idTipoContenido, bool esPadre)
         {
             List<Contenido> lista = new ContenidoNegocio()
-                .ObtenerPorTipo(idTipoContenido, esPadre);
+                .ObtenerPorTipo(idTipoContenido, esPadre)
+                .OrderByDescending(c => c.FechaCreacion)
+                .ToList();
             return lista.Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
         }
 

@@ -104,6 +104,19 @@
         return true;
     },
 
+    alerta : function(element)
+    {
+        element.dialog({
+
+        });
+    },
+    init : function()
+    {
+        $("input[customval='int']").on("keypress", this.soloNumeros);
+    },
+
+    
+
     cargador: "<div align=center id='divLoading'><img src='/images/cargar.gif'></div>"
 
 };
@@ -114,6 +127,9 @@ var App_Router;
 $(document).on("ready", function () {
     App_Router = new HuellitasRouter();
     Backbone.history.start({ pushState: true });
+
+    //inicia la app y los metodos que corren por defecto
+    Huellitas.init();
 });
 
 _.each(["Model", "Collection"], function (name) {

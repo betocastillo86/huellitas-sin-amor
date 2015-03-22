@@ -35,6 +35,9 @@ namespace LoginCol.Huellitas.Entidades
         [MaxLength(3000)]
         public string Observaciones { get; set; }
 
+        [MaxLength(50)]
+        public string Barrio { get; set; }
+
         public EstadoFormularioAdopcion Estado { get; set; }
     }
 }

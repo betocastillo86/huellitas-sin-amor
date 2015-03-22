@@ -27,7 +27,7 @@ namespace LoginCol.Huellitas.Web.Models
         [Required]
         [Range(1,10)]
         [Display(Description="Miembros de la familia")]
-        public int MiembrosFamilia { get; set; }
+        public int? MiembrosFamilia { get; set; }
 
         [Required]
         [Display(Description = "Edades")]

@@ -169,6 +169,14 @@
     <Compile Include="Migrations\201502222002263_EstadoFormularioAdopcion.Designer.cs">
       <DependentUpon>201502222002263_EstadoFormularioAdopcion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503150205201_BarrioFormularioAdopcion.cs" />
+    <Compile Include="Migrations\201503150205201_BarrioFormularioAdopcion.Designer.cs">
+      <DependentUpon>201503150205201_BarrioFormularioAdopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503150253246_alterBarrio.cs" />
+    <Compile Include="Migrations\201503150253246_alterBarrio.Designer.cs">
+      <DependentUpon>201503150253246_alterBarrio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -450,6 +458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502222002263_EstadoFormularioAdopcion.resx">
       <DependentUpon>201502222002263_EstadoFormularioAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503150205201_BarrioFormularioAdopcion.resx">
+      <DependentUpon>201503150205201_BarrioFormularioAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503150253246_alterBarrio.resx">
+      <DependentUpon>201503150253246_alterBarrio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
