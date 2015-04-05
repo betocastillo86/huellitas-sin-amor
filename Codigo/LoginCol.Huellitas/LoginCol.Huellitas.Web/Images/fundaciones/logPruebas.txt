@@ -1,0 +1,23 @@
+1/4/2015 9:05:40 AM ERROR:Error: 
+
+Mapping types:
+PerdidosModel -> Contenido
+LoginCol.Huellitas.Web.Models.PerdidosModel -> LoginCol.Huellitas.Entidades.Contenido
+
+Destination path:
+Contenido
+
+Source value:
+LoginCol.Huellitas.Web.Models.PerdidosModel 
+	 StackTrace:    at LoginCol.Huellitas.Web.Controllers.PerdidosController.Post(PerdidosModel modelo) in c:\Projects\Huellitas\Codigo\LoginCol.Huellitas\LoginCol.Huellitas.Web\Controllers\PerdidosController.cs:line 34 
+	 InnerException: System.NullReferenceException: Object reference not set to an instance of an object.
+   at LoginCol.Huellitas.Datos.ParametrizacionRepositorio.Obtener(String llave)
+   at LoginCol.Huellitas.Negocio.ParametrizacionNegocio.Int(String llave) in c:\Projects\Huellitas\Codigo\LoginCol.Huellitas\LoginCol.Huellitas.Negocio\ParametrizacionNegocio.cs:line 25
+   at LoginCol.Huellitas.Negocio.ParametrizacionNegocio.get_CampoContactoNombreId() in c:\Projects\Huellitas\Codigo\LoginCol.Huellitas\LoginCol.Huellitas.Negocio\ParametrizacionNegocio.cs:line 62
+   at LoginCol.Huellitas.Web.Models.Mapeo.MapeoEntidades.PerdidosModelToContenido(PerdidosModel modelo, Contenido obj) in c:\Projects\Huellitas\Codigo\LoginCol.Huellitas\LoginCol.Huellitas.Web\Models\Mapeo\MapeoEntidades.cs:line 129
+   at AutoMapper.MappingExpression`2.<>c__DisplayClass2d.<AfterMap>b__2c(Object src, Object dest)
+   at AutoMapper.TypeMap.<get_AfterMap>b__1(Object src, Object dest)
+   at AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   at AutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)
+   at AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context) 
+	 Linea: 0
