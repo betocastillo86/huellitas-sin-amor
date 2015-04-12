@@ -28,6 +28,13 @@ namespace LoginCol.Huellitas.Datos.Configuracion
                 .WithOptional(u => u.Ocupacion)
                 .HasForeignKey(u => u.OcupacionId)
                 .WillCascadeOnDelete(false);
+
+            HasMany(dt => dt.RespuestasSeguimiento)
+                .WithRequired(r => r.Pregunta)
+                .HasForeignKey(r => r.PreguntaId)
+                .WillCascadeOnDelete(false);
+                
+
         }
     }
 }

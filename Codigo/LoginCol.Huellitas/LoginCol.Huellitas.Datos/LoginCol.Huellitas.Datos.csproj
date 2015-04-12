@@ -52,6 +52,7 @@
     <Compile Include="AnimalesRepositorio.cs" />
     <Compile Include="CampoRepositorio.cs" />
     <Compile Include="ComentarioRepositorio.cs" />
+    <Compile Include="Configuracion\AdopcionConfig.cs" />
     <Compile Include="Configuracion\CampoConfig.cs" />
     <Compile Include="Configuracion\CampoTipoContenidoConfig.cs" />
     <Compile Include="Configuracion\ComentarioConfig.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Configuracion\OpcionCampoConfig.cs" />
     <Compile Include="Configuracion\ParametrizacionConfig.cs" />
     <Compile Include="Configuracion\RespuestaAdopcionConfig.cs" />
+    <Compile Include="Configuracion\RespuestaSeguimientoConfig.cs" />
+    <Compile Include="Configuracion\SeguimientoAdopcionConfig.cs" />
     <Compile Include="Configuracion\TablaBasicaConfig.cs" />
     <Compile Include="Configuracion\TipoContenidoConfig.cs" />
     <Compile Include="Configuracion\TipoRelacionConfig.cs" />
@@ -176,6 +179,14 @@
     <Compile Include="Migrations\201503150253246_alterBarrio.cs" />
     <Compile Include="Migrations\201503150253246_alterBarrio.Designer.cs">
       <DependentUpon>201503150253246_alterBarrio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503240430550_SeguimientoAdopciones.cs" />
+    <Compile Include="Migrations\201503240430550_SeguimientoAdopciones.Designer.cs">
+      <DependentUpon>201503240430550_SeguimientoAdopciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504080000147_EdadesMiembrosFamilia.cs" />
+    <Compile Include="Migrations\201504080000147_EdadesMiembrosFamilia.Designer.cs">
+      <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
@@ -464,6 +475,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503150253246_alterBarrio.resx">
       <DependentUpon>201503150253246_alterBarrio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503240430550_SeguimientoAdopciones.resx">
+      <DependentUpon>201503240430550_SeguimientoAdopciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504080000147_EdadesMiembrosFamilia.resx">
+      <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

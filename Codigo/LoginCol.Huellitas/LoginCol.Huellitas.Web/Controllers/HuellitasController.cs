@@ -37,7 +37,6 @@ namespace LoginCol.Huellitas.Web.Controllers
             FormularioAdopcionModel modelo = new FormularioAdopcionModel();
             DatoTablaBasicaNegocio nDatoTablaBasica = new DatoTablaBasicaNegocio();
 
-            modelo.ListaEstadoCivil = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.EstadoCivil);
             modelo.ListaOcupaciones = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.Ocupacion);
             modelo.Preguntas = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.PreguntaAdopcion);
 

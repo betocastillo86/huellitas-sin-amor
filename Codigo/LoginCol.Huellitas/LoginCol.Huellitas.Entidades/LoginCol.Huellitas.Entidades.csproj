@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adopcion.cs" />
     <Compile Include="Attributes\UniqueKeyAttribute.cs" />
     <Compile Include="Campo.cs" />
     <Compile Include="CampoTipoContenido.cs" />
@@ -55,6 +56,8 @@
     <Compile Include="Parametrizacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespuestaAdopcion.cs" />
+    <Compile Include="RespuestaSeguimiento.cs" />
+    <Compile Include="SeguimientoAdopcion.cs" />
     <Compile Include="TablaBasica.cs" />
     <Compile Include="TipoContenido.cs" />
     <Compile Include="TipoRelacionContenido.cs" />

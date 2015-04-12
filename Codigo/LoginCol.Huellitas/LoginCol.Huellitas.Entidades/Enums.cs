@@ -76,7 +76,9 @@ namespace LoginCol.Huellitas.Entidades
         [Description("Solicitud de adopción rechazadas")]
         Rechazado = 2,
         [Description("Solicitud de adopción que son rechazadas por adopciones previas")]
-        AdoptadoPreviamente = 3
+        AdoptadoPreviamente = 3,
+        [Description("Cuando el animal se entrega al usuario que llenó el formulario")]
+        Entregado = 4
     }
 
     public static class EnumConverter

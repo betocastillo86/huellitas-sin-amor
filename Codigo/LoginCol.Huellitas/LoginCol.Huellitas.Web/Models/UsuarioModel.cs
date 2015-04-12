@@ -14,14 +14,13 @@ namespace LoginCol.Huellitas.Web.Models
         
         public string OcupacionValor { get; set; }
 
-        [NullableRequired]
         public int? EstadoCivilId { get; set; }
 
         public string EstadoCivilValor { get; set; }
 
         public string NumeroDocumento { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El correo es obligatorio")]
         [EmailAddress]
         public string Correo { get; set; }
 
@@ -34,7 +33,7 @@ namespace LoginCol.Huellitas.Web.Models
         public string Telefono { get; set; }
         
         [MaxLength(18)]
-        [Required]
+        [Required(ErrorMessage = "El celular es obligatorio")]
         public string Celular { get; set; }
 
         [Required]

@@ -19,6 +19,10 @@ namespace LoginCol.Huellitas.Datos.Configuracion
                 .WithRequired(r => r.FormularioAdopcion)
                 .HasForeignKey(r => r.FormularioAdopcionId)
                 .WillCascadeOnDelete(false);
+
+            HasOptional(f => f.Adopcion)
+                .WithRequired(a => a.Formulario)
+                .WillCascadeOnDelete(false);
         }
     }
 }

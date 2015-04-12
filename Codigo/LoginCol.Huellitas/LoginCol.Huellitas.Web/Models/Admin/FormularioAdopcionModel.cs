@@ -21,7 +21,7 @@ namespace LoginCol.Huellitas.Web.Models.Admin
 
         public EstadoFormularioAdopcion Estado { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El barrio es obligatorio")]
         public string Barrio { get; set; }
 
         public bool EnviarRespuesta { get; set; }

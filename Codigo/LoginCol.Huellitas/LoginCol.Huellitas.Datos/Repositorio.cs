@@ -47,6 +47,12 @@ namespace LoginCol.Huellitas.Datos
 
         public DbSet<UsuarioContenido> UsuariosContenidos { get; set; }
 
+        public DbSet<SeguimientoAdopcion> SeguimientosAdopciones { get; set; }
+
+        public DbSet<Adopcion> Adopciones { get; set; }
+
+        public DbSet<RespuestaSeguimiento> RespuestasSeguimientos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ContenidoConfig());
@@ -65,7 +71,10 @@ namespace LoginCol.Huellitas.Datos
             modelBuilder.Configurations.Add(new DatoTablaBasicaConfig());
             modelBuilder.Configurations.Add(new TipoRelacionConfig());
             modelBuilder.Configurations.Add(new UsuarioContenidoConfig());
-            
+            modelBuilder.Configurations.Add(new SeguimientoAdopcionConfig() );
+            modelBuilder.Configurations.Add(new AdopcionConfig() );
+            modelBuilder.Configurations.Add(new RespuestaSeguimientoConfig() );
+
 
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 

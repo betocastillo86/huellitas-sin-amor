@@ -24,24 +24,33 @@ namespace LoginCol.Huellitas.Web.Models
 
         public DateTime FechaCreacion { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Los miembros de la familia son obligatorios")]
         [Range(1,10)]
         [Display(Description="Miembros de la familia")]
         public int? MiembrosFamilia { get; set; }
 
         [Required]
-        [Display(Description = "Edades")]
+        [MaxLength(50)]
+        [Display(Description = "Edades de la familia")]
         public string EdadesMiembrosFamilia { get; set; }
 
         public List<RespuestaAdopcion> Respuestas { get; set; }
-
-        public List<DatoTablaBasica> ListaEstadoCivil { get; set; }
 
         public List<DatoTablaBasica> ListaOcupaciones { get; set; }
 
         public List<DatoTablaBasica> Preguntas { get; set; }
 
         public bool OcultarAdvertencia { get; set; }
+
+        public enum TipoRespuesta
+        {
+            RadioButton,
+            CheckBox,
+            CheckConTexto,
+            Texto,
+            UltimoOtro,
+            TextoPorOpcion
+        }
 
 
     }

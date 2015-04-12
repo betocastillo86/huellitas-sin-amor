@@ -70,6 +70,9 @@ namespace LoginCol.Huellitas.Entidades
 
         public virtual ZonaGeografica ZonaGeografica { get; set; }
 
+        public virtual List<Adopcion> Adopciones { get; set; }
+
+
 
     }
 }
