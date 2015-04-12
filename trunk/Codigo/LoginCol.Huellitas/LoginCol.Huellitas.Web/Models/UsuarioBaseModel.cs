@@ -10,7 +10,8 @@ namespace LoginCol.Huellitas.Web.Models
     {
 
         public int UsuarioId { get; set; }
-        [Required]
+
+        [Required(ErrorMessage="El nombre es obligatorio")]
         [MaxLength(50)]
         public string Nombres { get; set; }
         

@@ -96,9 +96,13 @@ namespace LoginCol.Huellitas.Utilidades
                     RealizarBackupArchivo(nombreArchivo);
                 }
 
-                System.IO.FileStream stream = new System.IO.FileStream(nombreArchivo, System.IO.FileMode.Create, System.IO.FileAccess.Write);
-                stream.Write(datos, 0, datos.Length);
-                stream.Close();
+                using (System.IO.FileStream stream = new System.IO.FileStream(nombreArchivo, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                {
+                    stream.Write(datos, 0, datos.Length);
+                    stream.Close();
+                }
+                
+                
                 
                 return true;
             }

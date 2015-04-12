@@ -31,5 +31,7 @@ namespace LoginCol.Huellitas.Entidades
         public virtual List<Usuario> Ocupaciones { get; set; }
 
         public virtual List<Usuario> EstadosCiviles { get; set; }
+
+        public virtual List<RespuestaSeguimiento> RespuestasSeguimiento { get; set; }
     }
 }

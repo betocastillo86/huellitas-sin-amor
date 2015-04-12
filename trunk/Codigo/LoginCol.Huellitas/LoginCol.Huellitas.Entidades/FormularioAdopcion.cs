@@ -17,15 +17,14 @@ namespace LoginCol.Huellitas.Entidades
         
         public int MiembrosFamilia { get; set; }
 
-        //public string EdadesMiembros { get; set; }
+        [MaxLength(50)]
+        public string EdadesMiembrosFamilia { get; set; }
 
         public virtual List<RespuestaAdopcion> Respuestas { get; set; }
 
         public DateTime FechaCreacion { get; set; }
 
         public virtual Contenido Contenido { get; set; }
-
-        //public virtual ZonaGeografica ZonaGeografica { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 
@@ -39,5 +38,9 @@ namespace LoginCol.Huellitas.Entidades
         public string Barrio { get; set; }
 
         public EstadoFormularioAdopcion Estado { get; set; }
+
+        public Nullable<int> AdopcionId { get; set; }
+
+        public virtual Adopcion Adopcion { get; set; }
     }
 }

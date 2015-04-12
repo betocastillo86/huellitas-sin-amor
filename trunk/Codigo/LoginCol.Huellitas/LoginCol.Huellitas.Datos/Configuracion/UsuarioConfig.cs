@@ -14,6 +14,11 @@ namespace LoginCol.Huellitas.Datos.Configuracion
                 .HasForeignKey(f => f.UsuarioId)
                 .WillCascadeOnDelete(false);
 
+            HasMany(u => u.Adopciones)
+                .WithRequired(a => a.Adoptante)
+                .HasForeignKey(a => a.AdoptanteId)
+                .WillCascadeOnDelete(false);
+
             //HasKey(u => u.Correo);
 
             //HasMany(u => u.Contenidos).WithRequired(c => c.Usuario).HasForeignKey(c => c.UsuarioId);

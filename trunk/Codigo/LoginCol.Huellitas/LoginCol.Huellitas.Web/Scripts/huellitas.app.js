@@ -113,6 +113,7 @@
     init : function()
     {
         $("input[customval='int']").on("keypress", this.soloNumeros);
+        $("input[customval='nokeypress']").on("keypress", function () { return false; });
     },
 
     
@@ -148,3 +149,5 @@ _.each(["Model", "Collection"], function (name) {
         return fetch.apply(this, arguments);
     };
 });
+
+

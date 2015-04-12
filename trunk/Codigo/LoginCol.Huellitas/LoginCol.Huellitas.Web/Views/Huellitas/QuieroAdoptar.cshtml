@@ -1,4 +1,5 @@
-﻿@model LoginCol.Huellitas.Web.Models.FormularioAdopcionModel
+﻿@using LoginCol.Huellitas.Web.Models
+@model LoginCol.Huellitas.Web.Models.FormularioAdopcionModel
 @{
     ViewBag.Title = "Quiero Adoptar";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -63,48 +64,48 @@
                         <div class="grid_3">@Html.TextBoxFor(m => m.Usuario.Correo, new { placeholder = "CORREO ELECTRONICO:" })</div>
                         @Html.DropDownListFor(m => m.Usuario.OcupacionId, new SelectList(Model.ListaOcupaciones, "DatoTablaBasicaId", "Valor", Model.Usuario.OcupacionId), "OCUPACIÓN", new { @class = "grid_3 omega" })
 
-
-
-
-
                         <select id="ddlZonaDepartamento" class="grid_3 ">
                             <option>DEPARTAMENTO:</option>
                         </select>
                         @Html.DropDownListFor(m => m.Usuario.ZonaGeograficaId, new SelectList(new List<string>()), "CIUDAD:", new { @class = "grid_3 ", id = "ddlZonaCiudad" })
                         <div class="grid_3">@Html.TextBoxFor(m => m.Usuario.Direccion, new { placeholder = "DIRECCIÓN:" })</div>
-                        <div class="grid_3 omega">@Html.TextBoxFor(m => m.Barrio, new { placeholder = "BARRRIO:" })</div>
+                        <div class="grid_3 omega">@Html.TextBoxFor(m => m.Barrio, new { placeholder = "BARRIO:" })</div>
                         <br />
 
 
-                        @Html.DropDownListFor(m => m.Usuario.EstadoCivilId, new SelectList(Model.ListaEstadoCivil, "DatoTablaBasicaId", "Valor", Model.Usuario.EstadoCivilId), "ESTADO CIVIL", new { @class = "grid_3" })
+                        <div class="grid_3 ">@Html.TextBoxFor(m => m.Usuario.FechaNacimiento, new { placeholder = "FECHA NACIMIENTO:", customval = "nokeypress" })</div>
                         <div class="grid_3">@Html.TextBoxFor(m => m.MiembrosFamilia, new { placeholder = "MIEMBROS EN LA FAMILIA:", customval = "int", maxlength = 1 })</div>
-                        <div class="grid_3 ">@Html.TextBoxFor(m => m.Usuario.FechaNacimiento, new { placeholder = "FECHA NACIMIENTO:" })</div>
+                        <br />
+                        <div class="grid_12" id="divEdades" style="display:none">
+                            <div class="grid_3 color5_text">Ingresa las edades de los miembros de tu familia</div>
+                        </div>
+                        @Html.HiddenFor(m => m.EdadesMiembrosFamilia)
                         <br />
 
 
                     </div>
                     <div id="paso2" style="display: none" class="seccionPreguntas">
-                        @PreguntaAdopcion(13, "Guardia y Protección", "Compañia", "Regalo para mis hijos", "Otro")
-                        @PreguntaAdopcion(14, "Si", "No")
-                        @PreguntaAdopcion(15, "Si", "No")
-                        @PreguntaAdopcion(16, "Si", "No")
-                        @PreguntaAdopcion(17, "Si", "No")
+                        @PreguntaAdopcion(13, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Guardia y Protección", "Compañia", "Regalo", "Otro")
+                        @PreguntaAdopcion(15, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Si", "No")
+                        @PreguntaAdopcion(271, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.CheckConTexto, "Perro", "Gato", "Otro")
+                        @PreguntaAdopcion(272, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.UltimoOtro, "Patio", "Terraza", "Otro")
+                        @PreguntaAdopcion(273, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.UltimoOtro, "Soy responsable", "Madre", "Padre", "Otro")
                     </div>
 
                     <div id="paso3" style="display: none" class="seccionPreguntas">
-                        @PreguntaAdopcion(18, "Si", "No")
-                        @PreguntaAdopcion(19, "Si", "No")
-                        @PreguntaAdopcion(20, "Si", "No")
-                        @PreguntaAdopcion(21, "Apartamento", "Apartaestudio", "Casa Pequeña", "Casa grande", "Finca")
-                        @PreguntaAdopcion(22, "En la Ciudad", "Afueras de la ciudad", "En el campo")
+                        @PreguntaAdopcion(24, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Nunca", "2 a 4 horas", "4 a 6 horas", "Mas de 6 horas")
+                        @PreguntaAdopcion(21, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Apartamento", "Casa", "Finca")
+                        @PreguntaAdopcion(14, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Si", "No")
+                        @PreguntaAdopcion(274, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.TextoPorOpcion, "Especie", "Cuanto tiempo vivió contigo", "En donde está ahora el animal")
+                        @PreguntaAdopcion(275, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.Texto, string.Empty)
+                        @PreguntaAdopcion(276, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.Texto, string.Empty)
                     </div>
 
                     <div id="paso4" style="display: none" class="seccionPreguntas">
-                        @PreguntaAdopcion(23, "Nada", "30 minutos", "Una hora", "Más de una hora")
-                        @PreguntaAdopcion(24, "Nunca", "2-4 horas", "4-7 horas", "Mas de 7 horas")
-                        @PreguntaAdopcion(26, "No hay", "Más de 5 años", "De 6 a 11 años", "Mayor de 12 años")
-                        @PreguntaAdopcion(27, "Quieto, callado", "Moderado", "Vivaz", "Mucha energia")
-                        @PreguntaAdopcion(28, "Hasta $20.000 pesos", "Hasta $50.000 pesos", "Hasta $80.000 pesos", "Más de $100.000 pesos")
+                        @PreguntaAdopcion(19, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Si", "No")
+                        @PreguntaAdopcion(277, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Si", "No")
+                        @PreguntaAdopcion(278, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Si", "No")
+                        @PreguntaAdopcion(28, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, "Hasta $20.000", "Entre $20.000 y $50.000", "Entre $50.000 y $80.000", "Más de 80.000 pesos")
                     </div>
 
 
@@ -121,7 +122,7 @@
                 <div class="container clearfix">
                     <div class="seccionPreguntas">
                         <div class='grid_12'>
-                            <h2>GRACIAS POR INICIAR EL PROCESO DE ADOPCIÓN DE <a href="sinhogar/@Model.Contenido.ContenidoId/@Model.Contenido.NombreLink" style="color:white">@Model.Contenido.Nombre</a>. Muy pronto nos comunicamremos contigo.</h2>
+                            <h2>Gracias por iniciar el proceso de adopción de <a href="sinhogar/@Model.Contenido.ContenidoId/@Model.Contenido.NombreLink" style="color:white">@Model.Contenido.Nombre</a>. Muy pronto nos comunicamremos contigo.</h2>
                         </div>
                     </div>
                 </div>
@@ -179,26 +180,64 @@
 
 
 
-@helper PreguntaAdopcion(int idPregunta, params string[] opciones)
+@helper PreguntaAdopcion(int idPregunta, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta tipo = LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, params string[] opciones)
 {
-    <div class='grid_12'>
+    <div class='grid_12 preg@(idPregunta)'>
         <br />
         @Model.Preguntas.FirstOrDefault(p => p.DatoTablaBasicaId == idPregunta).Valor
 
 
     </div>
-    <div class="preguntasFormulario">
+    <div class="preguntasFormulario preg@(idPregunta)">
         @for (int i = 0; i < opciones.Length; i++)
         {
             var claseOmega = i % 3 == 0 ? "omega" : string.Empty;
 
-            <div class='grid_3 @claseOmega'>
-                <input type="radio" name="pregunta@(idPregunta)" value="@opciones[i]" />
-                <span class="respuForm">@opciones[i]</span>
+            <div class='@(tipo == LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.Texto ? "grid_12" : "grid_3") @claseOmega'>
+
+                @switch (tipo)
+                {
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton:
+                        <input type="radio" name="pregunta@(idPregunta)" value="@opciones[i]" />
+                        <span class="respuForm">@opciones[i]</span>
+                        break;
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.CheckBox:
+                    <input type="checkbox" name="pregunta@(idPregunta)" value="@opciones[i]" />
+                    <span class="respuForm">@opciones[i]</span>
+                        break;
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.CheckConTexto:
+                    <input type="checkbox" name="pregunta@(idPregunta)" value="@opciones[i]" style="  display: inline-block;width: 20px;  height: 20px;  margin: 0 5px 0 0;" />
+                    <span class="respuForm">@opciones[i]</span>
+                    <input type="text" name="pregunta@(idPregunta)" class="grid_10" />
+                        break;
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.TextoPorOpcion:
+                    <span class="respuForm">@opciones[i]</span>
+                    <input type="text" name="pregunta@(idPregunta)" placeholder="@opciones[i]" class="grid_10" />
+                        break;
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.Texto:
+                    <textarea name="pregunta@(idPregunta)"></textarea>
+                        break;
+                    case LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.UltimoOtro:
+                    <input type="radio" name="pregunta@(idPregunta)" value="@opciones[i]" />
+                    <span class="respuForm">@opciones[i]</span>
+                        if (i == opciones.Length - 1)
+                        {
+                            <input type="text" name="pregunta@(idPregunta)" placeholder="@opciones[i]" />
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+
             </div>
         }
     </div>
 }
+
+
+
+
 @section css{
     @Styles.Render("~/bundles/cssjqueryui")
 }
