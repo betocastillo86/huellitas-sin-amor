@@ -406,7 +406,7 @@ namespace LoginCol.Huellitas.Datos
         /// <param name="filtroBase">Filtros adicionales que van ligados al contenido</param>
         /// <returns>Listado de contenidos encontrados de acuerdo a la busqueda</returns>
         /// <param name="contenidosRelacionados">Contenidos relacionados por los que se debe filtrar. Propiedades: IDContenido  y TipoRelacion</param>
-        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros = null, List<ContenidoRelacionado> contenidosRelacionados = null)
+        public List<Contenido> FiltrarContenidos(int idTipoContenido, bool esPadre, Contenido filtroBase,  List<FiltroContenido> camposFiltros = null, List<ContenidoRelacionado> contenidosRelacionados = null, bool soloActivos = true)
         {
             List<Contenido> lista = null;
             try
@@ -476,7 +476,7 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c=> c.ZonaGeografica)
                         .Include(c => c.ContenidosRelacionados)
                         .Include(c => c.Campos.Select(v => v.Campo))
-                        .Where(c => c.Activo && !c.Eliminado);
+                        .Where(c => c.Activo == soloActivos && !c.Eliminado);
 
                     if (contenidosRelacionados != null)
                     {

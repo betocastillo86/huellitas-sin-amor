@@ -120,5 +120,9 @@ namespace LoginCol.Huellitas.Negocio
         public static string AsuntoAdopcionRechazada { get { return String("AsuntoAdopcionRechazada"); } }
 
         public static string AsuntoAdopcionEspera { get { return String("AsuntoAdopcionEspera"); } }
+
+        public static int CampoEstadoAnimalId { get { return Int("CampoEstadoAnimalId"); } }
+
+        public static string ValorCampoEstadoAnimalId { get { return String("ValorCampoEstadoAnimalId"); } }
     }
 }

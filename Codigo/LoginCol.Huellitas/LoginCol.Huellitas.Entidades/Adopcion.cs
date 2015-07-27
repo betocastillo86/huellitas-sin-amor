@@ -16,11 +16,16 @@ namespace LoginCol.Huellitas.Entidades
 
         public int FormularioId { get; set; }
 
+        [Required]
         public DateTime FechaAdopcion { get; set; }
 
         public int ContenidoId { get; set; }
 
+        [Required]
         public string Observaciones { get; set; }
+        
+        [Required]
+        public DateTime FechaCreacion { get; set; }
 
 
         public virtual Contenido Contenido { get; set; }

@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
@@ -116,7 +117,15 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         Lazy<FormularioAdopcionNegocio> _nFormulario = new Lazy<FormularioAdopcionNegocio>();
         FormularioAdopcionNegocio nFormulario { get { return _nFormulario.Value; } }
-        public ActionResult AdopcionesListar()
+
+
+        Lazy<AdopcionNegocio> _nAdopcion = new Lazy<AdopcionNegocio>();
+        AdopcionNegocio nAdopcion { get { return _nAdopcion.Value; } }
+
+        Lazy<ContenidoNegocio> _nContenido = new Lazy<ContenidoNegocio>();
+        ContenidoNegocio nContenido { get { return _nContenido.Value; } }
+        [Authorize]
+        public ActionResult FormulariosListar()
         {
 
             var modelo = new ListarFormularioAdopcionModel();
@@ -126,14 +135,113 @@ namespace LoginCol.Huellitas.Web.Controllers
                 .ToList();
             return View(modelo);
         }
-
-        public ActionResult AdopcionesDetalle(int id)
+        [Authorize]
+        public ActionResult FormulariosDetalle(int id)
         {
             var formulario = nFormulario.Obtener(id);
             var modelo = Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>(formulario);
             
             return View(modelo);
         }
+
+        #endregion
+
+        #region Adopciones
+        [Authorize]
+        public ActionResult AdopcionesDetalle(int? id) 
+        {
+            
+            var modelo = new AdopcionModel();
+
+            //Si no viene con Id es un formulario que se va convertir en adopción
+            if(!id.HasValue)
+            {
+                //Valida que el id del formulario sea valido
+                int idFormulario = 0;
+                if (!string.IsNullOrEmpty(Request.QueryString["fId"]) && int.TryParse(Request.QueryString["fId"], out idFormulario))
+                {
+                    modelo.FormularioId = idFormulario;
+
+                    //Busca si el formulario existe o no
+                    var formulario = nFormulario.Obtener(idFormulario);
+                    if (formulario != null)
+                    {
+                        modelo.AdoptanteNombres = formulario.Usuario.Nombres;
+                        modelo.AdoptanteApellidos = formulario.Usuario.Apellidos;
+                        modelo.ContenidoId = formulario.ContenidoId;
+                        modelo.FechaAdopcion = DateTime.Now;
+
+                        var camposFiltro = new List<FiltroContenido>();
+                        camposFiltro.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoEstadoAnimalId, Valor = ParametrizacionNegocio.ValorCampoEstadoAnimalId, TipoFiltro = TipoFiltroContenidoEnum.Igual });
+
+                        modelo.Contenidos = nContenido.ObtenerAnimalesAdoptados()
+                            .Select(Mapper.Map<Contenido, ContenidoBaseModel>)
+                            .OrderBy(c => c.Nombre)
+                            .ToList();
+
+                    }
+                    else
+                    {
+                        return RedirectToAction("FormulariosListar");
+                    }
+                }
+                else
+                    return RedirectToAction("FormulariosListar");
+
+            }
+            else
+            {
+                //Si tiene valor  realiza el tratamiento de la adopción existente
+                //modelo.AdopcionId = id.Value;
+                modelo = Mapper.Map<Adopcion, AdopcionModel>(nAdopcion.Obtener(id.Value));
+            }
+
+            return View(modelo);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult AdopcionesDetalle(int? id, AdopcionModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!id.HasValue)
+                {
+                    var adopcion = Mapper.Map<AdopcionModel, Adopcion>(modelo);
+                    var formulario = nFormulario.Obtener(modelo.FormularioId);
+
+                    if (formulario != null)
+                    {
+                        adopcion.AdoptanteId = formulario.UsuarioId;
+                        adopcion.FormularioId = formulario.FormularioAdopcionId;
+                        
+                        if (nAdopcion.Crear(adopcion))
+                        {
+                            return Redirect("AdopcionesDetalle/" + adopcion.AdopcionId);
+                            //return RedirectToAction("AdopcionesDetalle", new { id = adopcion.AdopcionId });
+                        }
+                    }
+                }
+            }
+
+            modelo.Contenidos = nContenido.ObtenerAnimalesAdoptados()
+                               .Select(Mapper.Map<Contenido, ContenidoBaseModel>)
+                               .OrderBy(c => c.Nombre)
+                               .ToList();
+
+            return View(modelo);
+        }
+
+        public ActionResult AdopcionesListar()
+        {
+            var model = new ListarAdopcionModel();
+            model.Adopciones = nAdopcion.Obtener()
+                .Select(Mapper.Map<Adopcion, AdopcionModel>)
+                .ToList();
+            return View(model);
+        }
+
+
 
         #endregion
 
@@ -144,6 +252,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public JsonResult OpcionesMenu()
         {
             List<OpcionMenu> opcionesMenu = new List<OpcionMenu>();
@@ -151,6 +260,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 2, Nombre = "Fundaciones", Vinculo = "/admin/fundaciones/listar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 3, Nombre = "Parametrizacion", Vinculo = "/admin/parametrizacion" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Usuarios Externos", Vinculo = "/admin/usuariosexternos" });
+            opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Formularios Adopción", Vinculo = "/admin/formularioslistar" });
             opcionesMenu.Add(new OpcionMenu() { IdMenu = 4, Nombre = "Adopciones", Vinculo = "/admin/adopcioneslistar" });
             return Json(opcionesMenu, JsonRequestBehavior.AllowGet);
         }

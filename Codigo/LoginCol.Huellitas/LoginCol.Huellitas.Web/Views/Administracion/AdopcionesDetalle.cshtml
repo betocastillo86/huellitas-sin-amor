@@ -1,128 +1,81 @@
-﻿@using LoginCol.Huellitas.Entidades
-@model LoginCol.Huellitas.Web.Models.FormularioAdopcionModel
+﻿@model LoginCol.Huellitas.Web.Models.Admin.AdopcionModel
 @{
-    ViewBag.Title = "Detalle de Formulario de Adopción";
+    ViewBag.Title = "AdopcionesDetalle";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<div class="box col-md-12" id="formAdopcion">
-    <div class="box-inner">
-        <div data-original-title="" class="box-header well">
-            <h2><i class="glyphicon glyphicon-edit"></i> Adoptante</h2>
-            <div class="box-icon">
-                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+<div id="formAdopcion">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div data-original-title="" class="box-header well">
+                <h2><i class="glyphicon glyphicon-edit"></i> Adopción Exitosa</h2>
+                <div class="box-icon">
+                    <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="box-content">
-            <form role="form">
-                <div class="form-group">
-                    @Html.Label("Formulario Id")
-                    @Html.DisplayFor(m => m.FormularioAdopcionId)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Fecha Solicitud")
-                    @Html.DisplayFor(m => m.FechaCreacion)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Huellita")
-                    @Html.DisplayFor(m => m.Contenido.Nombre)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Nombres")
-                    @Html.DisplayFor(m => m.Usuario.NombreCompleto)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Correo")
-                    @Html.DisplayFor(m => m.Usuario.Correo)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Ciudad")
-                    @Html.DisplayFor(m => m.Usuario.ZonaGeograficaNombre)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Direccion")
-                    @Html.DisplayFor(m => m.Usuario.Direccion)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Barrio")
-                    @Html.DisplayFor(m => m.Barrio)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Celular")
-                    @Html.DisplayFor(m => m.Usuario.Celular)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Fecha de Nacimiento")
-                    @Html.DisplayFor(m => m.Usuario.FechaNacimiento)
-                </div>
-                <div class="form-group">
-                    @Html.Label("Miembros en la familia")
-                    @Html.DisplayFor(m => m.MiembrosFamilia)
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.EdadesMiembrosFamilia)
-                    @Html.DisplayFor(m => m.EdadesMiembrosFamilia)
-                </div>
-            </form>
-        </div>
-
-    </div>
-
-
-    <div class="box-inner">
-        <div data-original-title="" class="box-header well">
-            <h2><i class="glyphicon glyphicon-edit"></i> Respuestas</h2>
-            <div class="box-icon">
-                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-            </div>
-        </div>
-        <div class="box-content">
-            <form role="form">
-                @foreach (var respuesta in Model.Respuestas)
-                {
+            <div class="box-content">
+                <form role="form">
                     <div class="form-group">
-                        @Html.Label(respuesta.Pregunta.Valor)
-                        @respuesta.Respuesta
+                        @Html.LabelFor(model => model.FormularioId)
+                        @Html.DisplayFor(model => model.FormularioId)
+                        @Html.HiddenFor(model => model.FormularioId)
                     </div>
-                }
-            </form>
-        </div>
-    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdoptanteNombreCompleto)
+                        @Html.DisplayFor(model => model.AdoptanteNombreCompleto)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaAdopcion)
 
-    <div class="box-inner">
-        <div data-original-title="" class="box-header well">
-            <h2><i class="glyphicon glyphicon-edit"></i> Responder automáticamente</h2>
-            <div class="box-icon">
-                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        @if (Model.AdopcionId > 0)
+                        {
+                            @Html.DisplayFor(model => model.FechaAdopcion, "{0:dd/MM/yyyy}")
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.FechaAdopcion, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                        }
+
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContenidoId)
+                        @if (Model.AdopcionId > 0)
+                        {
+                            @Html.DisplayFor(model => model.ContenidoNombre)
+                        }
+                        else
+                        {
+                            <div>
+                                @Html.DropDownListFor(model => model.ContenidoId, new SelectList(Model.Contenidos, "ContenidoId", "Nombre"), new { @class = "form-control" })
+                            </div>
+                        }
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Observaciones)
+                        @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control" })
+                    </div>
+
+                    <input class="btn btn-default" type="submit" value="Guardar" />
+                    <button class="btn" type="button" id="btnCancelar">Cancelar</button>
+
+                    @Html.ValidationSummary()
+                </form>
             </div>
-        </div>
-        <div class="box-content">
-            <form role="form">
-                <div class="form-group">
-                    Para responder esta solicitud de adopción hay que dar clic en alguno de los botones inferiores. Si la contestación tiene información adicional por favor ingresarla aquí:
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.InformacionAdicionalCorreo)
-                    @Html.TextAreaFor(m => m.InformacionAdicionalCorreo, new { @class = "form-control" })
-                    
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Observaciones)
-                    @Html.TextAreaFor(m => m.Observaciones, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <select id="Estado" name="Estado">
-                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Aprobado)">Aprobado</option>
-                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Rechazado)">Rechazado</option>
-                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.AdoptadoPreviamente)">Adopción previa</option>
-                    </select>
-                    <div class="btn btn-danger btnResponder" >Responder</div>
-                </div>
 
-            </form>
         </div>
+       
     </div>
-
+    @if (Model.AdopcionId > 0)
+    {
+        @Html.Partial("_SeguimientoAdopcion")
+    }
 </div>
-<script src="~/Scripts/models/huellitas.admin.FormularioAdopcion.js"></script>
+
+
+<script>
+    alert("TOca hacer: 1. Crear el front end del formulario. 2. Al guardar las imagenes del front end, actualizar la tabla de los seguimientos con la imagen. 3. Crear la cuenta de mailchimp y generar la funcionalidad para poder realizar el seguimiento completo.")
+</script>
+<script src="~/Scripts/models/huellitas.admin.SeguimientoAdopcion.js"></script>
 <script src="~/Scripts/views/huellitas.admin.AdopcionEditarView.js"></script>
+<script src="~/Scripts/libs/jquery-ui.min.js"></script>

@@ -1,0 +1,129 @@
+﻿@using LoginCol.Huellitas.Entidades
+@model LoginCol.Huellitas.Web.Models.FormularioAdopcionModel
+@{
+    ViewBag.Title = "Detalle de Formulario de Adopción";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="box col-md-12" id="formAdopcion">
+    <div class="box-inner">
+        <div data-original-title="" class="box-header well">
+            <h2><i class="glyphicon glyphicon-edit"></i> Adoptante</h2>
+            <div class="box-icon">
+                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <form role="form">
+                <div class="form-group">
+                    @Html.Label("Formulario Id")
+                    @Html.DisplayFor(m => m.FormularioAdopcionId) <a class="btn btn-danger btnResponder" href="@Url.Action("AdopcionesDetalle", new { fId = Model.FormularioAdopcionId })">Generar Adopción</a>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Fecha Solicitud")
+                    @Html.DisplayFor(m => m.FechaCreacion)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Huellita")
+                    @Html.DisplayFor(m => m.Contenido.Nombre)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Nombres")
+                    @Html.DisplayFor(m => m.Usuario.NombreCompleto)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Correo")
+                    @Html.DisplayFor(m => m.Usuario.Correo)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Ciudad")
+                    @Html.DisplayFor(m => m.Usuario.ZonaGeograficaNombre)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Direccion")
+                    @Html.DisplayFor(m => m.Usuario.Direccion)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Barrio")
+                    @Html.DisplayFor(m => m.Barrio)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Celular")
+                    @Html.DisplayFor(m => m.Usuario.Celular)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Fecha de Nacimiento")
+                    @Html.DisplayFor(m => m.Usuario.FechaNacimiento)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Miembros en la familia")
+                    @Html.DisplayFor(m => m.MiembrosFamilia)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EdadesMiembrosFamilia)
+                    @Html.DisplayFor(m => m.EdadesMiembrosFamilia)
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="box-inner">
+        <div data-original-title="" class="box-header well">
+            <h2><i class="glyphicon glyphicon-edit"></i> Respuestas</h2>
+            <div class="box-icon">
+                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <form role="form">
+                @foreach (var respuesta in Model.Respuestas)
+                {
+                    <div class="form-group">
+                        @Html.Label(respuesta.Pregunta.Valor)
+                        @respuesta.Respuesta
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+
+    <div class="box-inner">
+        <div data-original-title="" class="box-header well">
+            <h2><i class="glyphicon glyphicon-edit"></i> Responder automáticamente</h2>
+            <div class="box-icon">
+                <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <form role="form">
+                <div class="form-group">
+                    Para responder esta solicitud de adopción hay que dar clic en alguno de los botones inferiores. Si la contestación tiene información adicional por favor ingresarla aquí:
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.InformacionAdicionalCorreo)
+                    @Html.TextAreaFor(m => m.InformacionAdicionalCorreo, new { @class = "form-control" })
+                    
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Observaciones)
+                    @Html.TextAreaFor(m => m.Observaciones, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <select id="Estado" name="Estado">
+                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Aprobado)">Aprobado</option>
+                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Rechazado)">Rechazado</option>
+                        <option value="@Convert.ToInt32(EstadoFormularioAdopcion.AdoptadoPreviamente)">Adopción previa</option>
+                    </select>
+                    <div class="btn btn-danger btnResponder" >Responder</div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/models/huellitas.admin.FormularioAdopcion.js"></script>
+<script src="~/Scripts/views/huellitas.admin.FormularioEditarView.js"></script>

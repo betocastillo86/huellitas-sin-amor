@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdopcionNegocio.cs" />
     <Compile Include="ArchivosTemporalesNegocio.cs" />
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />

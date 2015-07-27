@@ -40,5 +40,6 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             return respuesta;
         }
+
     }
 }

@@ -299,45 +299,48 @@ namespace LoginCol.Huellitas.Negocio
         {
             ResultadoOperacion respuesta = new ResultadoOperacion(true);
 
-            try
+            if (bytes != null)
             {
-                //Intenta guardar el archivo original en el disco
-                string imagenOriginal= ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Original);
-                if (Archivos.GuardarArchivoEnDisco(imagenOriginal, bytes, true))
+                try
                 {
+                    //Intenta guardar el archivo original en el disco
+                    string imagenOriginal = ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Original);
+                    if (Archivos.GuardarArchivoEnDisco(imagenOriginal, bytes, true))
+                    {
 
 
-                    byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 491, 333);
-                    byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 220, 220);
-                    byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 120, 120);
+                        byte[] bytesGrande = Imagenes.RedimensionarImagen(imagenOriginal, 491, 333);
+                        byte[] bytesMediano = Imagenes.RedimensionarImagen(imagenOriginal, 220, 220);
+                        byte[] bytesPequeno = Imagenes.RedimensionarImagen(imagenOriginal, 120, 120);
 
-                    //Intenta guardar las imagenes
-                    if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
-                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
-                        !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
-                    //if(
-                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), 800, 800) ||
-                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), 500, 500) ||
-                    //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), 200, 200) 
-                    //    )
+                        //Intenta guardar las imagenes
+                        if (!Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), bytesGrande, true) ||
+                            !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), bytesMediano, true) ||
+                            !Archivos.GuardarArchivoEnDisco(ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), bytesPequeno, true))
+                        //if(
+                        //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Grande), 800, 800) ||
+                        //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Mediano), 500, 500) ||
+                        //    !Imagenes.RedimensionarImagen(imagenOriginal, ObtenerRutaFisicaImagenPrincipal(idContenido, TamanoImagenEnum.Pequeno), 200, 200) 
+                        //    )
+                        {
+                            respuesta.OperacionExitosa = false;
+                            respuesta.MensajeError = "No fue posible guardar la imagen grande";
+                        }
+
+                    }
+                    else
                     {
                         respuesta.OperacionExitosa = false;
-                        respuesta.MensajeError = "No fue posible guardar la imagen grande";
+                        respuesta.MensajeError = "No fue posible guardar la imagen principal";
                     }
-                    
                 }
-                else
+                catch (Exception e)
                 {
+                    LogErrores.RegistrarError(e);
                     respuesta.OperacionExitosa = false;
-                    respuesta.MensajeError = "No fue posible guardar la imagen principal";
+                    respuesta.MensajeError = "Error generando las imagenes";
                 }
-            }
-            catch (Exception e)
-            {
-                LogErrores.RegistrarError(e);
-                respuesta.OperacionExitosa = false;
-                respuesta.MensajeError = "Error generando las imagenes";
-            }
+            } 
 
             return respuesta;
             
@@ -385,6 +388,18 @@ namespace LoginCol.Huellitas.Negocio
         {
             ContenidoRepositorio rContenido = new ContenidoRepositorio();
             return rContenido.FiltrarContenidos(idTipoContenido, esPadre, filtroBase, camposFiltros, contenidosRelacionados);
+        }
+
+        /// <summary>
+        /// Retorna todos los contenidos que el campo Estaddo del animal  es Adoptador
+        /// </summary>
+        /// <returns></returns>
+        public List<Contenido> ObtenerAnimalesAdoptados()
+        {
+            var camposFiltro = new List<FiltroContenido>();
+            camposFiltro.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoEstadoAnimalId, Valor = ParametrizacionNegocio.ValorCampoEstadoAnimalId, TipoFiltro = TipoFiltroContenidoEnum.Igual });
+            ContenidoRepositorio rContenido = new ContenidoRepositorio();
+            return rContenido.FiltrarContenidos((int)TipoContenidoEnum.Animal, true, null, soloActivos: false);
         }
 
 

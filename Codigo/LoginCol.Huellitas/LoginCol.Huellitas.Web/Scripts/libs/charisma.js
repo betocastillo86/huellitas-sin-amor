@@ -6,7 +6,8 @@ var optionsDataTable = {
         "sLengthMenu": "_MENU_ records per page"
     },
     "bDestroy": "false",
-    "aaSorting": []
+    "aaSorting": [],
+    "iDisplayLength": 25
 };
 
 

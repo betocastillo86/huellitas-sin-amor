@@ -1,0 +1,94 @@
+﻿@model LoginCol.Huellitas.Web.Models.Admin.ListarFormularioAdopcionModel
+@{
+    ViewBag.Title = "ListadoPerdidos";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row" id="divAdopcionesListar">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-user"></i>Varibales de Parametrización</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default">
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                    </a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <div>
+                    <button id="BtnCrearContenido" type="button">Crear</button>
+                </div>
+                <table id="tableListado" class="table table-striped table-bordered bootstrap-datatable responsive">
+                    <thead>
+                        <tr>
+                            <th>Nombre Mascota</th>
+                            <th>Nombre Adoptante</th>
+                            <th>Fecha Solicitud</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var formulario in Model.Formularios)
+                        {
+                            <tr>
+                                <td class="center">@formulario.Contenido.Nombre</td>
+                                <td class="center">@formulario.Usuario.NombreCompleto @CargarEstiloLabel(formulario.Estado)</td>
+                                <td class="center">
+                                    
+                                    @formulario.FechaCreacion
+                                    
+                                </td>
+                                <td class="center">
+                                    <a class="btn btn-info" href="/admin/formulariosdetalle/@formulario.FormularioAdopcionId">
+                                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+</div>
+@helper CargarEstiloLabel(LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion estado) {
+    switch (estado)
+    {
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.SinRevisar:
+            <span class="label-default label">
+                Sin Revisar
+            </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.Aprobado:
+        <span class="label-success label label-default">
+            Aprobado
+        </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.Rechazado:
+        <span class="label-default label label-danger">
+            Rechazado
+        </span>
+            break;
+        case LoginCol.Huellitas.Entidades.EstadoFormularioAdopcion.AdoptadoPreviamente:
+
+        <span class="label-warning label label-default">
+            Adoptado
+        </span>
+            break;
+        default:
+            break;
+    }
+}
+@section scripts
+{
+   <script src="~/Scripts/views/huellitas.admin.FormularioListarView.js"></script>
+}

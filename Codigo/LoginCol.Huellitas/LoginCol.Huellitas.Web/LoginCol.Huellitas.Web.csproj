@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AdminContenidosController.cs" />
     <Compile Include="Controllers\AdminImagenesController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
+    <Compile Include="Controllers\AdminSeguimientoController.cs" />
     <Compile Include="Controllers\AdminUsuarioRelacionadoController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\ArchivosController.cs" />
@@ -211,7 +212,9 @@
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Infraestructure\NullableRequiredAttribute.cs" />
     <Compile Include="Infraestructure\SumarVisitaAttribute.cs" />
+    <Compile Include="Models\Admin\AdopcionModel.cs" />
     <Compile Include="Models\Admin\FormularioAdopcionModel.cs" />
+    <Compile Include="Models\Admin\ListarAdopcionModel.cs" />
     <Compile Include="Models\Admin\ListarContenidoModel.cs" />
     <Compile Include="Models\Admin\ListarFormularioAdopcion.cs" />
     <Compile Include="Models\Admin\ListarUsuariosExternosModel.cs" />
@@ -234,6 +237,7 @@
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
     <Compile Include="Models\OpcionCampoModel.cs" />
     <Compile Include="Models\PerdidosModel.cs" />
+    <Compile Include="Models\SeguimientoAdopcionModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\TipoContenidoModel.cs" />
     <Compile Include="Models\TipoRelacionContenidoModel.cs" />
@@ -663,6 +667,7 @@
     <Content Include="Scripts\libs\TrafficCop.min.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
     <Content Include="Scripts\views\huellitas.admin.AdopcionEditarView.js" />
+    <Content Include="Scripts\views\huellitas.admin.FormularioEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarContenidoRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarUsuarioRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AlertHtmlView.js" />
@@ -766,9 +771,13 @@
     <Content Include="Views\Shared\_Summary.cshtml" />
     <Content Include="Views\Administracion\UsuariosExternos.cshtml" />
     <Content Include="Scripts\views\huellitas.DetallePerdidoView.js" />
-    <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
+    <Content Include="Views\Administracion\FormulariosListar.cshtml" />
+    <Content Include="Views\Administracion\FormulariosDetalle.cshtml" />
+    <Content Include="Scripts\views\huellitas.admin.FormularioListarView.js" />
     <Content Include="Views\Administracion\AdopcionesDetalle.cshtml" />
-    <Content Include="Scripts\views\huellitas.admin.AdopcionListarView.js" />
+    <Content Include="Views\Administracion\_SeguimientoAdopcion.cshtml" />
+    <Content Include="Scripts\models\huellitas.admin.SeguimientoAdopcion.js" />
+    <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
