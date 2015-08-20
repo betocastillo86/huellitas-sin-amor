@@ -294,7 +294,6 @@ namespace LoginCol.Huellitas.Datos
                 List<ContenidoRelacionado> listaRelacionados = null;
                 using (var db = new Repositorio())
                 {
-                    
 
                     var query  = db.ContenidosRelacionados
                         .Include(c => c.ContenidoHijo)
@@ -303,7 +302,11 @@ namespace LoginCol.Huellitas.Datos
                         .Include(c => c.Contenido)
                         .Include(c => c.Contenido.TipoContenido)
                         .Where(c => (c.ContenidoHijoId == idContenido || c.ContenidoId == idContenido) 
-                            && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado );
+                            && !c.ContenidoHijo.Eliminado && !c.Contenido.Eliminado);
+
+                    //Cuando es imagen omite el filtro de los activos
+                    if (tipoRelacion.HasValue && tipoRelacion.Value != Convert.ToInt32(TipoRelacionEnum.Imagen))
+                        query = query.Where(c => c.Contenido.Activo && c.ContenidoHijo.Activo);
 
 
                     if (tipoRelacion.HasValue)

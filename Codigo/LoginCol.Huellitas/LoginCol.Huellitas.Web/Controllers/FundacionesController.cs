@@ -42,6 +42,7 @@ namespace LoginCol.Huellitas.Web.Controllers
                 return RedirectToAction("Index", "Fundaciones");
 
             modelo.ImagenCompartir = string.Format("/img/{0}/big", modelo.ContenidoId);
+            modelo.Id = id;
 
             return View(modelo);
         }

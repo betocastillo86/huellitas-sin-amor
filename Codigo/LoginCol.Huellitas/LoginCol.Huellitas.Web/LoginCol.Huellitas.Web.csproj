@@ -241,6 +241,7 @@
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\UsuarioRelacionadoModel.cs" />
     <Compile Include="Models\ValorCampoModel.cs" />
+    <Compile Include="Models\VistaContenidoRelacionadoModel.cs" />
     <Compile Include="Models\ZonaGeograficalModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -367,6 +368,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\Huellitas producción.pubxml" />
+    <None Include="Properties\PublishProfiles\huellitas.social - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\pruebas.huellitas.social - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\RutaLocal.pubxml" />
     <None Include="Properties\PublishProfiles\Web Deply Godaddy.pubxml" />

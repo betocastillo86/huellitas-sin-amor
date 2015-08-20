@@ -120,8 +120,10 @@
         </div>
     </section>
     <!--similares-->
-    <div id="divPerrosRelacionados"></div>
-    @Html.Partial("_ContenidosRelacionados")
+    <div id="divPerrosRelacionados">
+        @*@Html.Partial("_ContenidosRelacionados")*@
+        @Html.Action("ContenidosRelacionados", new { contenido = Model, titulo = "Mascotas similares", tipoRelacion = LoginCol.Huellitas.Entidades.TipoRelacionEnum.AnimalesSimilares })
+    </div>
     <!--fin similares-->
     <!--comentarios-->
     <div id="divComentarios"></div>

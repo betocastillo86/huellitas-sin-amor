@@ -21,6 +21,17 @@
                 </div>
                 <div class="box-content">
                     <form role="form">
+                        <div>
+                            <%  if(ContenidoId > 0){
+                                %>
+                            <a href="/sinhogar/<%= ContenidoId %>/<%= Nombre %>" target="_blank" title="Ver contenido en el sitio publico" class="btn btn-info">
+                                <i class="glyphicon glyphicon-search"></i>
+                                Ver Contenido publicado
+                            </a>
+                            <%
+                            } %>
+                            
+                        </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Nombre)
                             @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })

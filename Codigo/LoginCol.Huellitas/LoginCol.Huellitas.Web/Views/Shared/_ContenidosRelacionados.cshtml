@@ -1,55 +1,59 @@
-﻿<script id="templateContenidosRelacionados" type="text/template">
-    <section class="slide conte_similar">
-        <h2 class="container clearfix"><%= obj.Titulo %></h2>
-        <div id="cbp-fwslider" class="cbp-fwslider clearfix">
-            <ul>
-                <%
-                var contador = 0;
-                _.each(obj.Contenidos, function(contenido){
-                
-                
-                
-                var edad = _.findWhere(contenido.Campos, { CampoNombre : "Edad" });
+﻿@model LoginCol.Huellitas.Web.Models.VistaContenidoRelacionadoModel
+@{
+                int contador = 0;
+}
+<section class="slide conte_similar">
+    <h2 class="container clearfix">@Model.Titulo</h2>
+    <div id="cbp-fwslider" class="cbp-fwslider clearfix">
+        <ul>
 
-                if(contador == 0 ){ %>
-                <li>
-                    <div class="container clearfix">
-                        <% } %>
-                        <div class="grid_3 <%= contador > 0 && contador%3 == 0 ? ' omega' :'' %>">
-                            <div style="background-image: url(/img/<%=contenido.ContenidoHijo.ContenidoId%>/medium);" class="cajaSimilar">
-                                <article class="c_tipo1">
-                                    <h3> <a href="/sinhogar/<%=contenido.ContenidoHijo.ContenidoId%>/<%=contenido.ContenidoHijo.NombreLink%>" title="<%=contenido.ContenidoHijo.DescripcionCorta%>"><%=contenido.ContenidoHijo.Nombre%></a></h3>
-                                    
-                                </article>
+            @foreach (var contenido in Model.Contenidos)
+            {
+                if (contador == 0)
+                {
+                    @:<li>
+                        @:<div class="container clearfix">
+                }
+                            
+                
+                            <div class="grid_3 @(contador > 0 && contador%3 == 0 ? " omega" :string.Empty)">
+                                <div style="background-image: url(/img/@contenido.ContenidoHijo.ContenidoId/medium);" class="cajaSimilar">
+                                    <article class="c_tipo1">
+                                        <h3> <a href="/sinhogar/@contenido.ContenidoHijo.ContenidoId/@contenido.ContenidoHijo.NombreLink" title="@contenido.ContenidoHijo.DescripcionCorta">@contenido.ContenidoHijo.Nombre</a></h3>
+                                        <div style="display:none">@contenido.ContenidoHijo.Descripcion</div>
+                                    </article>
+                                </div>
                             </div>
-                        </div>
-                        <%
-                        
-                        
-                if(contador == 3){ 
-                    contador=0;
-                %>
-                    </div>
-                </li>
-                <% }
-                   else
+                
+                            if(contador == 3)
+                {
+                    contador = 0;
+                    @:</div>
+                @:</li>
+                }
+                else
+                {
                     contador++;
-                }); %>
-            </ul>
-        </div>
-        <% if(obj.VerTodos) { %>
-        <div class="mas_scroll">
+                }
 
-            <% if(obj.LinkVerTodos) { %>
-            <a href="<%=obj.LinkVerTodos%>">
-            <% } %>
-                Ver todos
-            <% if(obj.LinkVerTodos) {%>
-            </a>
-            <% } %>
 
-        </div>
-        <% } %>
+                            }
 
-    </section>
-</script>
+                        </ul>
+                    </div>
+
+
+                    @if(Model.VerTodos)
+                {
+                        <div class="mas_scroll">
+
+                            @if(!string.IsNullOrEmpty(Model.LinkVerTodos) ){
+                                <a href="@Model.LinkVerTodos">
+                                    Ver todos
+                                </a>
+                        }  
+                        </div>
+                }
+
+
+                </section>

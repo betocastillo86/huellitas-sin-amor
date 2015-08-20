@@ -87,9 +87,9 @@
 
     </section>
 
-    <div id="divPerrosRelacionados"></div>
-    @Html.Partial("_ContenidosRelacionados")
-
+    <div id="divPerrosRelacionados">
+        @Html.Action("ContenidosRelacionados", "Huellitas", new { contenido = Model, titulo = "Nuestras mascotas", verTodos = true, linkVerTodos = string.Format("/fundaciones/{0}/{1}/{2}", Model.Id, Model.NombreLink, @Html.Parametrizacion("LlaveRouterVerTodos")), tipoRelacion = LoginCol.Huellitas.Entidades.TipoRelacionEnum.Fundacion })
+    </div>
     <div id="divComentarios"></div>
     @Html.Partial("_Comentarios")
 

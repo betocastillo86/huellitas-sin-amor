@@ -16,7 +16,7 @@
     ordenadoPor: undefined,
 
     events: {
-        'click .cajaCaso .btn': 'cargarDetalle',
+        'click .cajaSimilar .btn': 'cargarDetalle',
         "click .siguientePagina": "siguientePagina",
         "change #ddlOrden": "ordenar"
     },

@@ -127,6 +127,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             }
 
             modelo.ImagenCompartir = string.Format("/img/{0}/big", modelo.ContenidoId);
+            modelo.Id = id;
 
             return View(modelo);
         }
@@ -142,6 +143,24 @@ namespace LoginCol.Huellitas.Web.Controllers
                 .ToList();
             
             return PartialView("_BannerDestacados", contenidos);
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult ContenidosRelacionados(ContenidoModel contenido, string titulo, TipoRelacionEnum tipoRelacion, bool verTodos = false, string linkVerTodos = null)
+        {
+            var nContenido = new ContenidoNegocio();
+            var model = new VistaContenidoRelacionadoModel();
+                model.VerTodos = verTodos;
+                model.LinkVerTodos = linkVerTodos;
+            model.Contenidos = nContenido.ObtenerContenidosRelacionados(contenido.Id, Convert.ToInt32(tipoRelacion))
+            .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
+            .OrderBy(c => Guid.NewGuid())
+            .Take(10)
+            .ToList();
+            model.Titulo = titulo;
+
+            return PartialView("_ContenidosRelacionados", model);
         }
 
 

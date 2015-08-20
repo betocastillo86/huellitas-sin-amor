@@ -26,6 +26,13 @@
                 <div class="form-group">
                     @Html.Label("Huellita")
                     @Html.DisplayFor(m => m.Contenido.Nombre)
+                    <a href="/sinhogar/@Model.Contenido.ContenidoId/@Model.Contenido.Nombre" target="_blank" title="Ver contenido en el sitio publico" class="btn btn-info">
+                        <i class="glyphicon glyphicon-search"></i>
+                        ¿Quién es @Model.Contenido.Nombre?
+                    </a>
+                </div>
+                <div class="form-group">
+                    <img src="/img/@Model.Contenido.ContenidoId/medium" />
                 </div>
                 <div class="form-group">
                     @Html.Label("Nombres")

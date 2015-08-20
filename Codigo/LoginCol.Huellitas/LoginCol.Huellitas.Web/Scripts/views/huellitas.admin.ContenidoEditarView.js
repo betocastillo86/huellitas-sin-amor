@@ -66,6 +66,7 @@
             //this.model.fetch();
         }
         else {
+            this.model.set('ContenidoId', 0);
             this.mostrarContenido();
         }
     },
