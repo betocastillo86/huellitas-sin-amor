@@ -667,6 +667,7 @@
     <Content Include="Scripts\libs\TrafficCop.min.js" />
     <Content Include="Scripts\views\huellitas.admin.AdminView.js" />
     <Content Include="Scripts\views\huellitas.admin.AdopcionEditarView.js" />
+    <Content Include="Scripts\views\huellitas.admin.AdopcionListarView.js" />
     <Content Include="Scripts\views\huellitas.admin.FormularioEditarView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarContenidoRelacionadoView.js" />
     <Content Include="Scripts\views\huellitas.admin.AgregarUsuarioRelacionadoView.js" />
