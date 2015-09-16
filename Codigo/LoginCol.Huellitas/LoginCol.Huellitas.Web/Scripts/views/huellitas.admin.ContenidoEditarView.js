@@ -205,6 +205,9 @@
             this.model.set('Activo', this.$("#Activo:checked").length > 0);
             this.model.set('Destacado', this.$("#Destacado:checked").length > 0);
 
+            //Se corrige bug para evitar que envíe un PUT
+            this.model.set('ContenidoId', this.model.get('ContenidoId') == 0 ? undefined : this.model.get('ContenidoId'));
+
             this.model.on("sync", this.contenidoGuardado, this);
             this.model.save();
         }
