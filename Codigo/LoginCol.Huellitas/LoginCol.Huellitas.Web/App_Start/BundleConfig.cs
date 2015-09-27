@@ -198,6 +198,14 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/models/huellitas.TablaBasica.js")
                 );
 
+            //Seguimiento de aadopciones
+            bundles.Add(new ScriptBundle("~/bundles/backbone_seguimiento")
+                .Include("~/Scripts/models/huellitas.Contenido.js")
+                .Include("~/Scripts/views/huellitas.SeguimientoView.js")
+                .Include("~/Scripts/models/huellitas.Seguimiento.js")
+                .Include("~/Scripts/views/huellitas.SummaryView.js")
+                );
+
             bundles.Add(new ScriptBundle("~/bundles/backbone_home")
                 .Include("~/Scripts/models/huellitas.Contacto.js")
                 .Include("~/Scripts/views/huellitas.ContactoView.js")

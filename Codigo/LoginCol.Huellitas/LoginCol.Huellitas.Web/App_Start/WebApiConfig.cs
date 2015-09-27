@@ -24,6 +24,12 @@ namespace LoginCol.Huellitas.Web
                constraints: new { idContenido = @"\d+" }
            );
 
+            config.Routes.MapHttpRoute(
+                  name: "ApiGetAllById",
+                  routeTemplate: "api/{controller}/{id}/all",
+                  defaults: new { controller = "AdminSeguimiento", action = "ObtenerSeguimientosPorAdopcion" },
+                  constraints: new { id = @"\d+" }
+              );
 
             config.Routes.MapHttpRoute(
                name: "DefaultApi",

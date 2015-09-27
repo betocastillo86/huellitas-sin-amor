@@ -1,9 +1,12 @@
 ﻿var AdopcionListarView = Backbone.View.extend({
+    el: "#divAdopcionesListar",
 
-	el : "#divAdopcionesListar",
-
-	initialize: function ()
-	{
-		this.$('#tableListado').dataTable(optionsDataTable);
-	}
+    initialize: function (args) {
+        this.render();
+    },
+    render: function ()
+    {
+        this.$('#tableListado').dataTable(optionsDataTable);
+        return this;
+    }
 });

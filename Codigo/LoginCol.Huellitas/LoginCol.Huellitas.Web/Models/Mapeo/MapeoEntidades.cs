@@ -2,6 +2,7 @@
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
 using LoginCol.Huellitas.Utilidades;
+using LoginCol.Huellitas.Web.Models.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +96,16 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             Mapper.CreateMap<FormularioAdopcionModel, FormularioAdopcion>();
             Mapper.CreateMap<FormularioAdopcion, FormularioAdopcionModel>();
             #endregion
+
+            #region Adopcion
+
+            Mapper.CreateMap<Adopcion, AdopcionModel>();
+            Mapper.CreateMap<AdopcionModel, Adopcion>();
+            Mapper.CreateMap<SeguimientoAdopcion, SeguimientoAdopcionModel>();
+            Mapper.CreateMap<SeguimientoAdopcionModel, SeguimientoAdopcion>();
+
+            #endregion
+
             #region Usuarios
             AutoMapper.Mapper.CreateMap<Usuario, UsuarioModel>();
             AutoMapper.Mapper.CreateMap<UsuarioModel, Usuario>();

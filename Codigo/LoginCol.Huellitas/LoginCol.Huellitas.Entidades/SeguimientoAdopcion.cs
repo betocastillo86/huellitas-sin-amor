@@ -17,11 +17,9 @@ namespace LoginCol.Huellitas.Entidades
 
         public int AdopcionId { get; set; }
 
-        [MaxLength(300)]
-        public string Imagen1 { get; set; }
+        public bool Imagen1 { get; set; }
 
-        [MaxLength(300)]
-        public string Imagen2 { get; set; }
+        public bool Imagen2 { get; set; }
         
         [MaxLength(50)]
         public string Video { get; set; }

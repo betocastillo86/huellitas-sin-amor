@@ -15,7 +15,8 @@
         "fundaciones/:id/:nombre": "detalleFundacion",
         "fundaciones/:id/:nombre/ver-todos" : "huellasDeFundacion",
         "perros-gatos-perdidos(/:id)": "inicioPerdidos",
-        "por-que-adoptar": "porqueAdoptar"
+        "por-que-adoptar": "porqueAdoptar",
+        "seguimiento/:id(/*urlPath)" : "seguimiento"
     },
 
     home : function()
@@ -79,7 +80,10 @@
         var vistaPerdidos = new PerdidosView({ id : id});
         this.vistaActual = vistaPerdidos;
     },
-
+    seguimiento: function (id) {
+        var vistaSeguimiento = new SeguimientoView({ id: id });
+        this.vistaActual = vistaSeguimiento;
+    },
     porqueAdoptar : function()
     {
         var vistaAdoptar = new InfoAdoptarView({ el: "#divInfoAdoptar" });

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdopcionNegocio.cs" />
     <Compile Include="ArchivosTemporalesNegocio.cs" />
     <Compile Include="CampoNegocio.cs" />
     <Compile Include="ComentarioNegocio.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="ContenidoNegocio.cs" />
     <Compile Include="CorreoNegocio.cs" />
     <Compile Include="DatoTablaBasicaNegocio.cs" />
+    <Compile Include="Extensions\EntitiesExtensions.cs" />
     <Compile Include="FormularioAdopcionNegocio.cs" />
     <Compile Include="Directorios\IRutasFisicas.cs" />
     <Compile Include="Directorios\RutaFisicaWeb.cs" />
@@ -97,6 +99,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

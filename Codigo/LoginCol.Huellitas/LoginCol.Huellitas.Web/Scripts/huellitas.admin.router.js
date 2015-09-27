@@ -22,12 +22,21 @@
         "admin/fundaciones/crear": "crearFundacion",
         "admin/parametrizacion": "listarParametrizacion",
         "admin/usuariosexternos": "listarUsuariosExternos",
-        "admin/adopcionesdetalle/:id": "editarAdopcion",
-        "admin/adopcioneslistar": "listarAdopciones"
+        "admin/formulariosdetalle/:id": "editarFormulario",
+        "admin/formularioslistar": "listarFormularios",
+        "Admin/AdopcionesDetalle/:id": "editarAdopcion",
+        "Admin/AdopcionesDetalle(/:query)": "crearAdopcion",
+        "admin/adopcioneslistar" : "listarAdopciones"
+       
     },
     initialize : function(options)
     {
         this.alertaView = new AlertView();
+        this.initializeValidators();
+    },
+    initializeValidators: function ()
+    {
+        //jQuery.validator.methods["date"] = function (value, element) { debugger; }
     },
     //Inicio Animales
     listarAnimales:function()
@@ -81,15 +90,27 @@
     },
    
     //Fin Fundaciones
-    //InicioAdopciones
-    editarAdopcion: function (id) {
-        this.vistaActual = new AdopcionEditarView({ id: id });
+    //InicioFormularios
+    editarFormulario: function (id) {
+        this.vistaActual = new FormularioEditarView({ id: id });
     },
-    listarAdopciones : function()
+    listarFormularios : function()
     {
-        this.vistaActual = new AdopcionListarView();
+        this.vistaActual = new FormularioListarView();
     },
     //FinFundaciones
+
+    //InicioAdopciones
+    crearAdopcion: function (idFormulario) {
+        this.vistaActual = new AdopcionEditarView({ fId: idFormulario });
+    },
+    editarAdopcion: function (id) {
+        this.vistaActual = new AdopcionEditarView({ id : id});
+    },
+    listarAdopciones: function () {
+        this.vistaActual = new AdopcionListarView();
+    },
+    //FinAdopciones
     //Inicio UsuariosExternos
     listarUsuariosExternos: function () {
         //debugger;

@@ -90,6 +90,13 @@ namespace LoginCol.Huellitas.Web
             );
 
             routes.MapRoute(
+                name: "Seguimiento",
+                url: "seguimiento/{id}/{*queryValues}",
+                defaults: new { controller = "Home", action = "Seguimiento", queryValues = UrlParameter.Optional },
+                constraints: new { controller = "(Home)", action = "Seguimiento" }
+            );
+
+            routes.MapRoute(
                 name: "InformacionAdopcion",
                 url: "por-que-adoptar",
                 defaults: new { controller = "Home", action = "Adoptar" },

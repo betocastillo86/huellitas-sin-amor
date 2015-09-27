@@ -21,6 +21,10 @@ namespace LoginCol.Huellitas.Datos.Configuracion
             HasRequired(a => a.Formulario)
                 .WithOptional(f => f.Adopcion)
                 .WillCascadeOnDelete(false);
+
+            HasRequired(a => a.Formulario)
+                .WithRequiredPrincipal(f => f.Adopcion)
+                .WillCascadeOnDelete(false);
         }
     }
 }

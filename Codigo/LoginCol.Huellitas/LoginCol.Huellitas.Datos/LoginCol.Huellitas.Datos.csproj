@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdopcionRepositorio.cs" />
     <Compile Include="AnimalesRepositorio.cs" />
     <Compile Include="CampoRepositorio.cs" />
     <Compile Include="ComentarioRepositorio.cs" />
@@ -187,6 +188,18 @@
     <Compile Include="Migrations\201504080000147_EdadesMiembrosFamilia.cs" />
     <Compile Include="Migrations\201504080000147_EdadesMiembrosFamilia.Designer.cs">
       <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505161456519_CamposObligatorios_Adpocion.cs" />
+    <Compile Include="Migrations\201505161456519_CamposObligatorios_Adpocion.Designer.cs">
+      <DependentUpon>201505161456519_CamposObligatorios_Adpocion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505190204365_ActualizarLlaveForanea_Adopcion.cs" />
+    <Compile Include="Migrations\201505190204365_ActualizarLlaveForanea_Adopcion.Designer.cs">
+      <DependentUpon>201505190204365_ActualizarLlaveForanea_Adopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs" />
+    <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.Designer.cs">
+      <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
@@ -481,6 +494,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504080000147_EdadesMiembrosFamilia.resx">
       <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505161456519_CamposObligatorios_Adpocion.resx">
+      <DependentUpon>201505161456519_CamposObligatorios_Adpocion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505190204365_ActualizarLlaveForanea_Adopcion.resx">
+      <DependentUpon>201505190204365_ActualizarLlaveForanea_Adopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.resx">
+      <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
