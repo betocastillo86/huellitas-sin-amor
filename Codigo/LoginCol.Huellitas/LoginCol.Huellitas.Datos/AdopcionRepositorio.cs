@@ -75,5 +75,36 @@ namespace LoginCol.Huellitas.Datos
             }
             return lista ?? new List<Adopcion>();
         }
+
+
+        public void EliminarSeguimiento(int id)
+        {
+            using (var db = new Repositorio())
+            {
+                var obj = db.SeguimientosAdopciones.FirstOrDefault(s => s.SeguimientoAdopcionId == id);
+                db.SeguimientosAdopciones.Remove(obj);
+                ((System.Data.Entity.Infrastructure.IObjectContextAdapter)db).ObjectContext.ObjectStateManager.ChangeObjectState(obj, EntityState.Deleted);
+                db.SaveChanges();
+            }
+        }
+
+        public void CrearSeguimiento(SeguimientoAdopcion seguimiento)
+        {
+            using (var db = new Repositorio())
+            {
+                db.SeguimientosAdopciones.Add(seguimiento);
+                db.SaveChanges();
+            }
+        }
+
+        public SeguimientoAdopcion ObtenerSeguimientoAdopcion(int id)
+        {
+            SeguimientoAdopcion obj = null;
+            using (var db = new Repositorio())
+            {
+                obj = db.SeguimientosAdopciones.FirstOrDefault(s => s.SeguimientoAdopcionId == id);
+            }
+            return obj ?? new SeguimientoAdopcion();
+        }
     }
 }

@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201505190204365_ActualizarLlaveForanea_Adopcion.Designer.cs">
       <DependentUpon>201505190204365_ActualizarLlaveForanea_Adopcion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs" />
+    <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.Designer.cs">
+      <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -496,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505190204365_ActualizarLlaveForanea_Adopcion.resx">
       <DependentUpon>201505190204365_ActualizarLlaveForanea_Adopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.resx">
+      <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

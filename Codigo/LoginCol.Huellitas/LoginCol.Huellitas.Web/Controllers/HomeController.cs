@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using LoginCol.Huellitas.Negocio.Extensions;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
@@ -92,6 +93,36 @@ namespace LoginCol.Huellitas.Web.Controllers
             var modelo = new BaseModel("TituloPorqueAdoptar");
             return View(modelo);
         }
+        #endregion
+
+        #region Seguimiento
+        [HttpGet]
+        public ActionResult Seguimiento(int id)
+        {
+            string confirmKey = Request["key"];
+
+            if (string.IsNullOrEmpty(confirmKey))
+                return HttpNotFound();
+
+            var nAdopciones = new AdopcionNegocio();
+            var adopcion = nAdopciones.Obtener(id);
+
+            if(adopcion == null)
+                return HttpNotFound();
+
+            if (adopcion.ObtenerLlaveDeConfirmacionSeguimientoAdopcion().Equals(confirmKey))
+            {
+                var model = new SeguimientoModel();
+                model.ContenidoId = adopcion.ContenidoId;
+                model.ContenidoNombre = adopcion.Contenido.Nombre;
+
+                return View(model);
+            }
+            else {
+                return HttpNotFound();
+            }
+        }
+
         #endregion
 
 

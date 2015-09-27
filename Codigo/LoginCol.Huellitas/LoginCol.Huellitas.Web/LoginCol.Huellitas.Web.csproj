@@ -198,6 +198,7 @@
     <Compile Include="Controllers\HuellitasController.cs" />
     <Compile Include="Controllers\ParametrizacionController.cs" />
     <Compile Include="Controllers\PerdidosController.cs" />
+    <Compile Include="Controllers\SeguimientoController.cs" />
     <Compile Include="Controllers\TablasBasicasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +211,7 @@
     <Compile Include="Infraestructure\EmailAddressAttribute.cs" />
     <Compile Include="Infraestructure\ICrudAdministracion.cs" />
     <Compile Include="Infraestructure\InMemoryMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Infraestructure\MvcExtensions.cs" />
     <Compile Include="Infraestructure\NullableRequiredAttribute.cs" />
     <Compile Include="Infraestructure\SumarVisitaAttribute.cs" />
     <Compile Include="Models\Admin\AdopcionModel.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="Models\OpcionCampoModel.cs" />
     <Compile Include="Models\PerdidosModel.cs" />
     <Compile Include="Models\SeguimientoAdopcionModel.cs" />
+    <Compile Include="Models\SeguimientoModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\TipoContenidoModel.cs" />
     <Compile Include="Models\TipoRelacionContenidoModel.cs" />
@@ -657,6 +660,7 @@
     <Content Include="Scripts\models\huellitas.Comentario.js" />
     <Content Include="Scripts\models\huellitas.Contacto.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
+    <Content Include="Scripts\models\huellitas.Seguimiento.js" />
     <Content Include="Scripts\models\huellitas.TablaBasica.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.js" />
@@ -779,10 +783,13 @@
     <Content Include="Views\Administracion\_SeguimientoAdopcion.cshtml" />
     <Content Include="Scripts\models\huellitas.admin.SeguimientoAdopcion.js" />
     <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
+    <Content Include="Views\Home\Seguimiento.cshtml" />
+    <Content Include="Scripts\views\huellitas.SeguimientoView.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="HtmlHelpers\" />
+    <Folder Include="ImagenesSeguimiento\" />
     <Folder Include="RecursosContenidos\Imagenes\" />
     <Folder Include="Scripts\collections\" />
   </ItemGroup>

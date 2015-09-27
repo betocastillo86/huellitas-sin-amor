@@ -1,0 +1,71 @@
+﻿@model LoginCol.Huellitas.Web.Models.SeguimientoModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seguimiento</h2>
+
+<section class="conteBusca slide" id="first" >
+    <div class="container clearfix conteConta" id="divSeguimiento">
+        <h3 style="text-transform: uppercase;">CUENTANOS UN POCO DE @Model.ContenidoNombre</h3>
+
+
+        <form id="formRegistrar" class="grid_12 omega" action="/home/perdidos" method="post" enctype="multipart/form-data">
+            <p>
+
+
+                Este formulario está hecho para que nos cuentes un poco más de como ha sido tu relación @Model.ContenidoNombre
+                en estos días. Cuentanos algunos detalles como, cual es su comportamiento, como es la relación con la familia
+                , que problemas han tenido, como ha estado de salud. Cuentanos todo lo que puedas :)
+
+            </p>
+            <div id="camposFormulario">
+
+                <div class="grid_12">
+                    @Html.TextAreaFor(m => m.Observaciones, new { placeholder = "OBSERVACIONES" })
+                </div>
+                @Html.Hidden("Key", Request["key"])
+                <div class="grid_4" id="divArchivoPerdido"></div>
+
+                <div class="grid_4" id="divArchivoPerdido2"></div>
+
+
+                <input type="hidden" id="Imagen" />
+                <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
+            </div>
+
+            
+
+        </form>
+
+        <div id="divMensajeConfirmacion" style="display:none">
+            Muchas gracias por dejar tus datos.
+        </div>
+
+
+
+
+    </div>
+</section>
+@Html.Partial("_FileUpload")
+@Html.Partial("_Summary")
+
+@section css {
+    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/cssjqueryui")
+
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_seguimiento")
+    
+    @Scripts.Render("~/bundles/backbone_cargaArchivo")
+    @Scripts.Render("~/bundles/jqueryui")
+    @*@Scripts.Render("~/bundles/backbone_imagenes")*@
+
+
+
+}

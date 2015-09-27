@@ -32,8 +32,18 @@
                 <td class="center"><%= element.SeguimientoAdopcionId %></td>
                 <td class="center"><%= element.FechaRespuesta %></td>
                 <td class="center"><%= element.Observaciones %></td>
-                <td class="center"><%= element.Imagen1 %></td>
-                <td class="center"><%= element.Imagen2 %></td>
+                <td class="center">
+                <% if(element.Imagen1 == 'True'){
+                    %>
+                    <a href="/ImagenesSeguimiento/<%=element.SeguimientoAdopcionId%>/1.jpg" target="_blank">Ver</a><%
+                } %>
+                </td>
+                <td class="center">
+                    <% if(element.Imagen2 == 'True'){
+                    %>
+                    <a href="/ImagenesSeguimiento/<%=element.SeguimientoAdopcionId%>/2.jpg" target="_blank">Ver</a><%
+                    } %>
+                </td>
             </tr>
 
                 <%

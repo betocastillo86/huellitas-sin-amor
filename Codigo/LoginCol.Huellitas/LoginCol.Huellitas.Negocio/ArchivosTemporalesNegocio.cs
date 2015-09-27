@@ -13,6 +13,8 @@ namespace LoginCol.Huellitas.Negocio
     {
         private string CarpetaTemporal { get { return Path.Combine(this.RutaServidor, "TempFiles"); } }
 
+        public string CarpetaSeguimiento { get { return Path.Combine(this.RutaServidor, "ImagenesSeguimiento"); } }
+
         public ArchivosTemporalesNegocio()
         {
 
@@ -79,6 +81,16 @@ namespace LoginCol.Huellitas.Negocio
             }
 
         }
+
+
+        public string ObtenerRutaArchivoTemporal(string llave)
+        {
+            if (string.IsNullOrEmpty(llave))
+                throw new ArgumentNullException("llave");
+
+            return System.IO.Directory.GetFiles(this.CarpetaTemporal).FirstOrDefault(a => a.Contains(llave));
+        }
+
 
         public void EliminarArchivoTemporal(string llave)
         {
