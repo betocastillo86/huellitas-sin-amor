@@ -9,7 +9,8 @@
             {
                 'search': 'Buscar por nombre: '
             },
-        'sPaginationType': 'bootstrap'
+        'sPaginationType': 'bootstrap',
+        "aaSorting": []
     },
 
     initialize : function(args)

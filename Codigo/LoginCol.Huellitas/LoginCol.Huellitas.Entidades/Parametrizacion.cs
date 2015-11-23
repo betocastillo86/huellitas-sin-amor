@@ -14,7 +14,7 @@ namespace LoginCol.Huellitas.Entidades
         public string Llave { get; set; }
         
         [Required]
-        [MaxLength(500)]
+        [MaxLength(4000)]
         public string Valor { get; set; }
     }
 }

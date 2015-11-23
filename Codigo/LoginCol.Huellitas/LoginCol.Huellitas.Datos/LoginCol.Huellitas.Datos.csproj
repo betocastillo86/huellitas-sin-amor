@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201504080000147_EdadesMiembrosFamilia.Designer.cs">
       <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.cs" />
+    <Compile Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.Designer.cs">
+      <DependentUpon>201511231616334_Paranetrizacion_Valor_4000.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Migrations\201408172100505_PrimeraVersion.cs" />
@@ -481,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504080000147_EdadesMiembrosFamilia.resx">
       <DependentUpon>201504080000147_EdadesMiembrosFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.resx">
+      <DependentUpon>201511231616334_Paranetrizacion_Valor_4000.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

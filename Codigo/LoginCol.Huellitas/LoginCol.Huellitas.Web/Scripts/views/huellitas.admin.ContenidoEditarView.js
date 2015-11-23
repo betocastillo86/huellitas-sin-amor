@@ -11,7 +11,8 @@
         "change #TipoContenidoId": "cambiarTipoContenido",
         "change #Activo": "activarContenido",
         "change #Destacado" : "destacarContenido",
-        "click #VerGaleriaContenido": "verGaleria"
+        "click #VerGaleriaContenido": "verGaleria",
+        'click #aAyudaRedaccion' : 'mostrarAyudaRedaccion'
     },
 
     template: _.template($("#templateEditarContenidoBase").html()),
@@ -69,6 +70,9 @@
             this.model.set('ContenidoId', 0);
             this.mostrarContenido();
         }
+    },
+    mostrarAyudaRedaccion: function () {
+        App_Router.alertaView.mostrar($("#ContenidoAyuda").val());
     },
     mostrarContenido: function ()
     {
