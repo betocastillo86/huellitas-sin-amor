@@ -3,13 +3,13 @@
 
     url: "/api/adminimagenes",
 
-    events : {
+    events: {
         "click #BtnMostrarAgregarImagenContenido": "mostrarFormularioImagenNueva",
         "click #BtnGuardarImagenContenido": "agregarImagen",
-        "change #archivoImagenAdicional" : "validarContenidoArchivo"
+        "change #archivoImagenAdicional": "validarContenidoArchivo"
     },
 
-    idContenidoPadre : undefined,
+    idContenidoPadre: undefined,
 
     lista: undefined,
 
@@ -17,12 +17,11 @@
 
     templateFila: undefined,
 
-    app : undefined,
+    app: undefined,
 
     //alertaView: undefined,
 
-    initialize: function (args)
-    {
+    initialize: function (args) {
         if (args.id == undefined)
             alert("falta definir el id");
 
@@ -32,10 +31,12 @@
         this.idContenidoPadre = args.id;
 
         this.templateFila = _.template($("#templateFilaImagenContenido").html());
-        
+
         this.lista = new ImagenCollection({ idContenido: args.id });
 
         this.app = new AppHuellitas({ el: this.el });
+
+        this.cargarArrastrar();
 
         this.render();
     },
@@ -44,7 +45,21 @@
         this.lista.on("sync", this.cargarPropiedadesGaleria, this);
         this.lista.fetch();
     },
-    recargarImagenes : function(){
+    cargarArrastrar: function () {
+
+        var that = this;
+        $(".dropzone").dropzone(
+            {
+                url: "/admin/RelacionarImagen/" + this.idContenidoPadre,
+                complete: function () {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        that.lista.fetch();
+                    }
+                }
+            }
+        );
+    },
+    recargarImagenes: function () {
 
         $("#Nombre-Imagen").val("");
         $("#Descripcion-Imagen").val("");
@@ -54,8 +69,7 @@
         this.lista.fetch();
         //this.cargarPropiedadesGaleria();
     },
-    imagenAgregada: function (model)
-    {
+    imagenAgregada: function (model) {
         $("#ulImagenes").append(this.templateFila(model.toJSON()));
     },
     mostrar: function () {
@@ -64,25 +78,21 @@
         //this.cargarPropiedadesGaleria();
         this.delegateEvents();
     },
-    agregarImagen : function()
-    {
+    agregarImagen: function () {
         var imagenNueva = new ImagenModel();
         this.listenTo(imagenNueva, "imagen-guardada-ok", this.recargarImagenes);
-        imagenNueva.set({ Nombre : $("#Nombre-Imagen").val(), Descripcion : $("#Descripcion-Imagen").val() });
+        imagenNueva.set({ Nombre: $("#Nombre-Imagen").val(), Descripcion: $("#Descripcion-Imagen").val() });
         imagenNueva.crear(this.idContenidoPadre, $("#archivoImagenAdicional"));
     },
-    eliminarImagen : function(id)
-    {
+    eliminarImagen: function (id) {
         var model = this.lista.findWhere({ ContenidoRelacionadoId: id });
         if (model != undefined)
             this.lista.eliminar(model);
     },
-    validarContenidoArchivo : function()
-    {
+    validarContenidoArchivo: function () {
         return this.app.validarContenidoArchivoGeneral("archivoImagenAdicional");
     },
-    cargarPropiedadesGaleria : function()
-    {
+    cargarPropiedadesGaleria: function () {
         //gallery controls container animation
         $('ul.gallery li').hover(function () {
             $('img', this).fadeToggle(1000);
@@ -146,19 +156,17 @@
             }
         });
     },
-    mostrarFormularioImagenNueva : function()
-    {
+    mostrarFormularioImagenNueva: function () {
         $("#divImagenesFormulario").show();
         $("#BtnMostrarAgregarImagenContenido").hide();
     },
-    ocultar: function ()
-    {
+    ocultar: function () {
         this.$el.modal('hide');
         //this.alertaView.ocultar();
     },
     desactivar: function () {
         this.$el.hide();
         this.undelegateEvents();
-        
+
     }
 });

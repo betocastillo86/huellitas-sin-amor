@@ -374,6 +374,8 @@
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\RutaLocal.pubxml" />
     <None Include="Properties\PublishProfiles\Web Deply Godaddy.pubxml" />
+    <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
+    <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
     <None Include="Scripts\libs\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
@@ -456,6 +458,18 @@
     <Content Include="Images\Mail\ytb.jpg" />
     <Content Include="Images\sunglasses.png" />
     <Content Include="Images\twitter.png" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\css\basic.css" />
+    <Content Include="Scripts\dropzone\css\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
+    <Content Include="Scripts\dropzone\images\spritemap.png" />
     <Content Include="Scripts\huellitas.admin.app.js" />
     <Content Include="Scripts\huellitas.app.js" />
     <Content Include="Scripts\huellitas.general.js" />

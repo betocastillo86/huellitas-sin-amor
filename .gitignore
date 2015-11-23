@@ -209,3 +209,7 @@ src/Presentation/Nop.Web/TempFiles/*
 
 #JS de configuracion generado automaticamente
 src/Presentacion/Scripts/tuils/configuration.js
+
+
+#Imagenes
+**/RecursosContenidos/**

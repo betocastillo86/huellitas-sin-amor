@@ -87,6 +87,14 @@ namespace LoginCol.Huellitas.Web
             #endregion
 
             #region Admin
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                     "~/Scripts/dropzone/dropzone.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/dropzonescss").Include(
+                     "~/Scripts/dropzone/css/basic.css",
+                     "~/Scripts/dropzone/css/dropzone.css"));
+
             //Librerias adicionales del template charisma
             bundles.Add(new ScriptBundle("~/bundles/jqueryTemplate").
                 Include(

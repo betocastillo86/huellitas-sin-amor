@@ -1,6 +1,6 @@
 ﻿<div id="divImagenesContenido" class="modal fade" role="dialog">
 
-    <div class="modal-dialog" style="width:800px" >
+    <div class="modal-dialog" style="width:800px">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
@@ -35,10 +35,20 @@
                                     <div class="btn btn-success" id="BtnCancelarImagenContenido">Cancelar</div>
                                 </div>
                             </div>
-                            <div class="btn btn-success" id="BtnMostrarAgregarImagenContenido">Agregar Imagen</div>
+                            <div class="btn btn-success" id="BtnMostrarAgregarImagenContenido">Agregar Imagen a la antigua</div>
                             <br>
                             <ul class="thumbnails gallery" id="ulImagenes"></ul>
                         </div>
+                        <!--<form action="/admin/RelacionarImagen" method="post" enctype="multipart/form-data" >-->
+                        <div class="jumbotron">
+                            <div class="dropzone" id="dropzoneForm">
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                    <input type="submit" value="Upload" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--</form>-->
                     </div>
                 </p>
             </div>
@@ -56,11 +66,21 @@
 
 <script type="text/template" id="templateFilaImagenContenido">
     <li class="thumbnail" id="image-<%= ContenidoRelacionadoId %>">
-        <a href="/img/<%= ContenidoHijo.ContenidoId %>/big"  title="<%= ContenidoHijo.Nombre %>" style="background:url(/img/<%= ContenidoHijo.ContenidoId %>/mini)" class="cboxElement">
-        <img alt="Adopta una mascota:<%= ContenidoHijo.Nombre %>" title="<%= ContenidoHijo.Nombre %>" src="/img/<%= ContenidoHijo.ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px">
+        <a href="/img/<%= ContenidoHijo.ContenidoId %>/big" title="<%= ContenidoHijo.Nombre %>" style="background:url(/img/<%= ContenidoHijo.ContenidoId %>/mini)" class="cboxElement">
+            <img alt="Adopta una mascota:<%= ContenidoHijo.Nombre %>" title="<%= ContenidoHijo.Nombre %>" src="/img/<%= ContenidoHijo.ContenidoId %>/mini" class="grayscale" style="display: block; width: 100px; height: 100px">
         </a>
     </li>
 </script>
+<style>
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: 200px;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>
 
 <script src="~/Scripts/models/huellitas.admin.Imagen.js"></script>
 <script src="~/Scripts/views/huellitas.admin.GaleriaContenidoView.js"></script>

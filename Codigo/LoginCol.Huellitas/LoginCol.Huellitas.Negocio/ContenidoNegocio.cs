@@ -354,7 +354,7 @@ namespace LoginCol.Huellitas.Negocio
         { 
             contenido.TipoContenidoId = (int)TipoContenidoEnum.Imagen;
             contenido.ZonaGeograficaId = ParametrizacionNegocio.ZonaGeograficaPorDefecto;
-            contenido.DescripcionCorta = contenido.Descripcion;
+            contenido.DescripcionCorta = contenido.Nombre;
             contenido.Email = "general@general.com";
             ResultadoOperacion respuesta = Crear(contenido, idUsuario, imagen);
 

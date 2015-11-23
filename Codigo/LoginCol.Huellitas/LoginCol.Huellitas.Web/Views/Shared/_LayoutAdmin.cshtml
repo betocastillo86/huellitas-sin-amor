@@ -31,9 +31,11 @@
     @Styles.Render("~/bundles/admin")
     @Styles.Render("~/bundles/themes/base/css")
     @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/dropzonescss")
     
 
     <script src="~/Generales/ConstantesJs"></script>
+    
     
 
     @*<link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
@@ -46,9 +48,12 @@
     
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/jqueryval")
 
     @Scripts.Render("~/bundles/backbone")
+    @Scripts.Render("~/bundles/dropzonescripts")
+    <script>Dropzone.autoDiscover = false;</script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
