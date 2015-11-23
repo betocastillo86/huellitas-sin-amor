@@ -47,8 +47,8 @@ namespace LoginCol.Huellitas.Datos.Migrations
                     {
                         SeguimientoAdopcionId = c.Int(nullable: false, identity: true),
                         AdopcionId = c.Int(nullable: false),
-                        Imagen1 = c.String(maxLength: 300),
-                        Imagen2 = c.String(maxLength: 300),
+                        Imagen1 = c.Boolean(nullable:false),
+                        Imagen2 = c.Boolean(nullable: false),
                         Video = c.String(maxLength: 50),
                         FechaRespuesta = c.DateTime(nullable: false),
                         Observaciones = c.String(),

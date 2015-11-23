@@ -23,7 +23,7 @@
                 <br/>
 				
                 <p>Hola {1},</p>
-				<p>te escribimos para comunicarte que lamentablemente la fundación <a href="http://huellitas.social/{3}"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">{2}</a> nos ha informado que tu solcitud de adopción para {0} ha sido rechazada, ya que  en su concepto no cuentas con las caracteristicas necesarias para poder ser la famillia de esta huellita.</p>
+				<p>te escribimos para comunicarte que lamentablemente la fundación <a href="http://huellitas.social/{3}"  style="font-weight:bold; text-decoration:underline; color:#FF8A8E;">{2}</a> nos ha informado que tu solcitud de adopción para {0} ha sido rechazada, ya que en el area de tu lugar de vivienda no se tiene aún asignado el personal para realizar el seguimiento que normalmente se hace después de una adopción.</p>
 				<p>De todas maneras te agradecemos tu solicitud y te pedimos que sigas ayudando a los animalitos de la calle que tanto necesitan de tu apoyo y solidaridad.</p>
 
 				<p>{4}</p>
