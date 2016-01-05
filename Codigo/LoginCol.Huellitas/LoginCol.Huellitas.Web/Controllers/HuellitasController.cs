@@ -44,6 +44,10 @@ namespace LoginCol.Huellitas.Web.Controllers
             ContenidoNegocio nContenido = new ContenidoNegocio();
             modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
 
+            //Si no está activo lo envia al home
+            if (!modelo.Contenido.Activo)
+                return RedirectToAction("Index", "Home");
+
             modelo.CargarTitulo("TituloAdopcion", modelo.Contenido.Nombre);
 
             ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();

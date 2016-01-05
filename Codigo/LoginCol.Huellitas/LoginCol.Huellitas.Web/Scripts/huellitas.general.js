@@ -23,6 +23,17 @@ function ValidarExtensionArchivo(obj, extensionesPermitidas)
     }
 }
 
+
+function MostrarCargandoTodo(mostrar)
+{
+    if (mostrar) {
+        $("#divLoadingAll").addClass('loading');
+    }
+    else {
+        $("#divLoadingAll").removeClass('loading');
+    }
+}
+
 /*scroll*/
 
     

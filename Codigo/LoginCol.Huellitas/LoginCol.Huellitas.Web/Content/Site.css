@@ -16,8 +16,9 @@ input-validation-error {
     display: none;
 }
 
-input.input-validation-error {
+input.input-validation-error, select.input-validation-error, textarea.input-validation-error {
     border: 1px solid #e80c4d;
+        background-color: #FFDBDC;
 }
 
 input[type="checkbox"].input-validation-error {
