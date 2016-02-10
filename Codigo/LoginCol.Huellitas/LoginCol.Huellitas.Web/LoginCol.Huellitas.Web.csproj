@@ -186,6 +186,7 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\AdminUsuarioRelacionadoController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
+    <Compile Include="Controllers\api\HuellitasApiController.cs" />
     <Compile Include="Controllers\ArchivosController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mapeo\MapeoEntidades.cs" />
     <Compile Include="Models\OpcionCampoModel.cs" />
+    <Compile Include="Models\CrearHuellitaModel.cs" />
     <Compile Include="Models\PerdidosModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\TipoContenidoModel.cs" />
@@ -671,6 +673,7 @@
     <Content Include="Scripts\models\huellitas.Comentario.js" />
     <Content Include="Scripts\models\huellitas.Contacto.js" />
     <Content Include="Scripts\models\huellitas.Contenido.js" />
+    <Content Include="Scripts\models\huellitas.CrearHuellita.js" />
     <Content Include="Scripts\models\huellitas.TablaBasica.js" />
     <Content Include="Scripts\models\huellitas.TipoContenido.js" />
     <Content Include="Scripts\libs\TrafficCop-amd.js" />
@@ -706,6 +709,7 @@
     <Content Include="Scripts\views\huellitas.ListarFundacionesView.js" />
     <Content Include="Scripts\views\huellitas.ListarHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.MapaView.js" />
+    <Content Include="Scripts\views\huellitas.CrearHuellitaView.js" />
     <Content Include="Scripts\views\huellitas.PerdidosView.js" />
     <Content Include="Scripts\views\huellitas.ResultadosHuellitasView.js" />
     <Content Include="Scripts\views\huellitas.TwitterShareView.js" />
@@ -787,6 +791,7 @@
     <Content Include="Views\Administracion\AdopcionesListar.cshtml" />
     <Content Include="Views\Administracion\AdopcionesDetalle.cshtml" />
     <Content Include="Scripts\views\huellitas.admin.AdopcionListarView.js" />
+    <Content Include="Views\Huellitas\CrearHuellita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

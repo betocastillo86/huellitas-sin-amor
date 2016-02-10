@@ -103,12 +103,13 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         #endregion
-        
 
+
+        #region Detalle
         [HttpGet]
         [SumarVisita]
         public ActionResult Detalle(int id)
-        {   
+        {
             ContenidoNegocio nContenido = new ContenidoNegocio();
             DetalleHuellitaModel modelo = Mapper.Map<Contenido, DetalleHuellitaModel>(nContenido.Obtener(id));
             modelo.CargarTitulo("TituloDetalleHuellita", modelo.Nombre);
@@ -121,7 +122,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             if (padrino != null)
             {
                 modelo.AdoptantePadrino = Mapper.Map<Usuario, UsuarioBaseModel>(padrino.Usuario);
-                modelo.TipoAdoptante = (TipoRelacionUsuariosEnum) padrino.TipoRelacionId;
+                modelo.TipoAdoptante = (TipoRelacionUsuariosEnum)padrino.TipoRelacionId;
             }
 
             if (hogarDePaso != null)
@@ -145,7 +146,7 @@ namespace LoginCol.Huellitas.Web.Controllers
                 .Take(2)
                 .Select(Mapper.Map<Contenido, ContenidoListadoModel>)
                 .ToList();
-            
+
             return PartialView("_BannerDestacados", contenidos);
         }
 
@@ -155,8 +156,8 @@ namespace LoginCol.Huellitas.Web.Controllers
         {
             var nContenido = new ContenidoNegocio();
             var model = new VistaContenidoRelacionadoModel();
-                model.VerTodos = verTodos;
-                model.LinkVerTodos = linkVerTodos;
+            model.VerTodos = verTodos;
+            model.LinkVerTodos = linkVerTodos;
             model.Contenidos = nContenido.ObtenerContenidosRelacionados(contenido.Id, Convert.ToInt32(tipoRelacion))
             .Select(Mapper.Map<ContenidoRelacionado, ContenidoRelacionadoModel>)
             .OrderBy(c => Guid.NewGuid())
@@ -167,6 +168,15 @@ namespace LoginCol.Huellitas.Web.Controllers
             return PartialView("_ContenidosRelacionados", model);
         }
 
+        #endregion
+
+
+        #region Dar en adopción
+        public ActionResult CrearHuellita()
+        {
+            return View(new CrearHuellitaModel());
+        }
+        #endregion
 
     }
 }

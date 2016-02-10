@@ -205,6 +205,19 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/views/huellitas.SummaryView.js")
                 .Include("~/Scripts/models/huellitas.Contacto.js")
                 .Include("~/Scripts/models/huellitas.TablaBasica.js")
+                .Include("~/Scripts/views/huellitas.CrearHuellitaView.js")
+                .Include("~/Scripts/models/huellitas.CrearHuellita.js")
+                );
+
+
+            //Huellitas crear
+            bundles.Add(new ScriptBundle("~/bundles/backbone_crear_huellita")
+                .Include("~/Scripts/models/huellitas.Contenido.js")
+                .Include("~/Scripts/views/huellitas.SummaryView.js")
+                .Include("~/Scripts/models/huellitas.TablaBasica.js")
+                .Include("~/Scripts/views/huellitas.CrearHuellitaView.js")
+                .Include("~/Scripts/models/huellitas.CrearHuellita.js")
+                .Include("~/Scripts/dropzone/dropzone.js")
                 );
 
             bundles.Add(new ScriptBundle("~/bundles/backbone_home")

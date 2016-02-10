@@ -1299,7 +1299,7 @@ footer .redes{
 /*fin contacto */
 /*se busca*/
 .seBusca{
-	background:url(../images/header_busco.jpg) repeat center 90px / cover;
+	background:url(../images/header_busco.jpg) repeat center 0px / cover;
 	text-align:center;
 	}
 .seBusca h2{
