@@ -34,28 +34,14 @@ namespace LoginCol.Huellitas.Web.Controllers
         [HttpGet]
         public ActionResult QuieroAdoptar(int id)
         {
-            FormularioAdopcionModel modelo = new FormularioAdopcionModel();
-            DatoTablaBasicaNegocio nDatoTablaBasica = new DatoTablaBasicaNegocio();
-
-            modelo.ListaOcupaciones = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.Ocupacion);
-            modelo.Preguntas = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.PreguntaAdopcion);
-
-            //Cargamos el contenido en el modelo
-            ContenidoNegocio nContenido = new ContenidoNegocio();
-            modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
+            var modelo = new FormularioAdopcionModel();
+            
+            CargarModeloFormulario(modelo, id);
 
             //Si no está activo lo envia al home
             if (!modelo.Contenido.Activo)
                 return RedirectToAction("Index", "Home");
 
-            modelo.CargarTitulo("TituloAdopcion", modelo.Contenido.Nombre);
-
-            ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(id, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
-
-            if (hogarDePaso != null)
-                modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
-
-            modelo.Usuario = new UsuarioModel();
             return View(modelo);
         }
 
@@ -63,43 +49,79 @@ namespace LoginCol.Huellitas.Web.Controllers
         [HttpPost]
         public ActionResult QuieroAdoptar(int id, FormularioAdopcionModel modelo)
         {
-
-            var respuestas = new List<RespuestaAdopcion>();
-
-            foreach (var pregunta in Request.Form.AllKeys.Where(k => k.StartsWith("pregunta")))
+            ModelState.Remove("Usuario.Telefono");
+            ModelState.Remove("Usuario.Clave");
+            ModelState.Remove("Usuario.Apellidos");
+            if (ModelState.IsValid)
             {
-                respuestas.Add(new RespuestaAdopcion()
+                var respuestas = new List<RespuestaAdopcion>();
+
+                foreach (var pregunta in Request.Form.AllKeys.Where(k => k.StartsWith("pregunta")))
                 {
-                    PreguntaId = Convert.ToInt32(pregunta.Replace("pregunta", string.Empty)),
-                    Respuesta = Request.Form[pregunta]
-                });
-            }
+                    respuestas.Add(new RespuestaAdopcion()
+                    {
+                        PreguntaId = Convert.ToInt32(pregunta.Replace("pregunta", string.Empty)),
+                        Respuesta = Request.Form[pregunta]
+                    });
+                }
 
-            var formularioAdopcionNegocio = new FormularioAdopcionNegocio();
+                var formularioAdopcionNegocio = new FormularioAdopcionNegocio();
 
-            //Crea el formulario de adopción
-            var formulario = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
-            formulario.ContenidoId = id;
-            formulario.Respuestas = respuestas;
-            formulario.Usuario.Apellidos = ".";
+                //Crea el formulario de adopción
+                var formulario = Mapper.Map<FormularioAdopcionModel, FormularioAdopcion>(modelo);
+                formulario.ContenidoId = id;
+                formulario.Respuestas = respuestas;
+                formulario.Usuario.Apellidos = ".";
 
-            var respuesta = formularioAdopcionNegocio.Crear(formulario);
+                var respuesta = formularioAdopcionNegocio.Crear(formulario);
 
-            if (respuesta.OperacionExitosa)
-            {
-                modelo.Id = respuesta.Id;
+                if (respuesta.OperacionExitosa)
+                {
+                    modelo.Id = respuesta.Id;
+                }
+                else
+                {
+                    modelo.OperacionExitosa = false;
+                    modelo.MensajeError = respuesta.MensajeError;
+                }
+
+                //Cargamos el contenido en el modelo
+                ContenidoNegocio nContenido = new ContenidoNegocio();
+                modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
             }
             else
             {
-                modelo.OperacionExitosa = false;
-                modelo.MensajeError = respuesta.MensajeError;
+                //Vuelve a cargar el modelo
+                CargarModeloFormulario(modelo, id);
+                modelo.Id = 0;
             }
 
-            //Cargamos el contenido en el modelo
-            ContenidoNegocio nContenido = new ContenidoNegocio();
-            modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(id));
-
             return View(modelo);
+        }
+
+
+        public FormularioAdopcionModel CargarModeloFormulario(FormularioAdopcionModel modelo, int idContenido)
+        {
+            DatoTablaBasicaNegocio nDatoTablaBasica = new DatoTablaBasicaNegocio();
+
+            modelo.ListaOcupaciones = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.Ocupacion);
+            modelo.Preguntas = nDatoTablaBasica.ObtenerPorIdTabla(TablasBasicasEnum.PreguntaAdopcion);
+
+            //Cargamos el contenido en el modelo
+            var nContenido = new ContenidoNegocio();
+
+            modelo.Contenido = Mapper.Map<Contenido, ContenidoModel>(nContenido.Obtener(idContenido));
+
+            modelo.CargarTitulo("TituloAdopcion", modelo.Contenido.Nombre);
+
+            ContenidoRelacionado hogarDePaso = nContenido.ObtenerContenidosRelacionados(idContenido, TipoRelacionEnum.Fundacion, true).FirstOrDefault();
+
+            if (hogarDePaso != null)
+                modelo.HogarDePaso = Mapper.Map<Contenido, ContenidoListadoModel>(hogarDePaso.ContenidoHijo);
+
+            modelo.Usuario = new UsuarioModel();
+
+            return modelo;
         }
 
         #endregion

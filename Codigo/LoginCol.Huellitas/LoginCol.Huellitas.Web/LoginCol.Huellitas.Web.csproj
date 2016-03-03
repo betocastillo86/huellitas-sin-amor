@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HuellitasController.cs" />
     <Compile Include="Controllers\ParametrizacionController.cs" />
     <Compile Include="Controllers\PerdidosController.cs" />
+    <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\TablasBasicasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

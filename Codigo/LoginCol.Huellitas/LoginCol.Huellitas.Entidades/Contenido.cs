@@ -15,7 +15,16 @@ namespace LoginCol.Huellitas.Entidades
 
 
         [NotMapped]
-        public string NombreLink { get { return string.IsNullOrEmpty(Nombre) ? string.Empty : Nombre.Replace(" ", "-"); } }
+        public string NombreLink { get { return string.IsNullOrEmpty(Nombre) ? string.Empty : Nombre
+            .Replace(" ", "-")
+            .Replace("á", "a")
+            .Replace("é", "e")
+            .Replace("í", "i")
+            .Replace("ó", "o")
+            .Replace("ú", "u")
+            .Replace("ñ", "n");
+        }
+        }
 
         [Required]
         [MaxLength(50)]

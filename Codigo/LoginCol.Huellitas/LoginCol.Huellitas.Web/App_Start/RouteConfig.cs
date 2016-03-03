@@ -152,7 +152,18 @@ namespace LoginCol.Huellitas.Web
 
             #endregion
 
-
+            #region Seo
+            routes.MapRoute(
+                name: "robots.txt",
+                url: "robots.txt",
+                defaults: new { controller = "Seo", action = "RobotsTextFile" }
+            );
+            routes.MapRoute(
+                name: "sitemap.xml",
+                url: "sitemap.xml",
+                defaults: new { controller = "Seo", action = "SitemapXml" }
+            );
+            #endregion
 
 
             routes.MapRoute(
@@ -164,6 +175,8 @@ namespace LoginCol.Huellitas.Web
             #endregion
 
             
+
+
         }
     }
 }
