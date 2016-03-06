@@ -3,7 +3,7 @@
     //ViewBag.TagDescripcion =  "Huellitas sin hogar tiene una plataforma para tí en la cual podrás ingresar los datos de mascotas perdidas al rededor del pais. También si estas buscando tu perro o gato perdido, lo podrás encontrar acá.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script>Dropzone.autoDiscover = false;</script>
 <section id="first" class="seBusca slide">
     <div class="container clearfix">
         <h2>DAR EN ADOPCIÓN</h2>
@@ -25,10 +25,17 @@
 
                 <form id="formRegistrar" class="grid_9 omega"  action="@Url.RouteUrl("CrearHuellita")" method="post" enctype="multipart/form-data">
                     <p>
-
                         En Huellitas sin hogar te ayudamos a que le puedas conseguir hogar a los peludos que no lo tengan, pero antes de cualquier cosa ten en cuenta las siguientes recomendaciones:
                     </p>
-                    <div id="camposFormulario">
+                    <div id="divRecomendaciones">
+                        <ul>
+                            <li>Debes tomar las fotos con buena luz, enfocadas, con buena resolución y que se vea el perro o gato perfectamente</li>
+                            <li>Debes suministrar datos de contacto claros que serán verificados por Huellitas sin Hogar</li>
+                            <li>En caso que la información suministrada no este completa o tenga errores, no se podrá ver publicada en la pagina</li>
+                        </ul>
+                        <a id="btnEmpezar" href="#divCrearHuellita" class="btn color3" style="height:35px; margin-left:40%">Empezar</a>
+                    </div>
+                    <div id="camposFormulario" style="display:none">
                         <div class="conte_check grid_4">
                             <div class="tipoMasco">
                                 <input class="check rbTipo" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
@@ -90,10 +97,8 @@
                     </div>
 
                     <div id="divMensajeConfirmacion" style="display:none">
-                        <h2 id="msjBusco" style="display:none">Muchas gracias por dejar tus datos, esperamos tu mascota aparezca lo más pronto posible, de ser así nos comunicaremos inmediatamente contigo.</h2>
-                        <h2 id="msjEncuentro" style="display:none">Muchas gracias por dejar tus datos, que la familia de esta huellita lo encuentre lo más pronto posible. Si sabemos algo te estaremos contactando para informarte lo que sucede.</h2>
-
-                        <a href="javascript:void(0);" class="volver btn color3">VOLVER</a>
+                        <h2 >Muchas gracias por dejar tus datos, validarémos la información y aprobarémos la huellita pronto. Debes estar pendiente. Si tienes dudas escribenos a Facebook.</h2>
+                        <a href="/" class="volver btn color3">VOLVER</a>
                     </div>
 
                 </form>
@@ -109,8 +114,8 @@
 <style>
     #dropzoneForm {
         background: #8a6f6f;
-        //border: black dashed 3px;
-        //width: 200px;
+        /*border: black dashed 3px;
+        width: 200px;*/
         padding: 10px;
         text-align: center;
         color: white;

@@ -21,6 +21,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+TempFiles/
 
 # Visual Studo 2015 cache/options directory
 .vs/
@@ -196,6 +197,8 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+*.suo
 
 #Imagenes de Tuils
 src/Presentation/Nop.Web/Content/Images/Thumbs/

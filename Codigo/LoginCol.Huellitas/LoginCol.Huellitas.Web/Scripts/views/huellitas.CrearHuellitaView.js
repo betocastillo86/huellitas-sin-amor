@@ -1,4 +1,4 @@
-﻿var CrearHuellitaView = Backbone.View.extend({
+﻿var CrearHuellitaView = BaseView.extend({
     el: "#divCrearHuellita",
 
 
@@ -34,6 +34,7 @@
     events: {
         //"click .nav_busca .addform": "cargarFormularioPerdido",
         "click #formRegistrar [name='rbTipo']": "cambioTipo",
+        'click #btnEmpezar' : 'empezar',
         "click #btnGuardar": "guardar",
     },
 
@@ -103,8 +104,10 @@
         );
 
     },
-
-
+    empezar: function () {
+        this.$('#divRecomendaciones').hide();
+        this.$('#camposFormulario').show();
+    },
     cambioTipo: function () {
         var tipo = parseInt(this.$("#formRegistrar input[name='rbTipo']:checked").val());
         this.model.set({ Tipo: tipo });
@@ -126,11 +129,16 @@
         this.btnGuardar.show();
     },
     guardar: function () {
+
         this.ocultarBotonesAlGuardar();
         this.model.set({ ZonaGeograficaId: this.$("#ddlZonaCiudad").val() });
+        var errores = this.validateControls();
         
-        this.model.guardar({ success: this.contenidoGuardado, invalid: this.datosInvalidos }, this);
-        
+        if (this.model.isValid()) {
+            this.model.guardar({ success: this.contenidoGuardado, invalid: this.datosInvalidos }, this);
+        }
+        else
+            this.datosInvalidos(errores);
     },
     filtrarPerdidos: function () {
         if (!this.vistaResultados)
@@ -156,15 +164,11 @@
     mostrarConfirmacion: function () {
         this.$("#camposFormulario").hide();
         this.$("#divMensajeConfirmacion").show();
-        if (this.tipoContenido == Constantes.TipoAnimalesPerdidos)
-            this.$("#msjBusco").show();
-        else
-            this.$("#msjEncuentro").show();
     },
-    datosInvalidos: function (errores, ctx) {
-        ctx.vistaSummary.mostrar(errores);
-        Huellitas.marcarErroresFormulario(errores, ctx);
-        ctx.mostrarBotonesAlGuardar();
+    datosInvalidos: function (errores) {
+        this.vistaSummary.mostrar(errores);
+        //Huellitas.marcarErroresFormulario(errores, ctx);
+        this.mostrarBotonesAlGuardar();
     },
     mostrarInicio: function () {
         $(".nav_busca li")

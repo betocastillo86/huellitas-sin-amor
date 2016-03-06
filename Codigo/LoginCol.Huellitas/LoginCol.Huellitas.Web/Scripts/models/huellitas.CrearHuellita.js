@@ -49,7 +49,7 @@
 		    msg: "Ingresa un número telefónico"
 		},
 		ContactoCorreo: {
-			required: false,
+			required: true,
 			pattern: "email",
 			msg: "Ingresa tu correo electrónico"
 		},

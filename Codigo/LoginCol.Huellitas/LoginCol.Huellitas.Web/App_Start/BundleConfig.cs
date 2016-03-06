@@ -151,7 +151,8 @@ namespace LoginCol.Huellitas.Web
             bundles.Add(new ScriptBundle("~/bundles/backbone_router")
                 .Include("~/Scripts/huellitas.app.js")
                 .Include("~/Scripts/huellitas.router.js")
-                .Include("~/Scripts/huellitas.general.js"));
+                .Include("~/Scripts/huellitas.general.js")
+                .Include("~/Scripts/Views/huellitas.BaseView.js"));
 
             //zonas geograficas
             bundles.Add(new ScriptBundle("~/bundles/backbone_zonasGeograficas")

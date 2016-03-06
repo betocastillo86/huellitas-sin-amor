@@ -370,6 +370,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\Archivos Release.pubxml" />
     <None Include="Properties\PublishProfiles\Huellitas producción.pubxml" />
     <None Include="Properties\PublishProfiles\huellitas.social - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\pruebas.huellitas.social - Web Deploy.pubxml" />
@@ -694,6 +695,7 @@
     <Content Include="Scripts\views\huellitas.admin.UsuariosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.AdoptarView.js" />
+    <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.ComentariosView.js" />
     <Content Include="Scripts\views\huellitas.ContactoView.js" />
     <Content Include="Scripts\views\huellitas.ContenidoRelacionadoView.js" />
