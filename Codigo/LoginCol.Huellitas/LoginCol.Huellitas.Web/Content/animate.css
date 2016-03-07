@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -3160,7 +3160,7 @@ Copyright (c) 2014 Daniel Eden
 @media screen and (max-width: 768px) {
 .csstransforms3d.csstransitions.js-ready #nav {
 left: 0;
--webkit-transform: translate3d(-100%, 0, 0);
+/*-webkit-transform: translate3d(-100%, 0, 0);*/
 -moz-transform: translate3d(-100%, 0, 0);
 -ms-transform: translate3d(-100%, 0, 0);
 -o-transform: translate3d(-100%, 0, 0);
@@ -3173,11 +3173,11 @@ backface-visibility: hidden;
 }
 .csstransforms3d.csstransitions.js-ready #inner-wrap {
 left: 0 !important;
--webkit-transform: translate3d(0, 0, 0);
+/*-webkit-transform: translate3d(0, 0, 0);*/
 -moz-transform: translate3d(0, 0, 0);
 -ms-transform: translate3d(0, 0, 0);
 -o-transform: translate3d(0, 0, 0);
-transform: translate3d(0, 0, 0);
+/*transform: translate3d(0, 0, 0);*/
 -webkit-transition: -webkit-transform 500ms ease;
 -moz-transition: -moz-transform 500ms ease;
 -o-transition: -o-transform 500ms ease;
@@ -3205,7 +3205,7 @@ opacity: 0.7;
 -moz-transition: opacity 300ms 100ms ease, -moz-transform 500ms ease;
 -o-transition: opacity 300ms 100ms ease, -o-transform 500ms ease;
 transition: opacity 300ms 100ms ease, transform 500ms ease;
--webkit-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+/*-webkit-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);*/
 -moz-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
 -ms-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
 -o-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);

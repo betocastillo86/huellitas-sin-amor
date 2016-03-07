@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs" />
     <Compile Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.Designer.cs">
       <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.cs" />
+    <Compile Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.Designer.cs">
+      <DependentUpon>201511231616334_Paranetrizacion_Valor_4000.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GeneradorLlaveUnica.cs" />
     <Compile Include="IRepositorio.cs" />
@@ -503,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509271832472_AlterColumn_Image1And2_TableSeguimiento.resx">
       <DependentUpon>201509271832472_AlterColumn_Image1And2_TableSeguimiento.cs</DependentUpon>
+	  </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511231616334_Paranetrizacion_Valor_4000.resx">
+      <DependentUpon>201511231616334_Paranetrizacion_Valor_4000.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

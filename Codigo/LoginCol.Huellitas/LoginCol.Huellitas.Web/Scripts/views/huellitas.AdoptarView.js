@@ -40,6 +40,7 @@
 
             //Si el paso es el 4 envia el formulario
             if (this.pasoActual == 4) {
+                MostrarCargandoTodo(true);
                 this.formulario.submit();
             }
             else {

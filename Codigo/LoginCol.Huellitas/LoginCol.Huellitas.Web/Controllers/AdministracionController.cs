@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using LoginCol.Huellitas.Entidades;
 using LoginCol.Huellitas.Negocio;
+using LoginCol.Huellitas.Negocio.Directorios;
+using LoginCol.Huellitas.Utilidades;
 using LoginCol.Huellitas.Web.Infraestructure;
 using LoginCol.Huellitas.Web.Models;
 using LoginCol.Huellitas.Web.Models.Admin;
@@ -242,6 +244,43 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
 
+        #endregion  
+
+        #region Imagenes
+        [Authorize]
+        [HttpPost]
+        public ActionResult RelacionarImagen(int id)
+        {
+            ResultadoOperacion respuesta = new ResultadoOperacion();
+
+            string fName = "";
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    fName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        ContenidoNegocio contenidoNegocio = new ContenidoNegocio(new RutaFisicaWeb());
+
+                        var contenidoPadre = contenidoNegocio.Obtener(id);
+                        var contenidoHijo = new Contenido() { Nombre = contenidoPadre.Nombre, Descripcion = contenidoPadre.Descripcion, DescripcionCorta = contenidoPadre.Nombre };
+                        contenidoHijo.ContenidoId = contenidoNegocio.AgregarImagen(id, contenidoHijo, SessionModel.Usuario.UsuarioId).Id;
+                        respuesta = contenidoNegocio.GuardarImagen(contenidoHijo.ContenidoId, Utilidades.Archivos.ConvertirStreamABytes(file.InputStream));
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                respuesta.OperacionExitosa = false;
+                respuesta.MensajeError = ex.Message;
+            }
+
+            return Json(respuesta);
+        }
 
         #endregion
 

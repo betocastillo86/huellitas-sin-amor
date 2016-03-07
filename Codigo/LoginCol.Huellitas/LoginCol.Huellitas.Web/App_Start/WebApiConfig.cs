@@ -32,6 +32,13 @@ namespace LoginCol.Huellitas.Web
               );
 
             config.Routes.MapHttpRoute(
+               name: "ApiHuellitas",
+               routeTemplate: "api/huellitas",
+               defaults: new { controller = "HuellitasApi", idTipoContenido = RouteParameter.Optional }
+           );
+
+
+            config.Routes.MapHttpRoute(
                name: "DefaultApi",
                routeTemplate: "api/{controller}/{id}",
                defaults: new { id = RouteParameter.Optional }

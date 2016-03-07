@@ -159,6 +159,15 @@ namespace LoginCol.Huellitas.Web
 
             #endregion
 
+            #region Dar en adopcion
+            routes.MapRoute(
+                name: "CrearHuellita",
+                url: "dar-en-adopcion",
+                defaults: new { controller = "Huellitas", action = "CrearHuellita" }
+            );
+
+            #endregion
+
 
 
 

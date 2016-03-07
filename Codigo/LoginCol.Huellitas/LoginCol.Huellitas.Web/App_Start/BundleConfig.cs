@@ -87,6 +87,14 @@ namespace LoginCol.Huellitas.Web
             #endregion
 
             #region Admin
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                     "~/Scripts/dropzone/dropzone.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/dropzonescss").Include(
+                     "~/Scripts/dropzone/css/basic.css",
+                     "~/Scripts/dropzone/css/dropzone.css"));
+
             //Librerias adicionales del template charisma
             bundles.Add(new ScriptBundle("~/bundles/jqueryTemplate").
                 Include(
@@ -142,7 +150,9 @@ namespace LoginCol.Huellitas.Web
             //Router y base de aplicacion en backbone
             bundles.Add(new ScriptBundle("~/bundles/backbone_router")
                 .Include("~/Scripts/huellitas.app.js")
-                .Include("~/Scripts/huellitas.router.js"));
+                .Include("~/Scripts/huellitas.router.js")
+                .Include("~/Scripts/huellitas.general.js")
+                .Include("~/Scripts/Views/huellitas.BaseView.js"));
 
             //zonas geograficas
             bundles.Add(new ScriptBundle("~/bundles/backbone_zonasGeograficas")
@@ -196,6 +206,19 @@ namespace LoginCol.Huellitas.Web
                 .Include("~/Scripts/views/huellitas.SummaryView.js")
                 .Include("~/Scripts/models/huellitas.Contacto.js")
                 .Include("~/Scripts/models/huellitas.TablaBasica.js")
+                .Include("~/Scripts/views/huellitas.CrearHuellitaView.js")
+                .Include("~/Scripts/models/huellitas.CrearHuellita.js")
+                );
+
+
+            //Huellitas crear
+            bundles.Add(new ScriptBundle("~/bundles/backbone_crear_huellita")
+                .Include("~/Scripts/models/huellitas.Contenido.js")
+                .Include("~/Scripts/views/huellitas.SummaryView.js")
+                .Include("~/Scripts/models/huellitas.TablaBasica.js")
+                .Include("~/Scripts/views/huellitas.CrearHuellitaView.js")
+                .Include("~/Scripts/models/huellitas.CrearHuellita.js")
+                .Include("~/Scripts/dropzone/dropzone.js")
                 );
 
             //Seguimiento de aadopciones

@@ -41,9 +41,8 @@
                 </div>
 
                 @if (Model.Activo)
-                { 
-                    <a class="btn left" href="@(Model.NombreLink)/@LoginCol.Huellitas.Negocio.ParametrizacionNegocio.LlaveRouterQuieroAdoptar">ADOPTAME</a>
-                    
+                {
+                    <a class="btn left btn-adoptar" style="width:250px" href="@(Model.NombreLink)/@LoginCol.Huellitas.Negocio.ParametrizacionNegocio.LlaveRouterQuieroAdoptar">LLENAR FORMULARIO DE ADOPCIÓN</a>
                     if (Model.AdoptantePadrino == null)
                     {
                         <a class="btn left" id="btnApadrinar" href="javascript:;">APADRINAME</a>
@@ -80,10 +79,18 @@
                 
                 <div class="grid_6 conte_datos omega">
                     <h2>@(Model.TipoAdoptante ==  LoginCol.Huellitas.Entidades.TipoRelacionUsuariosEnum.Padrino ? "PADRINO" : "ADOPTANTE"): <b>@Model.AdoptantePadrino.NombreCompleto</b></h2>
-                    <h3>DONACIÓN MENSUAL: <span>@Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")</span></h3>
-                    <ul>
-                        <li>FECHA @(Model.TipoAdoptante == LoginCol.Huellitas.Entidades.TipoRelacionUsuariosEnum.Padrino ? "APADRINAMIENTO" : "DE ADOPCIÓN"): @Html.ObtenerCampoDeContenido(Model, "Fecha Adopcion")</li>
-                    </ul>
+                    <h3>Teléfono: @Model.AdoptantePadrino.Telefono</h3>
+                    <h3>Correo Electrónico: @Model.AdoptantePadrino.Correo</h3>
+                    @if (!string.IsNullOrEmpty(Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")))
+                    {
+                        <h3>DONACIÓN MENSUAL: <span>@Html.ObtenerCampoDeContenido(Model, "Donacion Mensual")</span></h3>
+                    }
+                    @if (!string.IsNullOrEmpty(Html.ObtenerCampoDeContenido(Model, "Fecha Adopcion")))
+                    {
+                        <ul>
+                            <li>FECHA @(Model.TipoAdoptante == LoginCol.Huellitas.Entidades.TipoRelacionUsuariosEnum.Padrino ? "APADRINAMIENTO" : "DE ADOPCIÓN"): @Html.ObtenerCampoDeContenido(Model, "Fecha Adopcion")</li>
+                        </ul>
+                    }
                 </div>
             }
 

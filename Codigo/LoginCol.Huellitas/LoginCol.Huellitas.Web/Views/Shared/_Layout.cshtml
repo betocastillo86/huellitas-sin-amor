@@ -44,7 +44,9 @@
 </head>
 
 <body>
+    <div style="position:fixed; bottom:10px; right:10px; background:red; padding:10px; z-index:99999;">rfdbbgbfd</div>
     <div class="beta"></div>
+    <div id="divLoadingAll"></div>
     <div id="outer-wrap">
         <div id="inner-wrap">
             <!--menu-->
@@ -58,18 +60,24 @@
                 </div>
             </header>
             <nav id="nav" role="navigation">
+                <div style="display:none">
+                    <h2><a href="/sinhogar">Adoptar una mascota</a></h2>
+                    <h2><a href="/fundaciones">Fundaciones</a></h2>
+                    <h2><a href="/perros-gatos-perdidos">Perdidos</a></h2>
+                    <h2><a href="/por-que-adoptar">¿Por qué adoptar?</a></h2>
+                    <h2>@Html.ActionLink("Dar en adopción", "CrearHuellita", "Huellitas")</h2>
+                </div>
                 <div class="block"> 
                     <ul class="navigation">
                         <li class="is-active"> <a href="/">Inicio</a> </li>
-                        <li> <a href="/sinhogar">Mascotas sin hogar</a> </li>
+                        <li> <a href="/sinhogar">Adoptar una mascota</a> </li>
                         <li> <a href="/fundaciones">Fundaciones</a> </li>
                         <li> <a href="/perros-gatos-perdidos">Perdidos</a> </li>
-                        <li> <a href="/por-que-adoptar">¿Quieres Adoptar?</a> </li>
+                        <li> <a href="/por-que-adoptar">¿Por qué adoptar?</a> </li>
                         @if (ViewContext.RouteData.Values["controller"].Equals("Home") && ViewContext.RouteData.Values["action"].Equals("Index"))
                         { 
-                            <li data-slide="2"> <a href="javascript:;"> Quienes somos</a> </li>
+                            <li data-slide="2"> <a href="#quienesSomos"> Quienes somos</a> </li>
                         }
-                       
                     </ul>
                     <br />
                     @*<div class="menuLogin">

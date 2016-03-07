@@ -43,6 +43,12 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Descripcion)
                             @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control" })
+
+                            <a id="aAyudaRedaccion" class="btn btn-info" href="javascript:;">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                                Ayuda en Redacción
+                            </a>
+                            @Html.Hidden("ContenidoAyuda", Html.Parametrizacion("ContenidoAyudaAnimales"))
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.TipoContenidoId)
