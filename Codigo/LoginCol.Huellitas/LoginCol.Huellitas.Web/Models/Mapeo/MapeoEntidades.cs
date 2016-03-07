@@ -113,7 +113,11 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
 
             #endregion
 
-
+            #region CrearHuellitaModel
+            Mapper.CreateMap<CrearHuellitaModel, Contenido>()
+                .AfterMap(CrearHuellitaModelToContenido);
+            #endregion
+            
 
 
 
@@ -134,6 +138,20 @@ namespace LoginCol.Huellitas.Web.Models.Mapeo
             if(!string.IsNullOrEmpty(modelo.ContactoCorreo))
                 obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoCorreoId, Valor = modelo.ContactoCorreo });  
 
+        }
+
+
+        private static void CrearHuellitaModelToContenido(CrearHuellitaModel modelo, Contenido obj)
+        {
+            obj.Email = modelo.ContactoCorreo;
+            obj.Campos = new List<ValorCampo>();
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoEdadId, Valor = modelo.Edad.ToString() });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoGeneroId, Valor = modelo.Genero.ToString() });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoColorId, Valor = modelo.Color.ToString() });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoNombreId, Valor = modelo.ContactoNombre });
+            obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoTelefonoId, Valor = modelo.ContactoTelefono });
+            if (!string.IsNullOrEmpty(modelo.ContactoCorreo))
+                obj.Campos.Add(new ValorCampo() { CampoId = ParametrizacionNegocio.CampoContactoCorreoId, Valor = modelo.ContactoCorreo });  
         }
 
         private static void ComentarioModelToComentario(ComentarioModel model, Comentario obj)

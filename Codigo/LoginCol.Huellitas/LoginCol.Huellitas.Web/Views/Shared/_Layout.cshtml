@@ -44,6 +44,7 @@
 </head>
 
 <body>
+    <div style="position:fixed; bottom:10px; right:10px; background:red; padding:10px; z-index:99999;">rfdbbgbfd</div>
     <div class="beta"></div>
     <div id="divLoadingAll"></div>
     <div id="outer-wrap">
@@ -64,6 +65,7 @@
                     <h2><a href="/fundaciones">Fundaciones</a></h2>
                     <h2><a href="/perros-gatos-perdidos">Perdidos</a></h2>
                     <h2><a href="/por-que-adoptar">¿Por qué adoptar?</a></h2>
+                    <h2>@Html.ActionLink("Dar en adopción", "CrearHuellita", "Huellitas")</h2>
                 </div>
                 <div class="block"> 
                     <ul class="navigation">
@@ -76,7 +78,6 @@
                         { 
                             <li data-slide="2"> <a href="#quienesSomos"> Quienes somos</a> </li>
                         }
-                       
                     </ul>
                     <br />
                     @*<div class="menuLogin">

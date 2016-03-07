@@ -1,0 +1,145 @@
+﻿@model LoginCol.Huellitas.Web.Models.CrearHuellitaModel
+@{
+    //ViewBag.TagDescripcion =  "Huellitas sin hogar tiene una plataforma para tí en la cual podrás ingresar los datos de mascotas perdidas al rededor del pais. También si estas buscando tu perro o gato perdido, lo podrás encontrar acá.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>Dropzone.autoDiscover = false;</script>
+<section id="first" class="seBusca slide">
+    <div class="container clearfix">
+        <h2>DAR EN ADOPCIÓN</h2>
+        <h3>UNA HUELLITA QUE NO TIENE HOGAR</h3>
+
+    </div>
+</section>
+<!--se busca-->
+<div id="divCrearHuellita">
+    <section class="conteBusca slide">
+        <div class="container clearfix conteConta">
+            <h3>¿TIENES UNA HUELLITA PARA DAR EN ADOPCIÓN?</h3>
+            <nav class="nav_busca">
+
+                <li class="grid_3 addform" id="btnEncuentro" title="Si encontraste una huellita y no sabes de quién es, deja sus datos y apenas sepamos algo nos comunicaremos contigo">
+                    <span class="icon-perdida"></span>
+                    DAR EN ADOPCIÓN
+                </li>
+
+                <form id="formRegistrar" class="grid_9 omega"  action="@Url.RouteUrl("CrearHuellita")" method="post" enctype="multipart/form-data">
+                    <p>
+                        En Huellitas sin hogar te ayudamos a que le puedas conseguir hogar a los peludos que no lo tengan, pero antes de cualquier cosa ten en cuenta las siguientes recomendaciones:
+                    </p>
+                    <div id="divRecomendaciones">
+                        <ul>
+                            <li>Debes tomar las fotos con buena luz, enfocadas, con buena resolución y que se vea el perro o gato perfectamente</li>
+                            <li>Debes suministrar datos de contacto claros que serán verificados por Huellitas sin Hogar</li>
+                            <li>En caso que la información suministrada no este completa o tenga errores, no se podrá ver publicada en la pagina</li>
+                        </ul>
+                        <a id="btnEmpezar" href="#divCrearHuellita" class="btn color3" style="height:35px; margin-left:40%">Empezar</a>
+                    </div>
+                    <div id="camposFormulario" style="display:none">
+                        <div class="conte_check grid_4">
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro)">
+                                <span class="icon-perro"></span>
+                            </div>
+                            <div class="tipoMasco">
+                                <input class="check rbTipo" type="radio" name="rbTipo" value="@Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Gato)">
+                                <span class="icon-gato"></span>
+                            </div>
+
+                        </div>
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.Nombre, new { placeholder = "NOMBRE DEL ANIMAL" })
+                        </div>
+
+                        @Html.DropDownListCampoFor("Genero", primeraOpcion: "GENERO DEL ANIMAL", estilo: "grid_4 omega")
+                        <select id="ddlZonaDepartamento" class="grid_4">
+                            <option>DEPARTAMENTO</option>
+                        </select>
+
+                        @Html.DropDownListFor(m => m.ZonaGeograficaId, new SelectList((new string[] { "CIUDAD" }).ToList()), new { @class = "grid_4", placeholder = "CIUDAD", id = "ddlZonaCiudad" })
+
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.Edad, new { placeholder = "EDAD DEL ANIMAL", valjs = "numero" })
+                        </div>
+
+                        @Html.DropDownListCampoFor("Color", primeraOpcion: "COLOR", estilo: "grid_4")
+
+                        <select id="ddlRaza" class="grid_4 omega" style="display:none" placeholder="RAZA"></select>
+
+                        <div class="grid_4">
+                            @Html.TextBoxFor(m => m.ContactoNombre, new { placeholder = "NOMBRE DE CONTACTO" })
+                        </div>
+                        <div class="grid_4 ">
+                            @Html.TextBoxFor(m => m.ContactoTelefono, new { placeholder = "TELEFONO DE CONTACTO", customval = "int" })
+                        </div>
+                        <div class="grid_4 omega">
+                            @Html.TextBoxFor(m => m.ContactoCorreo, new { placeholder = "CORREO DE CONTACTO" })
+                        </div>
+
+                        <br />
+                        <div class="grid_12 omega">
+                            @Html.TextAreaFor(m => m.Descripcion, new { placeholder = "BREVE DESCRIPCIÓN" })
+                        </div>
+                        <div class="grid_12 omega">
+                            <div class="dropzone" id="dropzoneForm">
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                    <input type="submit" value="Upload" />
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <input type="hidden" id="Imagen" />
+                        <a href="javascript:void(0);" class="btn color3" id="btnGuardar">GUARDAR</a>
+                        <a href="javascript:void(0);" class="volver btn color3" id="btnVolverFormulario">VOLVER</a>
+                    </div>
+
+                    <div id="divMensajeConfirmacion" style="display:none">
+                        <h2 >Muchas gracias por dejar tus datos, validarémos la información y aprobarémos la huellita pronto. Debes estar pendiente. Si tienes dudas escribenos a Facebook.</h2>
+                        <a href="/" class="volver btn color3">VOLVER</a>
+                    </div>
+
+                </form>
+
+
+                
+                <br />
+            </nav>
+        </div>
+    </section>
+
+</div>
+<style>
+    #dropzoneForm {
+        background: #8a6f6f;
+        /*border: black dashed 3px;
+        width: 200px;*/
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+@Html.Partial("_FileUpload")
+@Html.Partial("_Summary")
+
+@section css {
+    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/cssjqueryui")
+    @Styles.Render("~/bundles/dropzonescss")
+
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/backbonevalidation")
+    @Scripts.Render("~/bundles/backbone_crear_huellita")
+    @Scripts.Render("~/bundles/backbone_zonasGeograficas")
+    @Scripts.Render("~/bundles/backbone_cargaArchivo")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/backbone_redesSociales")
+    @Scripts.Render("~/bundles/backbone_imagenes")
+}
