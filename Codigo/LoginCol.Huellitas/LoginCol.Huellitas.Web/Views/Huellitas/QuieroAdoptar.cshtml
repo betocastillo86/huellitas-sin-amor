@@ -183,6 +183,9 @@
 
 @helper PreguntaAdopcion(int idPregunta, LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta tipo = LoginCol.Huellitas.Web.Models.FormularioAdopcionModel.TipoRespuesta.RadioButton, params string[] opciones)
 {
+    var pregunta = @Model.Preguntas.FirstOrDefault(p => p.DatoTablaBasicaId == idPregunta);
+    if (pregunta == null)
+        return;
     <div class='grid_12 preg@(idPregunta)'>
         <br />
         @Model.Preguntas.FirstOrDefault(p => p.DatoTablaBasicaId == idPregunta).Valor
