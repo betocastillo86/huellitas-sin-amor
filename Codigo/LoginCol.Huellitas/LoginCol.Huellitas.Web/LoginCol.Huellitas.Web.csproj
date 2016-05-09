@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -372,8 +373,10 @@
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\Archivos Release.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Huellitas producción.pubxml" />
     <None Include="Properties\PublishProfiles\huellitas.social - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Produccion Smarter.pubxml" />
     <None Include="Properties\PublishProfiles\pruebas.huellitas.social - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\RutaLocal.pubxml" />
@@ -833,7 +836,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>37624</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
