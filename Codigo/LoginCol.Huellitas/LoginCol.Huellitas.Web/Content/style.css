@@ -216,7 +216,7 @@ body {
   display: block;
   color: #529AD9;
   font-size:16px;
-  font-weight:300;
+  font-weight:400;
   text-transform:uppercase;
   outline: none;
   padding:8px 0;
@@ -592,7 +592,7 @@ form select{
 	color:#304A6F;
 	text-align:left;
 	font-size:16px;
-	font-weight:300;
+	font-weight:400;
 	}
 form textarea{
 	width:calc(100% - 20px);

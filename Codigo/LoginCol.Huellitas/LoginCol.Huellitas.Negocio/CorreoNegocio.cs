@@ -12,6 +12,11 @@ namespace LoginCol.Huellitas.Negocio
 {
     public class CorreoNegocio
     {
+        private ContenidoNegocio nContenido; 
+        public CorreoNegocio()
+        {
+            this.nContenido = new ContenidoNegocio();
+        }
 
         private static IRutasFisicas CargarRutasFisicas(IRutasFisicas rutaFisica)
         {
@@ -148,7 +153,7 @@ namespace LoginCol.Huellitas.Negocio
         /// <param name="plantilla">plantilla que se desea enviar</param>
         /// <param name="informacionAdicional">informacion Adicional de las plantillas</param>
         /// <returns></returns>
-        public static bool EnviarCorreoAdopcion(int idFormulario, PlantillasCorreo plantilla, string informacionAdicional = null)
+        public bool EnviarCorreoAdopcion(int idFormulario, PlantillasCorreo plantilla, string informacionAdicional = null)
         {
             var parametros = new List<string>();
 
@@ -162,14 +167,28 @@ namespace LoginCol.Huellitas.Negocio
 
 
             //Carga los datos de la fundacion de BD
-            var fundacion = new ContenidoNegocio().ObtenerFundacion(formulario.Contenido.ContenidoId);
+            var fundacion = nContenido.ObtenerFundacion(formulario.Contenido.ContenidoId);
+
             string nombreFundacion = "Huellitas sin Hogar";
+
+            string nombreResponsable = string.Empty;
+            string telefonoResponsable = string.Empty;
+
             string linkFundacion = string.Empty;
             //Si no tiene fundación la fundación por defecto es huellitas sin hogar
             if (fundacion != null)
             {
                 nombreFundacion = fundacion.Nombre;
                 linkFundacion = string.Format("fundaciones/{0}/{1}", fundacion.ContenidoId, fundacion.NombreLink);
+
+                var campos = nContenido.ObtenerCampos(fundacion.ContenidoId);
+
+                var campo = campos.FirstOrDefault(c => c.Campo.Nombre.Equals("Encargado"));
+                if (campo != null)
+                    nombreResponsable = campo.Valor;
+                campo = campos.FirstOrDefault(c => c.Campo.Nombre.Equals("Teléfono"));
+                if (campo != null)
+                    telefonoResponsable = campo.Valor;
             }
 
             string asunto = string.Empty;
@@ -189,6 +208,14 @@ namespace LoginCol.Huellitas.Negocio
                     parametros.Add(linkFundacion);
                     parametros.Add(formulario.FechaCreacion.ToShortDateString());
                     parametros.Add(informacionAdicional ?? string.Empty);
+                    if (fundacion != null)
+                    {
+                        parametros.Add($"<b style='color:#EFE124'>Información de contacto:</b> {nombreResponsable} <b style='color:#EFE124'>Teléfono:</b> {telefonoResponsable}");
+                    }
+                    else
+                    {
+                        parametros.Add(string.Empty);
+                    }
                     break;
                 case PlantillasCorreo.AdopcionRechazada:
                     asunto = ParametrizacionNegocio.AsuntoAdopcionRechazada;

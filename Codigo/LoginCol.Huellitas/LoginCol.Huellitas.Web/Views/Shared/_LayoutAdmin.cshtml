@@ -27,11 +27,14 @@
     <link id="bs-css" href="@Url.Content("~/Content/Admin/bootstrap-cerulean.css")" rel="stylesheet">
     
     
+    
+    
 
     @Styles.Render("~/bundles/admin")
     @Styles.Render("~/bundles/themes/base/css")
     @Styles.Render("~/bundles/css")
     @Styles.Render("~/bundles/dropzonescss")
+    <link href="@Url.Content("~/Content/editor/editor.css")" rel="stylesheet">
     
 
     <script src="~/Generales/ConstantesJs"></script>
@@ -199,6 +202,7 @@
 
     </div><!--/.fluid-container-->
     <!-- external javascript -->
+    
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/calendar")
     @Scripts.Render("~/bundles/chosen")
@@ -224,6 +228,8 @@
     <script src="~/Scripts/models/huellitas.admin.Usuario.js"></script>
     <script src="~/Scripts/libs/backbone.stickit.js"></script>
     <script src="~/Scripts/libs/backbone-validation.js"></script>
+    
+
     @RenderSection("scripts", required: false)
     
     

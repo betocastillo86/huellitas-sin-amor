@@ -47,7 +47,7 @@
         this.zonasGeograficas.on("add", this.mostrarCiudades, this);
 
         this.model = new ContenidoModel();
-        this.model.on("sync", this.mostrarContenido, this);
+        this.model.once("sync", this.mostrarContenido, this);
 
         this.tipoContenido = new TipoContenidoModel();
 
@@ -74,6 +74,16 @@
     mostrarAyudaRedaccion: function () {
         App_Router.alertaView.mostrar($("#ContenidoAyuda").val());
     },
+    editorHtml : undefined,
+    cargarEditor:function(){
+        var n=this;
+        if(!window.CKEDITOR)
+        {
+            setTimeout(function () { n.cargarEditor() }, 100); return
+        }
+        
+        this.editorHtml = window.CKEDITOR.replace("Descripcion", { extraPlugins: 'sourcedialog' });
+    },
     mostrarContenido: function ()
     {
         var contenidoJson = this.model.toJSON();
@@ -82,6 +92,9 @@
         this.$el.html(this.template(contenidoJson));
 
         this.app.deserializarFormulario(this.model.attributes);
+
+        this.cargarEditor();
+
         this.cargarImagenPrincipal();
            
         
@@ -208,6 +221,8 @@
 
             this.model.set('Activo', this.$("#Activo:checked").length > 0);
             this.model.set('Destacado', this.$("#Destacado:checked").length > 0);
+
+            this.model.set("Descripcion", CKEDITOR.instances.Descripcion.getData());
 
             //Se corrige bug para evitar que envíe un PUT
             this.model.set('ContenidoId', this.model.get('ContenidoId') == 0 ? undefined : this.model.get('ContenidoId'));

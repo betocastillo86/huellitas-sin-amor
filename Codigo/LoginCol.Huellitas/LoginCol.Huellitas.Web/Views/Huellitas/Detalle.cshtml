@@ -37,7 +37,7 @@
                     <div id="contarComentarios" style="display: inline-block">@Model.Comentarios</div>
                 </div>
                 <div class="parrafo demo-y">
-                    <p>@Html.DisplayFor(m => m.Descripcion)</p>
+                    <p>@Html.Raw(Model.Descripcion)</p>
                 </div>
 
                 @if (Model.Activo)

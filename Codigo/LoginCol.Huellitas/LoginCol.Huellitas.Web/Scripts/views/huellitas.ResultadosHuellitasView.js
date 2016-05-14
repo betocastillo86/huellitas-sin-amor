@@ -93,6 +93,8 @@
         if (ctx.tipo == 'f')
             Huellitas.cargarScroll();
 
+        this.trigger('cargado');
+
         this.listaContenidos.add(models);
     },
     siguientePagina: function (obj)

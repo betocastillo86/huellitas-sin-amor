@@ -73,7 +73,7 @@
         
         this.listaContenidosFiltrados.on("sync", this.agregarContenidosALista, this);
         //Despues de seleccionar el tipo de relacion, se cargan los contenidos que corresponden al tipo de contenido del tipo de relacion
-        this.listaContenidosFiltrados.cargarPorTipo(this.tipoRelacionContenido.get("TipoContenidoId"));
+        this.listaContenidosFiltrados.cargarPorTipo(this.tipoRelacionContenido.get("TipoContenidoId"), {activo : true});
     },
     tablaListado : undefined, 
     agregarContenidosALista: function (models) {

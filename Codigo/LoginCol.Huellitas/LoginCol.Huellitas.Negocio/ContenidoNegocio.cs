@@ -33,12 +33,12 @@ namespace LoginCol.Huellitas.Negocio
         }
 
 
-        public List<Contenido> ObtenerPorTipo(int idTipoContenido, bool esPadre)
+        public List<Contenido> ObtenerPorTipo(int idTipoContenido, bool esPadre, bool? activo = null)
         {
             if (esPadre)
                 return ObtenerPorTipoPadre((TipoContenidoEnum)idTipoContenido);
             else
-                return _contenidos.Value.ObtenerPorTipo(idTipoContenido);
+                return _contenidos.Value.ObtenerPorTipo(idTipoContenido, activo);
         }
         public List<Contenido> ObtenerPorTipoPadre(TipoContenidoEnum tipoContenido)
         {
@@ -206,6 +206,11 @@ namespace LoginCol.Huellitas.Negocio
         public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int idContenido, int? idTipoRelacion)
         {
             return ObtenerContenidosRelacionados(idContenido, idTipoRelacion, false);
+        }
+
+        public IList<ValorCampo> ObtenerCampos(int contenidoId)
+        {
+            return _contenidos.Value.ObtenerCampos(contenidoId);
         }
 
         public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)

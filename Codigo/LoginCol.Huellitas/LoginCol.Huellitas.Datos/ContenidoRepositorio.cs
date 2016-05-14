@@ -133,7 +133,7 @@ namespace LoginCol.Huellitas.Datos
             }
         }
 
-        public List<Contenido> ObtenerPorTipo(int idTipoContenido)
+        public List<Contenido> ObtenerPorTipo(int idTipoContenido, bool? activo = null)
         {
             List<Contenido> lista = new List<Contenido>();
 
@@ -141,12 +141,16 @@ namespace LoginCol.Huellitas.Datos
             {
                 using (var db = new Repositorio())
                 {
-                    lista = db.Contenidos
+                    var query = db.Contenidos
                         .Include(_ => _.TipoContenido)
                         .Include(_ => _.ZonaGeografica)
                         .Include(_ => _.ZonaGeografica.ZonaGeograficaPadre)
-                        .Where(c => c.TipoContenido.TipoContenidoId == idTipoContenido && !c.Eliminado)
-                        .ToList();
+                        .Where(c => c.TipoContenido.TipoContenidoId == idTipoContenido && !c.Eliminado);
+
+                    if (activo.HasValue)
+                        query = query.Where(c => c.Activo == activo.Value);
+
+                    lista = query.ToList();
                 }
 
             }

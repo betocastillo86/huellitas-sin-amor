@@ -6,7 +6,7 @@
         "/": "home",
         "sinhogar": "listarHuellitas",
         "sinhogar/": "listarHuellitas",
-        "sinhogar/buscar(/t:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)(/n_:nombre)(/o:orden)": "buscarHuellitas",
+        "sinhogar/buscar(/ti:tipo)(/g:genero)(/c:color)(/ta:tamano)(/e:edad)(/rp:recomendado)(/f:fundacion)(/zh:zona)(/zp:zonaPadre)(/n_:nombre)(/o:orden)": "buscarHuellitas",
         "sinhogar/:id/:nombre": "detalleHuellita",
         "sinhogar/:id/:nombre/quiero-adoptar": "adoptarHuellita",
         "fundaciones" : "listarFundaciones",

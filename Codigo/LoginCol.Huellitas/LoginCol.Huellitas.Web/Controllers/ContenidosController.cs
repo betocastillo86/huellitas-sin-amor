@@ -34,17 +34,17 @@ namespace LoginCol.Huellitas.Web.Controllers
 
             Contenido filtroBase = new Contenido();
 
-            //Si la zona padre viene como filtro, la zona principal debe venir igual a 0
-            if (filtro.zonaPadre > 0 && filtro.zona == 0)
-            {
-                filtroBase.ZonaGeografica = new ZonaGeografica(filtro.zonaPadre);
-            }
+            ////Si la zona padre viene como filtro, la zona principal debe venir igual a 0
+            //if (filtro.zonaPadre > 0 && filtro.zona == 0)
+            //{
+            //    filtroBase.ZonaGeografica = new ZonaGeografica(filtro.zonaPadre);
+            //}
 
             if (filtro.fechaDesde != DateTime.MinValue)
                 filtroBase.FechaCreacion = filtro.fechaDesde;
 
-            if (filtro.zona > 0)
-                filtroBase.ZonaGeograficaId = filtro.zona;
+            //if (filtro.zona > 0)
+            //    filtroBase.ZonaGeograficaId = filtro.zona;
 
             if (!string.IsNullOrEmpty(filtro.nombre))
                 filtroBase.Nombre = filtro.nombre;
@@ -135,21 +135,21 @@ namespace LoginCol.Huellitas.Web.Controllers
     {
         public int tipo { get; set; }
         public int genero { get; set; }
-        public int color { get; set; }
+        //public int color { get; set; }
         public int tamano { get; set; }
         public int edad { get; set; }
         public int tipoPerdido { get; set; }
         public int raza { get; set; }
         
 
-        public string recomendado { get; set; }
+        //public string recomendado { get; set; }
 
         public int paginaActual { get; set; }
 
-        public int zona { get; set; }
-
-        public int zonaPadre { get; set; }
-
+        //public int zona { get; set; }
+        //
+        //public int zonaPadre { get; set; }
+        //
         public int tipoPadre { get; set; }
 
         public int fundacion { get; set; }
@@ -167,8 +167,8 @@ namespace LoginCol.Huellitas.Web.Controllers
             if (genero > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoGeneroId, Valor = genero.ToString() });
 
-            if (color > 0)
-                filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoColorId, Valor = color.ToString() });
+            //if (color > 0)
+            //    filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoColorId, Valor = color.ToString() });
 
             if (raza > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoRaza, Valor = raza.ToString() });
@@ -179,8 +179,8 @@ namespace LoginCol.Huellitas.Web.Controllers
             if (tipoPerdido > 0)
                 filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoTipoPerdido, Valor = tipoPerdido.ToString() });
 
-            if (!string.IsNullOrEmpty(recomendado))
-                filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoRecomendadoParaId, Valor = recomendado , TipoFiltro = TipoFiltroContenidoEnum.MultipleOpcion});
+            //if (!string.IsNullOrEmpty(recomendado))
+            //    filtros.Add(new FiltroContenido() { CampoId = ParametrizacionNegocio.CampoRecomendadoParaId, Valor = recomendado , TipoFiltro = TipoFiltroContenidoEnum.MultipleOpcion});
 
             //Dependiendo del valor seleccionado en la edad carga los rangos de la busqueda
             if (edad > 0)

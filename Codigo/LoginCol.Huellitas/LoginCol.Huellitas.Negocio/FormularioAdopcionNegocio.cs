@@ -49,7 +49,7 @@ namespace LoginCol.Huellitas.Negocio
                 else
                 {
                     //Después de generar la adopción envia el correo de confirmación
-                    CorreoNegocio.EnviarCorreoAdopcion(respuesta.Id, PlantillasCorreo.SolicitudAdopcion);
+                    new CorreoNegocio().EnviarCorreoAdopcion(respuesta.Id, PlantillasCorreo.SolicitudAdopcion);
                 }
 
                 return respuesta;
@@ -148,7 +148,7 @@ namespace LoginCol.Huellitas.Negocio
             if(plantilla != PlantillasCorreo.Ninguna)
             {
                 //Si el correo es enviado actualiza la información en la BD
-                if (CorreoNegocio.EnviarCorreoAdopcion(idFormulario, plantilla, informacionCorreo))
+                if (new CorreoNegocio().EnviarCorreoAdopcion(idFormulario, plantilla, informacionCorreo))
                 {
                     respuesta.OperacionExitosa = Actualizar(idFormulario, observaciones, informacionCorreo, estado);
                     //Si ocurrio un error actualiza el valor

@@ -28,15 +28,18 @@ var ContenidoCollection = Backbone.Collection.extend({
         this.url = "/api/admincontenidos/tip-" + idTipoContenido + "/true";
         return this.cargar();
     },
-    cargarPorTipo: function (idTipoContenido)
+    cargarPorTipo: function (idTipoContenido, params)
     {
         console.log("Conulsta de contenidos por tipo");
         this.url = "/api/admincontenidos/tip-" + idTipoContenido + "/false";
-        return this.cargar();
+        this.cargar(params);
     },
-    cargar: function ()
+    cargar: function (params)
     {
-        this.fetch();
+        if (params)
+            this.fetch({ data: params });
+        else
+            this.fetch();
         return this;
     }
 });

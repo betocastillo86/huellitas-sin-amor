@@ -1,5 +1,6 @@
 ﻿@model LoginCol.Huellitas.Web.Models.ContenidoModel
 
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
 <div id="divVistaEditarContenidos"></div>
 
@@ -41,6 +42,7 @@
                             @Html.TextAreaFor(model => model.DescripcionCorta, new { @class = "form-control", maxlength  = 120 })
                         </div>
                         <div class="form-group">
+                            <div class="editorContent"></div>
                             @Html.LabelFor(model => model.Descripcion)
                             @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control" })
 

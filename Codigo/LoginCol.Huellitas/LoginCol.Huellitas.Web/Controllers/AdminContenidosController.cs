@@ -15,10 +15,10 @@ namespace LoginCol.Huellitas.Web.Controllers
     public class AdminContenidosController : ApiController
     {
         [HttpGet]
-        public List<ContenidoBaseModel> Get(int idTipoContenido, bool esPadre)
+        public List<ContenidoBaseModel> Get(int idTipoContenido, bool esPadre,[FromUri] FiltroApiAdminContenidos filtro)
         {
             List<Contenido> lista = new ContenidoNegocio()
-                .ObtenerPorTipo(idTipoContenido, esPadre)
+                .ObtenerPorTipo(idTipoContenido, esPadre, filtro.activo)
                 .OrderByDescending(c => c.FechaCreacion)
                 .ToList();
             return lista.Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
@@ -68,5 +68,10 @@ namespace LoginCol.Huellitas.Web.Controllers
 
         private void BorrarPrueba()
         { }
+    }
+
+    public class FiltroApiAdminContenidos
+    {
+        public bool? activo { get; set; }
     }
 }
