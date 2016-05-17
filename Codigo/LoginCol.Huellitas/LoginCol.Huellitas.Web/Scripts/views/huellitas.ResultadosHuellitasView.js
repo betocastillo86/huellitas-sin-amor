@@ -101,6 +101,7 @@
     {
         //Quita el botón que lanza el evento
         $(obj.currentTarget).remove();
+        this.$('br:last').remove();
         this.cargarContenidos();
     },
     limpiarResultados: function ()

@@ -111,9 +111,8 @@ body {
 }
 #nav li {
   display: block;
-  text-align:center;
-  width:16%;
-  margin:0;
+  text-align:right;
+  margin:0 5px;
 }
 #nav li a {
   display: block;

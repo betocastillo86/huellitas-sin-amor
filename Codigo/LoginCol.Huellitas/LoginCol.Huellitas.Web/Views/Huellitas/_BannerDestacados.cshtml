@@ -3,12 +3,15 @@
     @foreach (var contenido in Model)
     {
         <div class="grid_6 no-margin">
-            <div style="background-image:url(img/@contenido.ContenidoId/big);" class="cajaCaso">
+            <div  class="cajaCaso">
                 <div class="prioridad"><div class="star"></div><span>CASO PRIORITARIO</span></div>
+                <div class="img">
+                    <img src="/img/@contenido.ContenidoId/big"/>
+                </div>
                 <article class="c_tipo1">
                     <h3>@contenido.Nombre</h3>
                     <h4>EDAD: @Html.ObtenerCampoDeContenido(contenido, "Edad") - CIUDAD: @contenido.ZonaGeograficaNombre</h4>
-                    <p>@contenido.DescripcionCorta</p>
+                    @*<p>@contenido.DescripcionCorta</p>*@
                     <a href="/sinhogar/@contenido.ContenidoId/@contenido.NombreLink" class="btn">CONOCE MÁS</a>
                 </article>
             </div>

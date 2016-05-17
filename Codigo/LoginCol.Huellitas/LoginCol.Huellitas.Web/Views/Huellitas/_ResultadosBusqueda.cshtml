@@ -38,19 +38,21 @@
     edad = edad.Valor + " años";
     %>
 
-    <div class="grid_6 no-margin">
-        <div class="cajaCaso" style="background-image:url(/img/<%=contenido.ContenidoId%>/big);">
+    <div class="grid_6">
+        <div class="cajaCaso">
 
             <% 
             
             if(contenido.Destacado) {%>
             <div class="prioridad"><div class="star"></div><span>CASO PRIORITARIO</span></div>
             <% }%>
-            
+            <div class="img">
+                <img src="/img/<%=contenido.ContenidoId%>/big"/>
+            </div>
             <article class="c_tipo<%=nombreEstilo%>">
                 <h3><%=contenido.Nombre%></h3>
                 <h4>EDAD: <%=  edad %></h4>
-                <p><%= contenido.DescripcionCorta %></p>
+                @*<p><%= contenido.DescripcionCorta %></p>*@
                 <a class="btn" href="/sinhogar/<%=contenido.ContenidoId%>/<%=contenido.NombreLink%>">CONOCE MÁS</a>
             </article>
         </div>
