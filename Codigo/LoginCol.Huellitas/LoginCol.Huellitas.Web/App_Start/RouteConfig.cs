@@ -76,6 +76,12 @@ namespace LoginCol.Huellitas.Web
             //);
 
             routes.MapRoute(
+                name: "Autorespuesta",
+                url: "autorespuesta/{id}/{guidForm}",
+                defaults: new { controller = "Huellitas", action = "Autorespuesta" }
+            );
+
+            routes.MapRoute(
                 name: "BuscadorContenidosHuellitas",
                 url: "sinhogar/buscar/{*queryValues}",
                 defaults: new { controller = "Huellitas", action = "Index", queryValues = UrlParameter.Optional },

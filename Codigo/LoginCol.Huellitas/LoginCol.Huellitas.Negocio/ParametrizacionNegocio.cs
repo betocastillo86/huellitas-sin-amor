@@ -80,6 +80,8 @@ namespace LoginCol.Huellitas.Negocio
 
         public static int CampoContactoNombreId { get { return Int("CampoContactoNombreId"); } }
 
+        public static int CampoAutoRespuestaFormularioId { get { return Int("CampoAutoRespuestaFormularioId"); } }
+
         public static int CampoContactoCorreoId { get { return Int("CampoContactoCorreoId"); } }
 
         public static int CampoContactoTelefonoId { get { return Int("CampoContactoTelefonoId"); } }
@@ -120,5 +122,7 @@ namespace LoginCol.Huellitas.Negocio
         public static string AsuntoAdopcionRechazada { get { return String("AsuntoAdopcionRechazada"); } }
 
         public static string AsuntoAdopcionEspera { get { return String("AsuntoAdopcionEspera"); } }
+
+        public static string AsuntoAdopcionAutorespuesta { get { return String("AsuntoAdopcionAutorespuesta"); } }
     }
 }

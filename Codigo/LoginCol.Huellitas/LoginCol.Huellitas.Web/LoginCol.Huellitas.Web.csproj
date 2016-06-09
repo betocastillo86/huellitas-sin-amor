@@ -189,6 +189,7 @@
     <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\api\HuellitasApiController.cs" />
     <Compile Include="Controllers\ArchivosController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CamposController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
@@ -292,6 +293,7 @@
     <Content Include="Content\grid.css" />
     <Content Include="Content\menu_styles.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\PlantillasCorreo\CorreoAutoRespuesta.txt" />
     <Content Include="Content\PlantillasCorreo\AdopcionPrevia.txt" />
     <Content Include="Content\PlantillasCorreo\AdopcionRechazada.txt" />
     <Content Include="Content\PlantillasCorreo\AdopcionAprobada.txt" />
@@ -373,6 +375,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\Pruebas.pubxml" />
     <None Include="Properties\PublishProfiles\Smarter Prod.pubxml" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -872,6 +875,7 @@
     <Content Include="Scripts\views\huellitas.admin.UsuariosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.admin.ContenidosRelacionadosView.js" />
     <Content Include="Scripts\views\huellitas.AdoptarView.js" />
+    <Content Include="Scripts\views\huellitas.AutoRespuestaView.js" />
     <Content Include="Scripts\views\huellitas.BaseView.js" />
     <Content Include="Scripts\views\huellitas.ComentariosView.js" />
     <Content Include="Scripts\views\huellitas.ContactoView.js" />
@@ -971,6 +975,8 @@
     <Content Include="Views\Administracion\AdopcionesDetalle.cshtml" />
     <Content Include="Scripts\views\huellitas.admin.AdopcionListarView.js" />
     <Content Include="Views\Huellitas\CrearHuellita.cshtml" />
+    <Content Include="Views\Administracion\_DatosFormularioAdopcion.cshtml" />
+    <Content Include="Views\Huellitas\Autorespuesta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

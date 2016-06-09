@@ -1,0 +1,74 @@
+﻿@using LoginCol.Huellitas.Entidades
+@model LoginCol.Huellitas.Web.Models.FormularioAdopcionModel
+@{
+    ViewBag.Title = "Autorespuesta";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    
+}
+
+
+
+<div class="box col-md-12" id="formAdopcion">
+
+    @if (!string.IsNullOrWhiteSpace(Model.MensajeError))
+    {
+        <div class="alert alert-danger">
+            <button type="button" class="close closeError" data-dismiss="alert">×</button>
+            <strong>@Model.MensajeError</strong>
+        </div>
+    }
+    
+    @if (Model.FormularioEnviado)
+    {
+        <div class="alert alert-success">
+            <button type="button" class="close closeSuccess" data-dismiss="alert">×</button>
+            <strong>El formulario fue respondido correctamente</strong>
+            <a href="/" class="btn btn-danger">Cerrar</a>
+        </div>
+    }
+    else
+    {
+        @Html.Partial("~/Views/Administracion/_DatosFormularioAdopcion.cshtml")
+
+        <div class="box-inner">
+            <div data-original-title="" class="box-header well">
+                <h2><i class="glyphicon glyphicon-edit"></i> Responder</h2>
+                <div class="box-icon">
+                    <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form method="post" role="form">
+                    @if (Model.Estado != EstadoFormularioAdopcion.SinRevisar)
+                    {
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Importante:</strong> Este formulario ya fue respondido como  @Model.Estado.ToString()
+                        </div>
+                        <input id="FormularioRespondido" value="@Model.Estado.ToString()" type="hidden" />
+                    }
+
+                    <div class="form-group">
+                        Ingrese la información adicional que le puede ser util al adoptante:
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(m => m.InformacionAdicionalCorreo, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <select id="Estado" name="Estado">
+                            <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Aprobado)">Aprobado</option>
+                            <option value="@Convert.ToInt32(EstadoFormularioAdopcion.Rechazado)">Rechazado</option>
+                            <option value="@Convert.ToInt32(EstadoFormularioAdopcion.AdoptadoPreviamente)">Adopción previa</option>
+                        </select>
+                        <div class="btn btn-danger btnResponder">Responder</div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    }
+    
+   
+
+</div>
+<script src="~/Scripts/views/huellitas.AutoRespuestaView.js"></script>

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LoginCol.Huellitas.Negocio
 {
-    public class CorreoNegocio
+    public class CorreoNegocio : NegocioBase
     {
         private ContenidoNegocio nContenido; 
         public CorreoNegocio()
@@ -210,7 +210,7 @@ namespace LoginCol.Huellitas.Negocio
                     parametros.Add(informacionAdicional ?? string.Empty);
                     if (fundacion != null)
                     {
-                        parametros.Add($"<b style='color:#EFE124'>Información de contacto:</b> {nombreResponsable} <b style='color:#EFE124'>Teléfono:</b> {telefonoResponsable}");
+                        parametros.Add(string.Format("<b style='color:#EFE124'>Información de contacto:</b> {0} <b style='color:#EFE124'>Teléfono:</b> {1}", nombreResponsable, telefonoResponsable));
                     }
                     else
                     {
@@ -238,6 +238,54 @@ namespace LoginCol.Huellitas.Negocio
         }
 
 
+        /// <summary>
+        /// Envia correo a la fundación
+        /// </summary>
+        /// <param name="contenidoId"></param>
+        public void EnviarCorreoAutorespuesta(int contenidoId, int formularioId, string token)
+        {
+            var puedeAutoresponder = Negocios.Contenido.ObtenerCampo<bool>(contenidoId,  ParametrizacionNegocio.CampoAutoRespuestaFormularioId);
+
+            if (puedeAutoresponder)
+            {
+                var contenido = Negocios.Contenido.Obtener(contenidoId);
+                
+                
+                var correoPara = string.Empty;
+                
+                var fundacion = Negocios.Contenido.ObtenerFundacion(contenidoId);
+                if (fundacion != null)
+                {
+                    correoPara = fundacion.Email;
+                }
+
+                if (string.IsNullOrEmpty(correoPara))
+                {
+                    var padrino = Negocios.Contenido.ObtenerUsuariosRelacionados(contenidoId, (int)TipoRelacionUsuariosEnum.Padrino).FirstOrDefault();
+                    if (padrino != null)
+                        correoPara = padrino.Usuario.Correo;
+                }
+
+                if (string.IsNullOrEmpty(correoPara))
+                {
+                    correoPara = contenido.Email;
+                }
+
+                if (string.IsNullOrEmpty(correoPara))
+                    return;
+
+
+                var parametros = new List<string>();
+                parametros.Add(contenido.Nombre);
+                parametros.Add(contenido.ContenidoId.ToString());
+                parametros.Add(formularioId.ToString());
+                parametros.Add(token);
+                var asunto = string.Format(ParametrizacionNegocio.AsuntoAdopcionAutorespuesta, contenido.Nombre);
+                
+                EnviarCorreo(asunto, correoPara, PlantillasCorreo.CorreoAutoRespuesta , parametros: parametros.ToArray());
+            }
+
+        }
     }
 
     /// <summary>
@@ -254,7 +302,9 @@ namespace LoginCol.Huellitas.Negocio
         [Description("No fue aprobada la solicitud de adopción")]
         AdopcionRechazada,
         [Description("Ya fue adoptado por otra persona")]
-        AdopcionPrevia
+        AdopcionPrevia,
+        [Description("Se le envia a la fundacion para responder")]
+        CorreoAutoRespuesta
     }
 
 

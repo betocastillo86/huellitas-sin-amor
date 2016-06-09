@@ -23,6 +23,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         /// <param name="enviarCorreo">variable por URL que valida si se debe enviar el correo o no</param>
         /// <returns>Resultado de operación con toda la información</returns>
         [HttpPut]
+        [Authorize]
         public ResultadoOperacion Put(FormularioAdopcionModelBase modelo, [FromUri] bool enviarCorreo = false)
         {
             ResultadoOperacion respuesta = new ResultadoOperacion();

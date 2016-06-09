@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace LoginCol.Huellitas.Web.Controllers
 {
-    public class HuellitasController : Controller
+    public class HuellitasController : BaseController
     {
         [HttpGet]
         public ActionResult Index()
@@ -99,6 +99,46 @@ namespace LoginCol.Huellitas.Web.Controllers
             return View(modelo);
         }
 
+
+        [HttpGet]
+        public ActionResult Autorespuesta(int id, string guidForm)
+        {
+            var formulario = Negocios.FormularioAdopcion.Obtener(id);
+            if (formulario == null || formulario.TokenAutorespuesta.Equals(guidForm))
+                return RedirectToAction("Index", "Home");
+
+            var model = Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>(formulario);
+            
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Autorespuesta(int id, string guidForm, FormularioAdopcionModel modelo)
+        {
+            var formulario = Negocios.FormularioAdopcion.Obtener(id);
+            if (formulario == null || formulario.TokenAutorespuesta.Equals(guidForm))
+                return RedirectToAction("Index", "Home");
+
+            if (!string.IsNullOrWhiteSpace(modelo.InformacionAdicionalCorreo))
+                modelo.InformacionAdicionalCorreo = string.Format("<h2>Importante:{0}</h2>", modelo.InformacionAdicionalCorreo);
+
+
+            var respuesta = Negocios.FormularioAdopcion.EnviarRespuestaAdopcion(id,
+                    modelo.Estado,
+                    modelo.Observaciones,
+                    modelo.InformacionAdicionalCorreo);
+
+            modelo.Respuestas = formulario.Respuestas;
+
+            if (!respuesta.OperacionExitosa)
+                modelo.MensajeError = respuesta.MensajeError;
+            else
+                modelo.FormularioEnviado = true;
+
+            return View(modelo);
+        }
 
         public FormularioAdopcionModel CargarModeloFormulario(FormularioAdopcionModel modelo, int idContenido)
         {

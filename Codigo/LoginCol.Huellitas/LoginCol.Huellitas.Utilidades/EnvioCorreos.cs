@@ -60,14 +60,17 @@ namespace LoginCol.Huellitas.Utilidades
                     }
                 }
 
-                //intenta enviar el correo
-                SmtpClient client = new SmtpClient();
-                if (TimeOut > 0)
-                    client.Timeout = TimeOut;
-
-                if (Convert.ToBoolean(ConfigurationManager.AppSettings["enviarCorreos"]))
+                using (SmtpClient client = new SmtpClient())
                 {
-                    client.Send(objCorreo);
+                    //intenta enviar el correo
+
+                    if (TimeOut > 0)
+                        client.Timeout = TimeOut;
+
+                    if (Convert.ToBoolean(ConfigurationManager.AppSettings["enviarCorreos"]))
+                    {
+                        client.Send(objCorreo);
+                    }
                 }
 
                 return true;

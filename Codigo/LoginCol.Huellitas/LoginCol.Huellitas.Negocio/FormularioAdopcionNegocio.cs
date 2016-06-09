@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoginCol.Huellitas.Negocio
 {
-    public class FormularioAdopcionNegocio
+    public class FormularioAdopcionNegocio : NegocioBase
     {
         public FormularioAdopcionNegocio()
         {
@@ -40,6 +40,7 @@ namespace LoginCol.Huellitas.Negocio
                 formularioAdopcion.UsuarioId = formularioAdopcion.Usuario.UsuarioId;
                 formularioAdopcion.Usuario = null;
                 formularioAdopcion.Contenido = null;
+                formularioAdopcion.TokenAutorespuesta = Guid.NewGuid();
 
                 respuesta.Id = dFormularioAdopcion.Crear(formularioAdopcion);
                 respuesta.OperacionExitosa = respuesta.Id > 0;
@@ -48,8 +49,19 @@ namespace LoginCol.Huellitas.Negocio
                     respuesta.MensajeError = "No fue posible crear el formulario";
                 else
                 {
-                    //Después de generar la adopción envia el correo de confirmación
-                    new CorreoNegocio().EnviarCorreoAdopcion(respuesta.Id, PlantillasCorreo.SolicitudAdopcion);
+                    //Envia correo a la persona que llena el formulario
+                    Negocios.Correo.EnviarCorreoAdopcion(respuesta.Id, PlantillasCorreo.SolicitudAdopcion);
+
+
+                    try
+                    {
+                        //Envia correo a la fundacion
+                        Negocios.Correo.EnviarCorreoAutorespuesta(formularioAdopcion.ContenidoId, respuesta.Id, formularioAdopcion.TokenAutorespuesta.ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        LogErrores.RegistrarError(e);
+                    }
                 }
 
                 return respuesta;

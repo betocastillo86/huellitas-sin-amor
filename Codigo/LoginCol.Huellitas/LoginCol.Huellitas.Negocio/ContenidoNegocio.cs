@@ -213,6 +213,11 @@ namespace LoginCol.Huellitas.Negocio
             return _contenidos.Value.ObtenerCampos(contenidoId);
         }
 
+        public T ObtenerCampo<T>(int contenidoId, int campoId)
+        {
+            return _contenidos.Value.ObtenerCampo<T>(contenidoId, campoId);
+        }
+
         public List<ContenidoRelacionado> ObtenerContenidosRelacionados(int id, TipoRelacionEnum tipoRelacionEnum, bool cargarCampos)
         {
             return ObtenerContenidosRelacionados(id, (int)tipoRelacionEnum, cargarCampos);

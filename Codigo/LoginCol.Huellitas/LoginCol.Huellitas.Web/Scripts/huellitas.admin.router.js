@@ -23,7 +23,8 @@
         "admin/parametrizacion": "listarParametrizacion",
         "admin/usuariosexternos": "listarUsuariosExternos",
         "admin/adopcionesdetalle/:id": "editarAdopcion",
-        "admin/adopcioneslistar": "listarAdopciones"
+        "admin/adopcioneslistar": "listarAdopciones",
+        "autorespuesta(/:id)(/:guid)" :"autoresponder"
     },
     initialize : function(options)
     {
@@ -79,7 +80,9 @@
     {
         this.vistaActual = new ParametrizacionView();
     },
-   
+    autoresponder: function () {
+        this.vistaActual = new AutorespuestaView();
+    },
     //Fin Fundaciones
     //InicioAdopciones
     editarAdopcion: function (id) {

@@ -68,6 +68,7 @@
     <Compile Include="ContenidoNegocio.cs" />
     <Compile Include="CorreoNegocio.cs" />
     <Compile Include="DatoTablaBasicaNegocio.cs" />
+    <Compile Include="FabricaNegocios.cs" />
     <Compile Include="FormularioAdopcionNegocio.cs" />
     <Compile Include="Directorios\IRutasFisicas.cs" />
     <Compile Include="Directorios\RutaFisicaWeb.cs" />

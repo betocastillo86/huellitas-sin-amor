@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Text;
+using System.ComponentModel;
 
 namespace LoginCol.Huellitas.Datos
 {
@@ -245,6 +246,37 @@ namespace LoginCol.Huellitas.Datos
             }
 
             return campos == null ? new List<ValorCampo>() : campos;
+        }
+
+        public T ObtenerCampo<T>(int contenidoId, int campoId)
+        {
+            ValorCampo campo;
+            
+            using (var db = new Repositorio())
+            {
+                campo = db.ValoresCampos
+                            .Include(_ => _.Campo)
+                            .FirstOrDefault(_ => _.ContenidoId.Equals(contenidoId) && _.CampoId == campoId);
+            }
+
+            if (campo != null)
+            {
+
+                var destinationConverter = new TypeConverter();
+
+                if (typeof(T) == typeof(int))
+                    return (T)(object)Convert.ToInt32(campo.Valor);
+                if (typeof(T) == typeof(bool))
+                    return (T)(object)Convert.ToBoolean(campo.Valor);
+                else if (typeof(T) == typeof(string))
+                    return (T)(object)campo.Valor;
+                else
+                    return default(T);
+            }
+            else
+            { 
+                return default(T);
+            }
         }
 
         public Contenido ObtenerPorNombre(string nombre, bool quitarGuiones)
@@ -664,5 +696,7 @@ namespace LoginCol.Huellitas.Datos
                 return false;
             }
         }
+
+        
     }
 }

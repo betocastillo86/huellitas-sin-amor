@@ -42,6 +42,8 @@ namespace LoginCol.Huellitas.Web.Models
 
         public bool OcultarAdvertencia { get; set; }
 
+        public bool FormularioEnviado { get; set; }
+
         public enum TipoRespuesta
         {
             RadioButton,

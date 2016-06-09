@@ -42,5 +42,7 @@ namespace LoginCol.Huellitas.Entidades
         public Nullable<int> AdopcionId { get; set; }
 
         public virtual Adopcion Adopcion { get; set; }
+
+        public Guid TokenAutorespuesta { get; set; }
     }
 }

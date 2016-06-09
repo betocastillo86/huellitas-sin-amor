@@ -12,6 +12,7 @@ namespace LoginCol.Huellitas.Negocio
         public NegocioBase()
         {
             this._rutasFisicas = new RutaFisicaWeb();
+            this.Negocios = new FabricaNegocios();
         }
 
         protected readonly IRutasFisicas _rutasFisicas;
@@ -34,5 +35,7 @@ namespace LoginCol.Huellitas.Negocio
                     return _rutasFisicas.ObtenerRutaFisica();
             }
         }
+
+        protected FabricaNegocios Negocios { get; set; }
     }
 }
