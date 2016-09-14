@@ -20,6 +20,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             List<Contenido> lista = new ContenidoNegocio()
                 .ObtenerPorTipo(idTipoContenido, esPadre, filtro.activo)
                 .OrderByDescending(c => c.FechaCreacion)
+                .Take(60)
                 .ToList();
             return lista.Select(Mapper.Map<Contenido, ContenidoBaseModel>).ToList();
         }
@@ -28,11 +29,13 @@ namespace LoginCol.Huellitas.Web.Controllers
         public ContenidoModel Get(int id)
         {
             ContenidoNegocio contenidoNegocio = new ContenidoNegocio();
-            ContenidoModel modelo = Mapper.Map<Contenido, ContenidoModel>(contenidoNegocio.Obtener(id));
+            var contenido = contenidoNegocio.Obtener(id);
+            ContenidoModel modelo = Mapper.Map<Contenido, ContenidoModel>(contenido);
             return modelo;
         }
 
         [HttpPut]
+        [Authorize]
 
         public ResultadoOperacion Put(int id, ContenidoModel modelo)
         {
@@ -52,6 +55,7 @@ namespace LoginCol.Huellitas.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ResultadoOperacion Post(ContenidoModel modelo)
         {
             modelo.Campos.RemoveAll(c => string.IsNullOrEmpty(c.Valor));

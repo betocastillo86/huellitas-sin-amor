@@ -14,6 +14,10 @@
             @Html.Partial("_ImagenesContenido")
 
             @Html.HiddenFor(m => m.Nombre)
+            @if (Model.MostrarEditar)
+            { 
+                <a href="/admin/animales/editar/@Model.Id">Editar contenido</a>
+            }
             <div class="descriPerfil grid_6 omega">
                 <div class="descri_mascota">
                     <h2><span class="icon-@(Model.TipoContenidoId == Convert.ToInt32(LoginCol.Huellitas.Entidades.TipoContenidoEnum.Perro) ? "perro" : "gato")"></span>@Html.DisplayFor(m => m.Nombre)</h2>

@@ -6,12 +6,17 @@
         <div class="box-icon">
             <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
         </div>
+        
     </div>
     <div class="box-content">
         <form role="form">
             <div class="form-group">
                 @Html.Label("Formulario Id")
                 @Html.DisplayFor(m => m.FormularioAdopcionId)
+                <a href="/admin/animales/editar/@Model.Contenido.ContenidoId" target="_blank" title="Editar" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Editar Huellita
+                </a>
             </div>
             <div class="form-group">
                 @Html.Label("Fecha Solicitud")
@@ -24,6 +29,9 @@
                     <i class="glyphicon glyphicon-search"></i>
                     ¿Quién es @Model.Contenido.Nombre?
                 </a>
+                
+                    
+                
             </div>
             <div class="form-group">
                 <img src="/img/@Model.Contenido.ContenidoId/medium" />

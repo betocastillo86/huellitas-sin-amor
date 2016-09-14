@@ -40,6 +40,7 @@ namespace LoginCol.Huellitas.Web.Controllers.api
                     contenido.DescripcionCorta = modelo.Nombre;
                     contenido.Activo = false;
                     contenido.TipoContenidoId = Convert.ToInt32(modelo.Tipo);
+                    contenido.Imagen = null;
 
                     //Crea el contenido
                     respuesta = nContenido.Crear(contenido, ParametrizacionNegocio.UsuarioPorDefecto, modelo.Imagen.First());

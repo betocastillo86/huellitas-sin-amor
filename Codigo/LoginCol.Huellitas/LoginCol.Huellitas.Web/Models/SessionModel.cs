@@ -8,14 +8,13 @@ namespace LoginCol.Huellitas.Web.Models
 {
     public class SessionModel
     {
-        private static Usuario _UsuarioAutenticado { get; set; }
+        //private static Usuario _UsuarioAutenticado { get; set; }
 
         public static Usuario Usuario
         {
             get
             {
-                if (_UsuarioAutenticado == null)
-                    _UsuarioAutenticado = new Usuario();
+                var _UsuarioAutenticado = new Usuario();
 
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {

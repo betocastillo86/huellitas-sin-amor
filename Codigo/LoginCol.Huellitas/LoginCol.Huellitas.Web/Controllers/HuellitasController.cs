@@ -193,6 +193,8 @@ namespace LoginCol.Huellitas.Web.Controllers
                 //modelo.HogarDePaso.Email = hogarDePaso.ContenidoHijo.Email;
             }
 
+            modelo.MostrarEditar = SessionModel.Usuario.EsAdministrador;
+            
             modelo.ImagenCompartir = string.Format("/img/{0}/big", modelo.ContenidoId);
             modelo.Id = id;
 

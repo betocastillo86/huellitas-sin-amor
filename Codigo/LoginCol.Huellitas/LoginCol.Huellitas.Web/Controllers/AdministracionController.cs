@@ -125,6 +125,7 @@ namespace LoginCol.Huellitas.Web.Controllers
             modelo.Formularios =  nFormulario.Obtener()
                 .Select(Mapper.Map<FormularioAdopcion, FormularioAdopcionModel>)
                 .OrderByDescending(f => f.FechaCreacion)
+                .Take(100)
                 .ToList();
             return View(modelo);
         }

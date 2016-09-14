@@ -16,5 +16,7 @@ namespace LoginCol.Huellitas.Web.Models
 
         public TipoRelacionUsuariosEnum TipoAdoptante { get; set; }
 
+        public bool MostrarEditar { get; set; }
+
     }
 }

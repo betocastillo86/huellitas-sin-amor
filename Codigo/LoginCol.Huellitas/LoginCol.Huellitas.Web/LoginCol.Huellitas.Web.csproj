@@ -375,8 +375,10 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\Produccion.pubxml" />
     <None Include="Properties\PublishProfiles\Pruebas.pubxml" />
     <None Include="Properties\PublishProfiles\Smarter Prod.pubxml" />
+    <Content Include="Images\banner_caoba.png" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
